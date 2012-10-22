@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    Copyright (C) 2006-2012 phloc systems
+    http://www.phloc.com
+    office[at]phloc[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<translationitems count="216">
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS">
+    <de>Adresse</de>
+    <en>Address</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_CITY">
+    <de>Stadt</de>
+    <en>City</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_COUNTRY">
+    <de>Land</de>
+    <en>Country</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_POBOX">
+    <de>Postfach</de>
+    <en>PO Box</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_POSTALCODE">
+    <de>PLZ</de>
+    <en>Postal code</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_STATE">
+    <de>Bundesland</de>
+    <en>State</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_STREET">
+    <de>Straße und Hausnummer</de>
+    <en>Street and building number</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_OFFICE">
+    <de>Büro</de>
+    <en>Office</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_OFFICE2">
+    <de>Büro (2)</de>
+    <en>Office (2)</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_OTHER">
+    <de>Sonstige</de>
+    <en>Other</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_PERSONAL">
+    <de>Privat</de>
+    <en>Personal</en>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_PERSONAL2">
+    <de>Privat (2)</de>
+    <en>Personal (2)</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.ALL">
+    <de>Albanische Lek</de>
+    <en>Albanian Lek</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.AMD">
+    <de>Armenische Dram</de>
+    <en>Armenian Dram</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.AZN">
+    <de>Aserbaidschanische Manat</de>
+    <en>Azerbaijani Manat</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.BAM">
+    <de>Konvertible Marks</de>
+    <en>Bosnia-Herzegovina Convertible Mark</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.BGN">
+    <de>Bulgarische Leva</de>
+    <en>Bulgarian Lev</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.BYR">
+    <de>Weißrussische Rubel</de>
+    <en>Belarusian Ruble</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.CHF">
+    <de>Schweizer Franken</de>
+    <en>Swiss Franc</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.CZK">
+    <de>Tschechische Kronen</de>
+    <en>Czech Koruna</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.DKK">
+    <de>Dänische Kronen</de>
+    <en>Danish Krone</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.EEK">
+    <de>Estnische Krone</de>
+    <en>Estonian Kroon</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.EUR">
+    <de>Euro</de>
+    <en>Euro</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.GBP">
+    <de>Pfund Sterling</de>
+    <en>Pound Sterling</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.GEL">
+    <de>Georgische Lari</de>
+    <en>Georgian Lari</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.HRK">
+    <de>Kroatische Kuna</de>
+    <en>Croatian Kuna</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.HUF">
+    <de>Ungarische Forint</de>
+    <en>Hungarian Forint</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.ISK">
+    <de>Isländische Krone</de>
+    <en>Icelandic Krona</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.LTL">
+    <de>Litauische Litas</de>
+    <en>Lithuanian Litas</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.LVL">
+    <de>Lettische Lats</de>
+    <en>Latvian Lats</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.MDL">
+    <de>Moldawische Leu</de>
+    <en>Moldovan Leu</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.MKD">
+    <de>Mazedonische Dinar</de>
+    <en>Macedonia Denar</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.NOK">
+    <de>Norwegische Krone</de>
+    <en>Norwegian Krone</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.PLN">
+    <de>Polnische Złoty</de>
+    <en>Polish Złoty</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.RON">
+    <de>Rumänische Leu</de>
+    <en>Romanian Leu</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.RSD">
+    <de>Serbische Dinar</de>
+    <en>Serbian dinar</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.RUB">
+    <de>Russische Rubel</de>
+    <en>Russian Ruble</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.SEK">
+    <de>Schwedische Kronen</de>
+    <en>Swedish Krona</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.TRY">
+    <de>Türkische Lira</de>
+    <en>New Turkish Lira</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.UAH">
+    <de>Ukrainische Hrywnja</de>
+    <en>Ukrainian Hryvnia</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.ECurrencyName.USD">
+    <de>US Dollar</de>
+    <en>United States Dollar</en>
+  </item>
+  <item id="com.phloc.masterdata.currency.validation.ECurrencyErrorTexts.INVALID_CURRENCY_CODE">
+    <de>Die Währung ist ungültig.</de>
+    <en>The currency is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_EMAIL">
+    <de>E-Mail</de>
+    <en>E-mail</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_EMAIL_ADDRESS">
+    <de>E-Mail-Adresse</de>
+    <en>E-mail address</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_EMAIL_PERSONAL">
+    <de>E-Mail-Kontaktname</de>
+    <en>E-mail contact name</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_OFFICE">
+    <de>Büro</de>
+    <en>Office</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_OFFICE2">
+    <de>Büro (2)</de>
+    <en>Office (2)</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_OTHER">
+    <de>Sonstige</de>
+    <en>Other</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_PERSONAL">
+    <de>Privat</de>
+    <en>Personal</en>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_PERSONAL2">
+    <de>Privat (2)</de>
+    <en>Personal (2)</en>
+  </item>
+  <item id="com.phloc.masterdata.person.EGenderName.FEMALE">
+    <de>Frau</de>
+    <en>Mrs.</en>
+  </item>
+  <item id="com.phloc.masterdata.person.EGenderName.MALE">
+    <de>Herr</de>
+    <en>Mr.</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.CLUB">
+    <de>Sehr geehrte</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.COMPANY">
+    <de>Sehr geehrte</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.FAMILY">
+    <de>Sehr geehrte</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.MISSES">
+    <de>Sehr geehrte</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.MISTER">
+    <de>Sehr geehrter</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.CLUB">
+    <de>Sehr geehrte Damen und Herren</de>
+    <en>Dear Sir or Madam</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.COMPANY">
+    <de>Sehr geehrte Damen und Herren</de>
+    <en>Dear Sir or Madam</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.FAMILY">
+    <de>Liebe</de>
+    <en>Dear Familiy</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.MISSES">
+    <de>Sehr geehrte</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.MISTER">
+    <de>Sehr geehrter</de>
+    <en>Dear</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.CLUB">
+    <de>Verein</de>
+    <en>Club</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.COMPANY">
+    <de>Firma</de>
+    <en>Company</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.FAMILY">
+    <de>Familie</de>
+    <en>Family</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.MISSES">
+    <de>Frau</de>
+    <en>Mrs.</en>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.MISTER">
+    <de>Herr</de>
+    <en>Mr.</en>
+  </item>
+  <item id="com.phloc.masterdata.postal.validation.EPostalCodeErrorTexts.INVALID_POSTAL_CODE">
+    <de>Die eingegebene Postleitzahl ist ungültig.</de>
+    <en>The postal code is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.postal.validation.EPostalCodeErrorTexts.INVALID_POSTAL_CODE_WITH_EXAMPLES">
+    <de>Geben Sie eine Postleitzahl in einem gültigen Format ein: {0}</de>
+    <en>Enter a postal code in a valid format: {0}</en>
+  </item>
+  <item id="com.phloc.masterdata.swift.validation.ESwiftErrorTexts.INVALID_BIC">
+    <de>Der BIC ist ungültig.</de>
+    <en>The BIC is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.swift.validation.ESwiftErrorTexts.INVALID_IBAN">
+    <de>Die IBAN ist ungültig.</de>
+    <en>The IBAN is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.A">
+    <de>Gemischter Steuersatz</de>
+    <en>Mixed tax rate</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.AA">
+    <de>Niedrigerer Steuersatz</de>
+    <en>Lower rate</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.AB">
+    <de>Ausnahme für Wiederverkauf</de>
+    <en>Exempt for resale</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.AC">
+    <de>MwSt. ist noch nicht zu zahlen</de>
+    <en>Value Added Tax (VAT) not now due for payment</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.AD">
+    <de>MwSt. von einer vorherigen Rechnung offen</de>
+    <en>Value Added Tax (VAT) due from a previous invoice</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.AE">
+    <de>Umkehr der Steuerschuld</de>
+    <en>VAT Reverse Charge</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.B">
+    <de>Steuer direkt ans Finanzamt abzuführen</de>
+    <en>Transferred (VAT)</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.C">
+    <de>Lieferant zahlt Schuld</de>
+    <en>Duty paid by supplier</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.E">
+    <de>Steuerausnahme</de>
+    <en>Exempt from tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.G">
+    <de>Freier Export-Artikel, keine Steuerschuld</de>
+    <en>Free export item, tax not charged</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.H">
+    <de>Höherer Steuersatz</de>
+    <en>Higher rate</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.O">
+    <de>Dienstleistung nicht steuerrelevant</de>
+    <en>Services outside scope of tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.S">
+    <de>Standard Steuersatz</de>
+    <en>Standard rate</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxCategoryUN5305Name.Z">
+    <de>Steuersatz 0%</de>
+    <en>Zero rated goods</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAA">
+    <de>Erdölsteuer</de>
+    <en>Petroleum tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAB">
+    <de>Provisorische Ausgleichsabgabe</de>
+    <en>Provisional countervailing duty cash</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAC">
+    <de>Provisorische Ausgleichsabgabe Schuld</de>
+    <en>Provisional countervailing duty bond</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAD">
+    <de>Tabaksteuer</de>
+    <en>Tobacco tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAE">
+    <de>Energieabgabe</de>
+    <en>Energy fee</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAF">
+    <de>Kaffeesteuer</de>
+    <en>Coffee tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAG">
+    <de>Harmonisierte Umsatzsteuer</de>
+    <en>Harmonised sales tax, Canadian</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAH">
+    <de>Quebecs&#39; Umsatzsteuer</de>
+    <en>Quebec sales tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAI">
+    <de>Kanadische Regionale Umsatzsteuer</de>
+    <en>Canadian provincial sales tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAJ">
+    <de>Tax on replacement part</de>
+    <en>Tax on replacement part</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAK">
+    <de>Mineralölsteuer</de>
+    <en>Mineral oil tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAL">
+    <de>Spezialsteuer</de>
+    <en>Special tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.ADD">
+    <de>Anti-dumping Abgabe</de>
+    <en>Anti-dumping duty</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.BOL">
+    <de>Stempelgebühr/Irland: Grunderwerbssteuer</de>
+    <en>Stamp duty (Imposta di Bollo)</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CAP">
+    <de>Agrarabgabe</de>
+    <en>Agricultural levy</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CAR">
+    <de>Kraftfahrzeugssteuer</de>
+    <en>Car tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.COC">
+    <de>Paper consortium tax (Italy)</de>
+    <en>Paper consortium tax (Italy)</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CST">
+    <de>Spezielle Zollabgaben</de>
+    <en>Commodity specific tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CUD">
+    <de>Zollabgaben</de>
+    <en>Customs duty</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CVD">
+    <de>Ausgleichsabgabe</de>
+    <en>Countervailing duty</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.ENV">
+    <de>Umweltsteuer</de>
+    <en>Environmental tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.EXC">
+    <de>Verbrauchssteuer</de>
+    <en>Excise duty</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.EXP">
+    <de>Agrar-Ausfuhrvergütung</de>
+    <en>Agricultural export rebate</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.FET">
+    <de>Bundesverbrauchssteuer</de>
+    <en>Federal excise tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.FRE">
+    <de>Frei</de>
+    <en>Free</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.GCN">
+    <de>Allgemeine Bausteuer</de>
+    <en>General construction tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.GST">
+    <de>Waren- und Dienstleistungssteuer</de>
+    <en>Goods and services tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.ILL">
+    <de>Leuchtmittelsteuer</de>
+    <en>Illuminants tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.IMP">
+    <de>Importsteuer</de>
+    <en>Import tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.IND">
+    <de>Individual-Steuer</de>
+    <en>Individual tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LAC">
+    <de>Gewerbesteuer</de>
+    <en>Business license fee</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LCN">
+    <de>Regionale Bausteuer</de>
+    <en>Local construction tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LDP">
+    <de>Light dues payable</de>
+    <en>Light dues payable</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LOC">
+    <de>Local sales tax</de>
+    <en>Local sales tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LST">
+    <de>Luststeuer</de>
+    <en>Lust tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.MCA">
+    <de>Monetary compensatory amount</de>
+    <en>Monetary compensatory amount</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.MCD">
+    <de>Miscellaneous cash deposit</de>
+    <en>Miscellaneous cash deposit</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.OTH">
+    <de>Andere Steuern</de>
+    <en>Other taxes</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.PDB">
+    <de>Provisorische Abgabenschuld</de>
+    <en>Provisional duty bond</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.PDC">
+    <de>Provisorische Abgabenschuld</de>
+    <en>Provisional duty cash</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.PRF">
+    <de>Vorzugsabgabe</de>
+    <en>Preference duty</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.SCN">
+    <de>Spezialbausteuer</de>
+    <en>Special construction tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.SSS">
+    <de>Verschiebung der Sozialen Sicherheit</de>
+    <en>Shifted social securities</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.STT">
+    <de>Regionale Umsatzsteuer</de>
+    <en>State/provincial sales tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.SUP">
+    <de>Außer Kraft gesetzte Steuer</de>
+    <en>Suspended duty</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.SUR">
+    <de>Zusatzsteuer/Zuschlag/Ergänzungsabgabe</de>
+    <en>Surtax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.SWT">
+    <de>Shifted wage tax</de>
+    <en>Shifted wage tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TAC">
+    <de>Alkohol mark tax</de>
+    <en>Alcohol mark tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TOT">
+    <de>Summe/Gesamt</de>
+    <en>Total</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TOX">
+    <de>Turnover tax</de>
+    <en>Turnover tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TTA">
+    <de>Tonnage taxes</de>
+    <en>Tonnage taxes</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.VAD">
+    <de>Valuation deposit</de>
+    <en>Valuation deposit</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.VAT">
+    <de>Umsatzsteuer</de>
+    <en>Value added tax</en>
+  </item>
+  <item id="com.phloc.masterdata.tax.validation.ETaxErrorTexts.INVALID_TAX_CATEGORY_UN5305">
+    <de>Die Steuerkategorie ist ungültig.</de>
+    <en>The tax category is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX">
+    <de>Fax</de>
+    <en>Telefax</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_AREACODE">
+    <de>Fax Vorwahl</de>
+    <en>Telefax area code</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_COUNTRYCODE">
+    <de>Fax Ländervorwahl</de>
+    <en>Telefax country code</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_DIRECTDIAL">
+    <de>Faxdurchwahl</de>
+    <en>Telefax direct dial</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_LINE">
+    <de>Faxnummer</de>
+    <en>Telefax line</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE">
+    <de>Telefon</de>
+    <en>Telephone</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_AREACODE">
+    <de>Telefon Vorwahl</de>
+    <en>Telephone area code</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_COUNTRYCODE">
+    <de>Telefon Ländervorwahl</de>
+    <en>Telephone country code</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_DIRECTDIAL">
+    <de>Telefondurchwahl</de>
+    <en>Telephone direct dial</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_LINE">
+    <de>Telefonnummer</de>
+    <en>Telephone line</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_ASSISTANT">
+    <de>Assistent</de>
+    <en>Assistant</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_BUSINESS">
+    <de>Geschäftlich</de>
+    <en>Business</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_BUSINESS2">
+    <de>Geschäftlich (2)</de>
+    <en>Business (2)</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_BUSINESS_FAX">
+    <de>Fax geschäftlich</de>
+    <en>Business fax</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_ISDN">
+    <de>ISDN</de>
+    <en>ISDN</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_MOBILE">
+    <de>Mobil</de>
+    <en>Mobile</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OFFICE">
+    <de>Büro</de>
+    <en>Office</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OFFICE_FAX">
+    <de>Fax Büro</de>
+    <en>Office fax</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OTHER">
+    <de>Sonstige</de>
+    <en>Other</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OTHER_FAX">
+    <de>Fax sonstige</de>
+    <en>Other fax</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL">
+    <de>Persönlich</de>
+    <en>Personal</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL2">
+    <de>Persönlich (2)</de>
+    <en>Personal (2)</en>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL_FAX">
+    <de>Fax persönlich</de>
+    <en>Personal fax</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.CFR">
+    <de>Kosten und Fracht</de>
+    <en>cost and freight</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.CIF">
+    <de>Kosten, Versicherung und Fracht bis zum Bestimmungshafen/Bestimmungsort</de>
+    <en>cost,insurance and freight</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.CIP">
+    <de>Fracht, Porto und Versicherung bezahlt bis</de>
+    <en>carriage and insurance paid to</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.CPT">
+    <de>Fracht, Porto bezahlt bis</de>
+    <en>carriage paid to</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.DAF">
+    <de>frei Grenze</de>
+    <en>delivered at frontier</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.DDP">
+    <de>frei verzollt</de>
+    <en>delivered duty paid</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.DDU">
+    <de>frei unverzollt</de>
+    <en>delivered duty unpaid</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.DEQ">
+    <de>frei ab Kai</de>
+    <en>delivered ex quay</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.DES">
+    <de>frei ab Schiff</de>
+    <en>delivered ex ship</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.EXW">
+    <de>ab Werk</de>
+    <en>ex works</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.FAS">
+    <de>frei längsseits Schiff</de>
+    <en>free alongside ship</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.FCA">
+    <de>frei Frachtführer</de>
+    <en>free carrier</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.EIncotermName.FOB">
+    <de>frei an Bord</de>
+    <en>free on board</en>
+  </item>
+  <item id="com.phloc.masterdata.trade.validation.ETradeErrorTexts.INVALID_DELIVERY_TERMS">
+    <de>Die Handelsklausel ist ungültig.</de>
+    <en>The delivery term is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_0">
+    <de>Grundprinzipien</de>
+    <en>General principles</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_1">
+    <de>Raum und Zeit</de>
+    <en>Space and time</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_10">
+    <de>Kernreaktionen und ionisierende Strahlungen</de>
+    <en>Nuclear reactions and ionizing radiations</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_11">
+    <de>Mathematische Zeichen und Symbole</de>
+    <en>Mathematical signs and symbols for use in the physical sciences and technology</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_12">
+    <de>Kennzahlen</de>
+    <en>Characteristic numbers</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_13">
+    <de>Festkörperphysik</de>
+    <en>Solid state physics</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_2">
+    <de>Periodizität und verwandte Phänomene</de>
+    <en>Periodic and related phenomena</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_3">
+    <de>Mechanik</de>
+    <en>Mechanics</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_4">
+    <de>Wärme</de>
+    <en>Heat</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_5">
+    <de>Elektrizität und Magnetismus</de>
+    <en>Electricity and magnetism</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_6">
+    <de>Licht und verwandte elektromagnetische Strahlung</de>
+    <en>Light and related electromagnetic radiations</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_7">
+    <de>Akustik</de>
+    <en>Acoustics</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_8">
+    <de>Physikalische Chemie und Molekularphysik</de>
+    <en>Physical chemistry and molecular physics</en>
+  </item>
+  <item id="com.phloc.masterdata.unit.EISO31Name.ISO31_9">
+    <de>Atomphysik und Kernphysik</de>
+    <en>Atomic and nuclear physics</en>
+  </item>
+  <item id="com.phloc.masterdata.vat.EVATItemText.VAT_PERC">
+    <de>{0}% USt.</de>
+    <en>VAT {0}%</en>
+  </item>
+  <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATIN">
+    <de>Die UID ist ungültig.</de>
+    <en>The VATIN is invalid.</en>
+  </item>
+  <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATIN_WITH_EXAMPLES">
+    <de>Die UID ist ungültig. Eine UID für {0} kann z.B. so aussehen: {1}</de>
+    <en>The VATIN is invalid. A valid UID for {0} can look like this: {1}</en>
+  </item>
+  <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATITEM">
+    <de>Der angegebene Steuersatz ist ungültig.</de>
+    <en>The specified tax rate is invalid.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_COUNTRY_CODE">
+    <de>Das Land ist ungültig.</de>
+    <en>The country is invalid.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATE">
+    <de>Das Datum ist ungültig. Geben Sie den Wert in der Form [{0}] an.</de>
+    <en>The date is invalid. Specify the value in the form [{0}].</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATETIME">
+    <de>Das Datum mit Uhrzeit ist ungültig. Geben Sie den Wert in der Form [{0}] an.</de>
+    <en>The date and time is invalid. Specify the value in the form [{0}].</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE">
+    <de>Die Gleitkommazahl ist ungültig.</de>
+    <en>The floating point number is invalid.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_RANGE">
+    <de>Die Gleitkommazahl ist nicht im gültigen Bereich {0}-{1}.</de>
+    <en>The floating point number is not in the valid range {0}-{1}.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_EXCL0">
+    <de>Die Gleitkommazahl muss &gt; 0 sein.</de>
+    <en>The floating point number must be &gt; 0.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_INCL0">
+    <de>Die Gleitkommazahl muss &gt;= 0 sein.</de>
+    <en>The floating point number must be &gt;= 0.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMAIL_ADDRESS">
+    <de>Die E-Mail-Adresse ist ungültig.</de>
+    <en>The e-mail address is invalid.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMPTY">
+    <de>Dieses Feld darf nicht leer sein.</de>
+    <en>This field must not be empty.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_FILE_EMPTY">
+    <de>Es wurde keine Datei zum Hochladen ausgewählt.</de>
+    <en>No file was selected for upload.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT">
+    <de>Die Ganzzahl ist ungültig.</de>
+    <en>The integer number is invalid.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_RANGE">
+    <de>Die Ganzzahl ist nicht im gültigen Bereich {0}-{1}.</de>
+    <en>The integer number is not in the valid range {0}-{1}.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_EXCL0">
+    <de>Die Ganzzahl muss &gt; 0 sein.</de>
+    <en>The integer number must be &gt; 0.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_INCL0">
+    <de>Die Ganzzahl muss &gt;= 0 sein.</de>
+    <en>The integer number must be &gt;= 0.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_LIST_EMPTY">
+    <de>Mindestens ein Eintrag wird benötigt.</de>
+    <en>At least one entry is required.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAXLENGTH">
+    <de>Der Wert ist zu lang. Er darf maximal {0} Zeichen enthalten.</de>
+    <en>The value is too long. The maximum allowed length is {0}.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAX_LENGTH">
+    <de>Es dürfen maximal {0} Einträge vorhanden sein.</de>
+    <en>At last {0} entries must be present.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MINLENGTH">
+    <de>Der Wert ist zu kurz. Er muss mindestens {0} Zeichen enthalten.</de>
+    <en>The value is too short. The minimum required length is {0}.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MIN_LENGTH">
+    <de>Es müssen mindestens {0} Einträge vorhanden sein.</de>
+    <en>At least {0} entries must be present.</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_REGEX">
+    <de>Der Wert entspricht nicht dem regulären Ausdruck: {0}</de>
+    <en>The value does not match the regular expression: {0}</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_TIME">
+    <de>Die Uhrzeit ist ungültig. Geben Sie den Wert in der Form [{0}] an.</de>
+    <en>The time is invalid. Specify the value in the form [{0}].</en>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_URL">
+    <de>Die URL ist ungültig.</de>
+    <en>The URL is invalid.</en>
+  </item>
+</translationitems>
