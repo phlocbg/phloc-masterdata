@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="44">
+<translationitems count="64">
   <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS">
     <hu>Utca, házszám</hu>
   </item>
@@ -136,9 +136,6 @@
   <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_LINE">
     <hu>Telefonszám</hu>
   </item>
-  <item id="com.phloc.masterdata.unit.ESimpleUnitName.CM">
-    <hu>cm</hu>
-  </item>
   <item id="com.phloc.masterdata.vat.EVATItemText.VAT_PERC">
     <hu>{0}% Áfa</hu>
   </item>
@@ -150,5 +147,68 @@
   </item>
   <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATITEM">
     <hu>A megadott adókulcs érvénytelen.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_COUNTRY_CODE">
+    <hu>Érvénytelen ország</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATE">
+    <hu>Érvénytelen dátum. Az értékeket a következő formában adja meg: [{0}]</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATETIME">
+    <hu>Érvénytelen a dátum időpontja. Az értékeket a következő formában adja meg: [{0}]</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE">
+    <hu>Érvénytelen szám.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_RANGE">
+    <hu>A szám nem tartozik az helyes tartományba {0}-{1}.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_EXCL0">
+    <hu>A számnak  &gt; 0 kell lennie.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_INCL0">
+    <hu>A számnak &gt;= 0 kell lennie.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMAIL_ADDRESS">
+    <hu>Érvénytelen e-mail cím</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMPTY">
+    <hu>Ez a mező nem hagyható üresen.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_FILE_EMPTY">
+    <hu>Nincs kiválasztva fájl feltöltésre.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT">
+    <hu>Érvénytelen szám.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_RANGE">
+    <hu>A szám nem tartozik az helyes tartományba {0}-{1}.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_EXCL0">
+    <hu>A számnak  &gt; 0 kell lennie.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_INCL0">
+    <hu>A számnak &gt;= 0 kell lennie.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_LIST_EMPTY">
+    <hu>Legalább egy bejegyzés szükséges.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAXLENGTH">
+    <hu>Az érték túl hosszú. Maximum {0} karakter lehet.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAX_LENGTH">
+    <hu>Maximum {0} bejegyzés lehet.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MINLENGTH">
+    <hu>Az érték túl rövid. Maximum {0} karakter lehet.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MIN_LENGTH">
+    <hu>{0} bejegyzésnek lennie kell.</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_REGEX">
+    <hu>Az érték nem egyezik a megfelelő formátummal: {0}</hu>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_TIME">
+    <hu>Az időpont érvénytelen. Az értéket a következő formában kell megadni: {0}</hu>
   </item>
 </translationitems>

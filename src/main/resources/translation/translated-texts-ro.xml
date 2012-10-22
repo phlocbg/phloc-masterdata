@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="44">
+<translationitems count="43">
   <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS">
     <ro>Adresă</ro>
   </item>
@@ -135,9 +135,6 @@
   </item>
   <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_LINE">
     <ro>Telefon</ro>
-  </item>
-  <item id="com.phloc.masterdata.unit.ESimpleUnitName.CM">
-    <ro>cm</ro>
   </item>
   <item id="com.phloc.masterdata.vat.EVATItemText.VAT_PERC">
     <ro>TVA {0}%</ro>

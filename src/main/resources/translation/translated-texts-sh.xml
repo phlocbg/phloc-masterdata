@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="79">
+<translationitems count="100">
   <item id="com.phloc.masterdata.currency.ECurrencyName.ALL">
     <sh>Albanski Lek</sh>
   </item>
@@ -255,5 +255,68 @@
   </item>
   <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATITEM">
     <sh>Navedena poreska stopa nije validna.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_COUNTRY_CODE">
+    <sh>Država nije validna.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATE">
+    <sh>Datum nije validan. Unesite datum u obliku [{0}].</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATETIME">
+    <sh>Datum i vreme nisu validni. Unesite datum u obliku [{0}].</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE">
+    <sh>Decimalni broj nije validan.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_RANGE">
+    <sh>Decimalni broj nije u propisanom opsegu {0}-{1}.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_EXCL0">
+    <sh>Decimalni broj mora biti &gt;0.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_INCL0">
+    <sh>Decimalni broj mora biti &gt;=0.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMAIL_ADDRESS">
+    <sh>E-mail adresa nije validna.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMPTY">
+    <sh>Polje ne sme da bude prazno.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_FILE_EMPTY">
+    <sh>Nijedna datoteka nije odabrana za učitavanje.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT">
+    <sh>Broj nije validan.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_RANGE">
+    <sh>Ovaj broj nije u pravom rasponu {0}-{1}.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_EXCL0">
+    <sh>Broj mora biti &gt;0.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_INCL0">
+    <sh>Broj mora biti &gt;=0.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_LIST_EMPTY">
+    <sh>Najmanje jedan unos je neophodan.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAXLENGTH">
+    <sh>Vrednost je suviše dugačka. Maksimalna duzina je {0}.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAX_LENGTH">
+    <sh>Na kraju {0} stavki mora biti unešeno.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MINLENGTH">
+    <sh>Vrednost je isuviše kratka. Minimalna dužina koja se zahteva je {0}.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MIN_LENGTH">
+    <sh>Najmanje {0} stavki mora biti unešeno.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_REGEX">
+    <sh>Vrednost ne odgovara obrascu: {0}.</sh>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_TIME">
+    <sh>Vreme nije validno. Unesite ga u formi [{0}].</sh>
   </item>
 </translationitems>
