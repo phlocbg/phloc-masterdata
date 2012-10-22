@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="70">
+<translationitems count="91">
   <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS">
     <cs>Adresa</cs>
   </item>
@@ -214,9 +214,6 @@
   <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL_FAX">
     <cs>Soukromý fax</cs>
   </item>
-  <item id="com.phloc.masterdata.unit.ESimpleUnitName.CM">
-    <cs>cm</cs>
-  </item>
   <item id="com.phloc.masterdata.vat.EVATItemText.VAT_PERC">
     <cs>DPH {0}%</cs>
   </item>
@@ -228,5 +225,71 @@
   </item>
   <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATITEM">
     <cs>Zvolená daňová sazba je neplatná.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_COUNTRY_CODE">
+    <cs>Země je neplatná.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATE">
+    <cs>Datum není platné. Zadejte hodnotu v podobě [{0}].</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATETIME">
+    <cs>Datum a čas nejsou platné. Zadejte hodnotu v podobě [{0}].</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE">
+    <cs>Desetinné číslo je neplatné.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_RANGE">
+    <cs>Desetinné číslo není v platném rozsahu {0} – {1}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_EXCL0">
+    <cs>Desetinné číslo musí být&gt; 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_INCL0">
+    <cs>Desetinné číslo musí být&gt; = 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMAIL_ADDRESS">
+    <cs>E-mailová adresa je neplatná.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMPTY">
+    <cs>Toto pole nesmí být prázdné.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_FILE_EMPTY">
+    <cs>Nebyl vybrán žádný soubor pro upload.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT">
+    <cs>Celé číslo je neplatné.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_RANGE">
+    <cs>Celé číslo není v platném rozsahu {0} – {1}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_EXCL0">
+    <cs>Celé číslo, musí být&gt; 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_INCL0">
+    <cs>The integer number must be &gt;= 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_LIST_EMPTY">
+    <cs>Alespoň jedna položka je vyžadována.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAXLENGTH">
+    <cs>Hodnota je příliš dlouhá. Maximální povolená délka je {0}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAX_LENGTH">
+    <cs>Maximálně {0} existujících záznamů.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MINLENGTH">
+    <cs>Hodnota je příliš krátká. Minimální požadovaná délka je {0}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MIN_LENGTH">
+    <cs>Alespoň {0} existujících záznamů.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_REGEX">
+    <cs>Hodnota neodpovídá regulárnímu výrazu: {0}</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_TIME">
+    <cs>Čas je neplatný. Zadejte hodnotu v podobě [{0}].</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_URL">
+    <cs>Chybné URL</cs>
   </item>
 </translationitems>
