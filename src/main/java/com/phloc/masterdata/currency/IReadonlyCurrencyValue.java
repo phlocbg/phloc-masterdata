@@ -33,6 +33,18 @@ import com.phloc.commons.annotations.MustImplementEqualsAndHashcode;
 public interface IReadonlyCurrencyValue extends IHasCurrency
 {
   /**
+   * @return <code>true</code> if the value is &lt; 0, <code>false</code> if it
+   *         is &ge; 0.
+   */
+  boolean isLowerThanZero ();
+
+  /**
+   * @return <code>true</code> if the value is &lt; 0, <code>false</code> if it
+   *         is &le; 0.
+   */
+  boolean isGreaterThanZero ();
+
+  /**
    * @return The contained numeric currency value.
    */
   @Nonnull

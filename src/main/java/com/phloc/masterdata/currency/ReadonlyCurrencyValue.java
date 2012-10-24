@@ -59,6 +59,16 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
     return m_eCurrency;
   }
 
+  public boolean isLowerThanZero ()
+  {
+    return m_aValue.compareTo (BigDecimal.ZERO) < 0;
+  }
+
+  public boolean isGreaterThanZero ()
+  {
+    return m_aValue.compareTo (BigDecimal.ZERO) > 0;
+  }
+
   @Nonnull
   public BigDecimal getValue ()
   {
