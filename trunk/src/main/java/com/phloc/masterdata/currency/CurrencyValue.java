@@ -90,6 +90,16 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
     return EChange.CHANGED;
   }
 
+  public boolean isLowerThanZero ()
+  {
+    return m_aValue.compareTo (BigDecimal.ZERO) < 0;
+  }
+
+  public boolean isGreaterThanZero ()
+  {
+    return m_aValue.compareTo (BigDecimal.ZERO) > 0;
+  }
+
   @Nonnull
   @Column (name = FIELD_CURRENCYVALUE)
   public BigDecimal getValue ()
