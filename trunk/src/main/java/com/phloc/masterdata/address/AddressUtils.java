@@ -151,7 +151,7 @@ public final class AddressUtils
     if (StringHelper.hasText (aAddress.getStreet ()))
       aSB.append (aAddress.getStreet ());
 
-    final String sNextLine = StringHelper.getConcatenatedOnDemand (aAddress.getPostalCode (), " ", aAddress.getCity ());
+    final String sNextLine = StringHelper.getImplodedNonEmpty (' ', aAddress.getPostalCode (), aAddress.getCity ());
     if (StringHelper.hasText (sNextLine))
     {
       if (aSB.length () > 0)
