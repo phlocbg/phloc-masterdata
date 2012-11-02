@@ -20,6 +20,11 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
+  <entry date="2012-10-30" category="api" action="add">
+    <change>
+      <text locale="en">Extended VATItem data a bit</text>
+    </change>
+  </entry>
   <entry date="2012-10-24" category="api" action="add">
     <change>
       <text locale="en">Added new methods is(Lower|Greater)ThanZero to IReadonlyCurrencyValue</text>
