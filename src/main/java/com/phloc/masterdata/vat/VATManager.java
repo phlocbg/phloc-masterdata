@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.annotations.ReturnsImmutableObject;
 import com.phloc.commons.collections.ContainerHelper;
+import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.io.IInputStreamProvider;
 import com.phloc.commons.io.resource.ClassPathResource;
 import com.phloc.commons.locale.LocaleUtils;
@@ -282,6 +283,28 @@ public final class VATManager implements IVATTypeResolver
   public IVATItem getVATItemOfID (@Nonnull final Locale aCountry, @Nullable final String sID)
   {
     return getVATItemOfID (_getCountryString (aCountry) + "." + sID);
+  }
+
+  /**
+   * Find a matching VAT item with the passed properties, independent of the
+   * country.
+   * 
+   * @param eType
+   *        The VAT type to use. May be <code>null</code> resulting in a
+   *        <code>null</code> result.
+   * @param aPercentage
+   *        The percentage to find. May be <code>null</code> resulting in a
+   *        <code>null</code> result.
+   * @return <code>null</code> if no matching item could be found,
+   */
+  @Nullable
+  public IVATItem findVATItem (@Nullable final EVATType eType, @Nullable final BigDecimal aPercentage)
+  {
+    if (eType != null && aPercentage != null)
+      for (final IVATItem aVATItem : m_aAllVATTypes.values ())
+        if (aVATItem.getType ().equals (eType) && EqualsUtils.equals (aVATItem.getPercentage (), aPercentage))
+          return aVATItem;
+    return null;
   }
 
   @Override
