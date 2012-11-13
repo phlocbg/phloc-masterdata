@@ -39,6 +39,11 @@ public final class ReadonlyPrice implements IReadonlyPrice
   private final IReadonlyCurrencyValue m_aNetAmount;
   private final IVATItem m_aVATItem;
 
+  public ReadonlyPrice (@Nonnull final IReadonlyPrice aOtherPrice)
+  {
+    this (new ReadonlyCurrencyValue (aOtherPrice.getNetAmount ()), aOtherPrice.getVATItem ());
+  }
+
   public ReadonlyPrice (@Nonnull final ECurrency eCurrency,
                         @Nonnull final BigDecimal aNetAmount,
                         @Nonnull final IVATItem aVATType)
