@@ -73,7 +73,7 @@
 <tr><td>9/27/11</td><td>update</td><td>api</td><td></td><td>Improved API of ICompanySite and ICompany</td></tr>
 <tr border="1"><td>9/13/11</td><td colspan="4">_Release *2.5.3*_</td></tr>
 <tr><td>9/12/11</td><td>update</td><td>tech</td><td></td><td>Updated translations of UN/CEFACT codelist 5153</td></tr>
-<tr><td>9/12/11</td><td>update</td><td>api</td><td></td><td>Updated to [http://code.google.com/p/phloc-commons phloc-commons] 3.1.0, phloc-db 2.5.2</td></tr>
+<tr><td>9/12/11</td><td>update</td><td>api</td><td></td><td>Updated to [http://code.google.com/p/phloc-commons phloc-commons] 3.1.0, [http://code.google.com/p/phloc-db phloc-db] 2.5.2</td></tr>
 <tr border="1"><td>9/12/11</td><td colspan="4">_Release *2.5.2*_</td></tr>
 <tr><td>8/31/11</td><td>add</td><td>api</td><td></td><td>Added the methods getCurrencyFormatted and getValueFormatted to ECurrency</td></tr>
 <tr><td>8/31/11</td><td>add</td><td>api</td><td></td><td>Added new interfaces IHasCurrency and IHasVATItem</td></tr>
