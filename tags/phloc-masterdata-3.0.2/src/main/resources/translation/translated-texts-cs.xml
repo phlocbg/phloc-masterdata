@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    Copyright (C) 2006-2012 phloc systems
+    http://www.phloc.com
+    office[at]phloc[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<translationitems count="91">
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS">
+    <cs>Adresa</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_CITY">
+    <cs>Město</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_COUNTRY">
+    <cs>Země</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_POBOX">
+    <cs>PO Box</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_POSTALCODE">
+    <cs>PSČ</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_STATE">
+    <cs>Země</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS_STREET">
+    <cs>Ulice a č.p.</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_OFFICE">
+    <cs>Zaměstnání</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_OFFICE2">
+    <cs>Zaměstnání (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_OTHER">
+    <cs>Ostatní</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_PERSONAL">
+    <cs>Soukromá (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.address.EAddressText.MSG_TYPE_PERSONAL2">
+    <cs>Soukromá (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.currency.validation.ECurrencyErrorTexts.INVALID_CURRENCY_CODE">
+    <cs>Neplatná měna</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_EMAIL">
+    <cs>Email</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_EMAIL_ADDRESS">
+    <cs>E-mailová adresa</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_EMAIL_PERSONAL">
+    <cs>Jméno emailového kontaktu</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_OFFICE">
+    <cs>Zaměstnání</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_OFFICE2">
+    <cs>Zaměstnání (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_OTHER">
+    <cs>Ostatní</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_PERSONAL">
+    <cs>Soukromá (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.email.EEmailAddressText.MSG_TYPE_PERSONAL2">
+    <cs>Soukromá (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.EGenderName.FEMALE">
+    <cs>paní</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.EGenderName.MALE">
+    <cs>pan</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.CLUB">
+    <cs>Vážení</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.COMPANY">
+    <cs>Vážená</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.FAMILY">
+    <cs>Vážená</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.MISSES">
+    <cs>Vážená</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreeting.MISTER">
+    <cs>Vážený</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.CLUB">
+    <cs>Vážené dámy a pánové</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.COMPANY">
+    <cs>Dámy a pánové</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.FAMILY">
+    <cs>Vážení</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.MISSES">
+    <cs>Vážená</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationGreetingComplete.MISTER">
+    <cs>Vážený</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.CLUB">
+    <cs>Společnost</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.COMPANY">
+    <cs>společnost</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.FAMILY">
+    <cs>rodina</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.MISSES">
+    <cs>paní</cs>
+  </item>
+  <item id="com.phloc.masterdata.person.ESalutationName.MISTER">
+    <cs>pan</cs>
+  </item>
+  <item id="com.phloc.masterdata.postal.validation.EPostalCodeErrorTexts.INVALID_POSTAL_CODE">
+    <cs>Neplatné PSČ</cs>
+  </item>
+  <item id="com.phloc.masterdata.postal.validation.EPostalCodeErrorTexts.INVALID_POSTAL_CODE_WITH_EXAMPLES">
+    <cs>Neplatné PSČ. Správná podoba PSČ je např.: {0}</cs>
+  </item>
+  <item id="com.phloc.masterdata.swift.validation.ESwiftErrorTexts.INVALID_BIC">
+    <cs>Špatně zadaný kód BIC</cs>
+  </item>
+  <item id="com.phloc.masterdata.swift.validation.ESwiftErrorTexts.INVALID_IBAN">
+    <cs>Špatně zadaný kód IBAN</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX">
+    <cs>Fax</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_AREACODE">
+    <cs>Fax – předčíslí</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_COUNTRYCODE">
+    <cs>Fax – kód země</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_DIRECTDIAL">
+    <cs>Fax – přímá volba</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_FAX_LINE">
+    <cs>Fax – číslo</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE">
+    <cs>Telefon</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_AREACODE">
+    <cs>Telefon – předčíslí</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_COUNTRYCODE">
+    <cs>Telefon – kód země</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_DIRECTDIAL">
+    <cs>Telefon – přímá volba</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TELEPHONE_LINE">
+    <cs>Telefonní číslo</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_ASSISTANT">
+    <cs>Zástupce</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_BUSINESS">
+    <cs>Firma</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_BUSINESS2">
+    <cs>Firma (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_BUSINESS_FAX">
+    <cs>Firemní fax</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_ISDN">
+    <cs>ISDN</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_MOBILE">
+    <cs>Mobil</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OFFICE">
+    <cs>Zaměstnání</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OFFICE_FAX">
+    <cs>Zaměstnání fax</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OTHER">
+    <cs>Jiný</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_OTHER_FAX">
+    <cs>Jiný fax</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL">
+    <cs>Soukromé</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL2">
+    <cs>Soukromé (2)</cs>
+  </item>
+  <item id="com.phloc.masterdata.telephone.ETelephoneText.MSG_TYPE_PERSONAL_FAX">
+    <cs>Soukromý fax</cs>
+  </item>
+  <item id="com.phloc.masterdata.vat.EVATItemText.VAT_PERC">
+    <cs>DPH {0}%</cs>
+  </item>
+  <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATIN">
+    <cs>Špatně zadaný kód DIČ (VAT number)</cs>
+  </item>
+  <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATIN_WITH_EXAMPLES">
+    <cs>Špatně zadaný kód DIČ. Správný formát DIČ pro {0} je např: {1}</cs>
+  </item>
+  <item id="com.phloc.masterdata.vat.validation.EVATErrorTexts.INVALID_VATITEM">
+    <cs>Zvolená daňová sazba je neplatná.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_COUNTRY_CODE">
+    <cs>Země je neplatná.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATE">
+    <cs>Datum není platné. Zadejte hodnotu v podobě [{0}].</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DATETIME">
+    <cs>Datum a čas nejsou platné. Zadejte hodnotu v podobě [{0}].</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE">
+    <cs>Desetinné číslo je neplatné.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_RANGE">
+    <cs>Desetinné číslo není v platném rozsahu {0} – {1}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_EXCL0">
+    <cs>Desetinné číslo musí být&gt; 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_DOUBLE_UNSIGNED_INCL0">
+    <cs>Desetinné číslo musí být&gt; = 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMAIL_ADDRESS">
+    <cs>E-mailová adresa je neplatná.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_EMPTY">
+    <cs>Toto pole nesmí být prázdné.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_FILE_EMPTY">
+    <cs>Nebyl vybrán žádný soubor pro upload.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT">
+    <cs>Celé číslo je neplatné.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_RANGE">
+    <cs>Celé číslo není v platném rozsahu {0} – {1}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_EXCL0">
+    <cs>Celé číslo, musí být&gt; 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_INT_UNSIGNED_INCL0">
+    <cs>The integer number must be &gt;= 0.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_LIST_EMPTY">
+    <cs>Alespoň jedna položka je vyžadována.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAXLENGTH">
+    <cs>Hodnota je příliš dlouhá. Maximální povolená délka je {0}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MAX_LENGTH">
+    <cs>Maximálně {0} existujících záznamů.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MINLENGTH">
+    <cs>Hodnota je příliš krátká. Minimální požadovaná délka je {0}.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_MIN_LENGTH">
+    <cs>Alespoň {0} existujících záznamů.</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_REGEX">
+    <cs>Hodnota neodpovídá regulárnímu výrazu: {0}</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_TIME">
+    <cs>Čas je neplatný. Zadejte hodnotu v podobě [{0}].</cs>
+  </item>
+  <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_URL">
+    <cs>Chybné URL</cs>
+  </item>
+</translationitems>
