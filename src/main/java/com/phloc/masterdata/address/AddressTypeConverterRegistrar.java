@@ -29,12 +29,22 @@ import com.phloc.commons.microdom.convert.IMicroTypeConverter;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistrarSPI;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistry;
 import com.phloc.commons.microdom.impl.MicroElement;
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.system.SystemHelper;
 
 @Immutable
 @IsSPIImplementation
 public final class AddressTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
+  private static final String ATTR_COUNTRY = "country";
+  private static final String ATTR_STATE = "state";
+  private static final String ATTR_POSTALCODE = "zipcode";
+  private static final String ATTR_CITY = "city";
+  private static final String ATTR_STREET = "street";
+  private static final String ATTR_BUILDINGNUMBER = "buildingno";
+  private static final String ATTR_POBOX = "pobox";
+  private static final String ATTR_TYPE = "type";
+
   private static abstract class AbstractBaseConverter implements IMicroTypeConverter
   {
     @Nonnull
@@ -46,23 +56,23 @@ public final class AddressTypeConverterRegistrar implements IMicroTypeConverterR
       final IMicroElement eAddress = new MicroElement (sNamespaceURI, sTagName);
       if (aAddress.getType () != null)
         eAddress.setAttribute (ATTR_TYPE, aAddress.getType ().getID ());
-      eAddress.setAttribute (ATTR_COUNTRY, aAddress.getCountry ());
-      eAddress.setAttribute (ATTR_STATE, aAddress.getState ());
-      eAddress.setAttribute (ATTR_POSTALCODE, aAddress.getPostalCode ());
-      eAddress.setAttribute (ATTR_CITY, aAddress.getCity ());
-      eAddress.setAttribute (ATTR_STREET, aAddress.getStreet ());
-      eAddress.setAttribute (ATTR_POBOX, aAddress.getPostOfficeBox ());
+      if (StringHelper.hasText (aAddress.getCountry ()))
+        eAddress.setAttribute (ATTR_COUNTRY, aAddress.getCountry ());
+      if (StringHelper.hasText (aAddress.getState ()))
+        eAddress.setAttribute (ATTR_STATE, aAddress.getState ());
+      if (StringHelper.hasText (aAddress.getPostalCode ()))
+        eAddress.setAttribute (ATTR_POSTALCODE, aAddress.getPostalCode ());
+      if (StringHelper.hasText (aAddress.getCity ()))
+        eAddress.setAttribute (ATTR_CITY, aAddress.getCity ());
+      if (StringHelper.hasText (aAddress.getStreet ()))
+        eAddress.setAttribute (ATTR_STREET, aAddress.getStreet ());
+      if (StringHelper.hasText (aAddress.getBuildingNumber ()))
+        eAddress.setAttribute (ATTR_BUILDINGNUMBER, aAddress.getBuildingNumber ());
+      if (StringHelper.hasText (aAddress.getPostOfficeBox ()))
+        eAddress.setAttribute (ATTR_POBOX, aAddress.getPostOfficeBox ());
       return eAddress;
     }
   }
-
-  private static final String ATTR_COUNTRY = "country";
-  private static final String ATTR_STATE = "state";
-  private static final String ATTR_POSTALCODE = "zipcode";
-  private static final String ATTR_CITY = "city";
-  private static final String ATTR_STREET = "street";
-  private static final String ATTR_POBOX = "pobox";
-  private static final String ATTR_TYPE = "type";
 
   public void registerMicroTypeConverter (@Nonnull final IMicroTypeConverterRegistry aRegistry)
   {
@@ -78,8 +88,17 @@ public final class AddressTypeConverterRegistrar implements IMicroTypeConverterR
         final String sPostalCode = eAddress.getAttribute (ATTR_POSTALCODE);
         final String sCity = eAddress.getAttribute (ATTR_CITY);
         final String sStreet = eAddress.getAttribute (ATTR_STREET);
+        final String sBuildingNumber = eAddress.getAttribute (ATTR_BUILDINGNUMBER);
         final String sPostOfficeBox = eAddress.getAttribute (ATTR_POBOX);
-        return new Address (eType, sCountry, sState, sPostalCode, sCity, sStreet, sPostOfficeBox, aLocale);
+        return new Address (eType,
+                            sCountry,
+                            sState,
+                            sPostalCode,
+                            sCity,
+                            sStreet,
+                            sBuildingNumber,
+                            sPostOfficeBox,
+                            aLocale);
       }
     });
     aRegistry.registerMicroElementTypeConverter (ReadonlyAddress.class, new AbstractBaseConverter ()
@@ -94,8 +113,17 @@ public final class AddressTypeConverterRegistrar implements IMicroTypeConverterR
         final String sPostalCode = eAddress.getAttribute (ATTR_POSTALCODE);
         final String sCity = eAddress.getAttribute (ATTR_CITY);
         final String sStreet = eAddress.getAttribute (ATTR_STREET);
+        final String sBuildingNumber = eAddress.getAttribute (ATTR_BUILDINGNUMBER);
         final String sPostOfficeBox = eAddress.getAttribute (ATTR_POBOX);
-        return new ReadonlyAddress (eType, sCountry, sState, sPostalCode, sCity, sStreet, sPostOfficeBox, aLocale);
+        return new ReadonlyAddress (eType,
+                                    sCountry,
+                                    sState,
+                                    sPostalCode,
+                                    sCity,
+                                    sStreet,
+                                    sBuildingNumber,
+                                    sPostOfficeBox,
+                                    aLocale);
       }
     });
   }

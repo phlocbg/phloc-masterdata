@@ -60,6 +60,8 @@ public class Address implements IAddress
   public static final int LENGTH_CITY = 100;
   public static final String FIELD_STREET = "street";
   public static final int LENGTH_STREET = 200;
+  public static final String FIELD_BUILDINGNUMBER = "buildingnumber";
+  public static final int LENGTH_BUILDINGNUMBER = 50;
   public static final String FIELD_POBOX = "pobox";
   public static final int LENGTH_POBOX = 50;
 
@@ -69,6 +71,7 @@ public class Address implements IAddress
   private String m_sPostalCode;
   private String m_sCity;
   private String m_sStreet;
+  private String m_sBuildingNumber;
   private String m_sPostOfficeBox;
 
   public Address ()
@@ -90,6 +93,7 @@ public class Address implements IAddress
     setPostalCode (aBase.getPostalCode ());
     setCity (aBase.getCity (), aSortLocale);
     setStreet (aBase.getStreet (), aSortLocale);
+    setBuildingNumber (aBase.getBuildingNumber ());
     setPostOfficeBox (aBase.getPostOfficeBox (), aSortLocale);
   }
 
@@ -98,6 +102,7 @@ public class Address implements IAddress
     setType (eType);
   }
 
+  @Deprecated
   public Address (@Nullable final EAddressType eType,
                   @Nullable final String sCountry,
                   @Nullable final String sState,
@@ -107,12 +112,26 @@ public class Address implements IAddress
                   @Nullable final String sPostOfficeBox,
                   @Nonnull final Locale aSortLocale)
   {
+    this (eType, sCountry, sState, sPostalCode, sCity, sStreet, null, sPostOfficeBox, aSortLocale);
+  }
+
+  public Address (@Nullable final EAddressType eType,
+                  @Nullable final String sCountry,
+                  @Nullable final String sState,
+                  @Nullable final String sPostalCode,
+                  @Nullable final String sCity,
+                  @Nullable final String sStreet,
+                  @Nullable final String sBuildingNumber,
+                  @Nullable final String sPostOfficeBox,
+                  @Nonnull final Locale aSortLocale)
+  {
     setType (eType);
     setCountry (sCountry, aSortLocale);
     setState (sState, aSortLocale);
     setPostalCode (sPostalCode);
     setCity (sCity, aSortLocale);
     setStreet (sStreet, aSortLocale);
+    setBuildingNumber (sBuildingNumber);
     setPostOfficeBox (sPostOfficeBox, aSortLocale);
   }
 
@@ -271,6 +290,22 @@ public class Address implements IAddress
     if (EqualsUtils.equals (m_sStreet, sRealStreet))
       return EChange.UNCHANGED;
     m_sStreet = sRealStreet;
+    return EChange.CHANGED;
+  }
+
+  @Column (name = FIELD_BUILDINGNUMBER, length = LENGTH_BUILDINGNUMBER)
+  @Nullable
+  public String getBuildingNumber ()
+  {
+    return m_sBuildingNumber;
+  }
+
+  @Nonnull
+  public EChange setBuildingNumber (@Nullable final String sBuildingNumber)
+  {
+    if (EqualsUtils.equals (m_sBuildingNumber, sBuildingNumber))
+      return EChange.UNCHANGED;
+    m_sBuildingNumber = sBuildingNumber;
     return EChange.CHANGED;
   }
 

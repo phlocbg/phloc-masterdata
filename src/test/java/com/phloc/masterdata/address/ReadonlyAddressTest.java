@@ -35,16 +35,17 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
   @Test
   public void testBasic ()
   {
-    ReadonlyAddress a = new ReadonlyAddress (null, null, null, null, null, null, null, L_DE);
+    ReadonlyAddress a = new ReadonlyAddress (null, null, null, null, null, null, null, null, L_DE);
     assertNull (a.getType ());
     assertNull (a.getCountry ());
     assertNull (a.getState ());
     assertNull (a.getPostalCode ());
     assertNull (a.getCity ());
     assertNull (a.getStreet ());
+    assertNull (a.getBuildingNumber ());
     assertNull (a.getPostOfficeBox ());
 
-    a = new ReadonlyAddress (EAddressType.OFFICE, "de", "NÖ", "1010", "Wien", "Hauptstr. 1", "12AB", L_DE);
+    a = new ReadonlyAddress (EAddressType.OFFICE, "de", "NÖ", "1010", "Wien", "Hauptstr.", "1", "12AB", L_DE);
     assertEquals (EAddressType.OFFICE, a.getType ());
     assertEquals ("de", a.getCountry ());
     assertEquals ("Deutschland", a.getCountryDisplayName (L_DE));
@@ -52,7 +53,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
     assertEquals ("NÖ", a.getState ());
     assertEquals ("1010", a.getPostalCode ());
     assertEquals ("Wien", a.getCity ());
-    assertEquals ("Hauptstr. 1", a.getStreet ());
+    assertEquals ("Hauptstr.", a.getStreet ());
+    assertEquals ("1", a.getBuildingNumber ());
     assertEquals ("12AB", a.getPostOfficeBox ());
   }
 
@@ -64,7 +66,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                    "NÖ",
                                                    "1010",
                                                    "Wien",
-                                                   "Hauptstr. 1",
+                                                   "Hauptstr.",
+                                                   "1",
                                                    "12AB",
                                                    L_DE);
     PhlocTestUtils.testDefaultImplementationWithEqualContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -72,7 +75,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                             "NÖ",
                                                                                             "1010",
                                                                                             "Wien",
-                                                                                            "Hauptstr. 1",
+                                                                                            "Hauptstr.",
+                                                                                            "1",
                                                                                             "12AB",
                                                                                             L_DE));
     PhlocTestUtils.testDefaultImplementationWithEqualContentObject (a, new ReadonlyAddress (a, L_DE));
@@ -81,7 +85,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "NÖ",
                                                                                                 "1010",
                                                                                                 "Wien",
-                                                                                                "Hauptstr. 1",
+                                                                                                "Hauptstr.",
+                                                                                                "1",
                                                                                                 "12AB",
                                                                                                 L_DE));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -89,7 +94,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "NÖ",
                                                                                                 "1010",
                                                                                                 "Wien",
-                                                                                                "Hauptstr. 1",
+                                                                                                "Hauptstr.",
+                                                                                                "1",
                                                                                                 "12AB",
                                                                                                 L_DE));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -97,7 +103,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "OÖ",
                                                                                                 "1010",
                                                                                                 "Wien",
-                                                                                                "Hauptstr. 1",
+                                                                                                "Hauptstr.",
+                                                                                                "1",
                                                                                                 "12AB",
                                                                                                 L_DE));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -105,7 +112,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "NÖ",
                                                                                                 "1020",
                                                                                                 "Wien",
-                                                                                                "Hauptstr. 1",
+                                                                                                "Hauptstr.",
+                                                                                                "1",
                                                                                                 "12AB",
                                                                                                 L_DE));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -113,7 +121,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "NÖ",
                                                                                                 "1010",
                                                                                                 "Graz",
-                                                                                                "Hauptstr. 1",
+                                                                                                "Hauptstr.",
+                                                                                                "1",
                                                                                                 "12AB",
                                                                                                 L_DE));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -121,7 +130,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "NÖ",
                                                                                                 "1010",
                                                                                                 "Wien",
-                                                                                                "Hauptstr. 2",
+                                                                                                "Hauptstr.",
+                                                                                                "2",
                                                                                                 "12AB",
                                                                                                 L_DE));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (a, new ReadonlyAddress (EAddressType.OFFICE,
@@ -129,7 +139,8 @@ public final class ReadonlyAddressTest extends AbstractPhlocTestCase
                                                                                                 "NÖ",
                                                                                                 "1010",
                                                                                                 "Wien",
-                                                                                                "Hauptstr. 1",
+                                                                                                "Hauptstr.",
+                                                                                                "1",
                                                                                                 "13AB",
                                                                                                 L_DE));
   }

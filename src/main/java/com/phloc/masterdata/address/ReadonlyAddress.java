@@ -42,6 +42,7 @@ public final class ReadonlyAddress implements IReadonlyAddress
   private final String m_sPostalCode;
   private final String m_sCity;
   private final String m_sStreet;
+  private final String m_sBuildingNumber;
   private final String m_sPostOfficeBox;
 
   public ReadonlyAddress (@Nonnull final IReadonlyAddress aBase, @Nonnull final Locale aSortLocale)
@@ -52,10 +53,12 @@ public final class ReadonlyAddress implements IReadonlyAddress
           aBase.getPostalCode (),
           aBase.getCity (),
           aBase.getStreet (),
+          aBase.getBuildingNumber (),
           aBase.getPostOfficeBox (),
           aSortLocale);
   }
 
+  @Deprecated
   public ReadonlyAddress (@Nullable final EAddressType eType,
                           @Nullable final String sCountry,
                           @Nullable final String sState,
@@ -65,12 +68,26 @@ public final class ReadonlyAddress implements IReadonlyAddress
                           @Nullable final String sPostOfficeBox,
                           @Nonnull final Locale aSortLocale)
   {
+    this (eType, sCountry, sState, sPostalCode, sCity, sStreet, null, sPostOfficeBox, aSortLocale);
+  }
+
+  public ReadonlyAddress (@Nullable final EAddressType eType,
+                          @Nullable final String sCountry,
+                          @Nullable final String sState,
+                          @Nullable final String sPostalCode,
+                          @Nullable final String sCity,
+                          @Nullable final String sStreet,
+                          @Nullable final String sBuildingNumber,
+                          @Nullable final String sPostOfficeBox,
+                          @Nonnull final Locale aSortLocale)
+  {
     m_eType = eType;
     m_sCountry = AddressUtils.getUnifiedCountry (sCountry, aSortLocale);
     m_sState = AddressUtils.getUnifiedState (sState, aSortLocale);
     m_sPostalCode = sPostalCode;
     m_sCity = AddressUtils.getUnifiedCity (sCity, aSortLocale);
     m_sStreet = AddressUtils.getUnifiedStreet (sStreet, aSortLocale);
+    m_sBuildingNumber = sBuildingNumber;
     m_sPostOfficeBox = AddressUtils.getUnifiedPOBox (sPostOfficeBox, aSortLocale);
   }
 
@@ -124,6 +141,12 @@ public final class ReadonlyAddress implements IReadonlyAddress
   }
 
   @Nullable
+  public String getBuildingNumber ()
+  {
+    return m_sBuildingNumber;
+  }
+
+  @Nullable
   public String getPostOfficeBox ()
   {
     return m_sPostOfficeBox;
@@ -143,6 +166,7 @@ public final class ReadonlyAddress implements IReadonlyAddress
            EqualsUtils.equals (m_sPostalCode, rhs.m_sPostalCode) &&
            EqualsUtils.equals (m_sCity, rhs.m_sCity) &&
            EqualsUtils.equals (m_sStreet, rhs.m_sStreet) &&
+           EqualsUtils.equals (m_sBuildingNumber, rhs.m_sBuildingNumber) &&
            EqualsUtils.equals (m_sPostOfficeBox, rhs.m_sPostOfficeBox);
   }
 
@@ -155,6 +179,7 @@ public final class ReadonlyAddress implements IReadonlyAddress
                                        .append (m_sPostalCode)
                                        .append (m_sCity)
                                        .append (m_sStreet)
+                                       .append (m_sBuildingNumber)
                                        .append (m_sPostOfficeBox)
                                        .getHashCode ();
   }
@@ -168,6 +193,7 @@ public final class ReadonlyAddress implements IReadonlyAddress
                                        .appendIfNotNull ("zipCode", m_sPostalCode)
                                        .appendIfNotNull ("city", m_sCity)
                                        .appendIfNotNull ("street", m_sStreet)
+                                       .appendIfNotNull ("buildingNumber", m_sBuildingNumber)
                                        .appendIfNotNull ("pobox", m_sPostOfficeBox)
                                        .toString ();
   }
