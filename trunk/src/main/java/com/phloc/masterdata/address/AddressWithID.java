@@ -68,6 +68,7 @@ public class AddressWithID extends Address implements IHasSimpleIntID
     super (eType);
   }
 
+  @Deprecated
   public AddressWithID (@Nullable final EAddressType eType,
                         @Nullable final String sCountry,
                         @Nullable final String sState,
@@ -78,6 +79,19 @@ public class AddressWithID extends Address implements IHasSimpleIntID
                         @Nonnull final Locale aSortLocale)
   {
     super (eType, sCountry, sState, sPostalCode, sCity, sStreet, sPostOfficeBox, aSortLocale);
+  }
+
+  public AddressWithID (@Nullable final EAddressType eType,
+                        @Nullable final String sCountry,
+                        @Nullable final String sState,
+                        @Nullable final String sPostalCode,
+                        @Nullable final String sCity,
+                        @Nullable final String sStreet,
+                        @Nullable final String sBuildingNumber,
+                        @Nullable final String sPostOfficeBox,
+                        @Nonnull final Locale aSortLocale)
+  {
+    super (eType, sCountry, sState, sPostalCode, sCity, sStreet, sBuildingNumber, sPostOfficeBox, aSortLocale);
   }
 
   @Column (name = FIELD_ID)

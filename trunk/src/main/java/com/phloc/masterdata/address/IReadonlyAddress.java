@@ -84,6 +84,13 @@ public interface IReadonlyAddress extends Serializable
   String getStreet ();
 
   /**
+   * @return The number of the building in the street (if it is not contained in
+   *         the street).
+   */
+  @Nullable
+  String getBuildingNumber ();
+
+  /**
    * @return An optional post office box that should be used instead the street.
    *         May be <code>null</code>.
    */

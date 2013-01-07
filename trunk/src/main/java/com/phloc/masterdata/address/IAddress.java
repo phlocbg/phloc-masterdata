@@ -74,6 +74,14 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
   EChange setStreet (@Nullable String sStreet);
 
   /**
+   * @param sBuildingNumber
+   *        The number of the building in the street (if it is not contained in
+   *        the street).
+   */
+  @Nonnull
+  EChange setBuildingNumber (@Nullable String sBuildingNumber);
+
+  /**
    * @param sPOBox
    *        An optional post office box that should be used instead the street.
    *        May be <code>null</code>.
