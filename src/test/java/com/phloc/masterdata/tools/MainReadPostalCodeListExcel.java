@@ -29,9 +29,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +62,7 @@ public class MainReadPostalCodeListExcel
 {
   private static final Logger s_aLogger = LoggerFactory.getLogger (MainReadPostalCodeListExcel.class);
   private static final String PREFIX_ONE_CODE = "one code: ";
-  private static final String NO_CODES = "-no codes-";
+  private static final String NO_CODES = "- no codes -";
 
   private static final class Item
   {
@@ -171,14 +173,26 @@ public class MainReadPostalCodeListExcel
       final Row aRow = it.next ();
       ++nRow;
       final String sCountry = ExcelReadUtils.getCellValueString (aRow.getCell (0));
-      final String x = ExcelReadUtils.getCellValueString (aRow.getCell (1));
-      if (x != null)
-        System.out.println (x);
-      final Date aIntroducedDate = ExcelReadUtils.getCellValueJavaDate (aRow.getCell (1));
+      if (StringHelper.hasNoText (sCountry))
+      {
+        s_aLogger.warn ("Line " + nRow + ": No country name present");
+        continue;
+      }
+      final Cell aDateCell = aRow.getCell (1);
+      Date aIntroducedDate = null;
+      if (aDateCell.getCellType () != Cell.CELL_TYPE_BLANK)
+      {
+        final Number aNum = ExcelReadUtils.getCellValueNumber (aDateCell);
+        final int nYear = aNum.intValue ();
+        if (nYear > 1800 && nYear < 3000)
+          aIntroducedDate = PDTFactory.createLocalDate (nYear, DateTimeConstants.JANUARY, 1).toDate ();
+        else
+          aIntroducedDate = ExcelReadUtils.getCellValueJavaDate (aDateCell);
+      }
       final String sISO = ExcelReadUtils.getCellValueString (aRow.getCell (2));
       if (StringHelper.hasNoText (sISO))
       {
-        s_aLogger.warn ("Line (" + nRow + "): No ISO code for " + sCountry);
+        s_aLogger.warn ("Line " + nRow + ": No ISO code for " + sCountry);
         continue;
       }
       final String sFormat = ExcelReadUtils.getCellValueString (aRow.getCell (3));
@@ -202,7 +216,8 @@ public class MainReadPostalCodeListExcel
       {
         final Item aPrevItem = aSubList.get (i - 1);
         final Item aThisItem = aSubList.get (i);
-        aPrevItem.setValidTo (aThisItem.getValidFrom ().minusDays (1));
+        if (aThisItem.getValidFrom () != null)
+          aPrevItem.setValidTo (aThisItem.getValidFrom ().minusDays (1));
       }
     }
 
