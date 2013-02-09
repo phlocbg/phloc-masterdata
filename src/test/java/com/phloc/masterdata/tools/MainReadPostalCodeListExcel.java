@@ -60,6 +60,7 @@ public class MainReadPostalCodeListExcel
 {
   private static final Logger s_aLogger = LoggerFactory.getLogger (MainReadPostalCodeListExcel.class);
   private static final String PREFIX_ONE_CODE = "one code: ";
+  private static final String NO_CODES = "-no codes-";
 
   private static final class Item
   {
@@ -145,8 +146,8 @@ public class MainReadPostalCodeListExcel
 
   public static void main (final String [] args) throws Exception
   {
-    final String sSource = "http://en.wikipedia.org/wiki/Postal_code";
-    final String sRevision = "20110609";
+    final String sSource = "http://en.wikipedia.org/wiki/List_of_postal_codes";
+    final String sRevision = "20130209";
 
     final File f = new File ("src/test/resources/" + sRevision + "PostalCodes.xls");
     final Workbook aWB = new HSSFWorkbook (new FileInputStream (f));
@@ -170,7 +171,9 @@ public class MainReadPostalCodeListExcel
       final String sCountry = ExcelReadUtils.getCellValueString (aRow.getCell (0));
       final Date aIntroducedDate = ExcelReadUtils.getCellValueJavaDate (aRow.getCell (1));
       final String sISO = ExcelReadUtils.getCellValueString (aRow.getCell (2));
-      final String sFormat = ExcelReadUtils.getCellValueString (aRow.getCell (3));
+      String sFormat = ExcelReadUtils.getCellValueString (aRow.getCell (3));
+      if (sFormat.equals (NO_CODES))
+        sFormat = "";
       final List <String> aFormats = StringHelper.getExploded ("\n", sFormat);
       final String sNote = ExcelReadUtils.getCellValueString (aRow.getCell (4));
       aItems.add (new Item (sCountry, aIntroducedDate, sISO, aFormats, sNote));
@@ -227,7 +230,7 @@ public class MainReadPostalCodeListExcel
       }
     }
 
-    SimpleFileIO.writeFile (new File ("src/main/resources/codelists/postal-codes.xml"),
+    SimpleFileIO.writeFile (new File ("src/main/resources/codelists/postal-codes-" + sRevision + ".xml"),
                             MicroWriter.getXMLString (aDoc),
                             XMLWriterSettings.DEFAULT_XML_CHARSET);
     s_aLogger.info ("Done");
