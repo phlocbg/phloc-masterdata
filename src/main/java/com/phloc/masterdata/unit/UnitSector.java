@@ -26,22 +26,23 @@ import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.id.IHasIntID;
 import com.phloc.commons.name.IHasDisplayText;
+import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.text.IReadonlyMultiLingualText;
 
 @Immutable
 public final class UnitSector implements IHasIntID, IHasDisplayText
 {
   private final int m_nGroupNumber;
-  private final IReadonlyMultiLingualText m_aText;
+  private final IReadonlyMultiLingualText m_aName;
 
-  public UnitSector (@Nonnegative final int nGroupNumber, @Nonnull final IReadonlyMultiLingualText aText)
+  public UnitSector (@Nonnegative final int nGroupNumber, @Nonnull final IReadonlyMultiLingualText aName)
   {
     if (nGroupNumber < 0)
       throw new IllegalArgumentException ("Invalid group number");
-    if (aText == null)
-      throw new NullPointerException ("text");
+    if (aName == null)
+      throw new NullPointerException ("name");
     m_nGroupNumber = nGroupNumber;
-    m_aText = aText;
+    m_aName = aName;
   }
 
   @Nonnegative
@@ -59,12 +60,18 @@ public final class UnitSector implements IHasIntID, IHasDisplayText
   @Nonnull
   public IReadonlyMultiLingualText getName ()
   {
-    return m_aText;
+    return m_aName;
   }
 
   @Nullable
   public String getDisplayText (final Locale aContentLocale)
   {
-    return m_aText.getTextWithLocaleFallback (aContentLocale);
+    return m_aName.getTextWithLocaleFallback (aContentLocale);
+  }
+
+  @Override
+  public String toString ()
+  {
+    return new ToStringGenerator (this).append ("ID", m_nGroupNumber).append ("name", m_aName).toString ();
   }
 }
