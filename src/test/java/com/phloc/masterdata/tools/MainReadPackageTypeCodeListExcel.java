@@ -91,10 +91,11 @@ public class MainReadPackageTypeCodeListExcel
 
   public static void main (final String [] args) throws Exception
   {
-    final String sBaseName = "rec21_Rev8_1e_2010";
-    final String sSource = "http://www.unece.org/cefact/recommendations/rec21/" + sBaseName + ".zip";
-    final String sRevision = "8.1";
+    final String sBaseName = "rec21_Rev9e_2012";
+    final String sSource = "http://www.unece.org/cefact/recommendations/rec21/" + sBaseName + ".xls";
+    final String sRevision = "9";
 
+    // Ideally don't change anything from here on
     final File f = new File ("src/test/resources/" + sBaseName + ".xls");
     final Workbook aWB = new HSSFWorkbook (new FileInputStream (f));
     final Sheet aSheet = aWB.getSheetAt (0);

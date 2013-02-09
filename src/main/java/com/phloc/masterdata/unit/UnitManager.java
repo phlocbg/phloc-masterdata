@@ -44,7 +44,7 @@ public final class UnitManager
 {
   private static final class SingletonHolder
   {
-    static final UnitManager s_aInstance = new UnitManager (new ClassPathResource ("codelists/rec20_Rev7e_2010.xml"));
+    static final UnitManager s_aInstance = new UnitManager (new ClassPathResource ("codelists/rec20_Rev8e_2012.xml"));
   }
 
   private final Map <Integer, UnitSector> m_aSectors = new HashMap <Integer, UnitSector> ();
