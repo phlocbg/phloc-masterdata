@@ -45,7 +45,7 @@ import com.phloc.commons.string.ToStringGenerator;
 @ThreadSafe
 public final class PostalCodeManager
 {
-  public static final PostalCodeManager DEFAULT_MGR = new PostalCodeManager (new ClassPathResource ("codelists/postal-codes-20110609.xml"));
+  public static final PostalCodeManager DEFAULT_MGR = new PostalCodeManager (new ClassPathResource ("codelists/postal-codes-20130209.xml"));
 
   private final ReadWriteLock m_aRWLock = new ReentrantReadWriteLock ();
   private final Map <Locale, IPostalCodeCountry> m_aMap = new HashMap <Locale, IPostalCodeCountry> ();
