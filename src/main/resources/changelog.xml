@@ -20,6 +20,11 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
+  <entry date="2013-02-09" category="data" action="update">
+    <change>
+      <text locale="en">Updated code lists to the most current version</text>
+    </change>
+  </entry>
   <entry date="2013-01-07" category="api" action="add">
     <change>
       <text locale="en">Extended address with optional building number field</text>
