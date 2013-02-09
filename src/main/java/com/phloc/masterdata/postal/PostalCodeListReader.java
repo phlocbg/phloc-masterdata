@@ -52,7 +52,7 @@ public final class PostalCodeListReader
   public static final String ELEMENT_POSTALCODES = "postalcodes";
   public static final String ATTR_VALIDFROM = "validfrom";
   public static final String ATTR_VALIDTO = "validto";
-  public static final String ELEMENT_ONECODE = "onecode";
+  public static final String ELEMENT_SPECIFIC = "specific";
   public static final String ELEMENT_FORMAT = "format";
   public static final String ELEMENT_NOTE = "note";
 
@@ -150,9 +150,8 @@ public final class PostalCodeListReader
         }
 
         // Is exactly one code present?
-        final IMicroElement eOneCode = ePostalCode.getFirstChildElement (ELEMENT_ONECODE);
-        if (eOneCode != null)
-          aCountry.setExactlyOneCode (eOneCode.getTextContent ());
+        for (final IMicroElement eOneCode : ePostalCode.getChildElements (ELEMENT_SPECIFIC))
+          aCountry.addSpecificPostalCode (eOneCode.getTextContent ());
 
         // Is a note present
         final IMicroElement eNote = ePostalCode.getFirstChildElement (ELEMENT_NOTE);
@@ -160,7 +159,7 @@ public final class PostalCodeListReader
           aCountry.setNote (eNote.getTextContent ());
       }
 
-      if (aCountry.getFormatCount () == 0)
+      if (aCountry.getFormatCount () == 0 && aCountry.getSpecificPostalCodeCount () == 0)
         throw new IllegalStateException ("Country " + sISO + " has no formats defined!");
 
       m_aMgr.addCountry (aCountry);

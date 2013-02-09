@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
 import com.phloc.commons.annotations.Nonempty;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.string.StringHelper;
@@ -42,7 +41,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
 {
   private final String m_sISO;
   private final List <PostalCodeFormat> m_aFormats = new ArrayList <PostalCodeFormat> ();
-  private String m_sOneCode;
+  private final List <String> m_aSpecificPostalCodes = new ArrayList <String> ();
   private String m_sNote;
 
   public PostalCodeCountry (@Nonnull @Nonempty final String sISO)
@@ -73,25 +72,33 @@ public final class PostalCodeCountry implements IPostalCodeCountry
   }
 
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public List <PostalCodeFormat> getAllFormats ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aFormats);
+    return ContainerHelper.newList (m_aFormats);
   }
 
-  void setExactlyOneCode (@Nonnull @Nonempty final String sOneCode)
+  void addSpecificPostalCode (@Nonnull @Nonempty final String sSpecificPostalCode)
   {
-    if (StringHelper.hasNoText (sOneCode))
-      throw new IllegalArgumentException ("oneCode may not be empty");
-    if (!isValidPostalCode (sOneCode))
-      throw new IllegalArgumentException ("The passed code '" + sOneCode + "' is not valid according to the rules!");
-    m_sOneCode = sOneCode;
+    if (StringHelper.hasNoText (sSpecificPostalCode))
+      throw new IllegalArgumentException ("specificPostalCode may not be empty");
+    if (!isValidPostalCode (sSpecificPostalCode))
+      throw new IllegalArgumentException ("The passed code '" +
+                                          sSpecificPostalCode +
+                                          "' is not valid according to the rules!");
+    m_aSpecificPostalCodes.add (sSpecificPostalCode);
   }
 
   @Nullable
-  public String getExactlyOneCode ()
+  public List <String> getAllSpecificPostalCodes ()
   {
-    return m_sOneCode;
+    return ContainerHelper.newList (m_aSpecificPostalCodes);
+  }
+
+  @Nonnegative
+  public int getSpecificPostalCodeCount ()
+  {
+    return m_aSpecificPostalCodes.size ();
   }
 
   void setNote (@Nonnull @Nonempty final String sNote)
@@ -113,7 +120,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
       for (final PostalCodeFormat aFormat : m_aFormats)
         if (aFormat.isValidPostalCode (sPostalCode))
           return true;
-    return false;
+    return m_aFormats.isEmpty ();
   }
 
   @Nonnull
@@ -131,7 +138,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
   {
     return new ToStringGenerator (this).append ("ISO", m_sISO)
                                        .append ("formats", m_aFormats)
-                                       .appendIfNotNull ("oneCode", m_sOneCode)
+                                       .append ("specificPostalCodes", m_aSpecificPostalCodes)
                                        .appendIfNotNull ("note", m_sNote)
                                        .toString ();
   }

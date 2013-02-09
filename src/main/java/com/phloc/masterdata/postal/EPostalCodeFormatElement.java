@@ -22,6 +22,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.string.StringHelper;
 
 /**
  * Represents a single element within a postal code format definition
@@ -89,11 +90,12 @@ enum EPostalCodeFormatElement
   }
 
   @Nullable
-  public static EPostalCodeFormatElement getFromString (@Nonnull final String sString, final int nIndex)
+  public static EPostalCodeFormatElement getFromString (@Nullable final String sString, final int nIndex)
   {
-    for (final EPostalCodeFormatElement eElement : values ())
-      if (sString.substring (nIndex, nIndex + eElement.getTokenLength ()).equals (eElement.getToken ()))
-        return eElement;
+    if (StringHelper.hasText (sString))
+      for (final EPostalCodeFormatElement eElement : values ())
+        if (sString.substring (nIndex, nIndex + eElement.getTokenLength ()).equals (eElement.getToken ()))
+          return eElement;
     return null;
   }
 }

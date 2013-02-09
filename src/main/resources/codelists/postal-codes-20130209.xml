@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    Copyright (C) 2006-2013 phloc systems
+    http://www.phloc.com
+    office[at]phloc[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
 <root>
   <header>
     <source>http://en.wikipedia.org/wiki/List_of_postal_codes</source>
@@ -9,7 +28,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>ASCN 1ZZ</onecode>
+        <specific>ASCN 1ZZ</specific>
         <note>Single code used for all addresses. Part of UK system.</note>
       </postalcodes>
     </country>
@@ -27,7 +46,7 @@
     </country>
     <country iso="AI" name="Anguilla">
       <postalcodes validfrom="2007-01-01T00:00:00.000Z">
-        <onecode>AI-2640</onecode>
+        <specific>AI-2640</specific>
         <note>Single code used for all addresses.</note>
       </postalcodes>
     </country>
@@ -301,7 +320,8 @@
     <country iso="FK" name="Falkland Islands">
       <postalcodes>
         <format>AAAANAA</format>
-        <onecode>FIQQ 1ZZ</onecode>
+        <format>AAAA NAA</format>
+        <specific>FIQQ 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -326,12 +346,6 @@
       <postalcodes validfrom="1972-01-01T00:00:00.000Z">
         <format>NNNNN</format>
         <note>The first two digits give the département number, while in Paris, Lyon and Marseille, the last two digits of the postal code indicates the arrondissement. Also used by French overseas departments and territories, except by French Southern and Antarctic Territories and Clipperton Island. Monaco is also part of the French postal code system, but the country code MC- is used for Monegasque addresses.</note>
-      </postalcodes>
-    </country>
-    <country iso="GA" name="Gabon">
-      <postalcodes>
-        <format>NN [city name] NN</format>
-        <note>Two digit postal zone goes after city name.</note>
       </postalcodes>
     </country>
     <country iso="GB" name="United Kingdom">
@@ -371,7 +385,7 @@
     </country>
     <country iso="GI" name="Gibraltar">
       <postalcodes>
-        <onecode>GX11 1AA</onecode>
+        <specific>GX11 1AA</specific>
         <note>Single code used for all addresses.</note>
       </postalcodes>
     </country>
@@ -394,7 +408,7 @@
     </country>
     <country iso="GS" name="South Georgia and the South Sandwich Islands">
       <postalcodes>
-        <onecode>SIQQ 1ZZ</onecode>
+        <specific>SIQQ 1ZZ</specific>
         <note>One code for all addresses.</note>
       </postalcodes>
     </country>
@@ -471,7 +485,8 @@
     <country iso="IO" name="British Indian Ocean Territory">
       <postalcodes>
         <format>AAAANAA</format>
-        <onecode>BBND 1ZZ</onecode>
+        <format>AAAA NAA</format>
+        <specific>BBND 1ZZ</specific>
         <note>UK territory, but not UK postcode.</note>
       </postalcodes>
     </country>
@@ -616,7 +631,7 @@
     </country>
     <country iso="MC" name="Monaco">
       <postalcodes validfrom="1972-01-01T00:00:00.000Z">
-        <format>980NN</format>
+        <specific>980NN</specific>
         <note>Uses the French Postal System, but with an &quot;MC&quot; Prefix for Monaco.</note>
       </postalcodes>
     </country>
@@ -815,7 +830,8 @@ Last three digits: locality / delivery block[6]</note>
     <country iso="PN" name="Pitcairn Islands">
       <postalcodes>
         <format>AAAANAA</format>
-        <onecode>PCRN 1ZZ</onecode>
+        <format>AAAA NAA</format>
+        <specific>PCRN 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -903,11 +919,11 @@ Last three digits: locality / delivery block[6]</note>
     </country>
     <country iso="SH" name="Saint Helena">
       <postalcodes>
-        <onecode>STHL 1ZZ</onecode>
+        <specific>STHL 1ZZ</specific>
         <note>Single code used for all addresses.</note>
       </postalcodes>
       <postalcodes>
-        <onecode>TDCU 1ZZ</onecode>
+        <specific>TDCU 1ZZ</specific>
         <note>Single code used for all addresses.</note>
       </postalcodes>
     </country>
@@ -938,7 +954,7 @@ Last three digits: locality / delivery block[6]</note>
     </country>
     <country iso="SV" name="El Salvador">
       <postalcodes>
-        <onecode>1101</onecode>
+        <specific>1101</specific>
         <note>Used for all inbound mail to El Salvador. The postal office then distributes the mail internally depending on their destination.</note>
       </postalcodes>
     </country>
@@ -950,7 +966,7 @@ Last three digits: locality / delivery block[6]</note>
     </country>
     <country iso="TC" name="Turks and Caicos Islands">
       <postalcodes>
-        <onecode>TKCA 1ZZ</onecode>
+        <specific>TKCA 1ZZ</specific>
         <note>Single code used for all addresses.</note>
       </postalcodes>
     </country>
@@ -1026,7 +1042,7 @@ Last three digits: locality / delivery block[6]</note>
     </country>
     <country iso="VA" name="Vatican">
       <postalcodes>
-        <onecode>120</onecode>
+        <specific>120</specific>
         <note>Single code used for all addresses. Part of the Italian postal code system.</note>
       </postalcodes>
     </country>

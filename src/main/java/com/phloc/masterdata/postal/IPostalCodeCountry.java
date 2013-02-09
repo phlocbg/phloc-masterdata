@@ -24,7 +24,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 
 public interface IPostalCodeCountry
@@ -46,15 +45,21 @@ public interface IPostalCodeCountry
    * @return All formats defined for this country. Never <code>null</code>.
    */
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   List <PostalCodeFormat> getAllFormats ();
 
   /**
-   * @return The single allowed postal code or <code>null</code> if more postal
-   *         codes are allowed.
+   * @return The number of specific postal codes defined for this country.
    */
-  @Nullable
-  String getExactlyOneCode ();
+  @Nonnegative
+  int getSpecificPostalCodeCount ();
+
+  /**
+   * @return All specific postal codes but never <code>null</code>.
+   */
+  @Nonnull
+  @ReturnsMutableCopy
+  List <String> getAllSpecificPostalCodes ();
 
   /**
    * @return An optional note for this country.

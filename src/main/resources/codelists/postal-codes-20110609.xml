@@ -20,7 +20,7 @@
 -->
 <root>
   <header>
-    <source>http://en.wikipedia.org/wiki/Postal_code</source>
+    <source>http://en.wikipedia.org/wiki/List_of_postal_codes</source>
     <revision>20110609</revision>
   </header>
   <body>
@@ -28,7 +28,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>ASCN 1ZZ</onecode>
+        <specific>ASCN 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -238,7 +238,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>FIQQ 1ZZ</onecode>
+        <specific>FIQQ 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -291,7 +291,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>SIQQ 1ZZ</onecode>
+        <specific>SIQQ 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -340,7 +340,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>BIQQ 1ZZ</onecode>
+        <specific>BIQQ 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -431,7 +431,8 @@
     <country iso="MC" name="Monaco">
       <postalcodes validfrom="1972-01-01T00:00:00.000Z">
         <format>NNNNN</format>
-        <note>Similar to France, except when sending a letter from abroad, the address must carry the country name.&#10;The first three numbers are &quot;980&quot;</note>
+        <note>Similar to France, except when sending a letter from abroad, the address must carry the country name.
+The first three numbers are &quot;980&quot;</note>
       </postalcodes>
     </country>
     <country iso="MD" name="Moldova">
@@ -522,7 +523,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>PCRN 1ZZ</onecode>
+        <specific>PCRN 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
@@ -608,7 +609,7 @@
       <postalcodes>
         <format>AAAANAA</format>
         <format>AAAA NAA</format>
-        <onecode>TKCA 1ZZ</onecode>
+        <specific>TKCA 1ZZ</specific>
         <note>UK territory, but not UK postcode</note>
       </postalcodes>
     </country>
