@@ -165,15 +165,25 @@ public class MainReadPostalCodeListExcel
 
     final IMicroElement eBody = eRoot.appendElement (PostalCodeListReader.ELEMENT_BODY);
     final List <Item> aItems = new ArrayList <Item> ();
+    int nRow = 0;
     while (it.hasNext ())
     {
       final Row aRow = it.next ();
+      ++nRow;
       final String sCountry = ExcelReadUtils.getCellValueString (aRow.getCell (0));
+      final String x = ExcelReadUtils.getCellValueString (aRow.getCell (1));
+      if (x != null)
+        System.out.println (x);
       final Date aIntroducedDate = ExcelReadUtils.getCellValueJavaDate (aRow.getCell (1));
       final String sISO = ExcelReadUtils.getCellValueString (aRow.getCell (2));
-      String sFormat = ExcelReadUtils.getCellValueString (aRow.getCell (3));
-      if (sFormat.equals (NO_CODES))
-        sFormat = "";
+      if (StringHelper.hasNoText (sISO))
+      {
+        s_aLogger.warn ("Line (" + nRow + "): No ISO code for " + sCountry);
+        continue;
+      }
+      final String sFormat = ExcelReadUtils.getCellValueString (aRow.getCell (3));
+      if (NO_CODES.equals (sFormat) || StringHelper.hasNoText (sFormat))
+        continue;
       final List <String> aFormats = StringHelper.getExploded ("\n", sFormat);
       final String sNote = ExcelReadUtils.getCellValueString (aRow.getCell (4));
       aItems.add (new Item (sCountry, aIntroducedDate, sISO, aFormats, sNote));
