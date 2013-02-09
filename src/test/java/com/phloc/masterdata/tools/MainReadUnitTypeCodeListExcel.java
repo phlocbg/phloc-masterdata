@@ -42,16 +42,23 @@ import com.phloc.commons.xml.serialize.XMLWriterSettings;
 import com.phloc.masterdata.EUNCodelistStatus;
 import com.phloc.poi.excel.ExcelReadUtils;
 
-public class MainReadUnitTypeCodeListExcel
+/**
+ * Utility to read the Excel file from CEFACT Recommendation No. 20 and convert
+ * it to XML for internal use.
+ * 
+ * @author philip
+ */
+public final class MainReadUnitTypeCodeListExcel
 {
   private static final Logger s_aLogger = LoggerFactory.getLogger (MainReadUnitTypeCodeListExcel.class);
 
   public static void main (final String [] args) throws Exception
   {
-    final String sBaseName = "rec20_Rev7e_2010";
-    final String sSource = "http://www.unece.org/cefact/recommendations/rec20/" + sBaseName + ".zip";
-    final String sRevision = "7";
+    final String sBaseName = "rec20_Rev8e_2012";
+    final String sSource = "http://www.unece.org/cefact/recommendations/rec20/" + sBaseName + ".xls";
+    final String sRevision = "8";
 
+    // Ideally don't change anything from here on
     final File f = new File ("src/test/resources/" + sBaseName + ".xls");
     final Workbook aWB = new HSSFWorkbook (new FileInputStream (f));
     final Sheet aSheet = aWB.getSheetAt (1);
