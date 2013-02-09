@@ -24,7 +24,7 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 
 import com.phloc.commons.CGlobal;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.io.IReadableResource;
 import com.phloc.commons.io.resource.ClassPathResource;
@@ -84,9 +84,9 @@ public final class UnitManager
   }
 
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public Collection <UnitSector> getAllSectors ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aSectors.values ());
+    return ContainerHelper.newList (m_aSectors.values ());
   }
 }
