@@ -180,7 +180,7 @@ public class MainReadPostalCodeListExcel
       }
       final Cell aDateCell = aRow.getCell (1);
       Date aIntroducedDate = null;
-      if (aDateCell.getCellType () != Cell.CELL_TYPE_BLANK)
+      if (aDateCell != null && aDateCell.getCellType () != Cell.CELL_TYPE_BLANK)
       {
         final Number aNum = ExcelReadUtils.getCellValueNumber (aDateCell);
         final int nYear = aNum.intValue ();
@@ -246,10 +246,13 @@ public class MainReadPostalCodeListExcel
                                                                           .toLocalDateTime (CPDT.NULL_LOCAL_TIME)));
         for (final String sSingleFormat : aItem.getFormats ())
           if (sSingleFormat.startsWith (PREFIX_ONE_CODE))
-            ePostalCodes.appendElement (PostalCodeListReader.ELEMENT_ONECODE)
+            ePostalCodes.appendElement (PostalCodeListReader.ELEMENT_SPECIFIC)
                         .appendText (sSingleFormat.substring (PREFIX_ONE_CODE.length ()));
           else
+          {
+
             ePostalCodes.appendElement (PostalCodeListReader.ELEMENT_FORMAT).appendText (sSingleFormat);
+          }
         if (StringHelper.hasText (aItem.getNote ()))
           ePostalCodes.appendElement (PostalCodeListReader.ELEMENT_NOTE).appendText (aItem.getNote ());
       }
