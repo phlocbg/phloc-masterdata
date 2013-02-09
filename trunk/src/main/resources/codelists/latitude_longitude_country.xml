@@ -23,7 +23,7 @@
     Source: CIA World Factbook 
     Updated November 30th, 2007 
     
-    Source: http://www.maxmind.com/app/country_latlon
+    Source: http://dev.maxmind.com/geoip/codes/country_latlon
   -->
 <root>
   <entry id="AD" latitude="42.5000" longitude="1.5000" />
