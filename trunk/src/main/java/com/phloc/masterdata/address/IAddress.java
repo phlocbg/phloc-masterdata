@@ -33,6 +33,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
   /**
    * @param eAddressType
    *        The semantic type of this address.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setType (@Nullable EAddressType eAddressType);
@@ -41,6 +43,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
    * @param sCountry
    *        The country the address resides in. The uppercase two-letter
    *        ISO-3166 code as used by java.util.Locale.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setCountry (@Nullable String sCountry);
@@ -48,6 +52,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
   /**
    * @param sState
    *        The optional state within the country. May be <code>null</code>.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setState (@Nullable String sState);
@@ -55,6 +61,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
   /**
    * @param sZipCode
    *        The ZIP code representing the area within a state/country.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setPostalCode (@Nullable String sZipCode);
@@ -62,6 +70,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
   /**
    * @param sCity
    *        The name of the city the address resides in.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setCity (@Nullable String sCity);
@@ -69,6 +79,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
   /**
    * @param sStreet
    *        The street (including the number) of the address.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setStreet (@Nullable String sStreet);
@@ -77,6 +89,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
    * @param sBuildingNumber
    *        The number of the building in the street (if it is not contained in
    *        the street).
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setBuildingNumber (@Nullable String sBuildingNumber);
@@ -85,6 +99,8 @@ public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
    * @param sPOBox
    *        An optional post office box that should be used instead the street.
    *        May be <code>null</code>.
+   * @return {@link EChange#CHANGED} if something changed,
+   *         {@link EChange#UNCHANGED} otherwise.
    */
   @Nonnull
   EChange setPostOfficeBox (@Nullable String sPOBox);

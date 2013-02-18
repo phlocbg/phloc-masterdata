@@ -45,7 +45,7 @@ public final class AddressTypeConverterRegistrar implements IMicroTypeConverterR
   private static final String ATTR_POBOX = "pobox";
   private static final String ATTR_TYPE = "type";
 
-  private static abstract class AbstractBaseConverter implements IMicroTypeConverter
+  private abstract static class AbstractBaseConverter implements IMicroTypeConverter
   {
     @Nonnull
     public IMicroElement convertToMicroElement (@Nonnull final Object aObject,

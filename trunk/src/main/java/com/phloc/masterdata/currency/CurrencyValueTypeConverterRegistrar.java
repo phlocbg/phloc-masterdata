@@ -44,7 +44,7 @@ public final class CurrencyValueTypeConverterRegistrar implements IMicroTypeConv
    * 
    * @author philip
    */
-  private static abstract class AbstractCurrencyValueConverter implements IMicroTypeConverter
+  private abstract static class AbstractCurrencyValueConverter implements IMicroTypeConverter
   {
     @Nonnull
     public final IMicroElement convertToMicroElement (@Nonnull final Object aObject,

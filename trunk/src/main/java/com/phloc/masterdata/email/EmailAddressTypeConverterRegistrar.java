@@ -32,7 +32,7 @@ import com.phloc.commons.microdom.impl.MicroElement;
 @IsSPIImplementation
 public final class EmailAddressTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
-  private static abstract class AbstractBaseConverter implements IMicroTypeConverter
+  private abstract static class AbstractBaseConverter implements IMicroTypeConverter
   {
     @Nonnull
     public IMicroElement convertToMicroElement (@Nonnull final Object aObject,
