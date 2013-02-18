@@ -49,6 +49,10 @@ public final class IBANCountryData extends LocalDatePeriod
    *        check whether the length of the passed fields matches.
    * @param aElements
    *        The IBAN elements for this country. May not be <code>null</code>.
+   * @param aValidFrom
+   *        Validity start date. May be <code>null</code>.
+   * @param aValidTo
+   *        Validity end date. May be <code>null</code>.
    */
   public IBANCountryData (@Nonnegative final int nExpectedLength,
                           @Nonnull final List <IBANElement> aElements,
@@ -137,6 +141,10 @@ public final class IBANCountryData extends LocalDatePeriod
    * @param sDesc
    *        The string description of this country data. May not be
    *        <code>null</code>.
+   * @param aValidFrom
+   *        Validity start date. May be <code>null</code>.
+   * @param aValidTo
+   *        Validity end date. May be <code>null</code>.
    * @return The parsed county data.
    */
   @Nonnull

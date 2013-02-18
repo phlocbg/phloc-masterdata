@@ -38,6 +38,7 @@ import com.phloc.masterdata.telephone.ETelephoneType;
 import com.phloc.masterdata.telephone.ITelephoneNumber;
 import com.phloc.masterdata.telephone.TelephoneNumber;
 
+// ESCA-JAVA0116:
 /**
  * The default implementation of the {@link ICompanySite} interface.
  * 

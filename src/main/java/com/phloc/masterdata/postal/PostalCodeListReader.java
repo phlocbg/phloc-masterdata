@@ -34,6 +34,7 @@ import com.phloc.datetime.PDTFactory;
 import com.phloc.datetime.format.PDTWebDateUtils;
 import com.phloc.masterdata.MasterdataLogger;
 
+// ESCA-JAVA0116:
 /**
  * Read postal code definitions from an XML resource.
  * 

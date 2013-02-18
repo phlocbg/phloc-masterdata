@@ -33,6 +33,7 @@ import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.masterdata.MasterdataUtils;
 
+// ESCA-JAVA0116:
 /**
  * Default writable version of {@link ITelephoneNumber}.
  * 

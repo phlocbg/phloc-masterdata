@@ -36,6 +36,7 @@ import com.phloc.commons.system.SystemHelper;
 import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
 import com.phloc.masterdata.MasterdataUtils;
 
+// ESCA-JAVA0116:
 @Entity
 @Embeddable
 @Access (value = AccessType.PROPERTY)

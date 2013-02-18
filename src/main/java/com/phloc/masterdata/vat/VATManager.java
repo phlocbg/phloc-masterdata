@@ -64,6 +64,7 @@ public final class VATManager implements IVATTypeResolver
     static final VATManager s_aInstance = readFromXML (new ClassPathResource ("codelists/vat-data.xml"));
   }
 
+  /** Special VAT item with 0% */
   public static final IVATItem VATTYPE_NONE = new VATItem ("_none_", EVATType.OTHER, BigDecimal.ZERO, false);
 
   private static final Logger s_aLogger = LoggerFactory.getLogger (VATManager.class);

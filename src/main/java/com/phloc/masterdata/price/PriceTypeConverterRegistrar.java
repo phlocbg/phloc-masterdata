@@ -38,17 +38,17 @@ import com.phloc.masterdata.vat.VATManager;
 @IsSPIImplementation
 public final class PriceTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
-  private static final String ATTR_CURRENCY = "currency";
-  private static final String ATTR_NETAMOUNT = "netamount";
-  private static final String ATTR_GROSSAMOUNT = "grossamount";
-  private static final String ATTR_VATITEM = "vatitem";
+  static final String ATTR_CURRENCY = "currency";
+  static final String ATTR_NETAMOUNT = "netamount";
+  static final String ATTR_GROSSAMOUNT = "grossamount";
+  static final String ATTR_VATITEM = "vatitem";
 
   /**
    * Common base class for {@link Price} and {@link ReadonlyPrice}
    * 
    * @author philip
    */
-  private static abstract class AbstractPriceConverter implements IMicroTypeConverter
+  private abstract static class AbstractPriceConverter implements IMicroTypeConverter
   {
     @Nonnull
     public final IMicroElement convertToMicroElement (@Nonnull final Object aObject,

@@ -45,6 +45,7 @@ import com.phloc.masterdata.currency.ReadonlyCurrencyValue;
 import com.phloc.masterdata.vat.IVATItem;
 import com.phloc.masterdata.vat.JPAVATItemIDConverter;
 
+// ESCA-JAVA0116:
 /**
  * Default implementation of the {@link IPrice} interface.
  * 

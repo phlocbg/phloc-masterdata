@@ -32,6 +32,7 @@ public interface ICompany extends IReadonlyCompany
    * 
    * @param sPublicName
    *        The new name
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setPublicName (@Nullable String sPublicName);
@@ -42,6 +43,7 @@ public interface ICompany extends IReadonlyCompany
    * 
    * @param sOfficialName
    *        The new name
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setOfficialName (@Nullable String sOfficialName);
@@ -90,6 +92,7 @@ public interface ICompany extends IReadonlyCompany
    * 
    * @param aSite
    *        The site to be marked as head quarter.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setHeadQuarterSite (@Nonnull ICompanySite aSite);

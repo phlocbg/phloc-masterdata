@@ -36,12 +36,12 @@ import com.phloc.commons.system.SystemHelper;
 @IsSPIImplementation
 public final class PersonTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
-  private static final String ATTR_SALUTATION = "salutation";
-  private static final String ATTR_PREFIXTITLE = "prefixtitle";
-  private static final String ATTR_FIRSTNAME = "firstname";
-  private static final String ATTR_MIDDLENAME = "middlename";
-  private static final String ATTR_LASTNAME = "lastname";
-  private static final String ATTR_SUFFIXTITLE = "suffixtitle";
+  static final String ATTR_SALUTATION = "salutation";
+  static final String ATTR_PREFIXTITLE = "prefixtitle";
+  static final String ATTR_FIRSTNAME = "firstname";
+  static final String ATTR_MIDDLENAME = "middlename";
+  static final String ATTR_LASTNAME = "lastname";
+  static final String ATTR_SUFFIXTITLE = "suffixtitle";
 
   public void registerMicroTypeConverter (@Nonnull final IMicroTypeConverterRegistry aRegistry)
   {
