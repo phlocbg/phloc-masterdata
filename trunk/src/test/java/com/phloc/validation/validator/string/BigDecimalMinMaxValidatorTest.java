@@ -26,7 +26,6 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 import com.phloc.commons.mock.PhlocTestUtils;
-import com.phloc.validation.validator.string.BigDecimalMinMaxValidator;
 
 /**
  * Test class for class {@link BigDecimalMinMaxValidator}.
