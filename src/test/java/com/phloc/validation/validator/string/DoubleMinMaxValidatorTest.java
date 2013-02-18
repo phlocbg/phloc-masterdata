@@ -24,7 +24,6 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import com.phloc.commons.mock.PhlocTestUtils;
-import com.phloc.validation.validator.string.DoubleMinMaxValidator;
 
 /**
  * Test class for class {@link DoubleMinMaxValidator}.

@@ -23,7 +23,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.phloc.commons.mock.PhlocTestUtils;
-import com.phloc.validation.validator.string.IntUnsignedValidator;
 
 /**
  * Test class for class {@link IntUnsignedValidator}.
