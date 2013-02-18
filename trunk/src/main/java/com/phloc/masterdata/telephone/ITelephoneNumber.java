@@ -32,6 +32,7 @@ public interface ITelephoneNumber extends IReadonlyTelephoneNumber, ICloneable <
   /**
    * @param eType
    *        The semantic type of this telephone number.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setType (ETelephoneType eType);
@@ -39,6 +40,7 @@ public interface ITelephoneNumber extends IReadonlyTelephoneNumber, ICloneable <
   /**
    * @param sCountryCode
    *        The country where the number resides.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setCountryCode (String sCountryCode);
@@ -46,6 +48,7 @@ public interface ITelephoneNumber extends IReadonlyTelephoneNumber, ICloneable <
   /**
    * @param sAreaCode
    *        The area code for the phone number. This is country dependent.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setAreaCode (String sAreaCode);
@@ -53,6 +56,7 @@ public interface ITelephoneNumber extends IReadonlyTelephoneNumber, ICloneable <
   /**
    * @param sLine
    *        The main telephone number within an area code.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setLine (String sLine);
@@ -61,6 +65,7 @@ public interface ITelephoneNumber extends IReadonlyTelephoneNumber, ICloneable <
    * @param sDirectDial
    *        The direct dial for a further specification of a line. Is optional
    *        and may be <code>null</code>.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setDirectDial (String sDirectDial);

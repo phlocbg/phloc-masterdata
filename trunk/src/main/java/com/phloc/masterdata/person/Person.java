@@ -47,6 +47,7 @@ import com.phloc.masterdata.address.IReadonlyAddress;
 import com.phloc.masterdata.email.IReadonlyExtendedEmailAddress;
 import com.phloc.masterdata.telephone.IReadonlyTelephoneNumber;
 
+// ESCA-JAVA0116:
 @Entity
 @Converter (name = "joda-localdate", converterClass = JPAJodaLocalDateConverter.class)
 @MappedSuperclass

@@ -34,6 +34,7 @@ public interface IPersonName extends IReadonlyPersonName
   /**
    * @param eSalutation
    *        The salutation of this person. May be <code>null</code>.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setSalutation (@Nullable ESalutation eSalutation);
@@ -42,6 +43,7 @@ public interface IPersonName extends IReadonlyPersonName
    * @param sPrefixTitle
    *        An optional title that is written before the name. E.g. "Dr." in
    *        Germany.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setPrefixTitle (@Nullable String sPrefixTitle);
@@ -49,6 +51,7 @@ public interface IPersonName extends IReadonlyPersonName
   /**
    * @param sFirstName
    *        The first name.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setFirstName (@Nullable String sFirstName);
@@ -58,6 +61,7 @@ public interface IPersonName extends IReadonlyPersonName
    *        The first name.
    * @param aSortLocale
    *        locale to use.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setFirstName (@Nullable String sFirstName, @Nonnull Locale aSortLocale);
@@ -65,6 +69,7 @@ public interface IPersonName extends IReadonlyPersonName
   /**
    * @param sMiddleName
    *        The optional middle name.
+   * @return {@link EChange}
    */
   @Nonnull
   @Deprecated
@@ -75,6 +80,7 @@ public interface IPersonName extends IReadonlyPersonName
    *        The optional middle name.
    * @param aSortLocale
    *        locale to use.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setMiddleName (@Nullable String sMiddleName, @Nonnull Locale aSortLocale);
@@ -82,6 +88,7 @@ public interface IPersonName extends IReadonlyPersonName
   /**
    * @param sLastName
    *        The last name. May not be <code>null</code>.
+   * @return {@link EChange}
    */
   @Nonnull
   @Deprecated
@@ -92,6 +99,7 @@ public interface IPersonName extends IReadonlyPersonName
    *        The last name. May not be <code>null</code>.
    * @param aSortLocale
    *        locale to use.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setLastName (@Nullable String sLastName, @Nonnull Locale aSortLocale);
@@ -100,6 +108,7 @@ public interface IPersonName extends IReadonlyPersonName
    * @param sSuffixTitle
    *        An optional title that is written after the name. E.g. "MBA" in
    *        Austria.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setSuffixTitle (@Nullable String sSuffixTitle);

@@ -29,7 +29,9 @@ import com.phloc.commons.string.StringHelper;
 @Immutable
 public final class PersonNameUtils
 {
+  /** By default complex name handling is disabled */
   public static final boolean DEFAULT_COMPLEX_NAME_HANDLING = false;
+  /** By default a persons first name comes before the last name */
   public static final boolean DEFAULT_FIRST_NAME_FIRST = true;
 
   private static final AtomicBoolean s_aComplexNameHandlingEnabled = new AtomicBoolean (DEFAULT_COMPLEX_NAME_HANDLING);

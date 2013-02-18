@@ -37,6 +37,7 @@ import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.type.ObjectType;
 
+// ESCA-JAVA0116:
 /**
  * The default implementation of the {@link ICompany} interface.
  * 

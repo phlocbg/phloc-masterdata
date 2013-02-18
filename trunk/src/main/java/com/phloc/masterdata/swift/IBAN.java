@@ -49,6 +49,7 @@ public final class IBAN
   @ReturnsImmutableObject
   public List <IBANElementValue> getValues ()
   {
+    // ESCA-JAVA0259:
     return m_aValues;
   }
 

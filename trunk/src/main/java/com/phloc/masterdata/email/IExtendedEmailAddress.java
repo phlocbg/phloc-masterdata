@@ -32,6 +32,7 @@ public interface IExtendedEmailAddress extends IReadonlyExtendedEmailAddress, IC
   /**
    * @param eType
    *        The type of the email address. May be <code>null</code>.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setType (EEmailAddressType eType);
@@ -49,6 +50,7 @@ public interface IExtendedEmailAddress extends IReadonlyExtendedEmailAddress, IC
   /**
    * @param sPersonal
    *        The personal name. May be <code>null</code>.
+   * @return {@link EChange}
    */
   @Nonnull
   EChange setPersonal (String sPersonal);

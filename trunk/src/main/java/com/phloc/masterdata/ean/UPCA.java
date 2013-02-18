@@ -84,6 +84,8 @@ public final class UPCA extends AbstractUPCEAN
    * @param eMode
    *        the checksum mode
    * @return the possibly modified message
+   * @exception IllegalArgumentException
+   *            In case of an internal inconsistency
    */
   public static String handleChecksum (@Nonnull final String sMsg, @Nonnull final EEANChecksumMode eMode) throws IllegalArgumentException
   {

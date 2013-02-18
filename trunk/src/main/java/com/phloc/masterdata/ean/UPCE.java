@@ -209,6 +209,7 @@ public final class UPCE extends AbstractUPCEAN
    * 
    * @param sMsg
    *        the message to validate
+   * @return {@link EValidity}
    */
   @Nonnull
   public static EValidity validateMessage (@Nonnull final String sMsg)

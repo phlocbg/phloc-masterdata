@@ -31,6 +31,7 @@ import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.id.IHasSimpleIntID;
 import com.phloc.commons.string.ToStringGenerator;
 
+// ESCA-JAVA0116:
 @MappedSuperclass
 @Embeddable
 @Access (value = AccessType.PROPERTY)

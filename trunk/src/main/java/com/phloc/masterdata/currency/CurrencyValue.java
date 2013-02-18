@@ -33,6 +33,7 @@ import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
 
+// ESCA-JAVA0116:
 /**
  * This class represents a single currency value as the combination of a value
  * and a currency.
