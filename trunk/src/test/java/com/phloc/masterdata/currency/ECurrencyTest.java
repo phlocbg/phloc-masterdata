@@ -150,7 +150,7 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   }
 
   @Test
-  @SuppressFBWarnings (value = "TQ_NEVER_VALUE_USED_WHERE_ALWAYS_REQUIRED ")
+  @SuppressFBWarnings ("TQ_NEVER_VALUE_USED_WHERE_ALWAYS_REQUIRED")
   public void testPLN ()
   {
     final ECurrency e = ECurrency.PLN;
@@ -215,7 +215,7 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   }
 
   @Test
-  @SuppressFBWarnings (value = "RV_RETURN_VALUE_IGNORED ")
+  @SuppressFBWarnings ("RV_RETURN_VALUE_IGNORED")
   public void testGetDivided ()
   {
     final BigDecimal aBD3 = new BigDecimal (3);
