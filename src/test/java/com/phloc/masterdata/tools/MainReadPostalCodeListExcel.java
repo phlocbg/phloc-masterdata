@@ -54,9 +54,9 @@ import com.phloc.commons.xml.serialize.XMLWriterSettings;
 import com.phloc.datetime.CPDT;
 import com.phloc.datetime.PDTFactory;
 import com.phloc.datetime.PDTUtils;
-import com.phloc.datetime.format.PDTWebDateUtils;
 import com.phloc.masterdata.postal.PostalCodeListReader;
 import com.phloc.poi.excel.ExcelReadUtils;
+import com.phloc.web.datetime.PDTWebDateUtils;
 
 public class MainReadPostalCodeListExcel
 {
