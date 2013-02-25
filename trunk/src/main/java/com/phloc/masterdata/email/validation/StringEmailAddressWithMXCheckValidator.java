@@ -9,7 +9,7 @@ import com.phloc.validation.result.ValidationResultError;
 import com.phloc.validation.result.ValidationResultSuccess;
 import com.phloc.validation.validator.string.AbstractStringValidator;
 import com.phloc.validation.validator.string.StringEmailAddressNoMXCheckValidator;
-import com.phloc.web.email.EmailAddressValidator;
+import com.phloc.web.smtp.EmailAddressValidator;
 
 /**
  * Validator for email addresses. Uses the {@link EmailAddressValidator} class
