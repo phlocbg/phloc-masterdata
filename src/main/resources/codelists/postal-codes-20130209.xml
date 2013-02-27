@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--
-
-    Copyright (C) 2006-2013 phloc systems
-    http://www.phloc.com
-    office[at]phloc[dot]com
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-            http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
--->
 <root>
   <header>
     <source>http://en.wikipedia.org/wiki/List_of_postal_codes</source>
@@ -33,7 +14,7 @@
       </postalcodes>
     </country>
     <country iso="AD" name="Andorra">
-      <postalcodes validfrom="2004-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2004-01-01">
         <format>CCNNN</format>
         <note>Each parish now has its own post code.</note>
       </postalcodes>
@@ -45,35 +26,35 @@
       </postalcodes>
     </country>
     <country iso="AI" name="Anguilla">
-      <postalcodes validfrom="2007-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2007-01-01">
         <specific>AI-2640</specific>
         <note>Single code used for all addresses.</note>
       </postalcodes>
     </country>
     <country iso="AL" name="Albania">
-      <postalcodes validfrom="2006-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2006-01-01">
         <format>NNNN</format>
         <note>Introduced in 2006, gradually implemented throughout 2007.</note>
       </postalcodes>
     </country>
     <country iso="AM" name="Armenia">
-      <postalcodes validfrom="2006-04-01T00:00:00.000Z">
+      <postalcodes validfrom="2006-04-01">
         <format>NNNN</format>
         <note>Previously used NNNNNN system inherited from former Soviet Union.</note>
       </postalcodes>
     </country>
     <country iso="AR" name="Argentina">
-      <postalcodes validfrom="1974-01-01T00:00:00.000Z" validto="1998-12-31T00:00:00.000Z">
+      <postalcodes validfrom="1974-01-01" validto="1998-12-31">
         <format>NNNN</format>
         <note>Codigo Postal Argentino (CPA), which remains the minimum requirement as of 2006.</note>
       </postalcodes>
-      <postalcodes validfrom="1999-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1999-01-01">
         <format>ANNNNAAA</format>
         <note>Codigo Postal Argentino (CPA), where the first A is the province code as in ISO 3166-2:AR, the four numbers are the old postal codes, the three last letters indicate a side of the block. Previously NNNN which remains the minimum requirement as of 2006.</note>
       </postalcodes>
     </country>
     <country iso="AS" name="American Samoa">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <format>NNNNN-NNNN</format>
         <format>NNNNN-NNNNNN</format>
@@ -81,13 +62,13 @@
       </postalcodes>
     </country>
     <country iso="AT" name="Austria">
-      <postalcodes validfrom="1966-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1966-01-01">
         <format>NNNN</format>
         <note>The first digit denotes one of the nine provinces—called Bundesländer; the last the nearest post office in the area.</note>
       </postalcodes>
     </country>
     <country iso="AU" name="Australia">
-      <postalcodes validfrom="1967-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1967-01-01">
         <format>NNNN</format>
         <note>In general, the first digit identifies the state or territory.</note>
       </postalcodes>
@@ -115,7 +96,7 @@
       </postalcodes>
     </country>
     <country iso="BD" name="Bangladesh">
-      <postalcodes validfrom="1971-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1971-01-01">
         <format>NNNN</format>
       </postalcodes>
     </country>
@@ -126,7 +107,7 @@
       </postalcodes>
     </country>
     <country iso="BG" name="Bulgaria">
-      <postalcodes validfrom="1975-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1975-01-01">
         <format>NNNN</format>
       </postalcodes>
     </country>
@@ -161,14 +142,14 @@
       </postalcodes>
     </country>
     <country iso="BR" name="Brazil">
-      <postalcodes validfrom="1972-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1972-01-01">
         <format>NNNNN-NNN</format>
         <format>NNNNN</format>
         <note>Código de Endereçamento Postal (CEP): -000 to -899 are used for streets, roads, avenues, boulevards; -900 to -959 are used for buildings with a high postal use; -960 to -969 are for promotional use; -970 to -989 are post offices and regular P.O. boxes; and -990 to -998 are used for community P.O. boxes. -999 is used for special services.</note>
       </postalcodes>
     </country>
     <country iso="BT" name="Bhutan">
-      <postalcodes validfrom="2010-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2010-01-01">
         <format>NNN</format>
       </postalcodes>
     </country>
@@ -179,7 +160,7 @@
       </postalcodes>
     </country>
     <country iso="CA" name="Canada">
-      <postalcodes validfrom="1971-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1971-01-01">
         <format>ANA NAN</format>
         <note>The system was gradually introduced starting in April 1971 in Ottawa. The letters D, F, I, O, Q, and U are not used to avoid confusion with other letters or numbers.</note>
       </postalcodes>
@@ -191,7 +172,7 @@
       </postalcodes>
     </country>
     <country iso="CH" name="Switzerland">
-      <postalcodes validfrom="1964-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1964-01-01">
         <format>NNNN</format>
         <note>With Liechtenstein, ordered from west to east. In Geneva and other big cities, like Basel, Bern, Zurich, there may be one or two digits after the name of the city when the generic City code (1211) is used instead of the area-specific code (1201, 1202...), e.g.: 1211 Geneva 13. The digit identifies the post office. This addressing is generally used for P.O. box deliveries.</note>
       </postalcodes>
@@ -216,7 +197,7 @@
       </postalcodes>
     </country>
     <country iso="CR" name="Costa Rica">
-      <postalcodes validfrom="2007-03-01T00:00:00.000Z">
+      <postalcodes validfrom="2007-03-01">
         <format>NNNNN</format>
         <format>NNNN</format>
         <note>First codes the provinces, next two the canton, last two the district.</note>
@@ -241,34 +222,34 @@
       </postalcodes>
     </country>
     <country iso="CY" name="Cyprus">
-      <postalcodes validfrom="1994-10-01T00:00:00.000Z">
+      <postalcodes validfrom="1994-10-01">
         <format>NNNN</format>
         <note>Post code system covers whole island, but not used in Northern Cyprus where &#39;Mersin 10, Turkey&#39; is used instead.</note>
       </postalcodes>
     </country>
     <country iso="CZ" name="Czech Republic">
-      <postalcodes validfrom="1973-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1973-01-01">
         <format>NNNNN</format>
         <format>NNN NN</format>
         <note>With Slovak Republic, Poštovní směrovací číslo (PSČ) - postal routing number.</note>
       </postalcodes>
     </country>
     <country iso="DE" name="Germany">
-      <postalcodes validfrom="1941-07-25T00:00:00.000Z" validto="1961-12-31T00:00:00.000Z">
+      <postalcodes validfrom="1941-07-25" validto="1961-12-31">
         <format>NN</format>
         <note>Postleitzahl (PLZ)</note>
       </postalcodes>
-      <postalcodes validfrom="1962-01-01T00:00:00.000Z" validto="1992-12-31T00:00:00.000Z">
+      <postalcodes validfrom="1962-01-01" validto="1992-12-31">
         <format>NNNN</format>
         <note>Postleitzahl (PLZ)</note>
       </postalcodes>
-      <postalcodes validfrom="1993-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1993-01-01">
         <format>NNNNN</format>
         <note>Postleitzahl (PLZ), introduced after the German reunification. Between 1989 and 1993 the old separate 4-digit postal codes of former West- and East-Germany were distinguished by preceding &quot;W-&quot; or &quot;O-&quot; (&#39;Ost&#39; for East).</note>
       </postalcodes>
     </country>
     <country iso="DK" name="Denmark">
-      <postalcodes validfrom="1967-09-20T00:00:00.000Z">
+      <postalcodes validfrom="1967-09-20">
         <format>NNNN</format>
         <note>Numbering follows the dispatch of postal trains from Copenhagen.[2] Also used by Greenland, e.g.: DK-3900 Nuuk.</note>
       </postalcodes>
@@ -285,7 +266,7 @@
       </postalcodes>
     </country>
     <country iso="EC" name="Ecuador">
-      <postalcodes validfrom="2007-12-01T00:00:00.000Z">
+      <postalcodes validfrom="2007-12-01">
         <format>CCNNNNNN</format>
       </postalcodes>
     </country>
@@ -300,7 +281,7 @@
       </postalcodes>
     </country>
     <country iso="ES" name="Spain">
-      <postalcodes validfrom="1976-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1976-01-01">
         <format>NNNNN</format>
         <note>First two indicate the province, range 01-52</note>
       </postalcodes>
@@ -312,7 +293,7 @@
       </postalcodes>
     </country>
     <country iso="FI" name="Finland">
-      <postalcodes validfrom="1971-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1971-01-01">
         <format>NNNNN</format>
         <note>A lower first digit indicates a place in south (for example 00100 Helsinki), a higher indicates a place further to north (99800 in Ivalo). The last digit is usually 0, except for postal codes for PO Box number ranges, in which case it is 1. Country code for Finland: &quot;FI&quot;. In the Åland Islands, the postal code is prefixed with &quot;AX&quot;, not &quot;FI&quot;. Some postal codes for rural settlements may end with 5, and there are some unique postal codes for large companies and institutions, e.g. 00014 HELSINGIN YLIOPISTO (university), 00102 EDUSKUNTA (parliament), 00020 NORDEA (a major Scandinavian bank).</note>
       </postalcodes>
@@ -326,12 +307,12 @@
       </postalcodes>
     </country>
     <country iso="FM" name="Micronesia">
-      <postalcodes validto="1963-06-30T00:00:00.000Z">
+      <postalcodes validto="1963-06-30">
         <format>NNNNN</format>
         <format>NNNNN-NNNN</format>
         <note>US ZIP Code</note>
       </postalcodes>
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes</note>
       </postalcodes>
@@ -343,13 +324,13 @@
       </postalcodes>
     </country>
     <country iso="FR" name="France">
-      <postalcodes validfrom="1972-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1972-01-01">
         <format>NNNNN</format>
         <note>The first two digits give the département number, while in Paris, Lyon and Marseille, the last two digits of the postal code indicates the arrondissement. Also used by French overseas departments and territories, except by French Southern and Antarctic Territories and Clipperton Island. Monaco is also part of the French postal code system, but the country code MC- is used for Monegasque addresses.</note>
       </postalcodes>
     </country>
     <country iso="GB" name="United Kingdom">
-      <postalcodes validfrom="1959-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1959-01-01">
         <format>ANNAA</format>
         <format>ANNNAA</format>
         <format>AANNAA</format>
@@ -377,7 +358,7 @@
       </postalcodes>
     </country>
     <country iso="GG" name="Guernsey">
-      <postalcodes validfrom="1993-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1993-01-01">
         <format>AAN NAA</format>
         <format>AANN NAA</format>
         <note>UK-format postcode (first two letters are always GY not GG)</note>
@@ -402,7 +383,7 @@
       </postalcodes>
     </country>
     <country iso="GR" name="Greece">
-      <postalcodes validfrom="1983-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1983-01-01">
         <format>NNN NN</format>
       </postalcodes>
     </country>
@@ -419,7 +400,7 @@
       </postalcodes>
     </country>
     <country iso="GU" name="Guam">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes</note>
       </postalcodes>
@@ -451,7 +432,7 @@
       </postalcodes>
     </country>
     <country iso="HU" name="Hungary">
-      <postalcodes validfrom="1973-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1973-01-01">
         <format>NNNN</format>
         <note>In all except the six largest towns, there is only one postal code per settlement.</note>
       </postalcodes>
@@ -469,14 +450,14 @@
       </postalcodes>
     </country>
     <country iso="IM" name="Isle of Man">
-      <postalcodes validfrom="1993-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1993-01-01">
         <format>CCN NAA</format>
         <format>CCNN NAA</format>
         <note>UK-format postcode. The first two letters are always IM.</note>
       </postalcodes>
     </country>
     <country iso="IN" name="India">
-      <postalcodes validfrom="1972-08-15T00:00:00.000Z">
+      <postalcodes validfrom="1972-08-15">
         <format>NNNNNN</format>
         <format>NNN NNN</format>
         <note>Postal Index Number (PIN)</note>
@@ -491,7 +472,7 @@
       </postalcodes>
     </country>
     <country iso="IQ" name="Iraq">
-      <postalcodes validfrom="2004-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2004-01-01">
         <format>NNNNN</format>
       </postalcodes>
     </country>
@@ -507,13 +488,13 @@
       </postalcodes>
     </country>
     <country iso="IT" name="Italy">
-      <postalcodes validfrom="1967-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1967-01-01">
         <format>NNNNN</format>
         <note>Codice di Avviamento Postale (CAP). Also used by San Marino and Vatican City. First two digits identify province with some exceptions, because there are more than 100 provinces.</note>
       </postalcodes>
     </country>
     <country iso="JE" name="Jersey">
-      <postalcodes validfrom="1994-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1994-01-01">
         <format>CCN NAA</format>
         <note>UK-format postcode.</note>
       </postalcodes>
@@ -531,7 +512,7 @@
       </postalcodes>
     </country>
     <country iso="JP" name="Japan">
-      <postalcodes validfrom="1968-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1968-01-01">
         <format>NNNNNNN</format>
         <format>NNN-NNNN</format>
         <note>See also Japanese addressing system.</note>
@@ -580,7 +561,7 @@
       </postalcodes>
     </country>
     <country iso="LI" name="Liechtenstein">
-      <postalcodes validfrom="1964-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1964-01-01">
         <format>NNNN</format>
         <note>With Switzerland, ordered from west to east</note>
       </postalcodes>
@@ -625,12 +606,12 @@
       </postalcodes>
     </country>
     <country iso="MA" name="Morocco">
-      <postalcodes validfrom="1997-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1997-01-01">
         <format>NNNNN</format>
       </postalcodes>
     </country>
     <country iso="MC" name="Monaco">
-      <postalcodes validfrom="1972-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1972-01-01">
         <specific>980NN</specific>
         <note>Uses the French Postal System, but with an &quot;MC&quot; Prefix for Monaco.</note>
       </postalcodes>
@@ -658,7 +639,7 @@
       </postalcodes>
     </country>
     <country iso="MH" name="Marshall Islands">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes</note>
       </postalcodes>
@@ -682,7 +663,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="MP" name="Northern Mariana Islands">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes</note>
       </postalcodes>
@@ -755,13 +736,13 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="NL" name="Netherlands">
-      <postalcodes validfrom="1977-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1977-01-01">
         <format>NNNN AA</format>
         <note>Postcode</note>
       </postalcodes>
     </country>
     <country iso="NO" name="Norway">
-      <postalcodes validfrom="1968-03-18T00:00:00.000Z">
+      <postalcodes validfrom="1968-03-18">
         <format>NNNN</format>
         <note>From south to north</note>
       </postalcodes>
@@ -772,7 +753,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="NZ" name="New Zealand">
-      <postalcodes validfrom="2008-06-01T00:00:00.000Z">
+      <postalcodes validfrom="2008-06-01">
         <format>NNNN</format>
         <note>Postcodes were originally intended for bulk mailing and were not needed for addressing individual items. However, new post codes for general use were phased in from June 2006 and came into force by July 2008.</note>
       </postalcodes>
@@ -816,7 +797,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="PL" name="Poland">
-      <postalcodes validfrom="1973-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1973-01-01">
         <format>NNNNN</format>
         <format>NN-NNN</format>
       </postalcodes>
@@ -836,22 +817,22 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="PR" name="Puerto Rico">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes. ZIP codes 006XX for NW PR, 007XX for SE PR, in which XX designates the town or post office and 009XX for the San Juan Metropolitan Area, in which XX designates the area or borough of San Juan. The last four digits identify an area within the post office. For example 00716-2604: 00716-for the east section of the city of Ponce and 2604 for Aceitillo St. in the neighborhood of Los Caobos. US Post office is changing the PR address format to the American one: 1234 No Name Avenue, San Juan, PR 00901.</note>
       </postalcodes>
     </country>
     <country iso="PT" name="Portugal">
-      <postalcodes validfrom="1976-01-01T00:00:00.000Z" validto="1993-12-31T00:00:00.000Z">
+      <postalcodes validfrom="1976-01-01" validto="1993-12-31">
         <format>NNNN</format>
       </postalcodes>
-      <postalcodes validfrom="1994-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1994-01-01">
         <format>NNNN-NNN</format>
         <format>NNNN NNN</format>
       </postalcodes>
     </country>
     <country iso="PW" name="Palau">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes</note>
       </postalcodes>
@@ -868,22 +849,22 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="RO" name="Romania">
-      <postalcodes validfrom="2003-05-01T00:00:00.000Z">
+      <postalcodes validfrom="2003-05-01">
         <format>NNNNNN</format>
         <note>Previously 99999 in Bucharest and 9999 in rest of country.</note>
       </postalcodes>
     </country>
     <country iso="RS" name="Serbia">
-      <postalcodes validto="2004-12-31T00:00:00.000Z">
+      <postalcodes validto="2004-12-31">
         <format>NNNNN</format>
       </postalcodes>
-      <postalcodes validfrom="2005-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2005-01-01">
         <format>NNNNN</format>
         <note>Poštanski adresni kod (PAK)</note>
       </postalcodes>
     </country>
     <country iso="RU" name="Russia">
-      <postalcodes validfrom="1971-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1971-01-01">
         <format>NNNNNN</format>
         <note>Placed on a line of its own.</note>
       </postalcodes>
@@ -900,19 +881,19 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="SE" name="Sweden">
-      <postalcodes validfrom="1968-05-12T00:00:00.000Z">
+      <postalcodes validfrom="1968-05-12">
         <format>NNNNN</format>
         <format>NNN NN</format>
       </postalcodes>
     </country>
     <country iso="SG" name="Singapore">
-      <postalcodes validfrom="1950-01-01T00:00:00.000Z" validto="1978-12-31T00:00:00.000Z">
+      <postalcodes validfrom="1950-01-01" validto="1978-12-31">
         <format>NN</format>
       </postalcodes>
-      <postalcodes validfrom="1979-01-01T00:00:00.000Z" validto="1994-12-31T00:00:00.000Z">
+      <postalcodes validfrom="1979-01-01" validto="1994-12-31">
         <format>NNNN</format>
       </postalcodes>
-      <postalcodes validfrom="1995-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1995-01-01">
         <format>NNNNNN</format>
         <note>Each building has its own unique postcode.</note>
       </postalcodes>
@@ -934,7 +915,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="SK" name="Slovakia">
-      <postalcodes validfrom="1973-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1973-01-01">
         <format>NNNNN</format>
         <format>NNN NN</format>
         <note>with Czech Republic from west to east, Poštové smerovacie číslo (PSČ) - postal routing number.</note>
@@ -976,7 +957,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="TH" name="Thailand">
-      <postalcodes validfrom="1982-02-25T00:00:00.000Z">
+      <postalcodes validfrom="1982-02-25">
         <format>NNNNN</format>
         <note>The first two specify the province, numbers as in ISO 3166-2:TH, the third and fourth digits specify a district (amphoe)</note>
       </postalcodes>
@@ -1005,13 +986,13 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="TT" name="Trinidad and Tobago">
-      <postalcodes validfrom="2012-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2012-01-01">
         <format>NNNNNN</format>
         <note>First two digits specify a postal district (one of 72), next two digits a carrier route, last two digits a building or zone along that route</note>
       </postalcodes>
     </country>
     <country iso="TW" name="Taiwan">
-      <postalcodes validfrom="1970-03-20T00:00:00.000Z">
+      <postalcodes validfrom="1970-03-20">
         <format>NNNNN</format>
         <note>The first three digits of the postal code are required; the last two digits are optional. Codes are known as youdi quhao (郵遞區號), and are also assigned to Senkaku Islands(Diaoyutai), though Japanese-administered, the Pratas Islands and the Spratly Islands. See List of postal codes in Taiwan.</note>
       </postalcodes>
@@ -1022,7 +1003,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="US" name="United States">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <format>NNNNN-NNNN</format>
         <format>NNNNN-NNNNNN</format>
@@ -1035,7 +1016,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="UZ" name="Uzbekistan">
-      <postalcodes validfrom="2005-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2005-01-01">
         <format>NNN NNN</format>
         <note>Почтовые индексы</note>
       </postalcodes>
@@ -1047,7 +1028,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="VC" name="Saint Vincent and the Grenadines">
-      <postalcodes validfrom="2010-01-01T00:00:00.000Z">
+      <postalcodes validfrom="2010-01-01">
         <format>CCNNNN</format>
       </postalcodes>
     </country>
@@ -1063,7 +1044,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="VI" name="U.S. Virgin Islands">
-      <postalcodes validfrom="1963-07-01T00:00:00.000Z">
+      <postalcodes validfrom="1963-07-01">
         <format>NNNNN</format>
         <note>U.S. ZIP codes</note>
       </postalcodes>
@@ -1093,7 +1074,7 @@ Last three digits: locality / delivery block[6]</note>
       </postalcodes>
     </country>
     <country iso="ZA" name="South Africa">
-      <postalcodes validfrom="1975-01-01T00:00:00.000Z">
+      <postalcodes validfrom="1975-01-01">
         <format>NNNN</format>
         <note>Postal codes are allocated to individual Post Office branches, some have two codes to differentiate between P.O. Boxes and street delivery addresses. Included Namibia (ranges 9000-9299) until 1992, no longer used.</note>
       </postalcodes>

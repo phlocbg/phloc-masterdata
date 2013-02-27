@@ -23,6 +23,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.joda.time.LocalDate;
+import org.joda.time.format.ISODateTimeFormat;
 
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.io.IReadableResource;
@@ -32,7 +33,6 @@ import com.phloc.commons.microdom.serialize.MicroReader;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.datetime.PDTFactory;
 import com.phloc.masterdata.MasterdataLogger;
-import com.phloc.web.datetime.PDTWebDateUtils;
 
 // ESCA-JAVA0116:
 /**
@@ -112,11 +112,9 @@ public final class PostalCodeListReader
       for (final IMicroElement ePostalCode : eCountry.getChildElements (ELEMENT_POSTALCODES))
       {
         final String sValidFrom = ePostalCode.getAttribute (ATTR_VALIDFROM);
-        final LocalDate aValidFrom = sValidFrom == null ? null : PDTWebDateUtils.getDateTimeFromXSD (sValidFrom)
-                                                                                .toLocalDate ();
+        final LocalDate aValidFrom = sValidFrom == null ? null : ISODateTimeFormat.date ().parseLocalDate (sValidFrom);
         final String sValidTo = ePostalCode.getAttribute (ATTR_VALIDTO);
-        final LocalDate aValidTo = sValidTo == null ? null : PDTWebDateUtils.getDateTimeFromXSD (sValidTo)
-                                                                            .toLocalDate ();
+        final LocalDate aValidTo = sValidTo == null ? null : ISODateTimeFormat.date ().parseLocalDate (sValidTo);
 
         if (aValidFrom != null && aValidFrom.isAfter (aNow))
         {

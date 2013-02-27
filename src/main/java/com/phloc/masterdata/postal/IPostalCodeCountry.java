@@ -49,6 +49,16 @@ public interface IPostalCodeCountry
   List <PostalCodeFormat> getAllFormats ();
 
   /**
+   * Get the format at the specified index
+   * 
+   * @param nIndex
+   *        The index to use.
+   * @return <code>null</code> if the index is invalid
+   */
+  @Nullable
+  PostalCodeFormat getFormatOfIndex (int nIndex);
+
+  /**
    * @return The number of specific postal codes defined for this country.
    */
   @Nonnegative

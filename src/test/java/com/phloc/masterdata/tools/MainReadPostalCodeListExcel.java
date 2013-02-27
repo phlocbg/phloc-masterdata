@@ -35,6 +35,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
+import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,12 +52,10 @@ import com.phloc.commons.microdom.impl.MicroDocument;
 import com.phloc.commons.microdom.serialize.MicroWriter;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.xml.serialize.XMLWriterSettings;
-import com.phloc.datetime.CPDT;
 import com.phloc.datetime.PDTFactory;
 import com.phloc.datetime.PDTUtils;
 import com.phloc.masterdata.postal.PostalCodeListReader;
 import com.phloc.poi.excel.ExcelReadUtils;
-import com.phloc.web.datetime.PDTWebDateUtils;
 
 public class MainReadPostalCodeListExcel
 {
@@ -238,12 +237,10 @@ public class MainReadPostalCodeListExcel
         final IMicroElement ePostalCodes = eCountry.appendElement (PostalCodeListReader.ELEMENT_POSTALCODES);
         if (aItem.getValidFrom () != null)
           ePostalCodes.setAttribute (PostalCodeListReader.ATTR_VALIDFROM,
-                                     PDTWebDateUtils.getAsStringXSD (aItem.getValidFrom ()
-                                                                          .toLocalDateTime (CPDT.NULL_LOCAL_TIME)));
+                                     ISODateTimeFormat.date ().print (aItem.getValidFrom ()));
         if (aItem.getValidTo () != null)
           ePostalCodes.setAttribute (PostalCodeListReader.ATTR_VALIDTO,
-                                     PDTWebDateUtils.getAsStringXSD (aItem.getValidTo ()
-                                                                          .toLocalDateTime (CPDT.NULL_LOCAL_TIME)));
+                                     ISODateTimeFormat.date ().print (aItem.getValidTo ()));
         for (final String sSingleFormat : aItem.getFormats ())
           if (sSingleFormat.startsWith (PREFIX_ONE_CODE))
             ePostalCodes.appendElement (PostalCodeListReader.ELEMENT_SPECIFIC)
