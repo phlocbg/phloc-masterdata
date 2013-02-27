@@ -148,9 +148,13 @@ public final class AddressUtils
       return null;
 
     final StringBuilder aSB = new StringBuilder ();
-    if (StringHelper.hasText (aAddress.getStreet ()))
-      aSB.append (aAddress.getStreet ());
 
+    // Street + building number
+    final String sStreet = StringHelper.getImplodedNonEmpty (' ', aAddress.getStreet (), aAddress.getBuildingNumber ());
+    if (StringHelper.hasText (sStreet))
+      aSB.append (sStreet);
+
+    // Postal code + city
     final String sNextLine = StringHelper.getImplodedNonEmpty (' ', aAddress.getPostalCode (), aAddress.getCity ());
     if (StringHelper.hasText (sNextLine))
     {
