@@ -17,6 +17,7 @@
  */
 package com.phloc.masterdata.postal;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -66,5 +67,21 @@ public final class PostalCodeManagerTest
     assertTrue (aMgr.isValidPostalCodeDefaultYes (CountryCache.getCountry ("IM"), "IM1 1AA"));
     assertFalse (aMgr.isValidPostalCodeDefaultYes (CountryCache.getCountry ("IM"), "IN1 1AA"));
     assertFalse (aMgr.isValidPostalCodeDefaultYes (CountryCache.getCountry ("IM"), "im1 1AA"));
+  }
+
+  @Test
+  public void testSpecific ()
+  {
+    final PostalCodeManager aMgr = PostalCodeManager.DEFAULT_MGR;
+    assertNotNull (aMgr);
+
+    final IPostalCodeCountry aCountry = aMgr.getPostalCountryOfCountry ("AM");
+    assertNotNull (aCountry);
+    assertEquals (1, aCountry.getFormatCount ());
+    final PostalCodeFormat aFormat = aCountry.getFormatOfIndex (0);
+    assertNotNull (aFormat);
+    assertEquals ("NNNN", aFormat.getFormatDefinitionString ());
+    assertEquals ("^[0-9][0-9][0-9][0-9]$", aFormat.getRegExPattern ());
+    assertEquals ("AM", aFormat.getISO ());
   }
 }

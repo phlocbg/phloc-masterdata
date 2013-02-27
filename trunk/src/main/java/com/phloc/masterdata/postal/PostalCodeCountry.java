@@ -78,6 +78,12 @@ public final class PostalCodeCountry implements IPostalCodeCountry
     return ContainerHelper.newList (m_aFormats);
   }
 
+  @Nullable
+  public PostalCodeFormat getFormatOfIndex (final int nIndex)
+  {
+    return ContainerHelper.getSafe (m_aFormats, nIndex);
+  }
+
   void addSpecificPostalCode (@Nonnull @Nonempty final String sSpecificPostalCode)
   {
     if (StringHelper.hasNoText (sSpecificPostalCode))
