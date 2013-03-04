@@ -31,7 +31,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.phloc.commons.io.file.SimpleFileIO;
 import com.phloc.commons.microdom.IMicroDocument;
 import com.phloc.commons.microdom.IMicroElement;
 import com.phloc.commons.microdom.impl.MicroDocument;
@@ -39,7 +38,6 @@ import com.phloc.commons.microdom.serialize.MicroWriter;
 import com.phloc.commons.regex.RegExHelper;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.StringParser;
-import com.phloc.commons.xml.serialize.XMLWriterSettings;
 import com.phloc.masterdata.EUNCodelistStatus;
 import com.phloc.poi.excel.ExcelReadUtils;
 
@@ -138,9 +136,7 @@ public class MainReadPackageTypeCodeListExcel
       }
     }
 
-    SimpleFileIO.writeFile (new File ("src/main/resources/codelists/" + sBaseName + ".xml"),
-                            MicroWriter.getXMLString (aDoc),
-                            XMLWriterSettings.DEFAULT_XML_CHARSET);
+    MicroWriter.writeToFile (aDoc, new File ("src/main/resources/codelists/" + sBaseName + ".xml"));
     s_aLogger.info ("Done");
   }
 }
