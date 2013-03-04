@@ -45,13 +45,11 @@ import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.collections.multimap.IMultiMapListBased;
 import com.phloc.commons.collections.multimap.MultiHashMapArrayListBased;
 import com.phloc.commons.compare.AbstractComparator;
-import com.phloc.commons.io.file.SimpleFileIO;
 import com.phloc.commons.microdom.IMicroDocument;
 import com.phloc.commons.microdom.IMicroElement;
 import com.phloc.commons.microdom.impl.MicroDocument;
 import com.phloc.commons.microdom.serialize.MicroWriter;
 import com.phloc.commons.string.StringHelper;
-import com.phloc.commons.xml.serialize.XMLWriterSettings;
 import com.phloc.datetime.PDTFactory;
 import com.phloc.datetime.PDTUtils;
 import com.phloc.masterdata.postal.PostalCodeListReader;
@@ -255,9 +253,7 @@ public class MainReadPostalCodeListExcel
       }
     }
 
-    SimpleFileIO.writeFile (new File ("src/main/resources/codelists/postal-codes-" + sRevision + ".xml"),
-                            MicroWriter.getXMLString (aDoc),
-                            XMLWriterSettings.DEFAULT_XML_CHARSET);
+    MicroWriter.writeToFile (aDoc, new File ("src/main/resources/codelists/postal-codes-" + sRevision + ".xml"));
     s_aLogger.info ("Done");
   }
 }
