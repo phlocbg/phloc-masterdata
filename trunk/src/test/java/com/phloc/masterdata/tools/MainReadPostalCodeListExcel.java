@@ -18,7 +18,6 @@
 package com.phloc.masterdata.tools;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -45,6 +44,7 @@ import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.collections.multimap.IMultiMapListBased;
 import com.phloc.commons.collections.multimap.MultiHashMapArrayListBased;
 import com.phloc.commons.compare.AbstractComparator;
+import com.phloc.commons.io.file.FileUtils;
 import com.phloc.commons.microdom.IMicroDocument;
 import com.phloc.commons.microdom.IMicroElement;
 import com.phloc.commons.microdom.impl.MicroDocument;
@@ -149,7 +149,7 @@ public class MainReadPostalCodeListExcel
     final String sRevision = "20130209";
 
     final File f = new File ("src/test/resources/" + sRevision + "PostalCodes.xls");
-    final Workbook aWB = new HSSFWorkbook (new FileInputStream (f));
+    final Workbook aWB = new HSSFWorkbook (FileUtils.getInputStream (f));
     final Sheet aSheet = aWB.getSheetAt (0);
     final Iterator <Row> it = aSheet.rowIterator ();
 
