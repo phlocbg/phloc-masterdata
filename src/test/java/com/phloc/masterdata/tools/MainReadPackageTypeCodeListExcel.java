@@ -18,7 +18,6 @@
 package com.phloc.masterdata.tools;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -31,6 +30,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.phloc.commons.io.file.FileUtils;
 import com.phloc.commons.microdom.IMicroDocument;
 import com.phloc.commons.microdom.IMicroElement;
 import com.phloc.commons.microdom.impl.MicroDocument;
@@ -95,7 +95,7 @@ public class MainReadPackageTypeCodeListExcel
 
     // Ideally don't change anything from here on
     final File f = new File ("src/test/resources/" + sBaseName + ".xls");
-    final Workbook aWB = new HSSFWorkbook (new FileInputStream (f));
+    final Workbook aWB = new HSSFWorkbook (FileUtils.getInputStream (f));
     final Sheet aSheet = aWB.getSheetAt (0);
     final Iterator <Row> it = aSheet.rowIterator ();
 
