@@ -136,7 +136,7 @@ public class MainReadPackageTypeCodeListExcel
       }
     }
 
-    MicroWriter.writeToFile (aDoc, new File ("src/main/resources/codelists/" + sBaseName + ".xml"));
+    MicroWriter.writeToStream (aDoc, FileUtils.getOutputStream ("src/main/resources/codelists/" + sBaseName + ".xml"));
     s_aLogger.info ("Done");
   }
 }

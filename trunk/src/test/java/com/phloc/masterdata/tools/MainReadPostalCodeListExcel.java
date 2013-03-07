@@ -253,7 +253,10 @@ public class MainReadPostalCodeListExcel
       }
     }
 
-    MicroWriter.writeToFile (aDoc, new File ("src/main/resources/codelists/postal-codes-" + sRevision + ".xml"));
+    MicroWriter.writeToStream (aDoc,
+                               FileUtils.getOutputStream ("src/main/resources/codelists/postal-codes-" +
+                                                          sRevision +
+                                                          ".xml"));
     s_aLogger.info ("Done");
   }
 }
