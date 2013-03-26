@@ -30,31 +30,31 @@ import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.text.IReadonlyMultiLingualText;
 
 @Immutable
-public final class UnitSector implements IHasIntID, IHasDisplayText
+public final class UnitQuantity implements IHasIntID, IHasDisplayText
 {
-  private final int m_nGroupNumber;
+  private final int m_nQuantityID;
   private final IReadonlyMultiLingualText m_aName;
 
-  public UnitSector (@Nonnegative final int nGroupNumber, @Nonnull final IReadonlyMultiLingualText aName)
+  public UnitQuantity (@Nonnegative final int nQuantityID, @Nonnull final IReadonlyMultiLingualText aName)
   {
-    if (nGroupNumber < 0)
-      throw new IllegalArgumentException ("Invalid group number");
+    if (nQuantityID < 0)
+      throw new IllegalArgumentException ("Invalid quantity number");
     if (aName == null)
       throw new NullPointerException ("name");
-    m_nGroupNumber = nGroupNumber;
+    m_nQuantityID = nQuantityID;
     m_aName = aName;
   }
 
   @Nonnegative
   public int getID ()
   {
-    return m_nGroupNumber;
+    return m_nQuantityID;
   }
 
   @Nonnull
   public Integer getIDObj ()
   {
-    return Integer.valueOf (m_nGroupNumber);
+    return Integer.valueOf (m_nQuantityID);
   }
 
   @Nonnull
@@ -72,6 +72,6 @@ public final class UnitSector implements IHasIntID, IHasDisplayText
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("groupNumber", m_nGroupNumber).append ("name", m_aName).toString ();
+    return new ToStringGenerator (this).append ("quantityID", m_nQuantityID).append ("name", m_aName).toString ();
   }
 }

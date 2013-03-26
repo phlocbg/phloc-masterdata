@@ -41,7 +41,8 @@ public enum EISO31 implements IHasSimpleIntID, IHasDisplayText
   ISO31_10 (10, EISO31Name.ISO31_10),
   ISO31_11 (11, EISO31Name.ISO31_11),
   ISO31_12 (12, EISO31Name.ISO31_12),
-  ISO31_13 (13, EISO31Name.ISO31_13);
+  ISO31_13 (13, EISO31Name.ISO31_13),
+  ISO31_14 (13, EISO31Name.ISO31_14);
 
   private final int m_nID;
   private final IHasDisplayText m_aName;
