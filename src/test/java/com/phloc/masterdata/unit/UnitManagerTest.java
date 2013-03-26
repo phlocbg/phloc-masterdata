@@ -35,6 +35,6 @@ public final class UnitManagerTest
     final UnitManager aMgr = UnitManager.getDefaultInstance ();
     assertNotNull (aMgr);
     assertEquals (13, aMgr.getAllSectors ().size ());
-    System.out.println (aMgr.getAllSectors ());
+    assertEquals (401, aMgr.getAllQuantities ().size ());
   }
 }
