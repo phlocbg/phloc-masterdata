@@ -38,7 +38,7 @@ public final class UnitQuantity implements IHasIntID, IHasDisplayText
   public UnitQuantity (@Nonnegative final int nQuantityID, @Nonnull final IReadonlyMultiLingualText aName)
   {
     if (nQuantityID < 0)
-      throw new IllegalArgumentException ("Invalid quantity number");
+      throw new IllegalArgumentException ("Invalid quantity ID");
     if (aName == null)
       throw new NullPointerException ("name");
     m_nQuantityID = nQuantityID;
