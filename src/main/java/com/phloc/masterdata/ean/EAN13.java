@@ -21,6 +21,11 @@ import javax.annotation.Nonnull;
 
 import com.phloc.commons.state.EValidity;
 
+/**
+ * Validator and checksum creator for EAN13 code (=GTIN-13 and GLN)
+ * 
+ * @author philip
+ */
 public final class EAN13 extends AbstractUPCEAN
 {
   /**

@@ -1,4 +1,4 @@
-package com.phloc.masterdata.gtin;
+package com.phloc.masterdata.ean;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -75,6 +75,11 @@ public final class GTINValidator
   public static boolean isValidGTIN13 (@Nullable final String sGTIN13)
   {
     return _isValidGTIN (sGTIN13, 13);
+  }
+
+  public static boolean isValidGLN (@Nullable final String sGLN)
+  {
+    return isValidGTIN13 (sGLN);
   }
 
   public static boolean isValidGTIN14 (@Nullable final String sGTIN14)

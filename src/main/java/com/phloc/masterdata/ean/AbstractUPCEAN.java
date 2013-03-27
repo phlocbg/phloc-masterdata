@@ -86,13 +86,10 @@ public abstract class AbstractUPCEAN
     if (sMsg == null)
       throw new NullPointerException ("msg");
 
-    final int nLen = sMsg.length ();
-    for (int i = 0; i < nLen; i++)
-    {
-      final char c = sMsg.charAt (i);
+    final char [] aChars = sMsg.toCharArray ();
+    for (final char c : aChars)
       if (c < '0' || c > '9')
         return EValidity.INVALID;
-    }
     return EValidity.VALID;
   }
 
@@ -108,19 +105,16 @@ public abstract class AbstractUPCEAN
     if (sMsg == null)
       throw new NullPointerException ("msg");
 
-    int nOddSum = 0;
-    int nEvenSum = 0;
-    final int nLength = sMsg.length ();
-    for (int i = nLength - 1; i >= 0; i--)
+    final char [] aChars = sMsg.toCharArray ();
+    final int nLen = aChars.length;
+    int nChecksumBase = 0;
+    int nFactor = (nLen % 2) == 0 ? 1 : 3;
+    for (int i = 0; i < nLen; ++i)
     {
-      if ((nLength - i) % 2 == 0)
-        nEvenSum += Character.digit (sMsg.charAt (i), 10);
-      else
-        nOddSum += Character.digit (sMsg.charAt (i), 10);
+      nChecksumBase += Character.digit (aChars[i], 10) * nFactor;
+      nFactor = 4 - nFactor;
     }
-    int nCheck = 10 - ((nEvenSum + 3 * nOddSum) % 10);
-    if (nCheck >= 10)
-      nCheck = 0;
-    return Character.forDigit (nCheck, 10);
+    final int nChecksum = (1000 - nChecksumBase) % 10;
+    return Character.forDigit (nChecksum, 10);
   }
 }
