@@ -17,6 +17,7 @@
  */
 package com.phloc.masterdata.ean;
 
+import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
 import com.phloc.commons.state.EValidity;
@@ -86,11 +87,52 @@ public abstract class AbstractUPCEAN
     if (sMsg == null)
       throw new NullPointerException ("msg");
 
-    final char [] aChars = sMsg.toCharArray ();
+    return validateMessage (sMsg.toCharArray ());
+  }
+
+  /**
+   * Validates a UPC/EAN/GTIN/GLN message.
+   * 
+   * @param aChars
+   *        the chars to validate
+   * @return {@link EValidity#VALID} if the msg is valid,
+   *         {@link EValidity#INVALID} otherwise.
+   */
+  @Nonnull
+  protected static EValidity validateMessage (@Nonnull final char [] aChars)
+  {
+    if (aChars == null)
+      throw new NullPointerException ("chars");
+
     for (final char c : aChars)
       if (c < '0' || c > '9')
         return EValidity.INVALID;
     return EValidity.VALID;
+  }
+
+  static final int asInt (final char c)
+  {
+    return Character.digit (c, 10);
+  }
+
+  static final char asChar (final int i)
+  {
+    return Character.forDigit (i, 10);
+  }
+
+  protected static int calcChecksum (@Nonnull final char [] aChars, @Nonnegative final int nLen)
+  {
+    int nChecksumBase = 0;
+    int nFactor = (nLen % 2) == 0 ? 1 : 3;
+    for (int i = 0; i < nLen; ++i)
+    {
+      nChecksumBase += asInt (aChars[i]) * nFactor;
+      nFactor = 4 - nFactor;
+    }
+
+    // 1000 is larger as "18*9*3" (18 == length of SSCC; 9 == largest possible
+    // number; 3 == largest multiplication factor)
+    return (1000 - nChecksumBase) % 10;
   }
 
   /**
@@ -100,21 +142,13 @@ public abstract class AbstractUPCEAN
    *        the message
    * @return char the check character
    */
-  protected static final char calcChecksum (@Nonnull final String sMsg)
+  protected static final char calcChecksumChar (@Nonnull final String sMsg, @Nonnegative final int nLength)
   {
     if (sMsg == null)
       throw new NullPointerException ("msg");
+    if (nLength < 0 || nLength > sMsg.length ())
+      throw new IllegalArgumentException ("Length error: " + nLength);
 
-    final char [] aChars = sMsg.toCharArray ();
-    final int nLen = aChars.length;
-    int nChecksumBase = 0;
-    int nFactor = (nLen % 2) == 0 ? 1 : 3;
-    for (int i = 0; i < nLen; ++i)
-    {
-      nChecksumBase += Character.digit (aChars[i], 10) * nFactor;
-      nFactor = 4 - nFactor;
-    }
-    final int nChecksum = (1000 - nChecksumBase) % 10;
-    return Character.forDigit (nChecksum, 10);
+    return asChar (calcChecksum (sMsg.toCharArray (), nLength));
   }
 }

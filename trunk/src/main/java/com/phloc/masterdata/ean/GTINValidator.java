@@ -8,6 +8,11 @@ import javax.annotation.concurrent.Immutable;
 import com.phloc.commons.annotations.PresentForCodeCoverage;
 import com.phloc.commons.string.StringHelper;
 
+/**
+ * Utility class that makes verification of GTIN numbers a bit simpler :)
+ * 
+ * @author philip
+ */
 @Immutable
 public final class GTINValidator
 {
@@ -18,38 +23,11 @@ public final class GTINValidator
   private GTINValidator ()
   {}
 
-  private static boolean _isNumeric (@Nonnull final char [] aChars)
+  private static boolean _containsValidChecksum (@Nonnull final char [] aChars)
   {
-    for (final char c : aChars)
-      if (!Character.isDigit (c))
-        return false;
-    return true;
-  }
-
-  private static int _getDigit (final char c)
-  {
-    return Character.digit (c, 10);
-  }
-
-  private static int _calcChecksumBase (@Nonnull final char [] aChars, @Nonnegative final int nLen)
-  {
-    int nChecksumBase = 0;
-    int nFactor = (nLen % 2) == 0 ? 1 : 3;
-    for (int i = 0; i < nLen; ++i)
-    {
-      nChecksumBase += _getDigit (aChars[i]) * nFactor;
-      nFactor = 4 - nFactor;
-    }
-    return nChecksumBase;
-  }
-
-  private static boolean _isValidChecksum (@Nonnull final char [] aChars)
-  {
-    final int nChecksumBase = _calcChecksumBase (aChars, aChars.length - 1);
-    final int nChecksum = _getDigit (aChars[aChars.length - 1]);
-    // 1000 is larger as "18*9*3" (18 == length of SSCC; 9 == largest possible
-    // number; 3 == largest multiplication factor)
-    return (1000 - nChecksumBase) % 10 == nChecksum;
+    final int nCalcedChecksum = AbstractUPCEAN.calcChecksum (aChars, aChars.length - 1);
+    final int nChecksum = AbstractUPCEAN.asInt (aChars[aChars.length - 1]);
+    return nCalcedChecksum == nChecksum;
   }
 
   private static boolean _isValidGTIN (@Nullable final String sGTIN, @Nonnegative final int nExpectedLength)
@@ -57,9 +35,9 @@ public final class GTINValidator
     if (StringHelper.getLength (sGTIN) != nExpectedLength)
       return false;
     final char [] aChars = sGTIN.toCharArray ();
-    if (!_isNumeric (aChars))
+    if (AbstractUPCEAN.validateMessage (aChars).isInvalid ())
       return false;
-    return _isValidChecksum (aChars);
+    return _containsValidChecksum (aChars);
   }
 
   public static boolean isValidGTIN8 (@Nullable final String sGTIN8)

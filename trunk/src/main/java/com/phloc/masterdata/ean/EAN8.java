@@ -18,8 +18,10 @@
 package com.phloc.masterdata.ean;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.state.EValidity;
+import com.phloc.commons.string.StringHelper;
 
 /**
  * Validator and checksum creator for EAN8 code (=GTIN-8)
@@ -68,10 +70,11 @@ public final class EAN8 extends AbstractUPCEAN
    *         {@link EValidity#INVALID} otherwise.
    */
   @Nonnull
-  public static EValidity validateMessage (final String sMsg)
+  public static EValidity validateMessage (@Nullable final String sMsg)
   {
-    if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
-      if (sMsg.length () >= 7 && sMsg.length () <= 8)
+    final int nLen = StringHelper.getLength (sMsg);
+    if (nLen >= 7 && nLen <= 8)
+      if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
         return EValidity.VALID;
     return EValidity.INVALID;
   }
@@ -101,7 +104,7 @@ public final class EAN8 extends AbstractUPCEAN
         else
         {
           // Shouldn't happen because of validateMessage
-          throw new IllegalArgumentException ("Internal error");
+          throw new IllegalArgumentException ("Failed to automatically detect the checksum mode");
         }
     }
     switch (eRealMode)
@@ -110,14 +113,14 @@ public final class EAN8 extends AbstractUPCEAN
       {
         if (sMsg.length () != 7)
           throw new IllegalArgumentException ("Message must be 7 characters long");
-        return sMsg + calcChecksum (sMsg);
+        return sMsg + calcChecksumChar (sMsg, 7);
       }
       case CHECK:
       {
         if (sMsg.length () != 8)
           throw new IllegalArgumentException ("Message must be 8 characters long");
         final char cCheck = sMsg.charAt (7);
-        final char cExpected = calcChecksum (sMsg.substring (0, 7));
+        final char cExpected = calcChecksumChar (sMsg, 7);
         if (cCheck != cExpected)
           throw new IllegalArgumentException ("Checksum is bad (" + cCheck + "). Expected: " + cExpected);
         return sMsg;

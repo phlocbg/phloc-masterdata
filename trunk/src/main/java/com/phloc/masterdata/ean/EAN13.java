@@ -18,8 +18,10 @@
 package com.phloc.masterdata.ean;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.state.EValidity;
+import com.phloc.commons.string.StringHelper;
 
 /**
  * Validator and checksum creator for EAN13 code (=GTIN-13 and GLN)
@@ -68,10 +70,11 @@ public final class EAN13 extends AbstractUPCEAN
    *         {@link EValidity#INVALID} otherwise.
    */
   @Nonnull
-  public static EValidity validateMessage (@Nonnull final String sMsg)
+  public static EValidity validateMessage (@Nullable final String sMsg)
   {
-    if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
-      if (sMsg.length () >= 12 && sMsg.length () <= 13)
+    final int nLen = StringHelper.getLength (sMsg);
+    if (nLen >= 12 && nLen <= 13)
+      if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
         return EValidity.VALID;
     return EValidity.INVALID;
   }
@@ -101,7 +104,7 @@ public final class EAN13 extends AbstractUPCEAN
         else
         {
           // Shouldn't happen because of validateMessage
-          throw new IllegalArgumentException ("Internal error");
+          throw new IllegalArgumentException ("Failed to automatically detect the checksum mode");
         }
     }
 
@@ -111,7 +114,7 @@ public final class EAN13 extends AbstractUPCEAN
       {
         if (sMsg.length () != 12)
           throw new IllegalArgumentException ("Message must be 12 characters long");
-        return sMsg + calcChecksum (sMsg);
+        return sMsg + calcChecksumChar (sMsg, 12);
       }
       case CHECK:
       {
@@ -119,7 +122,7 @@ public final class EAN13 extends AbstractUPCEAN
           throw new IllegalArgumentException ("Message must be 13 characters long");
 
         final char cCheck = sMsg.charAt (12);
-        final char cExpected = calcChecksum (sMsg.substring (0, 12));
+        final char cExpected = calcChecksumChar (sMsg, 12);
         if (cCheck != cExpected)
           throw new IllegalArgumentException ("Checksum is bad (" + cCheck + "). Expected: " + cExpected);
 
