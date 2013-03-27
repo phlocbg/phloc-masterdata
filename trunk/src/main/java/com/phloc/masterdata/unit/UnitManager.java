@@ -51,7 +51,6 @@ public final class UnitManager
   }
 
   private final TIntObjectMap <UnitSector> m_aSectors = new TIntObjectHashMap <UnitSector> ();
-  private final TIntObjectMap <UnitQuantity> m_aQuantities = new TIntObjectHashMap <UnitQuantity> ();
 
   private void _readFromFile (@Nonnull final IReadableResource aRes)
   {
@@ -74,16 +73,11 @@ public final class UnitManager
       m_aSectors.put (aSector.getID (), aSector);
     }
 
-    // Read all quantities
-    for (final IMicroElement eQuantity : eRoot.getFirstChildElement ("quantities").getChildElements ("quantity"))
+    // Read all item
+    for (final IMicroElement eItem : eRoot.getFirstChildElement ("body").getChildElements ("item"))
     {
-      final int nQuantity = StringParser.parseInt (eQuantity.getAttribute ("id"), CGlobal.ILLEGAL_UINT);
-      final IReadonlyMultiLingualText aName = MicroTypeConverter.convertToNative (eQuantity.getFirstChildElement ("name"),
-                                                                                  IReadonlyMultiLingualText.class);
-      final UnitQuantity aQuantity = new UnitQuantity (nQuantity, aName);
-      if (m_aQuantities.containsKey (aQuantity.getID ()))
-        throw new IllegalStateException ("A unit quantity with ID " + aQuantity.getID () + " is already contained!");
-      m_aQuantities.put (aQuantity.getID (), aQuantity);
+      // TODO
+      eItem.getAttribute ("id");
     }
   }
 
@@ -103,12 +97,5 @@ public final class UnitManager
   public Collection <UnitSector> getAllSectors ()
   {
     return ContainerHelper.newList (m_aSectors.valueCollection ());
-  }
-
-  @Nonnull
-  @ReturnsMutableCopy
-  public Collection <UnitQuantity> getAllQuantities ()
-  {
-    return ContainerHelper.newList (m_aQuantities.valueCollection ());
   }
 }
