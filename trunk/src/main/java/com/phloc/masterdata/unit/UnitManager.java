@@ -43,9 +43,11 @@ import com.phloc.commons.text.IReadonlyMultiLingualText;
  */
 public final class UnitManager
 {
+  public static final IReadableResource DEFAULT_UNIT_RES = new ClassPathResource ("codelists/rec20_Rev8e_2012.xml");
+
   private static final class SingletonHolder
   {
-    static final UnitManager s_aInstance = new UnitManager (new ClassPathResource ("codelists/rec20_Rev8e_2012.xml"));
+    static final UnitManager s_aInstance = new UnitManager (DEFAULT_UNIT_RES);
   }
 
   private final TIntObjectMap <UnitSector> m_aSectors = new TIntObjectHashMap <UnitSector> ();
@@ -73,10 +75,10 @@ public final class UnitManager
     }
 
     // Read all quantities
-    for (final IMicroElement eSector : eRoot.getFirstChildElement ("quantities").getChildElements ("quantity"))
+    for (final IMicroElement eQuantity : eRoot.getFirstChildElement ("quantities").getChildElements ("quantity"))
     {
-      final int nQuantity = StringParser.parseInt (eSector.getAttribute ("id"), CGlobal.ILLEGAL_UINT);
-      final IReadonlyMultiLingualText aName = MicroTypeConverter.convertToNative (eSector.getFirstChildElement ("name"),
+      final int nQuantity = StringParser.parseInt (eQuantity.getAttribute ("id"), CGlobal.ILLEGAL_UINT);
+      final IReadonlyMultiLingualText aName = MicroTypeConverter.convertToNative (eQuantity.getFirstChildElement ("name"),
                                                                                   IReadonlyMultiLingualText.class);
       final UnitQuantity aQuantity = new UnitQuantity (nQuantity, aName);
       if (m_aQuantities.containsKey (aQuantity.getID ()))

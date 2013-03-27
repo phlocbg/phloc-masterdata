@@ -24,6 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.id.IHasSimpleIntID;
+import com.phloc.commons.lang.EnumHelper;
 import com.phloc.commons.name.IHasDisplayText;
 
 public enum EISO31 implements IHasSimpleIntID, IHasDisplayText
@@ -41,8 +42,7 @@ public enum EISO31 implements IHasSimpleIntID, IHasDisplayText
   ISO31_10 (10, EISO31Name.ISO31_10),
   ISO31_11 (11, EISO31Name.ISO31_11),
   ISO31_12 (12, EISO31Name.ISO31_12),
-  ISO31_13 (13, EISO31Name.ISO31_13),
-  ISO31_14 (13, EISO31Name.ISO31_14);
+  ISO31_13 (13, EISO31Name.ISO31_13);
 
   private final int m_nID;
   private final IHasDisplayText m_aName;
@@ -63,5 +63,11 @@ public enum EISO31 implements IHasSimpleIntID, IHasDisplayText
   public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return m_aName.getDisplayText (aContentLocale);
+  }
+
+  @Nullable
+  public static EISO31 getFromIDOrNull (final int nID)
+  {
+    return EnumHelper.getFromIDOrNull (EISO31.class, nID);
   }
 }
