@@ -18,8 +18,10 @@
 package com.phloc.masterdata.ean;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.state.EValidity;
+import com.phloc.commons.string.StringHelper;
 
 /**
  * UPC-A implementation (Universal product code; =GTIN-12).
@@ -68,10 +70,11 @@ public final class UPCA extends AbstractUPCEAN
    *         {@link EValidity#INVALID} otherwise.
    */
   @Nonnull
-  public static EValidity validateMessage (@Nonnull final String sMsg)
+  public static EValidity validateMessage (@Nullable final String sMsg)
   {
-    if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
-      if (sMsg.length () >= 11 || sMsg.length () <= 12)
+    final int nLen = StringHelper.getLength (sMsg);
+    if (nLen >= 11 && nLen <= 12)
+      if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
         return EValidity.VALID;
     return EValidity.INVALID;
   }
@@ -105,7 +108,7 @@ public final class UPCA extends AbstractUPCEAN
         else
         {
           // Shouldn't happen because of validateMessage
-          throw new IllegalArgumentException ("Internal error");
+          throw new IllegalArgumentException ("Failed to automatically detect the checksum mode");
         }
     }
     switch (eRealMode)
@@ -114,14 +117,14 @@ public final class UPCA extends AbstractUPCEAN
       {
         if (sMsg.length () != 11)
           throw new IllegalArgumentException ("Message must be 11 characters long");
-        return sMsg + calcChecksum (sMsg);
+        return sMsg + calcChecksumChar (sMsg, 11);
       }
       case CHECK:
       {
         if (sMsg.length () != 12)
           throw new IllegalArgumentException ("Message must be 12 characters long");
         final char cCheck = sMsg.charAt (11);
-        final char cExpected = calcChecksum (sMsg.substring (0, 11));
+        final char cExpected = calcChecksumChar (sMsg, 11);
         if (cCheck != cExpected)
           throw new IllegalArgumentException ("Checksum is bad (" + cCheck + "). Expected: " + cExpected);
         return sMsg;

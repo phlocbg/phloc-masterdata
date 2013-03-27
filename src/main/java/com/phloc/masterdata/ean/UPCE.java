@@ -21,6 +21,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.state.EValidity;
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.StringParser;
 
 /**
@@ -189,16 +190,16 @@ public final class UPCE extends AbstractUPCEAN
             throw new IllegalArgumentException ("Internal error");
           }
     final String sUpcaFinished = aSB.toString ();
-    final char cExpectedCheck = calcChecksum (sUpcaFinished);
+    final char cExpectedCheck = calcChecksumChar (sUpcaFinished, sUpcaFinished.length ());
     if (cCheck != '\u0000' && cCheck != cExpectedCheck)
       throw new IllegalArgumentException ("Invalid checksum. Expected " + cExpectedCheck + " but was " + cCheck);
 
     return sUpcaFinished + cExpectedCheck;
   }
 
-  private static byte _extractNumberSystem (final String sMsg)
+  private static byte _extractNumberSystem (@Nonnull final String sMsg)
   {
-    // Only 0 and 1 are conisdered valid!
+    // Only 0 and 1 are considered valid!
     return StringParser.parseByte (sMsg.substring (0, 1), (byte) -1);
   }
 
@@ -212,15 +213,15 @@ public final class UPCE extends AbstractUPCEAN
    * @return {@link EValidity}
    */
   @Nonnull
-  public static EValidity validateMessage (@Nonnull final String sMsg)
+  public static EValidity validateMessage (@Nullable final String sMsg)
   {
-    if (AbstractUPCEAN.validateMessage (sMsg).isValid ())
-      if (sMsg.length () >= 7 && sMsg.length () <= 8)
-      {
-        final byte nNumberSystem = _extractNumberSystem (sMsg);
-        if (nNumberSystem >= 0 && nNumberSystem <= 1)
-          return EValidity.VALID;
-      }
+    final int nLen = StringHelper.getLength (sMsg);
+    if (nLen >= 7 && nLen <= 8)
+    {
+      final byte nNumberSystem = _extractNumberSystem (sMsg);
+      if (nNumberSystem >= 0 && nNumberSystem <= 1)
+        return EValidity.VALID;
+    }
     return EValidity.INVALID;
   }
 
@@ -242,7 +243,7 @@ public final class UPCE extends AbstractUPCEAN
         else
         {
           // Shouldn't happen because of validateMessage
-          throw new IllegalArgumentException ("Internal error");
+          throw new IllegalArgumentException ("Failed to automatically detect the checksum mode");
         }
     }
     switch (eRealMode)
