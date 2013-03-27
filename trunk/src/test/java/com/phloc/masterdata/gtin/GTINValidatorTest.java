@@ -25,6 +25,18 @@ public final class GTINValidatorTest
   }
 
   @Test
+  public void testIsValidGTIN12 ()
+  {
+    assertTrue (GTINValidator.isValidGTIN12 ("111111111117"));
+    assertFalse (GTINValidator.isValidGTIN12 ("111111111116"));
+    assertFalse (GTINValidator.isValidGTIN12 ("111111111118"));
+    assertFalse (GTINValidator.isValidGTIN12 ("11111111111"));
+    assertFalse (GTINValidator.isValidGTIN12 ("1111111111177"));
+    assertFalse (GTINValidator.isValidGTIN12 (""));
+    assertFalse (GTINValidator.isValidGTIN12 (null));
+  }
+
+  @Test
   public void testIsValidGTIN13 ()
   {
     assertTrue (GTINValidator.isValidGTIN13 ("6291041500213"));
@@ -34,5 +46,29 @@ public final class GTINValidatorTest
     assertFalse (GTINValidator.isValidGTIN13 ("62910415002133"));
     assertFalse (GTINValidator.isValidGTIN13 (""));
     assertFalse (GTINValidator.isValidGTIN13 (null));
+  }
+
+  @Test
+  public void testIsValidGTIN14 ()
+  {
+    assertTrue (GTINValidator.isValidGTIN14 ("11111111111113"));
+    assertFalse (GTINValidator.isValidGTIN14 ("11111111111112"));
+    assertFalse (GTINValidator.isValidGTIN14 ("11111111111114"));
+    assertFalse (GTINValidator.isValidGTIN14 ("1111111111111"));
+    assertFalse (GTINValidator.isValidGTIN14 ("111111111111133"));
+    assertFalse (GTINValidator.isValidGTIN14 (""));
+    assertFalse (GTINValidator.isValidGTIN14 (null));
+  }
+
+  @Test
+  public void testIsValidSSCC ()
+  {
+    assertTrue (GTINValidator.isValidSSCC ("111111111111122227"));
+    assertFalse (GTINValidator.isValidSSCC ("111111111111122226"));
+    assertFalse (GTINValidator.isValidSSCC ("111111111111122228"));
+    assertFalse (GTINValidator.isValidSSCC ("11111111111112222"));
+    assertFalse (GTINValidator.isValidSSCC ("1111111111111222277"));
+    assertFalse (GTINValidator.isValidSSCC (""));
+    assertFalse (GTINValidator.isValidSSCC (null));
   }
 }

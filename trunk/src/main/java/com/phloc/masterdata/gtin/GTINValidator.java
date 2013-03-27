@@ -47,26 +47,43 @@ public final class GTINValidator
   {
     final int nChecksumBase = _calcChecksumBase (aChars, aChars.length - 1);
     final int nChecksum = _getDigit (aChars[aChars.length - 1]);
+    // 1000 is larger as "18*9*3" (18 == length of SSCC; 9 == largest possible
+    // number; 3 == largest multiplication factor)
     return (1000 - nChecksumBase) % 10 == nChecksum;
+  }
+
+  private static boolean _isValidGTIN (@Nullable final String sGTIN, @Nonnegative final int nExpectedLength)
+  {
+    if (StringHelper.getLength (sGTIN) != nExpectedLength)
+      return false;
+    final char [] aChars = sGTIN.toCharArray ();
+    if (!_isNumeric (aChars))
+      return false;
+    return _isValidChecksum (aChars);
   }
 
   public static boolean isValidGTIN8 (@Nullable final String sGTIN8)
   {
-    if (StringHelper.getLength (sGTIN8) != 8)
-      return false;
-    final char [] aChars = sGTIN8.toCharArray ();
-    if (!_isNumeric (aChars))
-      return false;
-    return _isValidChecksum (aChars);
+    return _isValidGTIN (sGTIN8, 8);
+  }
+
+  public static boolean isValidGTIN12 (@Nullable final String sGTIN12)
+  {
+    return _isValidGTIN (sGTIN12, 12);
   }
 
   public static boolean isValidGTIN13 (@Nullable final String sGTIN13)
   {
-    if (StringHelper.getLength (sGTIN13) != 13)
-      return false;
-    final char [] aChars = sGTIN13.toCharArray ();
-    if (!_isNumeric (aChars))
-      return false;
-    return _isValidChecksum (aChars);
+    return _isValidGTIN (sGTIN13, 13);
+  }
+
+  public static boolean isValidGTIN14 (@Nullable final String sGTIN14)
+  {
+    return _isValidGTIN (sGTIN14, 14);
+  }
+
+  public static boolean isValidSSCC (@Nullable final String sSSCC)
+  {
+    return _isValidGTIN (sSSCC, 18);
   }
 }
