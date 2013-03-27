@@ -21,6 +21,11 @@ import javax.annotation.Nonnull;
 
 import com.phloc.commons.state.EValidity;
 
+/**
+ * Validator and checksum creator for EAN8 code (=GTIN-8)
+ * 
+ * @author philip
+ */
 public final class EAN8 extends AbstractUPCEAN
 {
   /**

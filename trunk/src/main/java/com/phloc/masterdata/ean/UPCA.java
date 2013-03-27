@@ -22,7 +22,7 @@ import javax.annotation.Nonnull;
 import com.phloc.commons.state.EValidity;
 
 /**
- * UPC-A implementation (Universal product code)
+ * UPC-A implementation (Universal product code; =GTIN-12).
  * 
  * @author philip
  */

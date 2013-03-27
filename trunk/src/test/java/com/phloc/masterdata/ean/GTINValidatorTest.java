@@ -1,9 +1,11 @@
-package com.phloc.masterdata.gtin;
+package com.phloc.masterdata.ean;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import com.phloc.masterdata.ean.GTINValidator;
 
 /**
  * Test class for class {@link GTINValidator}.
