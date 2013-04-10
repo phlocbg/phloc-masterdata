@@ -17,34 +17,29 @@
  */
 package com.phloc.masterdata.unit;
 
-import javax.annotation.Nonnegative;
-import javax.annotation.Nullable;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
-import com.phloc.commons.id.IHasSimpleIntID;
-import com.phloc.commons.lang.EnumHelper;
+import java.util.Locale;
 
-public enum EUnitLevel implements IHasSimpleIntID
+import org.junit.Test;
+
+/**
+ * Test class for class {@link EISO31}.
+ * 
+ * @author philip
+ */
+public final class EISO31Test
 {
-  NORMATIVE (1),
-  NORMATIVE_EQUIVALENT (2),
-  INFORMATIVE (3);
-
-  private final int m_nID;
-
-  private EUnitLevel (@Nonnegative final int nID)
+  @Test
+  public void testAll ()
   {
-    m_nID = nID;
-  }
-
-  @Nonnegative
-  public int getID ()
-  {
-    return m_nID;
-  }
-
-  @Nullable
-  public static EUnitLevel getFromIDOrNull (final int nID)
-  {
-    return EnumHelper.getFromIDOrNull (EUnitLevel.class, nID);
+    for (final EISO31 e : EISO31.values ())
+    {
+      assertTrue (e.getID () > 0);
+      assertNotNull (e.getDisplayText (Locale.GERMAN));
+      assertSame (e, EISO31.getFromIDOrNull (e.getID ()));
+    }
   }
 }
