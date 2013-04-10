@@ -37,7 +37,7 @@ public final class EISO31Test
   {
     for (final EISO31 e : EISO31.values ())
     {
-      assertTrue (e.getID () > 0);
+      assertTrue (e.getID () >= 0);
       assertNotNull (e.getDisplayText (Locale.GERMAN));
       assertSame (e, EISO31.getFromIDOrNull (e.getID ()));
     }
