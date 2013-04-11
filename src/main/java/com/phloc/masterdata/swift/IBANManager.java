@@ -29,7 +29,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormatter;
 
 import com.phloc.commons.CGlobal;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.exceptions.InitializationException;
 import com.phloc.commons.io.resource.ClassPathResource;
@@ -155,10 +155,10 @@ public final class IBANManager
    *         which IBAN information is present.
    */
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public static Set <String> getAllSupportedCountries ()
   {
-    return ContainerHelper.makeUnmodifiable (s_aIBANData.keySet ());
+    return ContainerHelper.newSet (s_aIBANData.keySet ());
   }
 
   private static int _calculateChecksum (@Nonnull final String sIBAN)
