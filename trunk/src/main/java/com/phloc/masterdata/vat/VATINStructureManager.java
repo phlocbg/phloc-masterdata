@@ -44,7 +44,7 @@ public final class VATINStructureManager
     // Read all information from a file
     final IMicroDocument aDoc = MicroReader.readMicroXML (new ClassPathResource ("codelists/vatin-data.xml"));
     final IMicroElement eRoot = aDoc.getDocumentElement ();
-    for (final IMicroElement eVatin : eRoot.getChildElements ("vatin"))
+    for (final IMicroElement eVatin : eRoot.getAllChildElements ("vatin"))
     {
       // Read country and pattern
       final String sCountry = eVatin.getAttribute ("country");
@@ -52,7 +52,7 @@ public final class VATINStructureManager
 
       // Read all examples
       final List <String> aExamples = new ArrayList <String> ();
-      for (final IMicroElement eExample : eVatin.getChildElements ("example"))
+      for (final IMicroElement eExample : eVatin.getAllChildElements ("example"))
         aExamples.add (eExample.getTextContent ());
 
       // Add the structure

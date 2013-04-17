@@ -60,7 +60,7 @@ public final class UnitManager
     final IMicroElement eRoot = aDoc.getDocumentElement ();
 
     // Read all sectors
-    for (final IMicroElement eSector : eRoot.getFirstChildElement ("sectors").getChildElements ("sector"))
+    for (final IMicroElement eSector : eRoot.getFirstChildElement ("sectors").getAllChildElements ("sector"))
     {
       final int nGroupNum = StringParser.parseInt (eSector.getAttribute ("groupnum"), CGlobal.ILLEGAL_UINT);
       final IReadonlyMultiLingualText aName = MicroTypeConverter.convertToNative (eSector.getFirstChildElement ("name"),
@@ -74,7 +74,7 @@ public final class UnitManager
     }
 
     // Read all item
-    for (final IMicroElement eItem : eRoot.getFirstChildElement ("body").getChildElements ("item"))
+    for (final IMicroElement eItem : eRoot.getFirstChildElement ("body").getAllChildElements ("item"))
     {
       // TODO
       eItem.getAttribute ("id");

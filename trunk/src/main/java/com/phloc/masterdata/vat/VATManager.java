@@ -107,14 +107,14 @@ public final class VATManager implements IVATTypeResolver
 
     final IMicroElement eSources = aDoc.getDocumentElement ().getFirstChildElement ("sources");
     if (eSources != null)
-      for (final IMicroElement eSource : eSources.getChildElements ("source"))
+      for (final IMicroElement eSource : eSources.getAllChildElements ("source"))
       {
         final String sSource = eSource.getTextContent ();
         if (StringHelper.hasText (sSource))
           m_aSources.add (sSource);
       }
 
-    for (final IMicroElement eVATTypes : aDoc.getDocumentElement ().getChildElements ("vattypes"))
+    for (final IMicroElement eVATTypes : aDoc.getDocumentElement ().getAllChildElements ("vattypes"))
     {
       // Country
       final String sCountry = eVATTypes.getAttribute ("country");
@@ -138,7 +138,7 @@ public final class VATManager implements IVATTypeResolver
                                                                  bZeroVATAllowed,
                                                                  sCountryName,
                                                                  sInternalComment);
-      for (final IMicroElement eVATItem : eVATTypes.getChildElements ("item"))
+      for (final IMicroElement eVATItem : eVATTypes.getAllChildElements ("item"))
       {
         // item ID
         final String sID = eVATItem.getAttribute ("id");
