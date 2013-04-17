@@ -102,14 +102,14 @@ public final class PostalCodeListReader
     final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
 
     // Read all countries
-    for (final IMicroElement eCountry : eBody.getChildElements (ELEMENT_COUNTRY))
+    for (final IMicroElement eCountry : eBody.getAllChildElements (ELEMENT_COUNTRY))
     {
       final String sCountryName = eCountry.getAttribute (ATTR_NAME);
       final String sISO = eCountry.getAttribute (ATTR_ISO);
       final PostalCodeCountry aCountry = new PostalCodeCountry (sISO);
 
       // Read all postal code definitions
-      for (final IMicroElement ePostalCode : eCountry.getChildElements (ELEMENT_POSTALCODES))
+      for (final IMicroElement ePostalCode : eCountry.getAllChildElements (ELEMENT_POSTALCODES))
       {
         final String sValidFrom = ePostalCode.getAttribute (ATTR_VALIDFROM);
         final LocalDate aValidFrom = sValidFrom == null ? null : ISODateTimeFormat.date ().parseLocalDate (sValidFrom);
@@ -134,7 +134,7 @@ public final class PostalCodeListReader
         }
 
         // Read all formats
-        for (final IMicroElement eFormat : ePostalCode.getChildElements (ELEMENT_FORMAT))
+        for (final IMicroElement eFormat : ePostalCode.getAllChildElements (ELEMENT_FORMAT))
         {
           final String sFormat = eFormat.getTextContent ();
           if (StringHelper.hasNoText (sFormat))
@@ -149,7 +149,7 @@ public final class PostalCodeListReader
         }
 
         // Is exactly one code present?
-        for (final IMicroElement eOneCode : ePostalCode.getChildElements (ELEMENT_SPECIFIC))
+        for (final IMicroElement eOneCode : ePostalCode.getAllChildElements (ELEMENT_SPECIFIC))
           aCountry.addSpecificPostalCode (eOneCode.getTextContent ());
 
         // Is a note present

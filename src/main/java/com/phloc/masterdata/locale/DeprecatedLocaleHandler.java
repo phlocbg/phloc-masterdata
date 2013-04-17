@@ -89,7 +89,7 @@ public final class DeprecatedLocaleHandler
 
     m_aLocales.clear ();
 
-    for (final IMicroElement eLocale : aDoc.getDocumentElement ().getChildElements ("locale"))
+    for (final IMicroElement eLocale : aDoc.getDocumentElement ().getAllChildElements ("locale"))
     {
       final String sLanguage = eLocale.getAttribute ("language");
       final String sCountry = eLocale.getAttribute ("country");

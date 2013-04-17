@@ -48,7 +48,7 @@ public final class FuncTestCreateQuantityEnum
     final IMicroElement eRoot = aDoc.getDocumentElement ();
     // Read all quantities
     final Map <Integer, String> aTexts = new LinkedHashMap <Integer, String> ();
-    for (final IMicroElement eQuantity : eRoot.getFirstChildElement ("quantities").getChildElements ("quantity"))
+    for (final IMicroElement eQuantity : eRoot.getFirstChildElement ("quantities").getAllChildElements ("quantity"))
     {
       final int nQuantity = StringParser.parseInt (eQuantity.getAttribute ("id"), CGlobal.ILLEGAL_UINT);
       final IReadonlyMultiLingualText aName = MicroTypeConverter.convertToNative (eQuantity.getFirstChildElement ("name"),

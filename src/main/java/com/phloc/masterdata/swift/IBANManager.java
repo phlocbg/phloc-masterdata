@@ -103,7 +103,7 @@ public final class IBANManager
 
     final DateTimeFormatter aDTPattern = PDTFormatter.getForPattern (DATETIME_PATTERN, null);
 
-    for (final IMicroElement eCountry : doc.getDocumentElement ().getChildElements (ELEMENT_COUNTRY))
+    for (final IMicroElement eCountry : doc.getDocumentElement ().getAllChildElements (ELEMENT_COUNTRY))
     {
       // get descriptive string
       final String sDesc = eCountry.getTextContent ();
