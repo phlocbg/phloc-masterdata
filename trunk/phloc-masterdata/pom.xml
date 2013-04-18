@@ -23,8 +23,8 @@
   
   <scm>
     <url>http://code.google.com/p/phloc-masterdata/source/browse/</url>
-    <connection>scm:svn:http://phloc-masterdata.googlecode.com/svn/trunk</connection>
-    <developerConnection>scm:svn:https://phloc-masterdata.googlecode.com/svn/trunk</developerConnection>
+    <connection>scm:svn:http://phloc-masterdata.googlecode.com/svn/trunk/phloc-masterdata</connection>
+    <developerConnection>scm:svn:https://phloc-masterdata.googlecode.com/svn/trunk/phloc-masterdata</developerConnection>
   </scm>
 
   <organization>
