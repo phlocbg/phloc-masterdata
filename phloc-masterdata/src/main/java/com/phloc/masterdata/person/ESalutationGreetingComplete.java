@@ -30,9 +30,9 @@ import com.phloc.commons.text.resolve.DefaultTextResolver;
 @Translatable
 public enum ESalutationGreetingComplete implements IHasDisplayText
 {
-  MISTER ("Sehr geehrter", "Dear"),
-  MISSES ("Sehr geehrte", "Dear"),
-  FAMILY ("Liebe", "Dear Familiy"),
+  MISTER ("Sehr geehrter Herr", "Dear Mr"),
+  MISSES ("Sehr geehrte Frau", "Dear Ms"),
+  FAMILY ("Liebe Familie", "Dear Familiy"),
   COMPANY ("Sehr geehrte Damen und Herren", "Dear Sir or Madam"),
   CLUB ("Sehr geehrte Damen und Herren", "Dear Sir or Madam");
 
