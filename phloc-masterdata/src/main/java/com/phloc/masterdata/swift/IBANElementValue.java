@@ -26,7 +26,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Represents the real value of an IBAN element with an IBAN number string.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 final class IBANElementValue

@@ -29,7 +29,7 @@ import com.phloc.masterdata.telephone.IReadonlyTelephoneNumber;
 /**
  * Represents a single location of a company.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyCompanySite extends IHasDisplayName, ITypedObject <String>
 {

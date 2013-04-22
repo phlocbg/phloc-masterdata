@@ -36,7 +36,7 @@ import com.phloc.web.smtp.EmailAddressValidator;
  * @see EmailAddressValidator
  * @see StringEmailAddressNoMXCheckValidator
  * @see StringEmailAddressWithMXCheckValidator
- * @author philip
+ * @author Philip Helger
  */
 public final class StringEmailAddressValidator extends AbstractStringValidator
 {

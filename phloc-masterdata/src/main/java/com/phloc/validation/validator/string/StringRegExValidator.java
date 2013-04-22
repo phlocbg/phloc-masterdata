@@ -35,7 +35,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Checks string values whether they match a certain regular expression.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringRegExValidator extends AbstractStringValidator
 {

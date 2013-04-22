@@ -38,7 +38,7 @@ import com.phloc.masterdata.address.IReadonlyAddress;
 /**
  * Person specific implementation
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Entity
 @Access (value = AccessType.PROPERTY)

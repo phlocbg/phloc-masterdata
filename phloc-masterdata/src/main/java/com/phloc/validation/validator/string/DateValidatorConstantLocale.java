@@ -27,7 +27,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Validating date values with a fixed locale.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public class DateValidatorConstantLocale extends AbstractStringDateValidator
 {

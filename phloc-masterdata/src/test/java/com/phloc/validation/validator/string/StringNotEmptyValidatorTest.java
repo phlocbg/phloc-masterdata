@@ -28,7 +28,7 @@ import com.phloc.commons.text.impl.ConstantTextProvider;
 /**
  * Test class for class {@link StringNotEmptyValidator}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringNotEmptyValidatorTest
 {

@@ -31,7 +31,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 /**
  * Test class for class {@link StringMinLengthValidator}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringMinLengthValidatorTest
 {

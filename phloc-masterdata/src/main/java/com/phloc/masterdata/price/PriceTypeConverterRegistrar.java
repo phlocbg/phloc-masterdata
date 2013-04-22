@@ -46,7 +46,7 @@ public final class PriceTypeConverterRegistrar implements IMicroTypeConverterReg
   /**
    * Common base class for {@link Price} and {@link ReadonlyPrice}
    * 
-   * @author philip
+   * @author Philip Helger
    */
   private abstract static class AbstractPriceConverter implements IMicroTypeConverter
   {

@@ -30,7 +30,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Contains utility methods for addresses.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @ThreadSafe
 public final class AddressUtils

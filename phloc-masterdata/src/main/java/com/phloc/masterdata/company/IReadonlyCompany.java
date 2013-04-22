@@ -29,7 +29,7 @@ import com.phloc.commons.type.ITypedObject;
 /**
  * Base interface representing a read-only company.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyCompany extends ITypedObject <String>
 {

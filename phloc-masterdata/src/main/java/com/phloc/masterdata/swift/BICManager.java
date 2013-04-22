@@ -27,7 +27,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * This class manages the SWIFT Bank Identification Code (BIC).
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class BICManager
 {

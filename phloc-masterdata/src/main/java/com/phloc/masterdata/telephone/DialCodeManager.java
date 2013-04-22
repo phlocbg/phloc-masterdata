@@ -30,7 +30,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Contains a list of dial up codes.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class DialCodeManager
 {

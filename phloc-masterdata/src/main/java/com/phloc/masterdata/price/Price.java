@@ -49,7 +49,7 @@ import com.phloc.masterdata.vat.JPAVATItemIDConverter;
 /**
  * Default implementation of the {@link IPrice} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Entity
 @Embeddable

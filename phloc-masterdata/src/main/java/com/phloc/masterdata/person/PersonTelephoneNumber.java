@@ -37,7 +37,7 @@ import com.phloc.masterdata.telephone.TelephoneNumberWithID;
 /**
  * Person specific implementation
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Entity
 @Access (value = AccessType.PROPERTY)

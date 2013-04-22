@@ -41,7 +41,7 @@ import com.phloc.masterdata.MasterdataUtils;
 /**
  * Default writable implementation of {@link IExtendedEmailAddress}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MappedSuperclass
 @Embeddable

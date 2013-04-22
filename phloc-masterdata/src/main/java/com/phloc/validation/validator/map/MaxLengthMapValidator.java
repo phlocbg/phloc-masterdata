@@ -33,7 +33,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * A validator that checks for the maximum length of a list.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class MaxLengthMapValidator extends AbstractMapValidator
 {

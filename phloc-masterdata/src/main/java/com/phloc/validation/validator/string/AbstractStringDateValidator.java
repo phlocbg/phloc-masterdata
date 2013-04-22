@@ -34,7 +34,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Base class for validating date values.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public abstract class AbstractStringDateValidator extends AbstractStringValidator
 {

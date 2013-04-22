@@ -29,7 +29,7 @@ import com.phloc.commons.name.IHasDisplayText;
 /**
  * Represents salutations for persons.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum ESalutation implements IHasDisplayText, IHasID <String>
 {

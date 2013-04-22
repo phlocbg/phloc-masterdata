@@ -26,7 +26,7 @@ import com.phloc.commons.state.EChange;
 /**
  * The writable version of the address interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IAddress extends IReadonlyAddress, ICloneable <IAddress>
 {

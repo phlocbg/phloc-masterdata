@@ -39,7 +39,7 @@ import com.phloc.commons.text.IReadonlyMultiLingualText;
 /**
  * FIXME THIS CLASS IS NOT YET FINISHED!
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class UnitManager
 {

@@ -38,7 +38,7 @@ import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
  * This class represents a single currency value as the combination of a value
  * and a currency.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Embeddable
 @Entity

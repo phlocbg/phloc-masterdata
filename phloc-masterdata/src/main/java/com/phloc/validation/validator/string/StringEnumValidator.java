@@ -35,7 +35,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
  * Check that a string is part of an enumeration that implements
  * IHasID&lt;String&gt;.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringEnumValidator <ENUMTYPE extends Enum <ENUMTYPE> & IHasID <String>> extends
                                                                                             AbstractStringValidator

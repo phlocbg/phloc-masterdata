@@ -26,7 +26,7 @@ import com.phloc.commons.log.InMemoryLogger;
  * A singleton instance that keeps master data relevant messages, but may bloat
  * the default logging.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public final class MasterdataLogger extends InMemoryLogger

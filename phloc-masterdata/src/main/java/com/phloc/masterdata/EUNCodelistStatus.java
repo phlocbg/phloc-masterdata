@@ -30,7 +30,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Represents the status of single elements within UN code lists.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EUNCodelistStatus implements IHasID <String>
 {

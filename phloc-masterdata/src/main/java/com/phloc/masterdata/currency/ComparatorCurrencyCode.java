@@ -30,7 +30,7 @@ import com.phloc.commons.compare.ESortOrder;
  * A Comparator implementation that compares {@link Currency} objects by their
  * currency code.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ComparatorCurrencyCode extends AbstractComparator <Currency>
 {

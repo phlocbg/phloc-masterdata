@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * Generic company resolver interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface ICompanyResolver
 {

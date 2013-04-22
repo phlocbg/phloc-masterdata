@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 /**
  * Read-only interface for a telephone number.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyTelephoneNumber extends Serializable
 {

@@ -42,7 +42,7 @@ import com.phloc.masterdata.vat.IVATItem;
  * packaging unit (German: Verpackungseinheit) and define a quantity of 1.
  * 
  * @see IReadonlyPriceGraduationItem
- * @author philip
+ * @author Philip Helger
  */
 @MustImplementEqualsAndHashcode
 public interface IReadonlyPriceGraduation extends IHasSize, IHasCurrency

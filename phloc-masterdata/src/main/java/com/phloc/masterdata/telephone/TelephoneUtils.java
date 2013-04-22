@@ -27,7 +27,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Telephone handling utils.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class TelephoneUtils

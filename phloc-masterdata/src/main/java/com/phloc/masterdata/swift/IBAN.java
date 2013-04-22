@@ -31,7 +31,7 @@ import com.phloc.commons.string.StringHelper;
  * This class represents a single IBAN number (SEPA). An IBAN number is a
  * combination of different values that are country dependent.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class IBAN

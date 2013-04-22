@@ -27,7 +27,7 @@ import com.phloc.commons.compare.AbstractCollationComparator;
 /**
  * Comparator that sorts {@link IVATItem} objects by their name.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ComparatorVATItemName extends AbstractCollationComparator <IVATItem>
 {

@@ -24,7 +24,7 @@ import com.phloc.commons.email.IEmailAddress;
 /**
  * Extended interface for an email address with a type.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyExtendedEmailAddress extends IEmailAddress
 {

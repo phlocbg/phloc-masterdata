@@ -10,7 +10,7 @@ import com.phloc.masterdata.ean.GTINValidator;
 /**
  * Test class for class {@link GTINValidator}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class GTINValidatorTest
 {

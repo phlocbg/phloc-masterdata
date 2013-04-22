@@ -30,7 +30,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Check if a URL is valid.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class StringURLValidator extends AbstractStringValidator

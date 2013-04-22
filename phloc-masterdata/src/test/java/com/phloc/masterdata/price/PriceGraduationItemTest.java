@@ -33,7 +33,7 @@ import com.phloc.commons.state.EChange;
 /**
  * Test class for class {@link PriceGraduationItem}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PriceGraduationItemTest
 {

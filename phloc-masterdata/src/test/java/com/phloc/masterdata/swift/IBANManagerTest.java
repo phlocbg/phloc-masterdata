@@ -33,7 +33,7 @@ import com.phloc.datetime.PDTFactory;
 /**
  * Test class for class {@link IBANManager}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class IBANManagerTest
 {

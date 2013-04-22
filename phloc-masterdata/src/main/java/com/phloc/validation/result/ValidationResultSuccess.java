@@ -28,7 +28,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Default implementation of the {@link IValidationResult} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ValidationResultSuccess implements IValidationResult

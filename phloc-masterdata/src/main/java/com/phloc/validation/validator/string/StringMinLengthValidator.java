@@ -34,7 +34,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Check whether a string fulfils a minimum length restriction.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringMinLengthValidator extends AbstractStringValidator
 {

@@ -29,7 +29,7 @@ import com.phloc.commons.state.EChange;
  * Writable version of a currency value. The reading methods are inherited from
  * {@link IReadonlyCurrencyValue}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface ICurrencyValue extends IReadonlyCurrencyValue, ICloneable <ICurrencyValue>
 {

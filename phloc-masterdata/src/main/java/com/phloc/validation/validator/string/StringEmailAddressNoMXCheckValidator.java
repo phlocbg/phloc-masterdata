@@ -30,7 +30,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
  * Validator for email addresses. Uses the {@link EmailAddressUtils} class
  * explicitly not using a MX check if enabled.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringEmailAddressNoMXCheckValidator extends AbstractStringValidator
 {

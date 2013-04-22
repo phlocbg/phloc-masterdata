@@ -24,7 +24,7 @@ import com.phloc.validation.validator.IMapValidator;
 /**
  * Base class for list validators.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public abstract class AbstractMapValidator implements IMapValidator
 {

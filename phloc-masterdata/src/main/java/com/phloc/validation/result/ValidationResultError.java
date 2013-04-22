@@ -31,7 +31,7 @@ import com.phloc.commons.text.impl.TextFormatter;
 /**
  * Default implementation of the {@link IValidationResult} interface.
  *
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ValidationResultError implements IValidationResult

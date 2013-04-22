@@ -26,7 +26,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Utility methods applies to all packages.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class MasterdataUtils

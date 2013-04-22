@@ -34,7 +34,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Contains postal code information for a single country.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public final class PostalCodeCountry implements IPostalCodeCountry

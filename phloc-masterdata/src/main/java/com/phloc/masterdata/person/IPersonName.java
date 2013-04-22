@@ -27,7 +27,7 @@ import com.phloc.commons.state.EChange;
 /**
  * The name of a person.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IPersonName extends IReadonlyPersonName
 {

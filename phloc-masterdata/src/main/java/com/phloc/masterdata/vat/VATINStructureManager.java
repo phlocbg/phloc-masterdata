@@ -34,7 +34,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * This class handles the different VATIN structures for different countries.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class VATINStructureManager
 {

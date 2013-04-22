@@ -28,7 +28,7 @@ import com.phloc.masterdata.vat.IHasVATItem;
 /**
  * Base interface for a price that has a value, a currency and a VAT type.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyPrice extends IHasCurrency, IHasVATItem
 {

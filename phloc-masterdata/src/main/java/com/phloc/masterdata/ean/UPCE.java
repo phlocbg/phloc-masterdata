@@ -27,7 +27,7 @@ import com.phloc.commons.string.StringParser;
 /**
  * UPC-E implementation (Universal product code)
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class UPCE extends AbstractUPCEAN
 {

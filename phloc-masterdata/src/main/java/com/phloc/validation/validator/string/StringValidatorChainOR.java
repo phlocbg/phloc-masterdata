@@ -38,7 +38,7 @@ import com.phloc.validation.validator.IStringValidator;
  * validation succeeds. In case of only validation error, the last error is
  * returned.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public class StringValidatorChainOR extends AbstractStringValidator
 {

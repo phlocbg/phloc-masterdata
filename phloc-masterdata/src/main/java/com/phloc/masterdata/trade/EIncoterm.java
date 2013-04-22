@@ -32,7 +32,7 @@ import com.phloc.commons.name.IHasDisplayText;
  * See Technical documentation 6.5<br>
  * http://de.wikipedia.org/wiki/Incoterms
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EIncoterm implements IHasID <String>, IHasDisplayText
 {

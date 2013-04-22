@@ -35,7 +35,7 @@ import com.phloc.commons.locale.country.CountryCache;
 /**
  * Source: http://www.unece.org/trans/main/wp1/wp1fdoc/disting-signs-5-2001.pdf
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class VehicleSigns

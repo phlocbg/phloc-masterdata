@@ -26,7 +26,7 @@ import com.phloc.commons.annotations.ReturnsMutableCopy;
 /**
  * Generic company manager interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface ICompanyManager extends ICompanyResolver
 {

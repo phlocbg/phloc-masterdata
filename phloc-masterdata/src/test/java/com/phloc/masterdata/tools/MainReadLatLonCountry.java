@@ -39,7 +39,7 @@ import com.phloc.commons.string.StringParser;
  * Read average county longitude and latitude from CSV. The CSV can be
  * downloaded and read as-is!
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class MainReadLatLonCountry
 {

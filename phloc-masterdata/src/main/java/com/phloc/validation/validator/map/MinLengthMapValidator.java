@@ -33,7 +33,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * A validator that checks for the minimum length of a list.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class MinLengthMapValidator extends AbstractMapValidator
 {

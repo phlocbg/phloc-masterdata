@@ -26,7 +26,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Validator for boolean values. Accepts all values.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class BooleanValidator extends AbstractStringValidator
 {
