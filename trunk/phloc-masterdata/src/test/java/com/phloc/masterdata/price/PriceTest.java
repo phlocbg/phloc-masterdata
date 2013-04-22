@@ -38,7 +38,7 @@ import com.phloc.masterdata.vat.VATManager;
 /**
  * Test class for class {@link Price}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PriceTest
 {

@@ -28,7 +28,7 @@ import com.phloc.commons.ICloneable;
 /**
  * The name of a person.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyPersonName extends ICloneable <IReadonlyPersonName>, Serializable
 {

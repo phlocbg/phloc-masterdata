@@ -32,7 +32,7 @@ import com.phloc.masterdata.vat.IVATItem;
 /**
  * The writable interface for a single price graduation.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IPriceGraduation extends IReadonlyPriceGraduation, IClearable
 {

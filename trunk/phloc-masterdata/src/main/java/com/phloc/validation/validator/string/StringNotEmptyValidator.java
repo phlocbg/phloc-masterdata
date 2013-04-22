@@ -34,7 +34,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
  * Check that a string is not empty. This is a special case of the string
  * minimum length validator, having a minimum length of 1 character.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringNotEmptyValidator extends AbstractStringValidator
 {

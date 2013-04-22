@@ -29,7 +29,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Represents a single IBAN element within a country's IBAN description.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 final class IBANElement implements Serializable

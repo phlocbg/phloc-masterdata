@@ -36,7 +36,7 @@ import com.phloc.datetime.period.LocalDatePeriod;
  * The IBAN country data defines a list of elements that are contained within
  * the IBAN number of that country.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class IBANCountryData extends LocalDatePeriod
 {

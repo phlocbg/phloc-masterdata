@@ -20,7 +20,7 @@ package com.phloc.validation.validator;
 /**
  * Special instance of the {@link IBaseValidator} for {@link String} objects.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IStringValidator extends IBaseValidator <String>
 {

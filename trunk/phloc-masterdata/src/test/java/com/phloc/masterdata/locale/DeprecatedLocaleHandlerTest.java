@@ -30,7 +30,7 @@ import com.phloc.commons.locale.country.CountryCache;
 /**
  * Test class for class {@link DeprecatedLocaleHandler}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class DeprecatedLocaleHandlerTest
 {

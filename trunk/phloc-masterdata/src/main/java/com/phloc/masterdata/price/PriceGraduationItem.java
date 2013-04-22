@@ -31,7 +31,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * Default implementation class of {@link IPriceGraduationItem} and
  * {@link IReadonlyPriceGraduationItem}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PriceGraduationItem implements IPriceGraduationItem
 {

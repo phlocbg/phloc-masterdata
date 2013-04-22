@@ -25,7 +25,7 @@ import com.phloc.commons.state.EChange;
 /**
  * Extended interface for an email address with a type.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IExtendedEmailAddress extends IReadonlyExtendedEmailAddress, ICloneable <IExtendedEmailAddress>
 {

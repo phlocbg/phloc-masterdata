@@ -27,7 +27,7 @@ import com.phloc.commons.annotations.MustImplementEqualsAndHashcode;
 /**
  * Interface representing a single read only item of a price graduation.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MustImplementEqualsAndHashcode
 public interface IReadonlyPriceGraduationItem

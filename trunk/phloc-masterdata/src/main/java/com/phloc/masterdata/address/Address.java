@@ -42,7 +42,7 @@ import com.phloc.masterdata.MasterdataUtils;
 /**
  * Writable implementation of the {@link IAddress} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MappedSuperclass
 @Embeddable

@@ -42,7 +42,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * This class manages the deprecated locales.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class DeprecatedLocaleHandler
 {

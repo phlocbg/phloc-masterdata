@@ -36,7 +36,7 @@ import com.phloc.commons.text.IReadonlyMultiLingualText;
 /**
  * Test class for class {@link UnitManager}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class FuncTestCreateQuantityEnum
 {

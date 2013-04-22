@@ -24,7 +24,7 @@ import org.junit.Test;
 /**
  * Test class for class {@link IBAN}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class IBANTest
 {

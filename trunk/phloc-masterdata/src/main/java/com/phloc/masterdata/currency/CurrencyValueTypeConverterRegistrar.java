@@ -42,7 +42,7 @@ public final class CurrencyValueTypeConverterRegistrar implements IMicroTypeConv
    * Common base class for {@link CurrencyValue} and
    * {@link ReadonlyCurrencyValue}
    * 
-   * @author philip
+   * @author Philip Helger
    */
   private abstract static class AbstractCurrencyValueConverter implements IMicroTypeConverter
   {

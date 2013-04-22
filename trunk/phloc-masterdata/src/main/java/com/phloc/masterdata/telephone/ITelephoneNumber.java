@@ -25,7 +25,7 @@ import com.phloc.commons.state.EChange;
 /**
  * Base interface for a telephone number.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface ITelephoneNumber extends IReadonlyTelephoneNumber, ICloneable <ITelephoneNumber>
 {

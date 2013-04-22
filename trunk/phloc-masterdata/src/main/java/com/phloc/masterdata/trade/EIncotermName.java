@@ -30,7 +30,7 @@ import com.phloc.commons.text.resolve.DefaultTextResolver;
 /**
  * Incoterms texts
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Translatable
 public enum EIncotermName implements IHasDisplayText

@@ -29,7 +29,7 @@ import com.phloc.commons.name.IHasDisplayText;
 /**
  * Represents the gender of a person.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EGender implements IHasDisplayText, IHasID <String>
 {

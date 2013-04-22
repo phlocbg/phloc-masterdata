@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 /**
  * Read-only interface of an address.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IReadonlyAddress extends Serializable
 {

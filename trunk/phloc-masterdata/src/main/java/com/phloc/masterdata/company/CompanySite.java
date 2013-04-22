@@ -42,7 +42,7 @@ import com.phloc.masterdata.telephone.TelephoneNumber;
 /**
  * The default implementation of the {@link ICompanySite} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class CompanySite implements ICompanySite
 {

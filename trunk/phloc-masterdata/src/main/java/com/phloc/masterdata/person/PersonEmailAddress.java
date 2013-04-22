@@ -37,7 +37,7 @@ import com.phloc.masterdata.email.IReadonlyExtendedEmailAddress;
 /**
  * Person specific implementation
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Entity
 @Access (value = AccessType.PROPERTY)

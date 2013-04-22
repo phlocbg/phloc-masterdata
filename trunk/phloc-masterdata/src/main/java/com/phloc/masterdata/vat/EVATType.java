@@ -29,7 +29,7 @@ import com.phloc.masterdata.tax.ETaxCategoryUN5305;
  * Determines the different VAT types.<br>
  * Source: http://de.wikipedia.org/wiki/Umsatzsteuer
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EVATType implements IHasID <String>
 {

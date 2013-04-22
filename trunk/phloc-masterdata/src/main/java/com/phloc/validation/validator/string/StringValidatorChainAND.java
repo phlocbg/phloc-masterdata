@@ -37,7 +37,7 @@ import com.phloc.validation.validator.IStringValidator;
  * together. Only if all validators indicate success, the overall validation
  * succeeds. In case of a validation error, the first error is returned.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public class StringValidatorChainAND extends AbstractStringValidator
 {

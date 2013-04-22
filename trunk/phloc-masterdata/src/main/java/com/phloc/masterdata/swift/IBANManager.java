@@ -68,7 +68,7 @@ import com.phloc.datetime.format.PDTFromString;
  * Bank State Branch codes for domestic transfers and SWIFT for international.<br>
  * Source: http://en.wikipedia.org/wiki/International_Bank_Account_Number
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class IBANManager
 {

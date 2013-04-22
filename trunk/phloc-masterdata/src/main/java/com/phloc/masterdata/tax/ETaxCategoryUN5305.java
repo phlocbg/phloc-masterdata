@@ -32,7 +32,7 @@ import com.phloc.commons.name.IHasDisplayText;
  * Based on "5305 Duty or tax or fee category code".<br>
  * Source: http://www.unece.org/trade/untdid/d08b/tred/tred5305.htm
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum ETaxCategoryUN5305 implements IHasID <String>, IHasDisplayText
 {

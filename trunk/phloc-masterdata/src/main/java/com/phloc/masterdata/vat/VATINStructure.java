@@ -40,7 +40,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Represents a VATIN structure for a single country.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class VATINStructure implements IHasCountry

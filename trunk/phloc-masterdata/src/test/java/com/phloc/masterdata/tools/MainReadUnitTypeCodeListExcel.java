@@ -44,7 +44,7 @@ import com.phloc.poi.excel.ExcelReadUtils;
  * Utility to read the Excel file from CEFACT Recommendation No. 20 and convert
  * it to XML for internal use.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class MainReadUnitTypeCodeListExcel
 {

@@ -29,7 +29,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Checks if a string is valid long value (without any min/max constraint).
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class LongValidator extends AbstractStringValidator
 {

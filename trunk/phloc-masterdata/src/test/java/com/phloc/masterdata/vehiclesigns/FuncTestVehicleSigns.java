@@ -34,7 +34,7 @@ import com.phloc.commons.system.SystemHelper;
 /**
  * Source: http://www.unece.org/trans/main/wp1/wp1fdoc/disting-signs-5-2001.pdf
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class FuncTestVehicleSigns
 {

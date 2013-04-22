@@ -40,7 +40,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Manages postal code definitions for different countries.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @ThreadSafe
 public final class PostalCodeManager

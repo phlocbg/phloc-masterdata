@@ -31,7 +31,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Validates {@link BigDecimal} values without constraints.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class BigDecimalValidator extends AbstractStringValidator
 {

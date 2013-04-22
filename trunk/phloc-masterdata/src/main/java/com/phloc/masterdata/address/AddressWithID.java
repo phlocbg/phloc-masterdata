@@ -38,7 +38,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Writable implementation of the {@link IAddress} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MappedSuperclass
 @Embeddable

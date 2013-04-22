@@ -26,7 +26,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * UPC-A implementation (Universal product code; =GTIN-12).
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class UPCA extends AbstractUPCEAN
 {

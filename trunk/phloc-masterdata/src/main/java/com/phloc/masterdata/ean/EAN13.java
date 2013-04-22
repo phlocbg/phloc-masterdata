@@ -26,7 +26,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Validator and checksum creator for EAN13 code (=GTIN-13 and GLN)
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class EAN13 extends AbstractUPCEAN
 {

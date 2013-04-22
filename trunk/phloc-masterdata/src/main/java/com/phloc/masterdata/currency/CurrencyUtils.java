@@ -39,7 +39,7 @@ import com.phloc.commons.locale.LocaleFormatter;
 /**
  * Some currency helper methods.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class CurrencyUtils

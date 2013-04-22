@@ -41,7 +41,7 @@ import com.phloc.commons.type.ObjectType;
 /**
  * The default implementation of the {@link ICompany} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class Company implements ICompany
 {

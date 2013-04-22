@@ -54,7 +54,7 @@ import com.phloc.datetime.format.PDTFromString;
 /**
  * Manages the available VAT types.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public final class VATManager implements IVATTypeResolver

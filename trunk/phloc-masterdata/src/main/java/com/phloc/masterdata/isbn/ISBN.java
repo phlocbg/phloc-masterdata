@@ -25,7 +25,7 @@ import com.phloc.commons.regex.RegExHelper;
 /**
  * Helper class for validating ISBN numbers.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ISBN

@@ -34,7 +34,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Default read-only implementation of {@link IReadonlyExtendedEmailAddress}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ReadonlyExtendedEmailAddress implements IReadonlyExtendedEmailAddress

@@ -29,7 +29,7 @@ import com.phloc.commons.state.IValidityIndicator;
 /**
  * Result of a single validation.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IValidationResult extends IValidityIndicator, IHasDisplayText, Serializable
 {

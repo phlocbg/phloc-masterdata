@@ -32,7 +32,7 @@ import com.phloc.commons.name.IHasDisplayText;
  * Based on "5153 Duty or tax or fee type name code".<br>
  * Source: http://www.unece.org/trade/untdid/d08b/tred/tred5153.htm
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum ETaxTypeUN5153 implements IHasID <String>, IHasDisplayText
 {

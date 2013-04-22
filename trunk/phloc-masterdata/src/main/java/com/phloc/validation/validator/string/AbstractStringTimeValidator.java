@@ -34,7 +34,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Base class for validating time values.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public abstract class AbstractStringTimeValidator extends AbstractStringValidator
 {

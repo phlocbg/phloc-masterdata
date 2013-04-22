@@ -32,7 +32,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * This class contains a single postal code format for a certain country.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class PostalCodeFormat

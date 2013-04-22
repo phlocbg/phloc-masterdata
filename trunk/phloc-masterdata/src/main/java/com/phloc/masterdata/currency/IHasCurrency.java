@@ -22,7 +22,7 @@ import javax.annotation.Nonnull;
 /**
  * Base interface for objects having a currency.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface IHasCurrency
 {

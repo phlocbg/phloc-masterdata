@@ -38,7 +38,7 @@ import com.phloc.masterdata.MasterdataLogger;
 /**
  * Read postal code definitions from an XML resource.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PostalCodeListReader
 {

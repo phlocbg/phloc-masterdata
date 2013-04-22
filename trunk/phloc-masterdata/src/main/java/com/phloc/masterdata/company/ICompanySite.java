@@ -28,7 +28,7 @@ import com.phloc.masterdata.telephone.ITelephoneNumber;
 /**
  * Represents a single location of a company.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public interface ICompanySite extends IReadonlyCompanySite
 {

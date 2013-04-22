@@ -34,7 +34,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Represents all the different VAT items for a single country.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @NotThreadSafe
 public final class VATCountryData implements IHasCountry

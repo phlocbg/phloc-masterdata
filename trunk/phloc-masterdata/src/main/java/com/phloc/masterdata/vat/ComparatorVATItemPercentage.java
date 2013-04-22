@@ -24,7 +24,7 @@ import com.phloc.commons.compare.AbstractNumericComparator;
 /**
  * Comparator that sorts {@link IVATItem} objects by their percentage.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ComparatorVATItemPercentage extends AbstractNumericComparator <IVATItem>
 {

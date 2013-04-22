@@ -37,7 +37,7 @@ import com.phloc.masterdata.MasterdataUtils;
 /**
  * Default writable version of {@link ITelephoneNumber}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MappedSuperclass
 @Embeddable

@@ -26,7 +26,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Validator and checksum creator for EAN8 code (=GTIN-8)
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class EAN8 extends AbstractUPCEAN
 {

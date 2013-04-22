@@ -32,7 +32,7 @@ import com.phloc.masterdata.vat.IVATItem;
 /**
  * Default implementation of the {@link IReadonlyPrice} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ReadonlyPrice implements IReadonlyPrice
 {

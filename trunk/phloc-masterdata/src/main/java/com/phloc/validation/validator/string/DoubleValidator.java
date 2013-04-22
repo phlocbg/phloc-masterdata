@@ -29,7 +29,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
 /**
  * Validates double values without constraints.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class DoubleValidator extends AbstractStringValidator
 {

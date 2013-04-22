@@ -30,7 +30,7 @@ import com.phloc.datetime.period.ILocalDatePeriod;
 /**
  * Defines a single VAT item valid within a country.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MustImplementEqualsAndHashcode
 public interface IVATItem extends IHasDisplayText, IHasID <String>, ILocalDatePeriod

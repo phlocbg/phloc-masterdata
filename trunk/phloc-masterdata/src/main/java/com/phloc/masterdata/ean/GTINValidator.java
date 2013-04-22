@@ -11,7 +11,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Utility class that makes verification of GTIN numbers a bit simpler :)
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class GTINValidator

@@ -30,7 +30,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Test class for class {@link ETaxTypeUN5153}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class ETaxTypeUN5153Test
 {

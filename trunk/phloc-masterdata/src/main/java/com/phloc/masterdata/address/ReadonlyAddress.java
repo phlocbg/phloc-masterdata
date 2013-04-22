@@ -31,7 +31,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Read-only implementation of the {@link IReadonlyAddress} interface.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ReadonlyAddress implements IReadonlyAddress

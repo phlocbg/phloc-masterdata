@@ -29,7 +29,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Default read-only implementation of {@link IReadonlyTelephoneNumber}
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ReadonlyTelephoneNumber implements IReadonlyTelephoneNumber

@@ -31,7 +31,7 @@ import com.phloc.validation.validator.IStringValidator;
 /**
  * Test class for class {@link StringEnumValidator}.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class StringEnumValidatorTest
 {

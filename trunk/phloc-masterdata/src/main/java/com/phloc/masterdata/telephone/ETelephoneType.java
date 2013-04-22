@@ -30,7 +30,7 @@ import com.phloc.commons.name.IHasDisplayText;
 /**
  * Contains the possible telephone number types.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum ETelephoneType implements IHasID <String>, IHasDisplayText
 {

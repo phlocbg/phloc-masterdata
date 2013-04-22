@@ -30,7 +30,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * This class represents a single read only currency value as the combination of
  * a value and a currency.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @Immutable
 public final class ReadonlyCurrencyValue extends AbstractCurrencyValue

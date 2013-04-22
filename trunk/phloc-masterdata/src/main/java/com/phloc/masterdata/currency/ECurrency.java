@@ -43,7 +43,7 @@ import com.phloc.commons.string.StringHelper;
  * A list of pre-selected currencies as specified in ISO 4217.<br>
  * http://en.wikipedia.org/wiki/ISO_4217
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum ECurrency implements IHasID <String>, IHasDisplayText
 {

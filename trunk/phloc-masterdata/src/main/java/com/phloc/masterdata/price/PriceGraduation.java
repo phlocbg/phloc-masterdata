@@ -38,7 +38,7 @@ import com.phloc.masterdata.vat.IVATItem;
  * Default implementation of the {@link IPriceGraduation} and
  * {@link IReadonlyPriceGraduation} interfaces.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public final class PriceGraduation implements IPriceGraduation
 {

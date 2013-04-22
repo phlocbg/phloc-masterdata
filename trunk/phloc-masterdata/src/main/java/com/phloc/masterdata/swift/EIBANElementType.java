@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * Possible elements of an IBAN description.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public enum EIBANElementType
 {

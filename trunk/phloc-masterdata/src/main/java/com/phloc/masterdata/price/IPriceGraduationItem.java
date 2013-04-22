@@ -28,7 +28,7 @@ import com.phloc.commons.state.EChange;
 /**
  * The writable version of a single price graduation item.
  * 
- * @author philip
+ * @author Philip Helger
  */
 @MustImplementEqualsAndHashcode
 public interface IPriceGraduationItem extends IReadonlyPriceGraduationItem

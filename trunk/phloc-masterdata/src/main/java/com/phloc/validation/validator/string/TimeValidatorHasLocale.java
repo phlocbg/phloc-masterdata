@@ -27,7 +27,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * Validating time values with a fixed locale provider.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public class TimeValidatorHasLocale extends AbstractStringTimeValidator
 {

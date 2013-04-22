@@ -24,7 +24,7 @@ import com.phloc.validation.validator.IStringValidator;
 /**
  * Base class for form field validators.
  * 
- * @author philip
+ * @author Philip Helger
  */
 public abstract class AbstractStringValidator implements IStringValidator
 {
