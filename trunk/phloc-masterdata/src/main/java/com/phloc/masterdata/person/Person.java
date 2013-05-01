@@ -42,7 +42,7 @@ import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.system.SystemHelper;
-import com.phloc.db.jpa.converter.JPAJodaLocalDateConverter;
+import com.phloc.db.jpa.eclipselink.converter.JPAJodaLocalDateConverter;
 import com.phloc.masterdata.address.IReadonlyAddress;
 import com.phloc.masterdata.email.IReadonlyExtendedEmailAddress;
 import com.phloc.masterdata.telephone.IReadonlyTelephoneNumber;
