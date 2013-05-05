@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2006-2013 phloc systems
+    http://www.phloc.com
+    office[at]phloc[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
+  <release date="2013-05-05" version="3.2.2" />
+  <entry date="2013-05-05" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to phloc-db 3.0.0</text>
+    </change>
+  </entry>
+  <release date="2013-04-20" version="3.2.1" />
+  <entry date="2013-04-20" category="tech" action="fix">
+    <change>
+      <text locale="en">Fixed texts in salutation greeting complete</text>
+    </change>
+  </entry>
+  <entry date="2013-04-17" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to phloc-commons 4.0.3</text>
+    </change>
+  </entry>
+  <entry date="2013-03-27" category="api" action="add">
+    <change>
+      <text locale="en">Added new class GTINValidator for easy GTIN/GLN validation. Also speedup in AbstractUPCEAN checksum calculation</text>
+    </change>
+  </entry>
+  <release date="2013-03-07" version="3.2.0" />
+  <entry date="2013-03-07" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-scopes 6.0.0</text>
+    </change>
+  </entry>
+  <release date="2013-02-27" version="3.1.0" />
+  <entry date="2013-02-27" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-scopes 5.0.0 and phloc-web 5.0.1</text>
+    </change>
+  </entry>
+  <release date="2013-02-27" version="3.0.5" />
+  <entry date="2013-02-27" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to phloc-scopes 4.5.0</text>
+    </change>
+  </entry>
+  <entry date="2013-02-09" category="data" action="update">
+    <change>
+      <text locale="en">Updated code lists to the most current version</text>
+    </change>
+  </entry>
+  <entry date="2013-01-07" category="api" action="add">
+    <change>
+      <text locale="en">Extended address with optional building number field</text>
+    </change>
+  </entry>
+  <release date="2012-12-28" version="3.0.2" />
+  <entry date="2012-10-30" category="api" action="add">
+    <change>
+      <text locale="en">Extended VATItem data a bit</text>
+    </change>
+  </entry>
+  <entry date="2012-10-24" category="api" action="add">
+    <change>
+      <text locale="en">Added new methods is(Lower|Greater)ThanZero to IReadonlyCurrencyValue</text>
+    </change>
+  </entry>
+  <release date="2012-10-22" version="3.0.1" />
+  <entry date="2012-10-22" category="tech" action="fix">
+    <change>
+      <text locale="en">Fixed translatable texts</text>
+    </change>
+  </entry>
+  <release date="2012-10-22" version="3.0.0" />
+  <entry date="2012-10-13" category="tech" action="add">
+    <change>
+      <text locale="en">First OSS version</text>
+    </change>
+  </entry>
+  <release date="2012-10-13" version="2.8.1" />
+  <entry date="2012-10-13" category="api" action="add">
+    <change>
+      <text locale="en">Extended IPriceGraduation API to easily get the smallest and the largest minimum quantity price graduation item</text>
+    </change>
+  </entry>
+  <release date="2012-09-06" version="2.8.0" />
+  <release date="2012-09-05" version="2.7.7" />
+  <entry date="2012-09-05" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.8.0-RC1</text>
+    </change>
+  </entry>
+  <release date="2012-08-17" version="2.7.6" />
+  <entry date="2012-08-13" category="api" action="add">
+    <change>
+      <text locale="en">Added simpler StringPostalCodeValidator API</text>
+    </change>
+  </entry>
+  <entry date="2012-08-13" category="api" action="add">
+    <change>
+      <text locale="en">Made ICurrencyValue cloneable</text>
+    </change>
+  </entry>
+  <entry date="2012-08-13" category="api" action="add">
+    <change>
+      <text locale="en">Added new implementation classes ReadonlyAddress, ReadonlyTelephoneNumber, ReadonlyExtendedEmailAddress</text>
+    </change>
+  </entry>
+  <release date="2012-08-13" version="2.7.5" />
+  <entry date="2012-08-13" category="api" action="update">
+    <change>
+      <text locale="en">Fixed parameter type in PersonNameUtils</text>
+    </change>
+  </entry>
+  <release date="2012-07-12" version="2.7.4" />
+  <entry date="2012-07-11" category="tech" action="update">
+    <change>
+      <text locale="en">Removed dependency to phloc-net</text>
+    </change>
+  </entry>
+  <release date="2012-06-18" version="2.7.3" />
+  <entry date="2012-06-18" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-net 2.7.0</text>
+    </change>
+  </entry>
+  <release date="2012-06-13" version="2.7.2" />
+  <entry date="2012-06-12" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.6.0-RC1</text>
+    </change>
+  </entry>
+  <entry date="2012-06-06" category="feature" action="fix">
+    <change>
+      <text locale="en">Removed currency "Estonian Kroon" as Estonia now has the Euro</text>
+    </change>
+  </entry>
+  <release date="2012-05-21" version="2.7.1" />
+  <entry date="2012-05-18" category="api" action="add">
+    <change>
+      <text locale="en">Added more constructors to person related objects</text>
+    </change>
+  </entry>
+  <release date="2012-04-23" version="2.7.0" />
+  <entry date="2012-04-23" category="tech" action="update" incompatible="true">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.5.0</text>
+    </change>
+  </entry>
+  <release date="2012-04-12" version="2.6.7" />
+  <entry date="2012-04-12" category="api" action="add">
+    <change>
+      <text locale="en">Added some copy constructors for Person* classes</text>
+    </change>
+  </entry>
+  <release date="2012-04-05" version="2.6.6" />
+  <release date="2012-02-26" version="2.6.5" />
+  <release date="2012-02-24" version="2.6.4" />
+  <entry date="2012-02-24" category="api" action="add">
+    <change>
+      <text locale="en">Added new setting isFirstNameFirst in PersonNameUtils</text>
+    </change>
+  </entry>
+  <release date="2012-02-24" version="2.6.3" />
+  <entry date="2012-02-24" category="api" action="add">
+    <change>
+      <text locale="en">Added a MicroTypeConverter for PersonName</text>
+    </change>
+  </entry>
+  <release date="2012-02-17" version="2.6.2" />
+  <entry date="2012-02-17" category="tech" action="change">
+    <change>
+      <text locale="en">Added a length sanity to all database setter methods taking a String</text>
+    </change>
+  </entry>
+  <release date="2012-01-31" version="2.6.1" />
+  <entry date="2012-01-30" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to phloc-datetime 2.9.0</text>
+    </change>
+  </entry>
+  <release date="2012-01-26" version="2.6.0" />
+  <entry date="2012-01-25" category="tech" action="fix">
+    <change>
+      <text locale="en">Fixed error in CurrencyUtils configuration, if LocaleCache contains a locale with a country for which no currency information is available</text>
+    </change>
+  </entry>
+  <entry date="2012-01-25" category="test" action="add">
+    <change>
+      <text locale="en">Added Address tests</text>
+    </change>
+  </entry>
+  <entry date="2012-01-25" category="api" action="add">
+    <change>
+      <text locale="en">Extended API for Address, ExtendedEmailAddress and TelephoneNumber</text>
+    </change>
+  </entry>
+  <entry date="2012-01-25" category="api" action="add">
+    <change>
+      <text locale="en">New method in VATManager: isZeroVATAllowed</text>
+    </change>
+  </entry>
+  <release date="2012-01-23" version="2.5.13" />
+  <entry date="2012-01-23" category="api" action="add">
+    <change>
+      <text locale="en">Made Address, ExtendedEmailAddress, PersonName and TelephoneNumber cloneable</text>
+    </change>
+  </entry>
+  <release date="2012-01-21" version="2.5.12" />
+  <release date="2012-01-15" version="2.5.11" />
+  <entry date="2012-01-15" category="api" action="add">
+    <change>
+      <text locale="en">Added ECurrency API for (get|set)MinimumFractionDigits</text>
+    </change>
+  </entry>
+  <release date="2012-01-08" version="2.5.10" />
+  <entry date="2012-01-06" category="api" action="add">
+    <change>
+      <text locale="en">Price got new method getDivided</text>
+    </change>
+  </entry>
+  <entry date="2012-01-06" category="api" action="add">
+    <change>
+      <text locale="en">CurrencyValue got new methods getSubtracted and getDivided</text>
+    </change>
+  </entry>
+  <entry date="2012-01-04" category="data" action="change">
+    <change>
+      <text locale="en">Updated CZ reduced VAT rate from 2012-01-01</text>
+    </change>
+  </entry>
+  <entry date="2012-01-04" category="data" action="fix">
+    <change>
+      <text locale="en">Fixed issue in IBAN country data</text>
+    </change>
+  </entry>
+  <release date="2011-12-22" version="2.5.9" />
+  <release date="2011-12-16" version="2.5.8" />
+  <entry date="2011-12-15" category="tech" action="fix">
+    <change>
+      <text locale="en">Improvements for JPA handling for address, email-address and telephone number</text>
+    </change>
+  </entry>
+  <release date="2011-12-13" version="2.5.7" />
+  <entry date="2011-12-08" category="api" action="update">
+    <change>
+      <text locale="en">Added validFrom and validTo to VATItems</text>
+    </change>
+  </entry>
+  <release date="2011-11-06" version="2.5.6" />
+  <entry date="2011-10-24" category="api" action="update">
+    <change>
+      <text locale="en">MasterdataLogger now derived from InMemoryLogger</text>
+    </change>
+  </entry>
+  <entry date="2011-10-06" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.3.0 and phloc-datetime 2.8.0</text>
+    </change>
+  </entry>
+  <release date="2011-10-05" version="2.5.5" />
+  <entry date="2011-10-05" category="tech" action="add">
+    <change>
+      <text locale="en">Added special MasterDataLogger that keeps messages that would normally be logged normally, but tend to bloat the logging</text>
+    </change>
+  </entry>
+  <entry date="2011-09-29" category="tech" action="add">
+    <change>
+      <text locale="en">ReadonlyCurrencyValue and CurrencyValue objects can now be serialized using the MicroTypeConverterRegistry</text>
+    </change>
+  </entry>
+  <entry date="2011-09-28" category="api" action="add">
+    <change>
+      <text locale="en">Extended IReadonlyCompany API</text>
+    </change>
+  </entry>
+  <release date="2011-09-28" version="2.5.4" />
+  <entry date="2011-09-27" category="api" action="add">
+    <change>
+      <text locale="en">Added IReadonlyAddress.getCountryDisplayName</text>
+    </change>
+  </entry>
+  <entry date="2011-09-27" category="api" action="update">
+    <change>
+      <text locale="en">Improved API of ICompanySite and ICompany</text>
+    </change>
+  </entry>
+  <release date="2011-09-13" version="2.5.3" />
+  <entry date="2011-09-12" category="tech" action="update">
+    <change>
+      <text locale="en">Updated translations of UN/CEFACT codelist 5153</text>
+    </change>
+  </entry>
+  <entry date="2011-09-12" category="api" action="update">
+    <change>
+      <text locale="en">Updated to phloc-commons 3.1.0, phloc-db 2.5.2</text>
+    </change>
+  </entry>
+  <release date="2011-09-12" version="2.5.2" />
+  <entry date="2011-08-31" category="api" action="add">
+    <change>
+      <text locale="en">Added the methods getCurrencyFormatted and getValueFormatted to ECurrency</text>
+    </change>
+  </entry>
+  <entry date="2011-08-31" category="api" action="add">
+    <change>
+      <text locale="en">Added new interfaces IHasCurrency and IHasVATItem</text>
+    </change>
+  </entry>
+  <entry date="2011-08-29" category="feature" action="change">
+    <change>
+      <text locale="en">When setting an email address into an ExtendedEmailAddress object no MX check is performed, as this is a performance penalty</text>
+    </change>
+  </entry>
+  <entry date="2011-08-25" category="feature" action="fix">
+    <change>
+      <text locale="en">Name and address elements can now automatically start with upper-case characters if desired</text>
+    </change>
+  </entry>
+  <entry date="2011-08-24" category="api" action="add">
+    <change>
+      <text locale="en">Extended PersonName with getSalutationID method</text>
+    </change>
+  </entry>
+  <release date="2011-08-21" version="2.5.1" />
+  <entry date="2011-08-17" category="api" action="add">
+    <change>
+      <text locale="en">Added support for UN/ECE 5153 code list: ETaxTypeUN5153</text>
+    </change>
+  </entry>
+  <entry date="2011-08-17" category="api" action="add">
+    <change>
+      <text locale="en">Added support for ISO 31 code list</text>
+    </change>
+  </entry>
+  <entry date="2011-08-17" category="api" action="add">
+    <change>
+      <text locale="en">Started unit manager based on UN/CEFACT data</text>
+    </change>
+  </entry>
+</changelog>
