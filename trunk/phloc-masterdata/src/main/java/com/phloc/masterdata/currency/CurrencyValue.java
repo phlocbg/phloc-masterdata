@@ -37,7 +37,7 @@ import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
 /**
  * This class represents a single currency value as the combination of a value
  * and a currency.
- * 
+ *
  * @author Philip Helger
  */
 @Embeddable
@@ -168,7 +168,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   }
 
   @Nonnull
-  public ICurrencyValue getMultiplied (@Nonnull final long nValue)
+  public ICurrencyValue getMultiplied (final long nValue)
   {
     if (nValue == 1)
       return this;
@@ -185,7 +185,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   }
 
   @Nonnull
-  public ICurrencyValue getDivided (@Nonnull final long nValue)
+  public ICurrencyValue getDivided (final long nValue)
   {
     if (nValue == 1)
       return this;

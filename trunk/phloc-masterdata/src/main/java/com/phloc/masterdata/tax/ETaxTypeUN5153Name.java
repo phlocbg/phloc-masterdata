@@ -20,6 +20,7 @@ package com.phloc.masterdata.tax;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Translatable;
 import com.phloc.commons.name.IHasDisplayText;
@@ -91,7 +92,8 @@ public enum ETaxTypeUN5153Name implements IHasDisplayText
     m_aTP = TextProvider.create_DE_EN (sDE, sEN);
   }
 
-  public String getDisplayText (final Locale aContentLocale)
+  @Nullable
+  public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return DefaultTextResolver.getText (this, m_aTP, aContentLocale);
   }

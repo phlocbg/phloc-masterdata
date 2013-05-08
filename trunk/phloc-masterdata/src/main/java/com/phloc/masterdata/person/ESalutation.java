@@ -28,7 +28,7 @@ import com.phloc.commons.name.IHasDisplayText;
 
 /**
  * Represents salutations for persons.
- * 
+ *
  * @author Philip Helger
  */
 public enum ESalutation implements IHasDisplayText, IHasID <String>
@@ -81,7 +81,7 @@ public enum ESalutation implements IHasDisplayText, IHasID <String>
   }
 
   @Nullable
-  public String getDisplayText (final Locale aContentLocale)
+  public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return m_aName.getDisplayText (aContentLocale);
   }

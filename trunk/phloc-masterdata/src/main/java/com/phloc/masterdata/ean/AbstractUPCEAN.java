@@ -31,7 +31,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Main constructor
-   * 
+   *
    * @param sMsg
    *        The code string.
    * @param eMode
@@ -55,7 +55,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Returns the current checksum mode.
-   * 
+   *
    * @return the checksum mode
    */
   @Nonnull
@@ -66,7 +66,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Validate this code.
-   * 
+   *
    * @return {@link EValidity#VALID} if the msg is valid,
    *         {@link EValidity#INVALID} otherwise.
    */
@@ -75,7 +75,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Validates a UPC/EAN message.
-   * 
+   *
    * @param sMsg
    *        the message to validate
    * @return {@link EValidity#VALID} if the msg is valid,
@@ -92,7 +92,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Validates a UPC/EAN/GTIN/GLN message.
-   * 
+   *
    * @param aChars
    *        the chars to validate
    * @return {@link EValidity#VALID} if the msg is valid,
@@ -110,12 +110,12 @@ public abstract class AbstractUPCEAN
     return EValidity.VALID;
   }
 
-  static final int asInt (final char c)
+  static int asInt (final char c)
   {
     return Character.digit (c, 10);
   }
 
-  static final char asChar (final int i)
+  static char asChar (final int i)
   {
     return Character.forDigit (i, 10);
   }
@@ -137,12 +137,12 @@ public abstract class AbstractUPCEAN
 
   /**
    * Calculates the check character for a given message
-   * 
+   *
    * @param sMsg
    *        the message
    * @return char the check character
    */
-  protected static final char calcChecksumChar (@Nonnull final String sMsg, @Nonnegative final int nLength)
+  protected static char calcChecksumChar (@Nonnull final String sMsg, @Nonnegative final int nLength)
   {
     if (sMsg == null)
       throw new NullPointerException ("msg");

@@ -20,13 +20,14 @@ package com.phloc.masterdata.currency;
 import java.math.BigDecimal;
 
 import javax.annotation.CheckReturnValue;
+import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
 import com.phloc.commons.annotations.MustImplementEqualsAndHashcode;
 
 /**
  * Read only interface of a currency value.
- * 
+ *
  * @author Philip Helger
  */
 @MustImplementEqualsAndHashcode
@@ -52,7 +53,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Sum up this currency value with the passed scalar value.
-   * 
+   *
    * @param aValue
    *        The value to add.
    * @return The added value with the same currency.
@@ -63,7 +64,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Sum up this currency value with the passed scalar value.
-   * 
+   *
    * @param nValue
    *        The value to add.
    * @return The added value with the same currency.
@@ -74,7 +75,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Subtract this currency value with the passed scalar value.
-   * 
+   *
    * @param aValue
    *        The value to subtract.
    * @return The subtracted value with the same currency.
@@ -85,7 +86,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Subtract this currency value with the passed scalar value.
-   * 
+   *
    * @param nValue
    *        The value to subtract.
    * @return The subtracted value with the same currency.
@@ -96,7 +97,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Multiply this currency value with the passed scalar value.
-   * 
+   *
    * @param aValue
    *        The multiplicator to use.
    * @return The multiplied value with the same currency.
@@ -107,7 +108,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Multiply this currency value with the passed scalar value.
-   * 
+   *
    * @param nValue
    *        The multiplicator to use.
    * @return The multiplied value with the same currency.
@@ -118,7 +119,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Divide this currency value with the passed scalar value.
-   * 
+   *
    * @param aValue
    *        The divisor to use.
    * @return The divided value with the same currency.
@@ -129,7 +130,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
 
   /**
    * Divide this currency value with the passed scalar value.
-   * 
+   *
    * @param nValue
    *        The divisor to use.
    * @return The divided value with the same currency.
@@ -151,7 +152,7 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
    * @return The value as a formatted currency including the currency sign.
    */
   @Nonnull
-  String getCurrencyFormatted (@Nonnull int nFractionDigits);
+  String getCurrencyFormatted (@Nonnegative int nFractionDigits);
 
   /**
    * @return The value as a formatted currency excluding the currency sign. The
@@ -166,5 +167,5 @@ public interface IReadonlyCurrencyValue extends IHasCurrency
    * @return The value as a formatted currency excluding the currency sign.
    */
   @Nonnull
-  String getValueFormatted (@Nonnull int nFractionDigits);
+  String getValueFormatted (@Nonnegative int nFractionDigits);
 }
