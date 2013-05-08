@@ -33,7 +33,7 @@ import com.phloc.commons.string.ToStringGenerator;
 
 /**
  * Contains postal code information for a single country.
- * 
+ *
  * @author Philip Helger
  */
 @NotThreadSafe
@@ -95,7 +95,8 @@ public final class PostalCodeCountry implements IPostalCodeCountry
     m_aSpecificPostalCodes.add (sSpecificPostalCode);
   }
 
-  @Nullable
+  @Nonnull
+  @ReturnsMutableCopy
   public List <String> getAllSpecificPostalCodes ()
   {
     return ContainerHelper.newList (m_aSpecificPostalCodes);

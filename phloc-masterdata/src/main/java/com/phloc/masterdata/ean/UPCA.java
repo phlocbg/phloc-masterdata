@@ -25,14 +25,14 @@ import com.phloc.commons.string.StringHelper;
 
 /**
  * UPC-A implementation (Universal product code; =GTIN-12).
- * 
+ *
  * @author Philip Helger
  */
 public final class UPCA extends AbstractUPCEAN
 {
   /**
    * Constructor
-   * 
+   *
    * @param sMsg
    *        The code string.
    */
@@ -43,7 +43,7 @@ public final class UPCA extends AbstractUPCEAN
 
   /**
    * Constructor
-   * 
+   *
    * @param sMsg
    *        The code string.
    * @param eMode
@@ -55,6 +55,7 @@ public final class UPCA extends AbstractUPCEAN
   }
 
   @Override
+  @Nonnull
   public EValidity validate ()
   {
     return validateMessage (getMessage ());
@@ -63,7 +64,7 @@ public final class UPCA extends AbstractUPCEAN
   /**
    * Validates a UPC-A message. The method throws IllegalArgumentExceptions if
    * an invalid message is passed.
-   * 
+   *
    * @param sMsg
    *        the message to validate
    * @return {@link EValidity#VALID} if the msg is valid,
@@ -81,7 +82,7 @@ public final class UPCA extends AbstractUPCEAN
 
   /**
    * Does checksum processing according to the checksum mode.
-   * 
+   *
    * @param sMsg
    *        the message to process
    * @param eMode

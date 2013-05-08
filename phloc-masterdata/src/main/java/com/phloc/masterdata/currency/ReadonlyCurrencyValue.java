@@ -29,7 +29,7 @@ import com.phloc.commons.string.ToStringGenerator;
 /**
  * This class represents a single read only currency value as the combination of
  * a value and a currency.
- * 
+ *
  * @author Philip Helger
  */
 @Immutable
@@ -116,7 +116,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
-  public IReadonlyCurrencyValue getMultiplied (@Nonnull final long nValue)
+  public IReadonlyCurrencyValue getMultiplied (final long nValue)
   {
     if (nValue == 1)
       return this;
@@ -133,7 +133,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
-  public IReadonlyCurrencyValue getDivided (@Nonnull final long nValue)
+  public IReadonlyCurrencyValue getDivided (final long nValue)
   {
     if (nValue == 1)
       return this;

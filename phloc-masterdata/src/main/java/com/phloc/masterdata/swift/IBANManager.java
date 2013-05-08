@@ -169,7 +169,7 @@ public final class IBANManager
     for (int nIndex = 0; nIndex < nLength; nIndex++)
     {
       final char c = sCalcBase.charAt (nIndex);
-      int nCurChecksumValue = 0;
+      int nCurChecksumValue;
       if (c >= '0' && c <= '9')
         nCurChecksumValue = c - '0';
       else

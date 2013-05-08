@@ -26,14 +26,14 @@ import com.phloc.commons.string.StringParser;
 
 /**
  * UPC-E implementation (Universal product code)
- * 
+ *
  * @author Philip Helger
  */
 public final class UPCE extends AbstractUPCEAN
 {
   /**
    * Constructor
-   * 
+   *
    * @param sMsg
    *        The code string.
    */
@@ -44,7 +44,7 @@ public final class UPCE extends AbstractUPCEAN
 
   /**
    * Constructor
-   * 
+   *
    * @param sMsg
    *        The code string.
    * @param eMode
@@ -56,6 +56,7 @@ public final class UPCE extends AbstractUPCEAN
   }
 
   @Override
+  @Nonnull
   public EValidity validate ()
   {
     return validateMessage (getMessage ());
@@ -63,7 +64,7 @@ public final class UPCE extends AbstractUPCEAN
 
   /**
    * Compacts an UPC-A message to an UPC-E message if possible.
-   * 
+   *
    * @param sMsg
    *        an UPC-A message
    * @return String the derived UPC-E message (with checksum), null if the
@@ -140,7 +141,7 @@ public final class UPCE extends AbstractUPCEAN
 
   /**
    * Expands an UPC-E message to an UPC-A message.
-   * 
+   *
    * @param sMsg
    *        an UPC-E message (7 or 8 characters)
    * @return String the expanded UPC-A message (with checksum, 12 characters)
@@ -207,7 +208,7 @@ public final class UPCE extends AbstractUPCEAN
    * Validates an UPC-E message. The message can also be UPC-A in which case the
    * message is compacted to a UPC-E message if possible. If it's not possible
    * an IllegalArgumentException is thrown
-   * 
+   *
    * @param sMsg
    *        the message to validate
    * @return {@link EValidity}
