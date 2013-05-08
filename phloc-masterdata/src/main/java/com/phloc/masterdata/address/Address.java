@@ -41,7 +41,7 @@ import com.phloc.masterdata.MasterdataUtils;
 // ESCA-JAVA0116:
 /**
  * Writable implementation of the {@link IAddress} interface.
- * 
+ *
  * @author Philip Helger
  */
 @MappedSuperclass
@@ -340,7 +340,7 @@ public class Address implements IAddress
   @Nonnull
   public Address getClone ()
   {
-    return new Address (this);
+    return new Address (this, SystemHelper.getSystemLocale ());
   }
 
   @Override

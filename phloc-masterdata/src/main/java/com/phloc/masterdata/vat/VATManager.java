@@ -53,7 +53,7 @@ import com.phloc.datetime.format.PDTFromString;
 
 /**
  * Manages the available VAT types.
- * 
+ *
  * @author Philip Helger
  */
 @NotThreadSafe
@@ -173,7 +173,7 @@ public final class VATManager implements IVATTypeResolver
 
         // Deprecated?
         final String sDeprecated = eVATItem.getAttribute ("deprecated");
-        final boolean bDeprecated = sDeprecated == null ? false : StringParser.parseBool (sDeprecated);
+        final boolean bDeprecated = sDeprecated != null && StringParser.parseBool (sDeprecated);
 
         // Valid from (optional)
         final String sValidFrom = eVATItem.getAttribute ("validfrom");
@@ -216,7 +216,7 @@ public final class VATManager implements IVATTypeResolver
 
   /**
    * Check if zero VAT is allowed for the passed country
-   * 
+   *
    * @param aCountry
    *        The country to be checked.
    * @param bUndefinedValue
@@ -238,7 +238,7 @@ public final class VATManager implements IVATTypeResolver
    * Get all VAT types matching the given locale (without any fallback!). It
    * contains both the specific definitions and the locale independent
    * definitions.
-   * 
+   *
    * @param aCountry
    *        The locale to use. May not be <code>null</code>.
    * @return A non-<code>null</code> map from ID to the matching VAT item. Also
@@ -266,7 +266,7 @@ public final class VATManager implements IVATTypeResolver
 
   /**
    * Get the VAT type with the given ID.
-   * 
+   *
    * @param sID
    *        The VAT type ID to search.
    * @return <code>null</code> if no such VAT type exists.
@@ -289,7 +289,7 @@ public final class VATManager implements IVATTypeResolver
   /**
    * Find a matching VAT item with the passed properties, independent of the
    * country.
-   * 
+   *
    * @param eType
    *        The VAT type to use. May be <code>null</code> resulting in a
    *        <code>null</code> result.

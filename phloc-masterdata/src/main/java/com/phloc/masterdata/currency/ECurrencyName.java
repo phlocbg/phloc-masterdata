@@ -70,7 +70,7 @@ public enum ECurrencyName implements IHasDisplayText
     m_aTP = TextProvider.create_DE_EN (sDE, sEN);
   }
 
-  public String getDisplayText (final Locale aContentLocale)
+  public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return DefaultTextResolver.getText (this, m_aTP, aContentLocale);
   }
