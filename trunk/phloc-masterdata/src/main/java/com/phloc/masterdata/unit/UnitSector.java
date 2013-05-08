@@ -66,7 +66,7 @@ public final class UnitSector implements IHasIntID, IHasDisplayText
   }
 
   @Nullable
-  public String getDisplayText (final Locale aContentLocale)
+  public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return m_aName.getTextWithLocaleFallback (aContentLocale);
   }
