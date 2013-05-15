@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.io.IReadableResource;
 import com.phloc.commons.io.resource.ClassPathResource;
@@ -62,5 +63,23 @@ public class ISO639_2Handler
     final String sAlpha2 = aItem.getAlpha2 ();
     if (sAlpha2 != null)
       m_aAlpha2.put (sAlpha2, aItem);
+  }
+
+  @Nullable
+  public ISO639_2Item getItemOfAlpha3Code (@Nullable final String sAlpha3B)
+  {
+    return m_aAlpha3B.get (sAlpha3B);
+  }
+
+  @Nullable
+  public ISO639_2Item getItemOfAlpha3TerminologicCode (@Nullable final String sAlpha3T)
+  {
+    return m_aAlpha3T.get (sAlpha3T);
+  }
+
+  @Nullable
+  public ISO639_2Item getItemOfAlpha2Code (@Nullable final String sAlpha2)
+  {
+    return m_aAlpha2.get (sAlpha2);
   }
 }

@@ -6,10 +6,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.equals.EqualsUtils;
+import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 
-public final class ISO639_2Item implements Serializable
+public class ISO639_2Item implements Serializable
 {
   private final String m_sAlpha3B;
   private final String m_sAlpha3T;
@@ -92,6 +94,32 @@ public final class ISO639_2Item implements Serializable
   public String getFrenchName ()
   {
     return m_sFR;
+  }
+
+  @Override
+  public boolean equals (final Object o)
+  {
+    if (o == this)
+      return true;
+    if (o == null || !getClass ().equals (o.getClass ()))
+      return false;
+    final ISO639_2Item rhs = (ISO639_2Item) o;
+    return m_sAlpha3B.equals (rhs.m_sAlpha3B) &&
+           EqualsUtils.equals (m_sAlpha3T, rhs.m_sAlpha3T) &&
+           EqualsUtils.equals (m_sAlpha2, rhs.m_sAlpha2) &&
+           m_sEN.equals (rhs.m_sEN) &&
+           m_sFR.equals (rhs.m_sFR);
+  }
+
+  @Override
+  public int hashCode ()
+  {
+    return new HashCodeGenerator (this).append (m_sAlpha3B)
+                                       .append (m_sAlpha3T)
+                                       .append (m_sAlpha2)
+                                       .append (m_sEN)
+                                       .append (m_sFR)
+                                       .getHashCode ();
   }
 
   @Override
