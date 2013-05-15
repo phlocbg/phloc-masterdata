@@ -3,6 +3,7 @@ package com.phloc.masterdata.tools;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 import com.phloc.commons.charset.CCharset;
 import com.phloc.commons.io.resource.ClassPathResource;
@@ -56,11 +57,11 @@ public class MainReadISO639_2CodeList
         continue;
 
       final IMicroElement eItem = eRoot.appendElement ("item");
-      eItem.setAttribute ("alpha3", sAlpha3B);
+      eItem.setAttribute ("alpha3", sAlpha3B.toLowerCase (Locale.US));
       if (StringHelper.hasText (sAlpha3T))
-        eItem.setAttribute ("alpha3t", sAlpha3T);
+        eItem.setAttribute ("alpha3t", sAlpha3T.toLowerCase (Locale.US));
       if (StringHelper.hasText (sAlpha2))
-        eItem.setAttribute ("alpha2", sAlpha2);
+        eItem.setAttribute ("alpha2", sAlpha2.toLowerCase (Locale.US));
       eItem.setAttribute ("en", sEN);
       eItem.setAttribute ("fr", sFR);
     }

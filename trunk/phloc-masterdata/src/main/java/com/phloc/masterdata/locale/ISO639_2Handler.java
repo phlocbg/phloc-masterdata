@@ -1,6 +1,7 @@
 package com.phloc.masterdata.locale;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
@@ -68,18 +69,24 @@ public class ISO639_2Handler
   @Nullable
   public ISO639_2Item getItemOfAlpha3Code (@Nullable final String sAlpha3B)
   {
-    return m_aAlpha3B.get (sAlpha3B);
+    if (sAlpha3B == null)
+      return null;
+    return m_aAlpha3B.get (sAlpha3B.toLowerCase (Locale.US));
   }
 
   @Nullable
   public ISO639_2Item getItemOfAlpha3TerminologicCode (@Nullable final String sAlpha3T)
   {
-    return m_aAlpha3T.get (sAlpha3T);
+    if (sAlpha3T == null)
+      return null;
+    return m_aAlpha3T.get (sAlpha3T.toLowerCase (Locale.US));
   }
 
   @Nullable
   public ISO639_2Item getItemOfAlpha2Code (@Nullable final String sAlpha2)
   {
-    return m_aAlpha2.get (sAlpha2);
+    if (sAlpha2 == null)
+      return null;
+    return m_aAlpha2.get (sAlpha2.toLowerCase (Locale.US));
   }
 }
