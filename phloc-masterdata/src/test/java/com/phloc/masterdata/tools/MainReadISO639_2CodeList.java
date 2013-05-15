@@ -26,6 +26,8 @@ public class MainReadISO639_2CodeList
     final IMicroDocument aDoc = new MicroDocument ();
     final IMicroElement eRoot = aDoc.appendElement ("iso639-2");
     String sLine;
+    // Skip the BOM!
+    aReader.read ();
     while ((sLine = aReader.readLine ()) != null)
     {
       // An alpha-3 (bibliographic) code
@@ -48,6 +50,10 @@ public class MainReadISO639_2CodeList
         throw new IllegalArgumentException ("EN");
       if (StringHelper.hasNoText (sFR))
         throw new IllegalArgumentException ("FR");
+
+      // "Reserved for local use"
+      if (sAlpha3B.equals ("qaa-qtz"))
+        continue;
 
       final IMicroElement eItem = eRoot.appendElement ("item");
       eItem.setAttribute ("alpha3", sAlpha3B);

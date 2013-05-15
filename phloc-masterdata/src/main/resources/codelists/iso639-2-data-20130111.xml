@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <iso639-2>
-  <item alpha3="﻿aar" alpha2="aa" en="Afar" fr="afar" />
+  <item alpha3="aar" alpha2="aa" en="Afar" fr="afar" />
   <item alpha3="abk" alpha2="ab" en="Abkhazian" fr="abkhaze" />
   <item alpha3="ace" en="Achinese" fr="aceh" />
   <item alpha3="ach" en="Acoli" fr="acoli" />
@@ -351,7 +351,6 @@
   <item alpha3="pra" en="Prakrit languages" fr="prâkrit, langues" />
   <item alpha3="pro" en="Provençal, Old (to 1500)" fr="provençal ancien (jusqu&#39;à 1500)" />
   <item alpha3="pus" alpha2="ps" en="Pushto; Pashto" fr="pachto" />
-  <item alpha3="qaa-qtz" en="Reserved for local use" fr="réservée à l&#39;usage local" />
   <item alpha3="que" alpha2="qu" en="Quechua" fr="quechua" />
   <item alpha3="raj" en="Rajasthani" fr="rajasthani" />
   <item alpha3="rap" en="Rapanui" fr="rapanui" />
