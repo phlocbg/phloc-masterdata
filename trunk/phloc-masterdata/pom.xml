@@ -61,16 +61,6 @@
       </snapshots>
     </repository>
     <repository>
-      <id>eclipselink</id>
-      <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>        
-    </repository>
-    <repository>
       <id>h2</id>
       <url>http://h2database.com/m2-repo</url>
       <releases>
@@ -134,7 +124,7 @@
     <dependency>
       <groupId>com.phloc</groupId>
       <artifactId>phloc-db</artifactId>
-      <version>3.0.0</version>
+      <version>3.1.0</version>
       <optional>true</optional>
     </dependency>
     
