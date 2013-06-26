@@ -18,7 +18,7 @@
     <orderEntry type="library" name="Maven: com.phloc:phloc-datetime:3.0.5" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.2" level="project" />
     <orderEntry type="library" name="Maven: net.sf.trove4j:trove4j:3.0.3" level="project" />
-    <orderEntry type="library" name="Maven: com.phloc:phloc-web:5.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.phloc:phloc-web:5.0.6" level="project" />
     <orderEntry type="library" name="Maven: com.phloc:phloc-scopes:6.1.3" level="project" />
     <orderEntry type="library" name="Maven: com.phloc:phloc-db:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.phloc:phloc-db-api:1.0.0" level="project" />
