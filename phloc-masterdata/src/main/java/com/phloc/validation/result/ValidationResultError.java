@@ -34,7 +34,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * @author Philip Helger
  */
 @Immutable
-public class ValidationResultError implements IValidationResult
+public class ValidationResultError extends AbstractValidationResultError
 {
   private final IHasDisplayText m_aErrorText;
 
@@ -53,16 +53,6 @@ public class ValidationResultError implements IValidationResult
     if (aErrorText == null)
       throw new NullPointerException ("errorText");
     m_aErrorText = ArrayHelper.isEmpty (aArgs) ? aErrorText : new HasDisplayTextWithArgs (aErrorText, aArgs);
-  }
-
-  public final boolean isValid ()
-  {
-    return false;
-  }
-
-  public final boolean isInvalid ()
-  {
-    return true;
   }
 
   @Nullable
