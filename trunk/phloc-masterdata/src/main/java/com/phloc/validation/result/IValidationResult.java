@@ -34,6 +34,13 @@ import com.phloc.commons.state.IValidityIndicator;
 public interface IValidationResult extends IValidityIndicator, IHasDisplayText, Serializable
 {
   /**
+   * @return The ID of the error. May be <code>null</code> if no error ID is
+   *         supported.
+   */
+  @Nullable
+  String getErrorID ();
+
+  /**
    * Get the error text in case the validation failed.
    * 
    * @param aContentLocale
