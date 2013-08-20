@@ -24,20 +24,19 @@ import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.collections.ArrayHelper;
+import com.phloc.commons.name.HasDisplayTextWithArgs;
 import com.phloc.commons.name.IHasDisplayText;
 import com.phloc.commons.string.ToStringGenerator;
-import com.phloc.commons.text.impl.TextFormatter;
 
 /**
- * Default implementation of the {@link IValidationResult} interface.
- *
+ * Default implementation of the {@link IValidationResult} interface for errors.
+ * 
  * @author Philip Helger
  */
 @Immutable
-public final class ValidationResultError implements IValidationResult
+public class ValidationResultError implements IValidationResult
 {
   private final IHasDisplayText m_aErrorText;
-  private final Object [] m_aArgs;
 
   public ValidationResultError (@Nonnull final IHasDisplayText aErrorText)
   {
@@ -53,16 +52,15 @@ public final class ValidationResultError implements IValidationResult
   {
     if (aErrorText == null)
       throw new NullPointerException ("errorText");
-    m_aErrorText = aErrorText;
-    m_aArgs = ArrayHelper.getCopy (aArgs);
+    m_aErrorText = ArrayHelper.isEmpty (aArgs) ? aErrorText : new HasDisplayTextWithArgs (aErrorText, aArgs);
   }
 
-  public boolean isValid ()
+  public final boolean isValid ()
   {
     return false;
   }
 
-  public boolean isInvalid ()
+  public final boolean isInvalid ()
   {
     return true;
   }
@@ -70,17 +68,12 @@ public final class ValidationResultError implements IValidationResult
   @Nullable
   public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
-    if (m_aErrorText == null)
-      return null;
-    String sErrorText = m_aErrorText.getDisplayText (aContentLocale);
-    if (ArrayHelper.isNotEmpty (m_aArgs))
-      sErrorText = TextFormatter.getFormattedText (sErrorText, m_aArgs);
-    return sErrorText;
+    return m_aErrorText.getDisplayText (aContentLocale);
   }
 
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("errorText", m_aErrorText).append ("args", m_aArgs).toString ();
+    return new ToStringGenerator (this).append ("errorText", m_aErrorText).toString ();
   }
 }
