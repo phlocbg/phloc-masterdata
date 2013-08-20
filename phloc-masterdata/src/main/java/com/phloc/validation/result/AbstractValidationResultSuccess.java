@@ -17,28 +17,48 @@
  */
 package com.phloc.validation.result;
 
+import java.util.Locale;
+
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.string.ToStringGenerator;
+
 /**
- * Default implementation of the {@link IValidationResult} interface.
+ * Abstract implementation of the {@link IValidationResult} interface for
+ * success.
  * 
  * @author Philip Helger
  */
 @Immutable
-public final class ValidationResultSuccess extends AbstractValidationResultSuccess
+public abstract class AbstractValidationResultSuccess implements IValidationResult
 {
-  private static final ValidationResultSuccess s_aSuccess = new ValidationResultSuccess ();
-
-  private ValidationResultSuccess ()
-  {}
-
-  /**
-   * @return The singleton for success. Never <code>null</code>.
-   */
-  @Nonnull
-  public static IValidationResult getInstance ()
+  public final boolean isValid ()
   {
-    return s_aSuccess;
+    return true;
+  }
+
+  public final boolean isInvalid ()
+  {
+    return false;
+  }
+
+  @Nullable
+  public String getErrorID ()
+  {
+    return null;
+  }
+
+  @Nullable
+  public String getDisplayText (@Nonnull final Locale aContentLocale)
+  {
+    return null;
+  }
+
+  @Override
+  public String toString ()
+  {
+    return new ToStringGenerator (this).toString ();
   }
 }

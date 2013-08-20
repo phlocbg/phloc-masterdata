@@ -17,6 +17,7 @@
  */
 package com.phloc.validation.result;
 
+import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.string.ToStringGenerator;
@@ -38,6 +39,12 @@ public abstract class AbstractValidationResultError implements IValidationResult
   public final boolean isInvalid ()
   {
     return true;
+  }
+
+  @Nullable
+  public String getErrorID ()
+  {
+    return null;
   }
 
   @Override
