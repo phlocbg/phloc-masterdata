@@ -25,6 +25,7 @@ import java.util.Locale;
 import org.junit.Test;
 
 import com.phloc.commons.mock.PhlocTestUtils;
+import com.phloc.validation.mock.MockHasLocale;
 
 /**
  * Test class for class {@link TimeValidatorHasLocale}.

@@ -43,10 +43,10 @@ public final class SingleErrorTest
     assertEquals ("any", aFE.getText ());
 
     PhlocTestUtils.testDefaultImplementationWithEqualContentObject (aFE, new SingleError (EFormErrorLevel.ERROR, "any"));
-    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE,
-                                                                        new SingleError (EFormErrorLevel.WARN, "any"));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EFormErrorLevel.WARN,
+                                                                                              "any"));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EFormErrorLevel.ERROR,
-                                                                                            "any other"));
+                                                                                              "any other"));
 
     try
     {

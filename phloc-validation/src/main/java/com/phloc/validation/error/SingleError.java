@@ -46,16 +46,16 @@ public class SingleError implements IError
   }
 
   public SingleError (@Nonnull final EFormErrorLevel eLevel,
-                @Nullable final String sFieldName,
-                @Nonnull @Nonempty final String sText)
+                      @Nullable final String sFieldName,
+                      @Nonnull @Nonempty final String sText)
   {
     this ((String) null, eLevel, sFieldName, sText);
   }
 
   public SingleError (@Nullable final String sID,
-                @Nonnull final EFormErrorLevel eLevel,
-                @Nullable final String sFieldName,
-                @Nonnull @Nonempty final String sText)
+                      @Nonnull final EFormErrorLevel eLevel,
+                      @Nullable final String sFieldName,
+                      @Nonnull @Nonempty final String sText)
   {
     if (eLevel == null)
       throw new NullPointerException ("level");
@@ -149,8 +149,8 @@ public class SingleError implements IError
 
   @Nonnull
   public static SingleError createSuccess (@Nullable final String sID,
-                                     @Nullable final String sFieldName,
-                                     @Nonnull @Nonempty final String sText)
+                                           @Nullable final String sFieldName,
+                                           @Nonnull @Nonempty final String sText)
   {
     return new SingleError (sID, EFormErrorLevel.SUCCESS, sFieldName, sText);
   }
@@ -169,8 +169,8 @@ public class SingleError implements IError
 
   @Nonnull
   public static SingleError createInfo (@Nullable final String sID,
-                                  @Nullable final String sFieldName,
-                                  @Nonnull @Nonempty final String sText)
+                                        @Nullable final String sFieldName,
+                                        @Nonnull @Nonempty final String sText)
   {
     return new SingleError (sID, EFormErrorLevel.INFO, sFieldName, sText);
   }
@@ -189,8 +189,8 @@ public class SingleError implements IError
 
   @Nonnull
   public static SingleError createWarning (@Nullable final String sID,
-                                     @Nullable final String sFieldName,
-                                     @Nonnull @Nonempty final String sText)
+                                           @Nullable final String sFieldName,
+                                           @Nonnull @Nonempty final String sText)
   {
     return new SingleError (sID, EFormErrorLevel.WARN, sFieldName, sText);
   }
@@ -209,8 +209,8 @@ public class SingleError implements IError
 
   @Nonnull
   public static SingleError createError (@Nullable final String sID,
-                                   @Nullable final String sFieldName,
-                                   @Nonnull @Nonempty final String sText)
+                                         @Nullable final String sFieldName,
+                                         @Nonnull @Nonempty final String sText)
   {
     return new SingleError (sID, EFormErrorLevel.ERROR, sFieldName, sText);
   }

@@ -37,8 +37,7 @@ import com.phloc.validation.result.ValidationResultSuccess;
  * 
  * @author Philip Helger
  */
-public final class StringEnumValidator <ENUMTYPE extends Enum <ENUMTYPE> & IHasID <String>> extends
-                                                                                            AbstractStringValidator
+public final class StringEnumValidator <ENUMTYPE extends Enum <ENUMTYPE> & IHasID <String>> extends AbstractStringValidator
 {
   private Class <ENUMTYPE> m_aClass;
   private final IHasDisplayText m_aErrorText;
