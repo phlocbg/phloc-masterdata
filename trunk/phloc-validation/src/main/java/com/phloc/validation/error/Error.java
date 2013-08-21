@@ -42,7 +42,14 @@ public class Error implements IError
 
   public Error (@Nonnull final EFormErrorLevel eLevel, @Nonnull @Nonempty final String sText)
   {
-    this ((String) null, eLevel, (String) null, sText);
+    this (eLevel, (String) null, sText);
+  }
+
+  public Error (@Nonnull final EFormErrorLevel eLevel,
+                @Nullable final String sFieldName,
+                @Nonnull @Nonempty final String sText)
+  {
+    this ((String) null, eLevel, sFieldName, sText);
   }
 
   public Error (@Nullable final String sID,
