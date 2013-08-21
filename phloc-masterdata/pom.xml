@@ -111,6 +111,11 @@
     
     <dependency>
       <groupId>com.phloc</groupId>
+      <artifactId>phloc-validation</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.phloc</groupId>
       <artifactId>phloc-web</artifactId>
       <version>5.0.6</version>
       <optional>true</optional>
