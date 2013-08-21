@@ -78,7 +78,7 @@ public class FormErrors
    */
   public void addGlobalInfo (@Nonnull @Nonempty final String sText)
   {
-    addGlobalItem (Error.createInfo (sText));
+    addGlobalItem (SingleError.createInfo (sText));
   }
 
   /**
@@ -100,7 +100,7 @@ public class FormErrors
    */
   public void addGlobalWarning (@Nonnull @Nonempty final String sText)
   {
-    addGlobalItem (Error.createWarning (sText));
+    addGlobalItem (SingleError.createWarning (sText));
   }
 
   /**
@@ -122,7 +122,7 @@ public class FormErrors
    */
   public void addGlobalError (@Nonnull @Nonempty final String sText)
   {
-    addGlobalItem (Error.createError (sText));
+    addGlobalItem (SingleError.createError (sText));
   }
 
   /**
@@ -160,7 +160,7 @@ public class FormErrors
    */
   public void addFieldInfo (@Nonnull @Nonempty final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    addFieldItem (Error.createInfo (sFieldName, sText));
+    addFieldItem (SingleError.createInfo (sFieldName, sText));
   }
 
   /**
@@ -189,7 +189,7 @@ public class FormErrors
    */
   public void addFieldWarning (@Nonnull @Nonempty final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    addFieldItem (Error.createWarning (sFieldName, sText));
+    addFieldItem (SingleError.createWarning (sFieldName, sText));
   }
 
   /**
@@ -218,7 +218,7 @@ public class FormErrors
    */
   public void addFieldError (@Nonnull @Nonempty final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    addFieldItem (Error.createError (sFieldName, sText));
+    addFieldItem (SingleError.createError (sFieldName, sText));
   }
 
   /**

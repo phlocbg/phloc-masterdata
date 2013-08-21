@@ -104,70 +104,70 @@ public class ErrorList implements IErrorList
 
   public void addSuccess (@Nonnull @Nonempty final String sText)
   {
-    add (Error.createSuccess (sText));
+    add (SingleError.createSuccess (sText));
   }
 
   public void addSuccess (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    add (Error.createSuccess (sFieldName, sText));
+    add (SingleError.createSuccess (sFieldName, sText));
   }
 
   public void addSuccess (@Nullable final String sID,
                           @Nullable final String sFieldName,
                           @Nonnull @Nonempty final String sText)
   {
-    add (Error.createSuccess (sID, sFieldName, sText));
+    add (SingleError.createSuccess (sID, sFieldName, sText));
   }
 
   public void addInfo (@Nonnull @Nonempty final String sText)
   {
-    add (Error.createInfo (sText));
+    add (SingleError.createInfo (sText));
   }
 
   public void addInfo (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    add (Error.createInfo (sFieldName, sText));
+    add (SingleError.createInfo (sFieldName, sText));
   }
 
   public void addInfo (@Nullable final String sID,
                        @Nullable final String sFieldName,
                        @Nonnull @Nonempty final String sText)
   {
-    add (Error.createInfo (sID, sFieldName, sText));
+    add (SingleError.createInfo (sID, sFieldName, sText));
   }
 
   public void addWarning (@Nonnull @Nonempty final String sText)
   {
-    add (Error.createWarning (sText));
+    add (SingleError.createWarning (sText));
   }
 
   public void addWarning (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    add (Error.createWarning (sFieldName, sText));
+    add (SingleError.createWarning (sFieldName, sText));
   }
 
   public void addWarning (@Nullable final String sID,
                           @Nullable final String sFieldName,
                           @Nonnull @Nonempty final String sText)
   {
-    add (Error.createWarning (sID, sFieldName, sText));
+    add (SingleError.createWarning (sID, sFieldName, sText));
   }
 
   public void addError (@Nonnull @Nonempty final String sText)
   {
-    add (Error.createError (sText));
+    add (SingleError.createError (sText));
   }
 
   public void addError (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
-    add (Error.createError (sFieldName, sText));
+    add (SingleError.createError (sFieldName, sText));
   }
 
   public void addError (@Nullable final String sID,
                         @Nullable final String sFieldName,
                         @Nonnull @Nonempty final String sText)
   {
-    add (Error.createError (sID, sFieldName, sText));
+    add (SingleError.createError (sID, sFieldName, sText));
   }
 
   public boolean isEmpty ()

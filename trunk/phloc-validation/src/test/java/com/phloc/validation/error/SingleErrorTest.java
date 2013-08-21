@@ -28,43 +28,43 @@ import com.phloc.commons.mock.PhlocTestUtils;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
- * Test class for class {@link Error}.
+ * Test class for class {@link SingleError}.
  * 
  * @author Philip Helger
  */
-public final class ErrorTest
+public final class SingleErrorTest
 {
   @Test
   @SuppressFBWarnings (value = "NP_NONNULL_PARAM_VIOLATION")
   public void testBasic ()
   {
-    final Error aFE = new Error (EFormErrorLevel.ERROR, "any");
+    final SingleError aFE = new SingleError (EFormErrorLevel.ERROR, "any");
     assertSame (EFormErrorLevel.ERROR, aFE.getLevel ());
     assertEquals ("any", aFE.getText ());
 
-    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (aFE, new Error (EFormErrorLevel.ERROR, "any"));
+    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (aFE, new SingleError (EFormErrorLevel.ERROR, "any"));
     PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE,
-                                                                        new Error (EFormErrorLevel.WARN, "any"));
-    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new Error (EFormErrorLevel.ERROR,
+                                                                        new SingleError (EFormErrorLevel.WARN, "any"));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EFormErrorLevel.ERROR,
                                                                                             "any other"));
 
     try
     {
-      new Error (null, "xy");
+      new SingleError (null, "xy");
       fail ();
     }
     catch (final NullPointerException ex)
     {}
     try
     {
-      new Error (EFormErrorLevel.ERROR, null);
+      new SingleError (EFormErrorLevel.ERROR, null);
       fail ();
     }
     catch (final IllegalArgumentException ex)
     {}
     try
     {
-      new Error (EFormErrorLevel.ERROR, "");
+      new SingleError (EFormErrorLevel.ERROR, "");
       fail ();
     }
     catch (final IllegalArgumentException ex)
