@@ -25,6 +25,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.phloc.commons.error.EErrorLevel;
+
 /**
  * Test class for class {@link ErrorList}.
  * 
@@ -65,7 +67,7 @@ public final class ErrorListTest
     assertFalse (aList.isEmpty ());
     assertEquals (1, aList.getItemCount ());
     assertFalse (aList.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.INFO, aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.INFO, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (1, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -91,7 +93,7 @@ public final class ErrorListTest
     assertFalse (aList.isEmpty ());
     assertEquals (2, aList.getItemCount ());
     assertTrue (aList.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (2, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -117,7 +119,7 @@ public final class ErrorListTest
     assertFalse (aList.isEmpty ());
     assertEquals (3, aList.getItemCount ());
     assertTrue (aList.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (3, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -157,9 +159,9 @@ public final class ErrorListTest
     assertFalse (aList.hasEntryForField ("field1"));
     assertFalse (aList.hasEntryForField ("field2"));
     assertFalse (aList.hasEntryForField (null));
-    assertFalse (aList.hasEntryForField ("field1", EFormErrorLevel.ERROR));
-    assertFalse (aList.hasEntryForField ("field2", EFormErrorLevel.ERROR));
-    assertFalse (aList.hasEntryForField (null, EFormErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField ("field1", EErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField ("field2", EErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField (null, EErrorLevel.ERROR));
     assertEquals (0, aList.getListOfField ("field1").getItemCount ());
     assertEquals (0, aList.getListOfField ("field2").getItemCount ());
     assertEquals (0, aList.getListOfFields ("field1", "field2").getItemCount ());
@@ -177,7 +179,7 @@ public final class ErrorListTest
     assertFalse (aList.isEmpty ());
     assertEquals (1, aList.getItemCount ());
     assertFalse (aList.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.INFO, aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.INFO, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (1, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -187,9 +189,9 @@ public final class ErrorListTest
     assertTrue (aList.hasEntryForField ("field1"));
     assertFalse (aList.hasEntryForField ("field2"));
     assertFalse (aList.hasEntryForField (null));
-    assertFalse (aList.hasEntryForField ("field1", EFormErrorLevel.ERROR));
-    assertFalse (aList.hasEntryForField ("field2", EFormErrorLevel.ERROR));
-    assertFalse (aList.hasEntryForField (null, EFormErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField ("field1", EErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField ("field2", EErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField (null, EErrorLevel.ERROR));
     assertEquals (1, aList.getListOfField ("field1").getItemCount ());
     assertEquals (0, aList.getListOfField ("field2").getItemCount ());
     assertEquals (1, aList.getListOfFields ("field1", "field2").getItemCount ());
@@ -207,7 +209,7 @@ public final class ErrorListTest
     assertFalse (aList.isEmpty ());
     assertEquals (2, aList.getItemCount ());
     assertTrue (aList.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (2, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -217,9 +219,9 @@ public final class ErrorListTest
     assertTrue (aList.hasEntryForField ("field1"));
     assertTrue (aList.hasEntryForField ("field2"));
     assertFalse (aList.hasEntryForField (null));
-    assertFalse (aList.hasEntryForField ("field1", EFormErrorLevel.ERROR));
-    assertTrue (aList.hasEntryForField ("field2", EFormErrorLevel.ERROR));
-    assertFalse (aList.hasEntryForField (null, EFormErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField ("field1", EErrorLevel.ERROR));
+    assertTrue (aList.hasEntryForField ("field2", EErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField (null, EErrorLevel.ERROR));
     assertEquals (1, aList.getListOfField ("field1").getItemCount ());
     assertEquals (1, aList.getListOfField ("field2").getItemCount ());
     assertEquals (2, aList.getListOfFields ("field1", "field2").getItemCount ());
@@ -237,7 +239,7 @@ public final class ErrorListTest
     assertFalse (aList.isEmpty ());
     assertEquals (3, aList.getItemCount ());
     assertTrue (aList.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.ERROR, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (3, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -247,9 +249,9 @@ public final class ErrorListTest
     assertTrue (aList.hasEntryForField ("field1"));
     assertTrue (aList.hasEntryForField ("field2"));
     assertFalse (aList.hasEntryForField (null));
-    assertFalse (aList.hasEntryForField ("field1", EFormErrorLevel.ERROR));
-    assertTrue (aList.hasEntryForField ("field2", EFormErrorLevel.ERROR));
-    assertFalse (aList.hasEntryForField (null, EFormErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField ("field1", EErrorLevel.ERROR));
+    assertTrue (aList.hasEntryForField ("field2", EErrorLevel.ERROR));
+    assertFalse (aList.hasEntryForField (null, EErrorLevel.ERROR));
     assertEquals (2, aList.getListOfField ("field1").getItemCount ());
     assertEquals (1, aList.getListOfField ("field2").getItemCount ());
     assertEquals (3, aList.getListOfFields ("field1", "field2").getItemCount ());

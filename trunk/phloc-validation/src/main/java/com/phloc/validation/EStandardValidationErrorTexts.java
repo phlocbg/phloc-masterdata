@@ -20,15 +20,17 @@ package com.phloc.validation;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Translatable;
 import com.phloc.commons.name.IHasDisplayText;
+import com.phloc.commons.name.IHasDisplayTextWithArgs;
 import com.phloc.commons.text.ITextProvider;
 import com.phloc.commons.text.impl.TextProvider;
 import com.phloc.commons.text.resolve.DefaultTextResolver;
 
 @Translatable
-public enum EStandardValidationErrorTexts implements IHasDisplayText
+public enum EStandardValidationErrorTexts implements IHasDisplayText, IHasDisplayTextWithArgs
 {
   INVALID_EMPTY ("Dieses Feld darf nicht leer sein.", "This field must not be empty."),
   INVALID_LIST_EMPTY ("Mindestens ein Eintrag wird benötigt.", "At least one entry is required."),
@@ -60,8 +62,15 @@ public enum EStandardValidationErrorTexts implements IHasDisplayText
     m_aTP = TextProvider.create_DE_EN (sDE, sEN);
   }
 
+  @Nullable
   public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return DefaultTextResolver.getText (this, m_aTP, aContentLocale);
+  }
+
+  @Nullable
+  public String getDisplayTextWithArgs (@Nonnull final Locale aContentLocale, @Nullable final Object... aArgs)
+  {
+    return DefaultTextResolver.getTextWithArgs (this, m_aTP, aContentLocale, aArgs);
   }
 }

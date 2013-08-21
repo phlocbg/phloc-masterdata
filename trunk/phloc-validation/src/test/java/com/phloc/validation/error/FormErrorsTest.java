@@ -25,6 +25,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.phloc.commons.error.EErrorLevel;
+
 /**
  * Test class for class {@link FormErrors}.
  * 
@@ -43,12 +45,12 @@ public final class FormErrorsTest
     aFEL.addFieldInfo ("f1", "info");
     assertFalse (aFEL.isEmpty ());
     assertFalse (aFEL.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.INFO, aFEL.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.INFO, aFEL.getMostSevereErrorLevel ());
 
     aFEL.addFieldError ("f2", "error");
     assertFalse (aFEL.isEmpty ());
     assertTrue (aFEL.hasErrorsOrWarnings ());
-    assertEquals (EFormErrorLevel.ERROR, aFEL.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.ERROR, aFEL.getMostSevereErrorLevel ());
 
     assertNotNull (aFEL.getListOfField ("f1"));
     assertFalse (aFEL.getListOfField ("f1").isEmpty ());

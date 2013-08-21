@@ -18,11 +18,13 @@
 package com.phloc.validation.error;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import com.phloc.commons.error.EErrorLevel;
 import com.phloc.commons.mock.PhlocTestUtils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -38,14 +40,15 @@ public final class SingleErrorTest
   @SuppressFBWarnings (value = "NP_NONNULL_PARAM_VIOLATION")
   public void testBasic ()
   {
-    final SingleError aFE = new SingleError (EFormErrorLevel.ERROR, "any");
-    assertSame (EFormErrorLevel.ERROR, aFE.getLevel ());
-    assertEquals ("any", aFE.getText ());
+    final SingleError aFE = new SingleError (EErrorLevel.ERROR, "any");
+    assertNull (aFE.getErrorID ());
+    assertSame (EErrorLevel.ERROR, aFE.getErrorLevel ());
+    assertNull (aFE.getErrorFieldName ());
+    assertEquals ("any", aFE.getErrorText ());
 
-    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (aFE, new SingleError (EFormErrorLevel.ERROR, "any"));
-    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EFormErrorLevel.WARN,
-                                                                                              "any"));
-    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EFormErrorLevel.ERROR,
+    PhlocTestUtils.testDefaultImplementationWithEqualContentObject (aFE, new SingleError (EErrorLevel.ERROR, "any"));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EErrorLevel.WARN, "any"));
+    PhlocTestUtils.testDefaultImplementationWithDifferentContentObject (aFE, new SingleError (EErrorLevel.ERROR,
                                                                                               "any other"));
 
     try
@@ -57,14 +60,14 @@ public final class SingleErrorTest
     {}
     try
     {
-      new SingleError (EFormErrorLevel.ERROR, null);
+      new SingleError (EErrorLevel.ERROR, null);
       fail ();
     }
     catch (final IllegalArgumentException ex)
     {}
     try
     {
-      new SingleError (EFormErrorLevel.ERROR, "");
+      new SingleError (EErrorLevel.ERROR, "");
       fail ();
     }
     catch (final IllegalArgumentException ex)

@@ -21,31 +21,26 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.error.IHasErrorLevel;
 
 /**
  * Base interface for a single error.
  * 
  * @author Philip Helger
  */
-public interface IError extends IHasErrorID
+public interface IError extends IHasErrorID, IHasErrorLevel
 {
-  /**
-   * @return The level of this error. May not be <code>null</code>.
-   */
-  @Nonnull
-  EFormErrorLevel getLevel ();
-
   /**
    * @return The field for which the error occurred. May be <code>null</code>.
    */
   @Nullable
-  String getFieldName ();
+  String getErrorFieldName ();
 
   /**
    * @return <code>true</code> if a field name is present, <code>false</code>
    *         otherwise
    */
-  boolean hasFieldName ();
+  boolean hasErrorFieldName ();
 
   /**
    * @return The message of this form error. The error text is always locale
@@ -55,5 +50,5 @@ public interface IError extends IHasErrorID
    */
   @Nonnull
   @Nonempty
-  String getText ();
+  String getErrorText ();
 }
