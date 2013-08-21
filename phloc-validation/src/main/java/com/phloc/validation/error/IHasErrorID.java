@@ -15,18 +15,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.phloc.validation.result;
+package com.phloc.validation.error;
 
-import java.io.Serializable;
-
-import com.phloc.commons.state.IValidityIndicator;
+import javax.annotation.Nullable;
 
 /**
- * Result of a single validation.
+ * Interface for objects having an error ID
  * 
  * @author Philip Helger
  */
-public interface IValidationResult extends IValidityIndicator, Serializable
+public interface IHasErrorID
 {
-  /* empty */
+  /**
+   * @return The error ID. May be <code>null</code>.
+   */
+  @Nullable
+  String getErrorID ();
+
+  /**
+   * @return <code>true</code> if an error ID is present, <code>false</code>
+   *         otherwise
+   */
+  boolean hasErrorID ();
 }
