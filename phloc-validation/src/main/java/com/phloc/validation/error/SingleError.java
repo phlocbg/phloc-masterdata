@@ -33,26 +33,26 @@ import com.phloc.commons.string.ToStringGenerator;
  * @author Philip Helger
  */
 @Immutable
-public class Error implements IError
+public class SingleError implements IError
 {
   private final String m_sID;
   private final EFormErrorLevel m_eLevel;
   private final String m_sFieldName;
   private final String m_sText;
 
-  public Error (@Nonnull final EFormErrorLevel eLevel, @Nonnull @Nonempty final String sText)
+  public SingleError (@Nonnull final EFormErrorLevel eLevel, @Nonnull @Nonempty final String sText)
   {
     this (eLevel, (String) null, sText);
   }
 
-  public Error (@Nonnull final EFormErrorLevel eLevel,
+  public SingleError (@Nonnull final EFormErrorLevel eLevel,
                 @Nullable final String sFieldName,
                 @Nonnull @Nonempty final String sText)
   {
     this ((String) null, eLevel, sFieldName, sText);
   }
 
-  public Error (@Nullable final String sID,
+  public SingleError (@Nullable final String sID,
                 @Nonnull final EFormErrorLevel eLevel,
                 @Nullable final String sFieldName,
                 @Nonnull @Nonempty final String sText)
@@ -106,9 +106,9 @@ public class Error implements IError
   {
     if (o == this)
       return true;
-    if (!(o instanceof Error))
+    if (!(o instanceof SingleError))
       return false;
-    final Error rhs = (Error) o;
+    final SingleError rhs = (SingleError) o;
     return EqualsUtils.equals (m_sID, rhs.m_sID) &&
            m_eLevel.equals (rhs.m_eLevel) &&
            EqualsUtils.equals (m_sFieldName, rhs.m_sFieldName) &&
@@ -136,82 +136,82 @@ public class Error implements IError
   }
 
   @Nonnull
-  public static Error createSuccess (@Nonnull @Nonempty final String sText)
+  public static SingleError createSuccess (@Nonnull @Nonempty final String sText)
   {
     return createSuccess (null, null, sText);
   }
 
   @Nonnull
-  public static Error createSuccess (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
+  public static SingleError createSuccess (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
     return createSuccess (null, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createSuccess (@Nullable final String sID,
+  public static SingleError createSuccess (@Nullable final String sID,
                                      @Nullable final String sFieldName,
                                      @Nonnull @Nonempty final String sText)
   {
-    return new Error (sID, EFormErrorLevel.SUCCESS, sFieldName, sText);
+    return new SingleError (sID, EFormErrorLevel.SUCCESS, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createInfo (@Nonnull @Nonempty final String sText)
+  public static SingleError createInfo (@Nonnull @Nonempty final String sText)
   {
     return createInfo (null, null, sText);
   }
 
   @Nonnull
-  public static Error createInfo (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
+  public static SingleError createInfo (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
     return createInfo (null, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createInfo (@Nullable final String sID,
+  public static SingleError createInfo (@Nullable final String sID,
                                   @Nullable final String sFieldName,
                                   @Nonnull @Nonempty final String sText)
   {
-    return new Error (sID, EFormErrorLevel.INFO, sFieldName, sText);
+    return new SingleError (sID, EFormErrorLevel.INFO, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createWarning (@Nonnull @Nonempty final String sText)
+  public static SingleError createWarning (@Nonnull @Nonempty final String sText)
   {
     return createWarning (null, null, sText);
   }
 
   @Nonnull
-  public static Error createWarning (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
+  public static SingleError createWarning (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
     return createWarning (null, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createWarning (@Nullable final String sID,
+  public static SingleError createWarning (@Nullable final String sID,
                                      @Nullable final String sFieldName,
                                      @Nonnull @Nonempty final String sText)
   {
-    return new Error (sID, EFormErrorLevel.WARN, sFieldName, sText);
+    return new SingleError (sID, EFormErrorLevel.WARN, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createError (@Nonnull @Nonempty final String sText)
+  public static SingleError createError (@Nonnull @Nonempty final String sText)
   {
     return createError (null, null, sText);
   }
 
   @Nonnull
-  public static Error createError (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
+  public static SingleError createError (@Nullable final String sFieldName, @Nonnull @Nonempty final String sText)
   {
     return createError (null, sFieldName, sText);
   }
 
   @Nonnull
-  public static Error createError (@Nullable final String sID,
+  public static SingleError createError (@Nullable final String sID,
                                    @Nullable final String sFieldName,
                                    @Nonnull @Nonempty final String sText)
   {
-    return new Error (sID, EFormErrorLevel.ERROR, sFieldName, sText);
+    return new SingleError (sID, EFormErrorLevel.ERROR, sFieldName, sText);
   }
 }
