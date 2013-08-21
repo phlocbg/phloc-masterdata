@@ -28,6 +28,7 @@ import javax.annotation.concurrent.NotThreadSafe;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.multimap.IMultiMapListBased;
+import com.phloc.commons.error.EErrorLevel;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.text.IPredefinedLocaleTextProvider;
@@ -307,13 +308,13 @@ public class FormErrors
    * form-global and form-field-specific messages.
    * 
    * @return <code>null</code> if no message was recorded at all, the non-
-   *         <code>null</code> {@link EFormErrorLevel} otherwise.
+   *         <code>null</code> {@link EErrorLevel} otherwise.
    */
   @Nullable
-  public EFormErrorLevel getMostSevereErrorLevel ()
+  public EErrorLevel getMostSevereErrorLevel ()
   {
-    final EFormErrorLevel ret = m_aFormGlobalErrs.getMostSevereErrorLevel ();
-    final EFormErrorLevel ret2 = m_aFormFieldErrs.getMostSevereErrorLevel ();
+    final EErrorLevel ret = m_aFormGlobalErrs.getMostSevereErrorLevel ();
+    final EErrorLevel ret2 = m_aFormFieldErrs.getMostSevereErrorLevel ();
     return ret == null ? ret2 : ret2 == null ? ret : ret.isMoreSevereThan (ret2) ? ret : ret2;
   }
 
@@ -342,15 +343,14 @@ public class FormErrors
     return m_aFormFieldErrs.hasEntryForField (sSearchFieldName);
   }
 
-  public boolean hasEntryForField (@Nullable final String sSearchFieldName,
-                                   @Nonnull final EFormErrorLevel eFormErrorLevel)
+  public boolean hasEntryForField (@Nullable final String sSearchFieldName, @Nonnull final EErrorLevel eErrorLevel)
   {
-    return m_aFormFieldErrs.hasEntryForField (sSearchFieldName, eFormErrorLevel);
+    return m_aFormFieldErrs.hasEntryForField (sSearchFieldName, eErrorLevel);
   }
 
   public boolean hasErrorForField (@Nullable final String sSearchFieldName)
   {
-    return hasEntryForField (sSearchFieldName, EFormErrorLevel.ERROR);
+    return hasEntryForField (sSearchFieldName, EErrorLevel.ERROR);
   }
 
   @Nonnull

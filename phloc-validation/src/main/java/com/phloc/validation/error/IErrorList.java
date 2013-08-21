@@ -27,6 +27,7 @@ import javax.annotation.RegEx;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.multimap.IMultiMapListBased;
+import com.phloc.commons.error.EErrorLevel;
 
 /**
  * A simple read only form error list interface. For a field specific list look
@@ -59,7 +60,7 @@ public interface IErrorList extends Iterable <IError>
    *         <code>null</code> if the list is empty.
    */
   @Nullable
-  EFormErrorLevel getMostSevereErrorLevel ();
+  EErrorLevel getMostSevereErrorLevel ();
 
   /**
    * @return An immutable list of all contained entries. Never <code>null</code>
@@ -101,12 +102,12 @@ public interface IErrorList extends Iterable <IError>
    * 
    * @param sSearchFieldName
    *        The field name to search.
-   * @param eFormErrorLevel
+   * @param eErrorLevel
    *        The form error level to search. May not be <code>null</code>
    * @return <code>true</code> if an entry for the specified field is present
    *         that has exactly the specified form error level
    */
-  boolean hasEntryForField (@Nullable String sSearchFieldName, @Nullable EFormErrorLevel eFormErrorLevel);
+  boolean hasEntryForField (@Nullable String sSearchFieldName, @Nullable EErrorLevel eErrorLevel);
 
   /**
    * Get a sub-list with all entries for the specified field name
