@@ -18,11 +18,8 @@
 package com.phloc.validation.result;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Locale;
 
 import org.junit.Test;
 
@@ -44,7 +41,5 @@ public final class ValidationResultSuccessTest
     assertSame (x1, x2);
     assertTrue (x1.isValid ());
     assertFalse (x1.isInvalid ());
-    assertNull (x1.getDisplayText (null));
-    assertNull (x1.getDisplayText (Locale.US));
   }
 }

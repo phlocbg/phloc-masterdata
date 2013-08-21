@@ -20,6 +20,7 @@ package com.phloc.validation.result;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 
 /**
@@ -29,7 +30,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * @author Philip Helger
  */
 @Immutable
-public abstract class AbstractValidationResultError implements IValidationResult
+public abstract class AbstractValidationResultError implements IValidationError
 {
   public final boolean isValid ()
   {
@@ -45,6 +46,11 @@ public abstract class AbstractValidationResultError implements IValidationResult
   public String getErrorID ()
   {
     return null;
+  }
+
+  public boolean hasErrorID ()
+  {
+    return StringHelper.hasText (getErrorID ());
   }
 
   @Override
