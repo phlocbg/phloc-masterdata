@@ -22,7 +22,12 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public interface IVATTypeResolver
+/**
+ * Interface for objects having VAT items.
+ * 
+ * @author Philip Helger
+ */
+public interface IVATItemResolver
 {
   /**
    * Get the VAT type with the given ID.

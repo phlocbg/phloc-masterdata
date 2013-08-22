@@ -29,7 +29,7 @@ import com.phloc.commons.compare.AbstractCollationComparator;
  * 
  * @author Philip Helger
  */
-public final class ComparatorVATItemName extends AbstractCollationComparator <IVATItem>
+public class ComparatorVATItemName extends AbstractCollationComparator <IVATItem>
 {
   private final Locale m_aContentLocale;
 

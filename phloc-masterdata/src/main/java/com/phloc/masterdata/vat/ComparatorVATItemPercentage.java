@@ -17,17 +17,64 @@
  */
 package com.phloc.masterdata.vat;
 
+import java.util.Comparator;
+
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.compare.AbstractNumericComparator;
+import com.phloc.commons.compare.ESortOrder;
 
 /**
  * Comparator that sorts {@link IVATItem} objects by their percentage.
  * 
  * @author Philip Helger
  */
-public final class ComparatorVATItemPercentage extends AbstractNumericComparator <IVATItem>
+public class ComparatorVATItemPercentage extends AbstractNumericComparator <IVATItem>
 {
+  public ComparatorVATItemPercentage ()
+  {
+    super ();
+  }
+
+  /**
+   * Compare with a special order.
+   * 
+   * @param eSortOrder
+   *        The sort order to use. May not be <code>null</code>.
+   */
+  public ComparatorVATItemPercentage (@Nonnull final ESortOrder eSortOrder)
+  {
+    super (eSortOrder);
+  }
+
+  /**
+   * Comparator with default sort order and a nested comparator.
+   * 
+   * @param aNestedComparator
+   *        The nested comparator to be invoked, when the main comparison
+   *        resulted in 0.
+   */
+  public ComparatorVATItemPercentage (@Nullable final Comparator <? super IVATItem> aNestedComparator)
+  {
+    super (aNestedComparator);
+  }
+
+  /**
+   * Comparator with sort order and a nested comparator.
+   * 
+   * @param eSortOrder
+   *        The sort order to use. May not be <code>null</code>.
+   * @param aNestedComparator
+   *        The nested comparator to be invoked, when the main comparison
+   *        resulted in 0.
+   */
+  public ComparatorVATItemPercentage (@Nonnull final ESortOrder eSortOrder,
+                                      @Nullable final Comparator <? super IVATItem> aNestedComparator)
+  {
+    super (eSortOrder, aNestedComparator);
+  }
+
   @Override
   protected double asDouble (@Nullable final IVATItem aVATItem)
   {
