@@ -17,15 +17,13 @@
  */
 package com.phloc.validation.result;
 
-import com.phloc.commons.name.IHasDisplayText;
-import com.phloc.validation.error.IHasErrorID;
 
 /**
  * A single validation error.
  * 
  * @author Philip Helger
  */
-public interface IValidationError extends IValidationResult, IHasErrorID, IHasDisplayText
+public interface IValidationError extends IValidationResult
 {
   /* empty */
 }

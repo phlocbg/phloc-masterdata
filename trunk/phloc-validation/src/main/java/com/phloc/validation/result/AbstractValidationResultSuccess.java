@@ -17,8 +17,13 @@
  */
 package com.phloc.validation.result;
 
+import java.util.Locale;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 
 /**
@@ -38,6 +43,23 @@ public abstract class AbstractValidationResultSuccess implements IValidationResu
   public final boolean isInvalid ()
   {
     return false;
+  }
+
+  @Nullable
+  public String getErrorID ()
+  {
+    return null;
+  }
+
+  public boolean hasErrorID ()
+  {
+    return StringHelper.hasText (getErrorID ());
+  }
+
+  @Nullable
+  public String getDisplayText (@Nonnull final Locale aContentLocale)
+  {
+    return null;
   }
 
   @Override
