@@ -26,8 +26,10 @@
   <!-- EU countries -->
   <vattypes country="at" zerovat="true" countryname="Austria">
     <item id="v20" percentage="20" type="regular" />
-    <item id="v12" percentage="12" type="reduced" />
+    <item id="v19" percentage="19" type="other" />
+    <item id="v12" percentage="12" type="inbetween" />
     <item id="v10" percentage="10" type="reduced" />
+    <item id="v08" percentage="8" type="other" />
   </vattypes>
   <vattypes country="be" zerovat="true" countryname="Belgium">
     <item id="v21" percentage="21" type="regular" />
@@ -43,7 +45,7 @@
     <item id="v18" percentage="18" type="regular" />
     <item id="v15" percentage="15" type="regular" deprecated="true" />
     <item id="v08" percentage="8" type="reduced" />
-    <item id="v05" percentage="5" type="reduced_heavily" />
+    <item id="v05" percentage="5" type="reduced" />
   </vattypes>
   <vattypes country="cz" zerovat="false" countryname="Czech Republic">
     <comment>Czech VAT cut from 20% to 17.5% in 2013</comment>

@@ -31,7 +31,7 @@ import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.id.IHasID;
 import com.phloc.commons.lang.EnumHelper;
@@ -42,7 +42,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * A list of pre-selected currencies as specified in ISO 4217.<br>
  * http://en.wikipedia.org/wiki/ISO_4217
- *
+ * 
  * @author Philip Helger
  */
 public enum ECurrency implements IHasID <String>, IHasDisplayText
@@ -67,9 +67,9 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   CZK (Currency.getInstance ("CZK"), ECurrencyName.CZK, LocaleCache.getLocale ("cs", "CZ")),
   // Danish krone
   DKK (Currency.getInstance ("DKK"), ECurrencyName.DKK, LocaleCache.getLocale ("dk", "DK")),
-  // Estonian Kroon (until 31.12.1020)
-  // EEK (Currency.getInstance ("EEK"), ECurrencyName.EEK, LocaleCache.getLocale
-  // ("et", "EE")),
+  // Estonian Kroon (until 31.12.2010)
+  @Deprecated
+  EEK (Currency.getInstance ("EEK"), ECurrencyName.EEK, LocaleCache.getLocale ("et", "EE")),
   // Euro
   EUR (Currency.getInstance ("EUR"), ECurrencyName.EUR, new Locale [] { LocaleCache.getLocale ("de", "AT"),
                                                                        LocaleCache.getLocale ("fr", "BE"),
@@ -91,6 +91,8 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
                                                                        LocaleCache.getLocale ("sl", "SI"),
                                                                        LocaleCache.getLocale ("ca", "ES"),
                                                                        LocaleCache.getLocale ("es", "ES"),
+                                                                       // Andorra:
+                                                                       // passive
                                                                        LocaleCache.getLocale ("", "AD"),
                                                                        LocaleCache.getLocale ("", "MC"),
                                                                        LocaleCache.getLocale ("sr", "CS"),
@@ -233,10 +235,10 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
    *         to which this currency applies.
    */
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public List <Locale> getAllMatchingCountries ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aCountries);
+    return ContainerHelper.newList (m_aCountries);
   }
 
   /**
@@ -304,7 +306,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   /**
    * Set the minimum fraction digits to be used for formatting. Applies to the
    * currency-formatting and the value-formatting.
-   *
+   * 
    * @param nDecimals
    *        The new minimum fraction digits. May not be negative.
    */
@@ -318,7 +320,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
 
   /**
    * Adopt the passed text value according to the requested decimal separator.
-   *
+   * 
    * @param sTextValue
    *        The text to be manipulated. May be <code>null</code>.
    * @param eDecimalSep
@@ -364,7 +366,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   /**
    * Try to parse a string value formatted by the {@link NumberFormat} object
    * returned from {@link #getCurrencyFormat()}. E.g. <code>5,00 &euro;</code>
-   *
+   * 
    * @param sTextValue
    *        The string value.
    * @param aDefault
@@ -387,7 +389,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   /**
    * Try to parse a string value formatted by the {@link DecimalFormat} object
    * returned from {@link #getValueFormat()}
-   *
+   * 
    * @param sTextValue
    *        The string value.
    * @param aDefault
@@ -412,7 +414,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
    * dividing "1/3" as it would result in a never ending series of
    * "0.33333333..." which results in an {@link ArithmeticException} thrown by
    * the divide method!
-   *
+   * 
    * @param aDividend
    *        Dividend
    * @param aDivisor
@@ -429,7 +431,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   /**
    * Get the passed value rounded to the appropriate number of fraction digits,
    * based on this currencies default fraction digits.
-   *
+   * 
    * @param aValue
    *        The value to be rounded.
    * @return The rounded value.

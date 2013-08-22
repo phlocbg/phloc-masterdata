@@ -37,10 +37,13 @@ public enum EVATType implements IHasID <String>
 {
   /* EC: Standard rate */
   REGULAR ("regular", ETaxCategoryUN5305.S),
+  /* EC: Parking rate */
+  INBETWEEN ("inbetween", ETaxCategoryUN5305.A),
   /* EC: Reduced rate */
-  REDUCED ("reduced", ETaxCategoryUN5305.A),
+  REDUCED ("reduced", ETaxCategoryUN5305.AA),
   /* EC: Super Reduced Rate */
   REDUCED_HEAVILY ("reduced_heavily", ETaxCategoryUN5305.AA),
+  /* Other rate */
   OTHER ("other", null);
 
   private final String m_sID;

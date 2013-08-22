@@ -29,7 +29,8 @@ import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.GlobalDebug;
 import com.phloc.commons.IHasCountry;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.locale.country.CountryCache;
@@ -105,10 +106,11 @@ public final class VATINStructure implements IHasCountry
    *         contains at least a single item.
    */
   @Nonnull
-  @ReturnsImmutableObject
+  @Nonempty
+  @ReturnsMutableCopy
   public List <String> getExamples ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aExamples);
+    return ContainerHelper.newList (m_aExamples);
   }
 
   @Override
