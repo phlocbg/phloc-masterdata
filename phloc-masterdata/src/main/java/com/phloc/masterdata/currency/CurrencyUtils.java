@@ -31,7 +31,7 @@ import javax.annotation.concurrent.Immutable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.locale.LocaleCache;
 import com.phloc.commons.locale.LocaleFormatter;
@@ -74,10 +74,10 @@ public final class CurrencyUtils
   {}
 
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public static Set <Currency> getAllSupportedCurrencies ()
   {
-    return ContainerHelper.makeUnmodifiable (s_aAllCurrencies);
+    return ContainerHelper.newSet (s_aAllCurrencies);
   }
 
   public static boolean isSupportedCurrency (@Nullable final Currency aCurrency)
