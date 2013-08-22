@@ -26,6 +26,8 @@ import com.phloc.validation.result.IValidationResult;
  * Base interface for a validator.
  * 
  * @author Philip Helger
+ * @param <T>
+ *        The datatype to be validated
  */
 public interface IBaseValidator <T>
 {
