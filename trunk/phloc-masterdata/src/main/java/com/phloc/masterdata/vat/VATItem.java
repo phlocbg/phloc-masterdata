@@ -157,6 +157,12 @@ public class VATItem extends LocalDatePeriod implements IVATItem
   }
 
   @Nonnull
+  public static VATItem createNewItem (@Nonnull final EVATType eType, @Nonnull @Nonnegative final BigDecimal aPercentage)
+  {
+    return createNewItem (eType, aPercentage, (LocalDate) null, (LocalDate) null);
+  }
+
+  @Nonnull
   public static VATItem createNewItem (@Nonnull final EVATType eType,
                                        @Nonnull @Nonnegative final BigDecimal aPercentage,
                                        @Nullable final LocalDate aValidFrom,
