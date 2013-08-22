@@ -50,14 +50,16 @@ public interface IVATItem extends IHasDisplayText, IHasID <String>, ILocalDatePe
 
   /**
    * @return The multiplication factor (e.g. 1.2 for 20% and 1.5 for 50%).
-   *         Always &ge; 0.
+   *         Always &ge; 0 (for 0% VAT) and &le; 2 (for 100% VAT). It can also
+   *         be used to calculate the net from the gross price by calling
+   *         <code>gross.divide (<i>factor</i>)</code>
    */
   @Nonnull
   @Nonnegative
   BigDecimal getMultiplicationFactorNetToGross ();
 
   /**
-   * @return <code>true</code> if this item is deprecated and a new vat item
+   * @return <code>true</code> if this item is deprecated and a new VAT item
    *         applies now.
    */
   boolean isDeprecated ();

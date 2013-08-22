@@ -26,6 +26,9 @@ import javax.annotation.Nonnull;
  */
 public interface IHasVATItem
 {
+  /**
+   * @return The VAT item of this object. May not be <code>null</code>.
+   */
   @Nonnull
   IVATItem getVATItem ();
 }

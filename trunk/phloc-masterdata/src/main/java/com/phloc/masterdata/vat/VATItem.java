@@ -32,12 +32,13 @@ import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.idfactory.GlobalIDFactory;
+import com.phloc.commons.math.MathHelper;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.period.LocalDatePeriod;
 
 @Immutable
-public final class VATItem extends LocalDatePeriod implements IVATItem
+public class VATItem extends LocalDatePeriod implements IVATItem
 {
   private final String m_sID;
   private final EVATType m_eType;
@@ -66,8 +67,8 @@ public final class VATItem extends LocalDatePeriod implements IVATItem
       throw new NullPointerException ("type");
     if (aPercentage == null)
       throw new NullPointerException ("percentage");
-    if (aPercentage.compareTo (BigDecimal.ZERO) < 0 || aPercentage.compareTo (CGlobal.BIGDEC_100) > 0)
-      throw new IllegalArgumentException ("percentage must be between 0 and 100");
+    if (MathHelper.isLowerThanZero (aPercentage) || MathHelper.isGreaterThan100 (aPercentage))
+      throw new IllegalArgumentException ("percentage must be between 0 and 100: " + aPercentage);
     if (aValidFrom != null && aValidTo != null && aValidTo.isBefore (aValidFrom))
       throw new IllegalArgumentException ("ValidFrom date must be <= validTo date");
 
