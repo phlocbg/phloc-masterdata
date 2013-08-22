@@ -27,17 +27,20 @@ import com.phloc.masterdata.tax.ETaxCategoryUN5305;
 
 /**
  * Determines the different VAT types.<br>
- * Source: http://de.wikipedia.org/wiki/Umsatzsteuer
+ * Source: http://de.wikipedia.org/wiki/Umsatzsteuer<br>
+ * Source:
+ * http://ec.europa.eu/taxation_customs/taxation/vat/how_vat_works/rates/
  * 
  * @author Philip Helger
  */
 public enum EVATType implements IHasID <String>
 {
+  /* EC: Standard rate */
   REGULAR ("regular", ETaxCategoryUN5305.S),
-  INBETWEEN ("inbetween", ETaxCategoryUN5305.A),
-  REDUCED ("reduced", ETaxCategoryUN5305.AA),
+  /* EC: Reduced rate */
+  REDUCED ("reduced", ETaxCategoryUN5305.A),
+  /* EC: Super Reduced Rate */
   REDUCED_HEAVILY ("reduced_heavily", ETaxCategoryUN5305.AA),
-  SERVICE ("service", ETaxCategoryUN5305.O),
   OTHER ("other", null);
 
   private final String m_sID;
