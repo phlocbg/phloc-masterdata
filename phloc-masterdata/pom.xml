@@ -161,8 +161,7 @@
         <configuration>
           <instructions>
             <Export-Package>
-              com.phloc.masterdata.*,
-              com.phloc.validation.*
+              com.phloc.masterdata.*
             </Export-Package>
           </instructions>
         </configuration>
