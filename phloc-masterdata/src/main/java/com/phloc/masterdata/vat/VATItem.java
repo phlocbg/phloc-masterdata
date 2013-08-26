@@ -43,7 +43,8 @@ public class VATItem extends LocalDatePeriod implements IVATItem
   private final String m_sID;
   private final EVATType m_eType;
   private final BigDecimal m_aPercentage;
-  private final BigDecimal m_aNetToGrossFactor;
+  private final BigDecimal m_aFactorNetToGross;
+  private final BigDecimal m_aMultiplicationFactorNetToGross;
   private final boolean m_bDeprecated;
 
   public VATItem (@Nonnull @Nonempty final String sID,
@@ -75,7 +76,8 @@ public class VATItem extends LocalDatePeriod implements IVATItem
     m_sID = sID;
     m_eType = eType;
     m_aPercentage = aPercentage;
-    m_aNetToGrossFactor = BigDecimal.ONE.add (m_aPercentage.divide (CGlobal.BIGDEC_100));
+    m_aFactorNetToGross = m_aPercentage.divide (CGlobal.BIGDEC_100);
+    m_aMultiplicationFactorNetToGross = BigDecimal.ONE.add (m_aFactorNetToGross);
     m_bDeprecated = bDeprecated;
     setStart (aValidFrom);
     setEnd (aValidTo);
@@ -103,9 +105,16 @@ public class VATItem extends LocalDatePeriod implements IVATItem
 
   @Nonnull
   @Nonnegative
+  public BigDecimal getPercentageFactor ()
+  {
+    return m_aFactorNetToGross;
+  }
+
+  @Nonnull
+  @Nonnegative
   public BigDecimal getMultiplicationFactorNetToGross ()
   {
-    return m_aNetToGrossFactor;
+    return m_aMultiplicationFactorNetToGross;
   }
 
   @Nullable
@@ -151,7 +160,8 @@ public class VATItem extends LocalDatePeriod implements IVATItem
                             .append ("id", m_sID)
                             .append ("type", m_eType)
                             .append ("percentage", m_aPercentage)
-                            .append ("netToGrossFactor", m_aNetToGrossFactor)
+                            .append ("factorNetToGross", m_aFactorNetToGross)
+                            .append ("multiplicationFactorNetToGross", m_aMultiplicationFactorNetToGross)
                             .append ("deprecated", m_bDeprecated)
                             .toString ();
   }

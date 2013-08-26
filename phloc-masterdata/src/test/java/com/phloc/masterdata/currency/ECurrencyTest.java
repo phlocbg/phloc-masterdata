@@ -252,4 +252,11 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
       assertTrue (e.ordinal () >= 0);
     }
   }
+
+  @Test
+  public void testGetScale ()
+  {
+    for (final ECurrency e : ECurrency.values ())
+      assertTrue (e.getScale () >= 0);
+  }
 }

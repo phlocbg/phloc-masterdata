@@ -29,6 +29,7 @@ import javax.persistence.Entity;
 
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
+import com.phloc.commons.math.MathHelper;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
@@ -37,7 +38,7 @@ import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
 /**
  * This class represents a single currency value as the combination of a value
  * and a currency.
- *
+ * 
  * @author Philip Helger
  */
 @Embeddable
@@ -93,12 +94,12 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
 
   public boolean isLowerThanZero ()
   {
-    return m_aValue.compareTo (BigDecimal.ZERO) < 0;
+    return MathHelper.isLowerThanZero (m_aValue);
   }
 
   public boolean isGreaterThanZero ()
   {
-    return m_aValue.compareTo (BigDecimal.ZERO) > 0;
+    return MathHelper.isGreaterThanZero (m_aValue);
   }
 
   @Nonnull
@@ -130,7 +131,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   @Nonnull
   public ICurrencyValue getAdded (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ZERO, aValue))
+    if (MathHelper.isEqualToZero (aValue))
       return this;
     return new CurrencyValue (getCurrency (), getValue ().add (aValue));
   }
@@ -146,7 +147,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   @Nonnull
   public ICurrencyValue getSubtracted (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ZERO, aValue))
+    if (MathHelper.isEqualToZero (aValue))
       return this;
     return new CurrencyValue (getCurrency (), getValue ().subtract (aValue));
   }
@@ -162,7 +163,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   @Nonnull
   public ICurrencyValue getMultiplied (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ONE, aValue))
+    if (MathHelper.isEqualToOne (aValue))
       return this;
     return new CurrencyValue (getCurrency (), getValue ().multiply (aValue));
   }
@@ -178,7 +179,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   @Nonnull
   public ICurrencyValue getDivided (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ONE, aValue))
+    if (MathHelper.isEqualToOne (aValue))
       return this;
     final ECurrency eCurrency = getCurrency ();
     return new CurrencyValue (eCurrency, eCurrency.getDivided (getValue (), aValue));

@@ -18,12 +18,16 @@
 package com.phloc.masterdata.price;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 
 import org.junit.Test;
 
+import com.phloc.commons.equals.EqualsUtils;
+import com.phloc.commons.locale.country.CountryCache;
 import com.phloc.commons.mock.PhlocAssert;
 import com.phloc.commons.state.EChange;
 import com.phloc.masterdata.currency.CurrencyValue;
@@ -98,5 +102,35 @@ public final class PriceTest
     }
     catch (final NullPointerException ex)
     {}
+  }
+
+  @Test
+  public void testFactories ()
+  {
+    final IVATItem aVATItem = VATManager.getDefaultInstance ().getVATItemOfID ("at.v20");
+    assertNotNull (aVATItem);
+    Price p = Price.createFromNetAmount (ECurrency.EUR, new BigDecimal ("10"), aVATItem);
+    assertTrue (EqualsUtils.equals (new BigDecimal ("10"), p.getNetAmount ().getValue ()));
+    assertTrue (EqualsUtils.equals (new BigDecimal ("12"), p.getGrossAmount ().getValue ()));
+
+    p = Price.createFromGrossAmount (ECurrency.EUR, new BigDecimal ("12"), aVATItem);
+    assertTrue (EqualsUtils.equals (new BigDecimal ("10"), p.getNetAmount ().getValue ()));
+    assertTrue (EqualsUtils.equals (new BigDecimal ("12"), p.getGrossAmount ().getValue ()));
+  }
+
+  @Test
+  public void testFactoriesArbitrary ()
+  {
+    for (final String sNumber : new String [] { "1", "10", "12", "3.66666", "0.000555" })
+      for (final IVATItem aVATItem : VATManager.getDefaultInstance ()
+                                               .getAllVATItemsForCountry (CountryCache.getCountry ("AT"))
+                                               .values ())
+      {
+        Price p = Price.createFromNetAmount (ECurrency.EUR, new BigDecimal (sNumber), aVATItem);
+        assertNotNull (p);
+
+        p = Price.createFromGrossAmount (ECurrency.EUR, new BigDecimal (sNumber), aVATItem);
+        assertNotNull (p);
+      }
   }
 }
