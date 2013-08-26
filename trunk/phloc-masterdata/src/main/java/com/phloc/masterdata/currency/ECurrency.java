@@ -425,7 +425,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @CheckReturnValue
   public BigDecimal getDivided (@Nonnull final BigDecimal aDividend, @Nonnull final BigDecimal aDivisor)
   {
-    return aDividend.divide (aDivisor, m_aCurrency.getDefaultFractionDigits (), ROUNDING_MODE);
+    return aDividend.divide (aDivisor, getScale (), ROUNDING_MODE);
   }
 
   /**
@@ -439,7 +439,15 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @Nonnull
   public BigDecimal getRounded (@Nonnull final BigDecimal aValue)
   {
-    return aValue.setScale (m_aCurrency.getDefaultFractionDigits (), ROUNDING_MODE);
+    return aValue.setScale (getScale (), ROUNDING_MODE);
+  }
+
+  /**
+   * @return The scaling to be used for BigDecimal operations. Always &ge; 0.
+   */
+  public int getScale ()
+  {
+    return m_aCurrency.getDefaultFractionDigits ();
   }
 
   @Nonnull

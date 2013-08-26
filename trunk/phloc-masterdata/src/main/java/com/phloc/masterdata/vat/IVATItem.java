@@ -49,9 +49,17 @@ public interface IVATItem extends IHasDisplayText, IHasID <String>, ILocalDatePe
   BigDecimal getPercentage ();
 
   /**
-   * @return The multiplication factor (e.g. 1.2 for 20% and 1.5 for 50%).
-   *         Always &ge; 0 (for 0% VAT) and &le; 2 (for 100% VAT). It can also
-   *         be used to calculate the net from the gross price by calling
+   * @return The factor (e.g. 0.2 for 20% or 0.5 for 50%). Always &ge; 0 (for 0%
+   *         VAT) and &le; 1 (for 100% VAT).
+   */
+  @Nonnull
+  @Nonnegative
+  BigDecimal getPercentageFactor ();
+
+  /**
+   * @return The multiplication factor (e.g. 1.2 for 20% or 1.5 for 50%). Always
+   *         &ge; 1 (for 0% VAT) and &le; 2 (for 100% VAT). It can also be used
+   *         to calculate the net from the gross price by calling
    *         <code>gross.divide (<i>factor</i>)</code>
    */
   @Nonnull

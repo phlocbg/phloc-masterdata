@@ -24,12 +24,13 @@ import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
+import com.phloc.commons.math.MathHelper;
 import com.phloc.commons.string.ToStringGenerator;
 
 /**
  * This class represents a single read only currency value as the combination of
  * a value and a currency.
- *
+ * 
  * @author Philip Helger
  */
 @Immutable
@@ -61,12 +62,12 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
 
   public boolean isLowerThanZero ()
   {
-    return m_aValue.compareTo (BigDecimal.ZERO) < 0;
+    return MathHelper.isLowerThanZero (m_aValue);
   }
 
   public boolean isGreaterThanZero ()
   {
-    return m_aValue.compareTo (BigDecimal.ZERO) > 0;
+    return MathHelper.isGreaterThanZero (m_aValue);
   }
 
   @Nonnull
@@ -78,7 +79,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   @Nonnull
   public IReadonlyCurrencyValue getAdded (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ZERO, aValue))
+    if (MathHelper.isEqualToZero (aValue))
       return this;
     return new ReadonlyCurrencyValue (getCurrency (), getValue ().add (aValue));
   }
@@ -94,7 +95,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   @Nonnull
   public IReadonlyCurrencyValue getSubtracted (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ZERO, aValue))
+    if (MathHelper.isEqualToZero (aValue))
       return this;
     return new ReadonlyCurrencyValue (getCurrency (), getValue ().subtract (aValue));
   }
@@ -110,7 +111,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   @Nonnull
   public IReadonlyCurrencyValue getMultiplied (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ONE, aValue))
+    if (MathHelper.isEqualToOne (aValue))
       return this;
     return new ReadonlyCurrencyValue (getCurrency (), getValue ().multiply (aValue));
   }
@@ -126,7 +127,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   @Nonnull
   public IReadonlyCurrencyValue getDivided (@Nonnull final BigDecimal aValue)
   {
-    if (EqualsUtils.equals (BigDecimal.ONE, aValue))
+    if (MathHelper.isEqualToOne (aValue))
       return this;
     final ECurrency eCurrency = getCurrency ();
     return new ReadonlyCurrencyValue (eCurrency, eCurrency.getDivided (getValue (), aValue));
