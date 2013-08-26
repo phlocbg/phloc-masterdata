@@ -30,7 +30,9 @@ import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.concurrent.NotThreadSafe;
 
+import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.id.IHasID;
@@ -45,6 +47,7 @@ import com.phloc.commons.string.StringHelper;
  * 
  * @author Philip Helger
  */
+@NotThreadSafe
 public enum ECurrency implements IHasID <String>, IHasDisplayText
 {
   // Albanian Lek
@@ -69,7 +72,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   DKK (Currency.getInstance ("DKK"), ECurrencyName.DKK, LocaleCache.getLocale ("dk", "DK")),
   // Estonian Kroon (until 31.12.2010)
   @Deprecated
-  EEK (Currency.getInstance ("EEK"), ECurrencyName.EEK, LocaleCache.getLocale ("et", "EE")),
+  EEK (Currency.getInstance ("EEK"), true, ECurrencyName.EEK, LocaleCache.getLocale ("et", "EE")),
   // Euro
   EUR (Currency.getInstance ("EUR"), ECurrencyName.EUR, new Locale [] { LocaleCache.getLocale ("de", "AT"),
                                                                        LocaleCache.getLocale ("fr", "BE"),
@@ -135,19 +138,41 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   // United States Dollar
   USD (Currency.getInstance ("USD"), ECurrencyName.USD, LocaleCache.getLocale ("en", "US"));
 
-  /** The rounding mode to be used for currency values */
-  public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_EVEN;
+  /**
+   * The default rounding mode to be used for currency values. It may be
+   * overridden for each currency individually.
+   */
+  public static final RoundingMode DEFAULT_ROUNDING_MODE = RoundingMode.HALF_EVEN;
+
+  /**
+   * Deprecated - use the {@link #getRoundingMode()} method per currency
+   * instead!
+   */
+  @Deprecated
+  public static final RoundingMode ROUNDING_MODE = DEFAULT_ROUNDING_MODE;
 
   /** The default currency */
   public static final ECurrency DEFAULT_CURRENCY = EUR;
 
   private final Currency m_aCurrency;
+  private final boolean m_bIsDeprecated;
   private final IHasDisplayText m_aName;
   private final List <Locale> m_aCountries = new ArrayList <Locale> ();
   private final DecimalFormat m_aCurrencyFormat;
+  private final String m_sCurrencyPattern;
+  private final String m_sValuePattern;
   private final DecimalFormat m_aValueFormat;
+  private RoundingMode m_eRoundingMode;
 
   private ECurrency (@Nonnull final Currency aCurrency,
+                     @Nonnull final ECurrencyName aName,
+                     @Nonnull final Locale... aCountries)
+  {
+    this (aCurrency, false, aName, aCountries);
+  }
+
+  private ECurrency (@Nonnull final Currency aCurrency,
+                     final boolean bIsDeprecated,
                      @Nonnull final ECurrencyName aName,
                      @Nonnull final Locale... aCountries)
   {
@@ -171,6 +196,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
       throw new IllegalArgumentException ("Passed currency is not valid in a single country!");
 
     m_aCurrency = aCurrency;
+    m_bIsDeprecated = bIsDeprecated;
     m_aName = aName;
 
     // Always use the first locale as the most relevant one!
@@ -181,13 +207,14 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
     m_aCurrencyFormat = (DecimalFormat) NumberFormat.getCurrencyInstance (aRelevantLocale);
 
     // Extract value pattern from currency pattern (without currency symbol)
-    final String sValuePattern = m_aCurrencyFormat.toPattern ()
-                                                  .replace ("\u00A4 ", "")
-                                                  .replace (" \u00A4", "")
-                                                  .replace ("\u00A4", "");
+    m_sCurrencyPattern = m_aCurrencyFormat.toPattern ();
+    m_sValuePattern = m_sCurrencyPattern.replace ("\u00A4 ", "").replace (" \u00A4", "").replace ("\u00A4", "");
 
     // Use the decimal symbols from the currency format
-    m_aValueFormat = new DecimalFormat (sValuePattern, m_aCurrencyFormat.getDecimalFormatSymbols ());
+    m_aValueFormat = new DecimalFormat (m_sValuePattern, m_aCurrencyFormat.getDecimalFormatSymbols ());
+
+    // By default the default rounding mode should be used
+    m_eRoundingMode = null;
   }
 
   /**
@@ -204,23 +231,6 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
     return m_aName.getDisplayText (aContentLocale);
   }
 
-  @Nonnull
-  public String getCurrencySymbol ()
-  {
-    return m_aCurrencyFormat.getDecimalFormatSymbols ().getCurrencySymbol ();
-  }
-
-  /**
-   * @return this as {@link java.util.Currency}.
-   * @deprecated Use {@link #getAsCurrency()} instead
-   */
-  @Deprecated
-  @Nonnull
-  public Currency asCurrency ()
-  {
-    return getAsCurrency ();
-  }
-
   /**
    * @return this as {@link java.util.Currency}.
    */
@@ -228,6 +238,21 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   public Currency getAsCurrency ()
   {
     return m_aCurrency;
+  }
+
+  @Nonnull
+  public String getCurrencySymbol ()
+  {
+    return m_aCurrencyFormat.getDecimalFormatSymbols ().getCurrencySymbol ();
+  }
+
+  /**
+   * @return <code>true</code> if this currency is deprecated and no longer
+   *         exists.
+   */
+  public boolean isDeprecated ()
+  {
+    return m_bIsDeprecated;
   }
 
   /**
@@ -239,6 +264,28 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   public List <Locale> getAllMatchingCountries ()
   {
     return ContainerHelper.newList (m_aCountries);
+  }
+
+  /**
+   * @return The pattern to be used in {@link DecimalFormat} to format this
+   *         currency. This pattern includes the currency string.
+   */
+  @Nonnull
+  @Nonempty
+  public String getCurrencyPattern ()
+  {
+    return m_sCurrencyPattern;
+  }
+
+  /**
+   * @return The pattern to be used in {@link DecimalFormat} to format this
+   *         currency. This pattern does NOT includes the currency string.
+   */
+  @Nonnull
+  @Nonempty
+  public String getValuePattern ()
+  {
+    return m_sValuePattern;
   }
 
   /**
@@ -410,10 +457,19 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   }
 
   /**
+   * @return The scaling to be used for BigDecimal operations. Always &ge; 0.
+   */
+  public int getScale ()
+  {
+    return m_aCurrency.getDefaultFractionDigits ();
+  }
+
+  /**
    * Special currency division method. This method solves the problem of
    * dividing "1/3" as it would result in a never ending series of
    * "0.33333333..." which results in an {@link ArithmeticException} thrown by
-   * the divide method!
+   * the divide method!<br>
+   * The default scaling of this currency is used.
    * 
    * @param aDividend
    *        Dividend
@@ -425,35 +481,91 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @CheckReturnValue
   public BigDecimal getDivided (@Nonnull final BigDecimal aDividend, @Nonnull final BigDecimal aDivisor)
   {
-    return aDividend.divide (aDivisor, getScale (), ROUNDING_MODE);
+    return getDivided (aDividend, aDivisor, getScale ());
+  }
+
+  /**
+   * Special currency division method. This method solves the problem of
+   * dividing "1/3" as it would result in a never ending series of
+   * "0.33333333..." which results in an {@link ArithmeticException} thrown by
+   * the divide method!<br>
+   * This method takes a custom scaling. If the default scaling of this currency
+   * should be used, than {@link #getDivided(BigDecimal, BigDecimal)} should be
+   * used instead.
+   * 
+   * @param aDividend
+   *        Dividend
+   * @param aDivisor
+   *        Divisor
+   * @param nFractionDigits
+   *        A custom scaling to be used.
+   * @return The divided value with the provided scaling
+   */
+  @Nonnull
+  @CheckReturnValue
+  public BigDecimal getDivided (@Nonnull final BigDecimal aDividend,
+                                @Nonnull final BigDecimal aDivisor,
+                                @Nonnegative final int nFractionDigits)
+  {
+    return aDividend.divide (aDivisor, nFractionDigits, getRoundingMode ());
   }
 
   /**
    * Get the passed value rounded to the appropriate number of fraction digits,
-   * based on this currencies default fraction digits.
+   * based on this currencies default fraction digits.<br>
+   * The default scaling of this currency is used.
    * 
    * @param aValue
-   *        The value to be rounded.
-   * @return The rounded value.
+   *        The value to be rounded. May not be <code>null</code>.
+   * @return The rounded value. Never <code>null</code>.
    */
   @Nonnull
   public BigDecimal getRounded (@Nonnull final BigDecimal aValue)
   {
-    return aValue.setScale (getScale (), ROUNDING_MODE);
+    return aValue.setScale (getScale (), getRoundingMode ());
   }
 
   /**
-   * @return The scaling to be used for BigDecimal operations. Always &ge; 0.
+   * Get the passed value rounded to the appropriate number of fraction digits,
+   * based on this currencies default fraction digits.<br>
+   * This method takes a custom scaling. If the default scaling of this currency
+   * should be used, than {@link #getRounded(BigDecimal)} should be used
+   * instead.
+   * 
+   * @param aValue
+   *        The value to be rounded. May not be <code>null</code>.
+   * @param nFractionDigits
+   *        A custom scaling to be used.
+   * @return The rounded value. Never <code>null</code>.
    */
-  public int getScale ()
+  @Nonnull
+  public BigDecimal getRounded (@Nonnull final BigDecimal aValue, @Nonnegative final int nFractionDigits)
   {
-    return m_aCurrency.getDefaultFractionDigits ();
+    return aValue.setScale (nFractionDigits, getRoundingMode ());
   }
 
+  /**
+   * @return The rounding mode of this currency. If non is specified,
+   *         {@link #DEFAULT_ROUNDING_MODE} is returned instead. May not be
+   *         <code>null</code>.
+   */
   @Nonnull
-  public static BigDecimal getRounded (@Nonnull final BigDecimal aValue, final int nFractionDigits)
+  public RoundingMode getRoundingMode ()
   {
-    return aValue.setScale (nFractionDigits, ROUNDING_MODE);
+    return m_eRoundingMode != null ? m_eRoundingMode : DEFAULT_ROUNDING_MODE;
+  }
+
+  /**
+   * Change the rounding mode of this currency.
+   * 
+   * @param eRoundingMode
+   *        The rounding mode to be used. May not be <code>null</code>.
+   */
+  public void setRoundingMode (@Nonnull final RoundingMode eRoundingMode)
+  {
+    if (eRoundingMode == null)
+      throw new NullPointerException ("RoundingMode");
+    m_eRoundingMode = eRoundingMode;
   }
 
   @Nullable
@@ -466,5 +578,23 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   public static ECurrency getFromIDOrDefault (@Nullable final String sCurrencyCode, @Nullable final ECurrency eDefault)
   {
     return EnumHelper.getFromIDOrDefault (ECurrency.class, sCurrencyCode, eDefault);
+  }
+
+  @Nullable
+  public static ECurrency getFromCountryOrNull (@Nullable final Locale aCountry)
+  {
+    return getFromCountryOrNull (aCountry, false);
+  }
+
+  @Nullable
+  public static ECurrency getFromCountryOrNull (@Nullable final Locale aCountry, final boolean bIncludeDeprecated)
+  {
+    if (aCountry != null)
+      for (final ECurrency eCurrency : values ())
+        if (!eCurrency.isDeprecated () || bIncludeDeprecated)
+          for (final Locale aCurrencyCountry : eCurrency.m_aCountries)
+            if (aCountry.equals (aCurrencyCountry))
+              return eCurrency;
+    return null;
   }
 }

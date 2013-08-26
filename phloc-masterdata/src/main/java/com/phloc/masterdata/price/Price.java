@@ -292,7 +292,11 @@ public final class Price implements IPrice
                                              @Nonnull final BigDecimal aGrossAmount,
                                              @Nonnull final IVATItem aVATItem)
   {
-    return createFromGrossAmount (eCurrency, aGrossAmount, aVATItem, eCurrency.getScale (), ECurrency.ROUNDING_MODE);
+    return createFromGrossAmount (eCurrency,
+                                  aGrossAmount,
+                                  aVATItem,
+                                  eCurrency.getScale (),
+                                  eCurrency.getRoundingMode ());
   }
 
   /**
@@ -347,7 +351,7 @@ public final class Price implements IPrice
       throw new NullPointerException ("GrossAmount");
 
     final ECurrency eCurrency = aGrossAmount.getCurrency ();
-    return createFromGrossAmount (aGrossAmount, aVATItem, eCurrency.getScale (), ECurrency.ROUNDING_MODE);
+    return createFromGrossAmount (aGrossAmount, aVATItem, eCurrency.getScale (), eCurrency.getRoundingMode ());
   }
 
   /**

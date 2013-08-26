@@ -31,6 +31,7 @@ import java.util.Locale;
 import org.junit.Test;
 
 import com.phloc.commons.mock.AbstractPhlocTestCase;
+import com.phloc.commons.string.StringHelper;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
@@ -239,8 +240,8 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
     assertEquals (new BigDecimal ("1.24"), ECurrency.EUR.getRounded (aBD));
     assertEquals (new BigDecimal ("1.24"), ECurrency.PLN.getRounded (aBD));
 
-    assertEquals (new BigDecimal ("1.2"), ECurrency.getRounded (aBD, 1));
-    assertEquals (new BigDecimal ("1.2"), ECurrency.getRounded (aBD, 1));
+    assertEquals (new BigDecimal ("1.2"), ECurrency.EUR.getRounded (aBD, 1));
+    assertEquals (new BigDecimal ("1.2"), ECurrency.EUR.getRounded (aBD, 1));
   }
 
   @Test
@@ -258,5 +259,32 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   {
     for (final ECurrency e : ECurrency.values ())
       assertTrue (e.getScale () >= 0);
+  }
+
+  @Test
+  public void testGetPatterns ()
+  {
+    for (final ECurrency e : ECurrency.values ())
+    {
+      assertTrue (StringHelper.hasText (e.getCurrencyPattern ()));
+      assertTrue (StringHelper.hasText (e.getValuePattern ()));
+    }
+  }
+
+  @SuppressWarnings ("deprecation")
+  @Test
+  public void testIsDeprecated ()
+  {
+    assertTrue (ECurrency.EEK.isDeprecated ());
+    assertFalse (ECurrency.EUR.isDeprecated ());
+  }
+
+  @Test
+  public void testGetFromCountry ()
+  {
+    for (final ECurrency e : ECurrency.values ())
+      if (!e.isDeprecated ())
+        for (final Locale aLocale : e.getAllMatchingCountries ())
+          assertSame (e, ECurrency.getFromCountryOrNull (aLocale, false));
   }
 }

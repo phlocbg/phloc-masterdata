@@ -37,13 +37,18 @@ import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.period.LocalDatePeriod;
 
+/**
+ * Default implementation of {@link IVATItem}.
+ * 
+ * @author Philip Helger
+ */
 @Immutable
 public class VATItem extends LocalDatePeriod implements IVATItem
 {
   private final String m_sID;
   private final EVATType m_eType;
   private final BigDecimal m_aPercentage;
-  private final BigDecimal m_aFactorNetToGross;
+  private final BigDecimal m_aPercentageFactor;
   private final BigDecimal m_aMultiplicationFactorNetToGross;
   private final boolean m_bDeprecated;
 
@@ -76,8 +81,8 @@ public class VATItem extends LocalDatePeriod implements IVATItem
     m_sID = sID;
     m_eType = eType;
     m_aPercentage = aPercentage;
-    m_aFactorNetToGross = m_aPercentage.divide (CGlobal.BIGDEC_100);
-    m_aMultiplicationFactorNetToGross = BigDecimal.ONE.add (m_aFactorNetToGross);
+    m_aPercentageFactor = m_aPercentage.divide (CGlobal.BIGDEC_100);
+    m_aMultiplicationFactorNetToGross = BigDecimal.ONE.add (m_aPercentageFactor);
     m_bDeprecated = bDeprecated;
     setStart (aValidFrom);
     setEnd (aValidTo);
@@ -107,7 +112,7 @@ public class VATItem extends LocalDatePeriod implements IVATItem
   @Nonnegative
   public BigDecimal getPercentageFactor ()
   {
-    return m_aFactorNetToGross;
+    return m_aPercentageFactor;
   }
 
   @Nonnull
@@ -160,7 +165,7 @@ public class VATItem extends LocalDatePeriod implements IVATItem
                             .append ("id", m_sID)
                             .append ("type", m_eType)
                             .append ("percentage", m_aPercentage)
-                            .append ("factorNetToGross", m_aFactorNetToGross)
+                            .append ("percentageFactor", m_aPercentageFactor)
                             .append ("multiplicationFactorNetToGross", m_aMultiplicationFactorNetToGross)
                             .append ("deprecated", m_bDeprecated)
                             .toString ();
