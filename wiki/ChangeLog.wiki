@@ -3,6 +3,12 @@
 = Change log =
 <wiki:comment>This content is generated. Do not modify!</wiki:comment>
 <table border="1" cellspacing="0"><thead><tr><th>Date</th><th>Action</th><th>Category</th><th>Incompatible?</th><th>Description</th></tr></thead><tbody>
+<tr border="1"><td>8/26/13</td><td colspan="4">_Release *3.3.1*_</td></tr>
+<tr><td>8/26/13</td><td>add</td><td>api</td><td></td><td>Added support for custom rounding modes per currency</td></tr>
+<tr><td>8/26/13</td><td>add</td><td>api</td><td></td><td>Heavily extended ECurrency API</td></tr>
+<tr><td>8/26/13</td><td>add</td><td>api</td><td></td><td>Added new method IVATItem.getPercentageFactor()</td></tr>
+<tr><td>8/26/13</td><td>add</td><td>api</td><td></td><td>Added new factory methods in Price to create it from the net or from the gross amount</td></tr>
+<tr><td>8/24/13</td><td>fix</td><td>tech</td><td></td><td>Fixed invalid Bundle exports (phloc-validation was still exported)</td></tr>
 <tr border="1"><td>8/22/13</td><td colspan="4">_Release *3.3.0*_</td></tr>
 <tr><td>8/22/13</td><td>update</td><td>data</td><td></td><td>Updated VAT rate data</td></tr>
 <tr><td>8/20/13</td><td>add</td><td>api</td><td></td><td>Made ValidationResultError non-final and improved internal handling</td></tr>
