@@ -146,7 +146,7 @@ public final class CurrencyUtils
   {
     // So that the call to "parse" returns a BigDecimal
     aFormat.setParseBigDecimal (true);
-    aFormat.setRoundingMode (ECurrency.ROUNDING_MODE);
+    aFormat.setRoundingMode (ECurrency.DEFAULT_ROUNDING_MODE);
 
     // Parse as double
     final BigDecimal aNum = LocaleFormatter.parseBigDecimal (sStr, aFormat);
@@ -155,6 +155,6 @@ public final class CurrencyUtils
 
     // And finally do the correct scaling, depending of the decimal format
     // fraction
-    return aNum.setScale (aFormat.getMaximumFractionDigits (), ECurrency.ROUNDING_MODE);
+    return aNum.setScale (aFormat.getMaximumFractionDigits (), ECurrency.DEFAULT_ROUNDING_MODE);
   }
 }
