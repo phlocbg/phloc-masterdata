@@ -18,6 +18,7 @@
 package com.phloc.masterdata.currency;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Currency;
 import java.util.Locale;
@@ -126,7 +127,8 @@ public final class CurrencyUtils
   }
 
   /**
-   * Parse a currency value from string.<br>
+   * Parse a currency value from string using the currency default rounding
+   * mode.<br>
    * Source:
    * <code>http://wheelworkshop.blogspot.com/2006/02/parsing-currency-into-bigdecimal.html</code>
    * 
@@ -144,9 +146,32 @@ public final class CurrencyUtils
                                           @Nonnull final DecimalFormat aFormat,
                                           @Nullable final BigDecimal aDefault)
   {
+    return parseCurrency (sStr, aFormat, aDefault, ECurrency.DEFAULT_ROUNDING_MODE);
+  }
+
+  /**
+   * Parse a currency value from string using a custom rounding mode.
+   * 
+   * @param sStr
+   *        The string to be parsed.
+   * @param aFormat
+   *        The formatting object to be used. May not be <code>null</code>.
+   * @param aDefault
+   *        The default value to be returned, if parsing failed.
+   * @param eRoundingMode
+   *        The rounding mode to be used. May not be <code>null</code>.
+   * @return Either default value or the {@link BigDecimal} value with the
+   *         correct scaling.
+   */
+  @Nullable
+  public static BigDecimal parseCurrency (@Nullable final String sStr,
+                                          @Nonnull final DecimalFormat aFormat,
+                                          @Nullable final BigDecimal aDefault,
+                                          @Nonnull final RoundingMode eRoundingMode)
+  {
     // So that the call to "parse" returns a BigDecimal
     aFormat.setParseBigDecimal (true);
-    aFormat.setRoundingMode (ECurrency.DEFAULT_ROUNDING_MODE);
+    aFormat.setRoundingMode (eRoundingMode);
 
     // Parse as double
     final BigDecimal aNum = LocaleFormatter.parseBigDecimal (sStr, aFormat);
@@ -155,6 +180,6 @@ public final class CurrencyUtils
 
     // And finally do the correct scaling, depending of the decimal format
     // fraction
-    return aNum.setScale (aFormat.getMaximumFractionDigits (), ECurrency.DEFAULT_ROUNDING_MODE);
+    return aNum.setScale (aFormat.getMaximumFractionDigits (), eRoundingMode);
   }
 }
