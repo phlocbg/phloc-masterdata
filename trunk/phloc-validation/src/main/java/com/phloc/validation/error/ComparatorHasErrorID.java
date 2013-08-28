@@ -15,7 +15,7 @@ import com.phloc.commons.compare.ESortOrder;
  * 
  * @author Philip Helger
  */
-public class ComparatorHasErrorID extends AbstractCollationComparator <IHasErrorID>
+public class ComparatorHasErrorID <DATATYPE extends IHasErrorID> extends AbstractCollationComparator <DATATYPE>
 {
   /**
    * Comparator with default locale {@link Collator} and default sort order.
@@ -33,7 +33,7 @@ public class ComparatorHasErrorID extends AbstractCollationComparator <IHasError
    *        The nested comparator to be invoked, when the main comparison
    *        resulted in 0.
    */
-  public ComparatorHasErrorID (@Nullable final Comparator <? super Object> aNestedComparator)
+  public ComparatorHasErrorID (@Nullable final Comparator <? super DATATYPE> aNestedComparator)
   {
     super (aNestedComparator);
   }
@@ -59,7 +59,7 @@ public class ComparatorHasErrorID extends AbstractCollationComparator <IHasError
    *        resulted in 0.
    */
   public ComparatorHasErrorID (@Nonnull final ESortOrder eSortOrder,
-                               @Nullable final Comparator <? super Object> aNestedComparator)
+                               @Nullable final Comparator <? super DATATYPE> aNestedComparator)
   {
     super (eSortOrder, aNestedComparator);
   }
@@ -86,7 +86,7 @@ public class ComparatorHasErrorID extends AbstractCollationComparator <IHasError
    *        resulted in 0.
    */
   public ComparatorHasErrorID (@Nullable final Locale aSortLocale,
-                               @Nullable final Comparator <? super Object> aNestedComparator)
+                               @Nullable final Comparator <? super DATATYPE> aNestedComparator)
   {
     super (aSortLocale, aNestedComparator);
   }
@@ -117,7 +117,7 @@ public class ComparatorHasErrorID extends AbstractCollationComparator <IHasError
    */
   public ComparatorHasErrorID (@Nullable final Locale aSortLocale,
                                @Nonnull final ESortOrder eSortOrder,
-                               @Nullable final Comparator <? super Object> aNestedComparator)
+                               @Nullable final Comparator <? super DATATYPE> aNestedComparator)
   {
     super (aSortLocale, eSortOrder, aNestedComparator);
   }
@@ -144,7 +144,7 @@ public class ComparatorHasErrorID extends AbstractCollationComparator <IHasError
    *        resulted in 0.
    */
   public ComparatorHasErrorID (@Nonnull final Collator aCollator,
-                               @Nullable final Comparator <? super Object> aNestedComparator)
+                               @Nullable final Comparator <? super DATATYPE> aNestedComparator)
   {
     super (aCollator, aNestedComparator);
   }
@@ -175,14 +175,14 @@ public class ComparatorHasErrorID extends AbstractCollationComparator <IHasError
    */
   public ComparatorHasErrorID (@Nonnull final Collator aCollator,
                                @Nonnull final ESortOrder eSortOrder,
-                               @Nullable final Comparator <? super Object> aNestedComparator)
+                               @Nullable final Comparator <? super DATATYPE> aNestedComparator)
   {
     super (aCollator, eSortOrder, aNestedComparator);
   }
 
   @Override
   @Nullable
-  protected String asString (@Nonnull final IHasErrorID aObject)
+  protected String asString (@Nonnull final DATATYPE aObject)
   {
     return aObject.getErrorID ();
   }
