@@ -26,6 +26,7 @@ import javax.annotation.Nonnull;
 
 import com.phloc.commons.CGlobal;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
+import com.phloc.commons.annotations.WorkInProgress;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.io.IReadableResource;
 import com.phloc.commons.io.resource.ClassPathResource;
@@ -41,6 +42,7 @@ import com.phloc.commons.text.IReadonlyMultiLingualText;
  * 
  * @author Philip Helger
  */
+@WorkInProgress
 public final class UnitManager
 {
   public static final IReadableResource DEFAULT_UNIT_RES = new ClassPathResource ("codelists/rec20_Rev8e_2012.xml");
