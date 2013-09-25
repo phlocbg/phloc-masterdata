@@ -152,7 +152,7 @@ public class SingleError implements IError
   {
     if (o == this)
       return true;
-    if (!(o instanceof SingleError))
+    if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final SingleError rhs = (SingleError) o;
     return EqualsUtils.equals (m_sErrorID, rhs.m_sErrorID) &&

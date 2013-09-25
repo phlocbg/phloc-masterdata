@@ -17,6 +17,8 @@
  */
 package com.phloc.validation.error;
 
+import java.io.Serializable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -32,7 +34,7 @@ import com.phloc.commons.state.ISuccessIndicator;
  * 
  * @author Philip Helger
  */
-public interface IError extends IHasErrorID, IHasErrorLevel, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>
+public interface IError extends IHasErrorID, IHasErrorLevel, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>, Serializable
 {
   /**
    * @return The field for which the error occurred. May be <code>null</code>.

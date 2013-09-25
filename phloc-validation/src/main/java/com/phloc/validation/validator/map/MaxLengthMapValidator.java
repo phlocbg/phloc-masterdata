@@ -31,11 +31,11 @@ import com.phloc.validation.result.ValidationResultError;
 import com.phloc.validation.result.ValidationResultSuccess;
 
 /**
- * A validator that checks for the maximum length of a list.
+ * A validator that checks for the maximum length of a map.
  * 
  * @author Philip Helger
  */
-public final class MaxLengthMapValidator extends AbstractMapValidator
+public final class MaxLengthMapValidator extends AbstractMapValidator <Object, Object>
 {
   private final int m_nMaxLength;
 
@@ -47,7 +47,7 @@ public final class MaxLengthMapValidator extends AbstractMapValidator
   }
 
   @Nonnull
-  public IValidationResult validate (@Nullable final Map <String, ?> aRequestValues)
+  public IValidationResult validate (@Nullable final Map <? extends Object, ? extends Object> aRequestValues)
   {
     if (aRequestValues == null || aRequestValues.size () > m_nMaxLength)
     {

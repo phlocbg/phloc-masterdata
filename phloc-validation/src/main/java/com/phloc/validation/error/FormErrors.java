@@ -17,6 +17,7 @@
  */
 package com.phloc.validation.error;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.Nonnegative;
@@ -39,7 +40,7 @@ import com.phloc.commons.text.IPredefinedLocaleTextProvider;
  * @author Philip Helger
  */
 @NotThreadSafe
-public class FormErrors
+public class FormErrors implements Serializable
 {
   private final ErrorList m_aFormGlobalErrs = new ErrorList ();
   private final ErrorList m_aFormFieldErrs = new ErrorList ();

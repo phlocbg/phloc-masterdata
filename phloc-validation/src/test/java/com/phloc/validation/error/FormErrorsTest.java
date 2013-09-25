@@ -20,7 +20,6 @@ package com.phloc.validation.error;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -40,7 +39,7 @@ public final class FormErrorsTest
     final FormErrors aFEL = new FormErrors ();
     assertTrue (aFEL.isEmpty ());
     assertFalse (aFEL.hasErrorsOrWarnings ());
-    assertNull (aFEL.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.SUCCESS, aFEL.getMostSevereErrorLevel ());
 
     aFEL.addFieldInfo ("f1", "info");
     assertFalse (aFEL.isEmpty ());
