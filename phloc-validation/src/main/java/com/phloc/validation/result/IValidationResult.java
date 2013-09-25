@@ -19,9 +19,9 @@ package com.phloc.validation.result;
 
 import java.io.Serializable;
 
+import com.phloc.commons.error.IHasErrorID;
 import com.phloc.commons.name.IHasDisplayText;
 import com.phloc.commons.state.IValidityIndicator;
-import com.phloc.validation.error.IHasErrorID;
 
 /**
  * Result of a single validation.

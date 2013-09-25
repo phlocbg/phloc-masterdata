@@ -102,6 +102,51 @@ public class SingleError implements IError
     return m_sErrorText;
   }
 
+  public boolean isSuccess ()
+  {
+    return m_eErrorLevel.isSuccess ();
+  }
+
+  public boolean isFailure ()
+  {
+    return m_eErrorLevel.isFailure ();
+  }
+
+  public boolean isError ()
+  {
+    return m_eErrorLevel.isError ();
+  }
+
+  public boolean isNoError ()
+  {
+    return m_eErrorLevel.isNoError ();
+  }
+
+  public boolean isEqualSevereThan (@Nonnull final IError aOther)
+  {
+    return m_eErrorLevel.isEqualSevereThan (aOther.getErrorLevel ());
+  }
+
+  public boolean isLessSevereThan (@Nonnull final IError aOther)
+  {
+    return m_eErrorLevel.isLessSevereThan (aOther.getErrorLevel ());
+  }
+
+  public boolean isLessOrEqualSevereThan (@Nonnull final IError aOther)
+  {
+    return m_eErrorLevel.isLessOrEqualSevereThan (aOther.getErrorLevel ());
+  }
+
+  public boolean isMoreSevereThan (@Nonnull final IError aOther)
+  {
+    return m_eErrorLevel.isMoreSevereThan (aOther.getErrorLevel ());
+  }
+
+  public boolean isMoreOrEqualSevereThan (@Nonnull final IError aOther)
+  {
+    return m_eErrorLevel.isMoreOrEqualSevereThan (aOther.getErrorLevel ());
+  }
+
   @Override
   public boolean equals (final Object o)
   {

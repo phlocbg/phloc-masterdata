@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
 
 import com.phloc.commons.compare.AbstractCollationComparator;
 import com.phloc.commons.compare.ESortOrder;
+import com.phloc.commons.error.IHasErrorID;
 
 /**
  * Special comparator that compares based on an error ID
