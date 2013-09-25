@@ -17,6 +17,7 @@
  */
 package com.phloc.validation.error;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.Nonnegative;
@@ -28,6 +29,7 @@ import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.multimap.IMultiMapListBased;
 import com.phloc.commons.error.EErrorLevel;
+import com.phloc.commons.error.IHasErrorLevels;
 
 /**
  * A simple read only form error list interface. For a field specific list look
@@ -35,7 +37,7 @@ import com.phloc.commons.error.EErrorLevel;
  * 
  * @author Philip Helger
  */
-public interface IErrorList extends Iterable <IError>
+public interface IErrorList extends Iterable <IError>, IHasErrorLevels, Serializable
 {
   /**
    * @return <code>true</code> if this list has no items, <code>false</code> if
@@ -54,13 +56,6 @@ public interface IErrorList extends Iterable <IError>
    *         item of level error is contained.
    */
   boolean hasErrorsOrWarnings ();
-
-  /**
-   * @return The most severe error level contained in the list or
-   *         <code>EErrorLevel.SUCCESS</code> if the list is empty.
-   */
-  @Nonnull
-  EErrorLevel getMostSevereErrorLevel ();
 
   /**
    * @return An immutable list of all contained entries. Never <code>null</code>

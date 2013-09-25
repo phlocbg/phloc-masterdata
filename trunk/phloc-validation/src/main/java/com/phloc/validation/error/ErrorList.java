@@ -190,6 +190,114 @@ public class ErrorList implements IErrorList
     return false;
   }
 
+  public boolean containsOnlySuccess ()
+  {
+    if (m_aItems.isEmpty ())
+      return false;
+    for (final IError aError : m_aItems)
+      if (aError.isFailure ())
+        return false;
+    return true;
+  }
+
+  public boolean containsAtLeastOneSuccess ()
+  {
+    for (final IError aError : m_aItems)
+      if (aError.isSuccess ())
+        return true;
+    return false;
+  }
+
+  public boolean containsNoSuccess ()
+  {
+    for (final IError aError : m_aItems)
+      if (aError.isSuccess ())
+        return false;
+    return true;
+  }
+
+  @Nonnegative
+  public int getSuccessCount ()
+  {
+    int ret = 0;
+    for (final IError aError : m_aItems)
+      if (aError.isSuccess ())
+        ret++;
+    return ret;
+  }
+
+  public boolean containsOnlyFailure ()
+  {
+    if (m_aItems.isEmpty ())
+      return false;
+    for (final IError aError : m_aItems)
+      if (aError.isSuccess ())
+        return false;
+    return true;
+  }
+
+  public boolean containsAtLeastOneFailure ()
+  {
+    for (final IError aError : m_aItems)
+      if (aError.isFailure ())
+        return true;
+    return false;
+  }
+
+  public boolean containsNoFailure ()
+  {
+    for (final IError aError : m_aItems)
+      if (aError.isFailure ())
+        return false;
+    return true;
+  }
+
+  @Nonnegative
+  public int getFailureCount ()
+  {
+    int ret = 0;
+    for (final IError aError : m_aItems)
+      if (aError.isFailure ())
+        ret++;
+    return ret;
+  }
+
+  public boolean containsOnlyError ()
+  {
+    if (m_aItems.isEmpty ())
+      return false;
+    for (final IError aError : m_aItems)
+      if (aError.isNoError ())
+        return false;
+    return true;
+  }
+
+  public boolean containsAtLeastOneError ()
+  {
+    for (final IError aError : m_aItems)
+      if (aError.isError ())
+        return true;
+    return false;
+  }
+
+  public boolean containsNoError ()
+  {
+    for (final IError aError : m_aItems)
+      if (aError.isError ())
+        return false;
+    return true;
+  }
+
+  @Nonnegative
+  public int getErrorCount ()
+  {
+    int ret = 0;
+    for (final IError aError : m_aItems)
+      if (aError.isError ())
+        ret++;
+    return ret;
+  }
+
   @Nonnull
   public EErrorLevel getMostSevereErrorLevel ()
   {

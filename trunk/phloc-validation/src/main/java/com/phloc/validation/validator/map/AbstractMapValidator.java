@@ -22,11 +22,15 @@ import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.validation.validator.IMapValidator;
 
 /**
- * Base class for list validators.
+ * Base class for map validators.
  * 
  * @author Philip Helger
+ * @param <KEYTYPE>
+ *        The map key type
+ * @param <VALUETYPE>
+ *        The map value type
  */
-public abstract class AbstractMapValidator implements IMapValidator
+public abstract class AbstractMapValidator <KEYTYPE, VALUETYPE> implements IMapValidator <KEYTYPE, VALUETYPE>
 {
   @Override
   public boolean equals (final Object o)

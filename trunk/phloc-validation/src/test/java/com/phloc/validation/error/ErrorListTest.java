@@ -20,7 +20,6 @@ package com.phloc.validation.error;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -41,7 +40,7 @@ public final class ErrorListTest
     assertTrue (aList.isEmpty ());
     assertEquals (0, aList.getItemCount ());
     assertFalse (aList.hasErrorsOrWarnings ());
-    assertNull (aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.SUCCESS, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (0, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());
@@ -149,7 +148,7 @@ public final class ErrorListTest
     assertTrue (aList.isEmpty ());
     assertEquals (0, aList.getItemCount ());
     assertFalse (aList.hasErrorsOrWarnings ());
-    assertNull (aList.getMostSevereErrorLevel ());
+    assertEquals (EErrorLevel.SUCCESS, aList.getMostSevereErrorLevel ());
     assertNotNull (aList.getAllItems ());
     assertEquals (0, aList.getAllItems ().size ());
     assertNotNull (aList.getAllItemTexts ());

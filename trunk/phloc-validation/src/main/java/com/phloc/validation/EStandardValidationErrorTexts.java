@@ -29,6 +29,11 @@ import com.phloc.commons.text.ITextProvider;
 import com.phloc.commons.text.impl.TextProvider;
 import com.phloc.commons.text.resolve.DefaultTextResolver;
 
+/**
+ * Default error texts used in this component.
+ * 
+ * @author Philip Helger
+ */
 @Translatable
 public enum EStandardValidationErrorTexts implements IHasDisplayText, IHasDisplayTextWithArgs
 {

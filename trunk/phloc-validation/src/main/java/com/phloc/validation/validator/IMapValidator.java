@@ -19,19 +19,17 @@ package com.phloc.validation.validator;
 
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.phloc.validation.result.IValidationResult;
-
 /**
  * Validator for a list type field. May check for the existence of a certain
  * amount of entries.
  * 
  * @author Boris
+ * @param <KEYTYPE>
+ *        The map key type
+ * @param <VALUETYPE>
+ *        The map value type
  */
-public interface IMapValidator extends IBaseValidator <Map <String, ?>>
+public interface IMapValidator <KEYTYPE, VALUETYPE> extends IBaseValidator <Map <? extends KEYTYPE, ? extends VALUETYPE>>
 {
-  @Nonnull
-  IValidationResult validate (@Nullable Map <String, ?> aValue);
+  /* empty */
 }
