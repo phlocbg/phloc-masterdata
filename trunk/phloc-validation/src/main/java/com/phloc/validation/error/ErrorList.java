@@ -190,17 +190,20 @@ public class ErrorList implements IErrorList
     return false;
   }
 
-  @Nullable
+  @Nonnull
   public EErrorLevel getMostSevereErrorLevel ()
   {
-    EErrorLevel ret = null;
+    EErrorLevel ret = EErrorLevel.SUCCESS;
     for (final IError aError : m_aItems)
-      if (ret == null || aError.getErrorLevel ().isMoreSevereThan (ret))
+    {
+      final EErrorLevel eCur = aError.getErrorLevel ();
+      if (eCur.isMoreSevereThan (ret))
       {
-        ret = aError.getErrorLevel ();
+        ret = eCur;
         if (ret == EErrorLevel.HIGHEST)
           break;
       }
+    }
     return ret;
   }
 

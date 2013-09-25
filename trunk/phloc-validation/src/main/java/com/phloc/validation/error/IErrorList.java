@@ -57,9 +57,9 @@ public interface IErrorList extends Iterable <IError>
 
   /**
    * @return The most severe error level contained in the list or
-   *         <code>null</code> if the list is empty.
+   *         <code>EErrorLevel.SUCCESS</code> if the list is empty.
    */
-  @Nullable
+  @Nonnull
   EErrorLevel getMostSevereErrorLevel ();
 
   /**

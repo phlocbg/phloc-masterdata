@@ -20,6 +20,16 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-validation">
+  <entry date="2013-09-25" category="api" action="change" incompatible="true">
+    <change>
+      <text locale="en">IError now implements ISeverityComparable</text>
+    </change>
+  </entry>
+  <entry date="2013-09-25" category="api" action="remove" incompatible="true">
+    <change>
+      <text locale="en">Using IHasErrorID from phloc-commons</text>
+    </change>
+  </entry>
   <release date="2013-08-22" version="3.0.0" />
   <entry date="2013-08-21" category="api" action="add">
     <change>

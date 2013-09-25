@@ -21,14 +21,18 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.error.IHasErrorID;
 import com.phloc.commons.error.IHasErrorLevel;
+import com.phloc.commons.error.ISeverityComparable;
+import com.phloc.commons.state.IErrorIndicator;
+import com.phloc.commons.state.ISuccessIndicator;
 
 /**
  * Base interface for a single error.
  * 
  * @author Philip Helger
  */
-public interface IError extends IHasErrorID, IHasErrorLevel
+public interface IError extends IHasErrorID, IHasErrorLevel, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>
 {
   /**
    * @return The field for which the error occurred. May be <code>null</code>.
