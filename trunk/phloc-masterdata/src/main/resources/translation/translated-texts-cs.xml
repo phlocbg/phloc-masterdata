@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (C) 2006-2013 phloc systems
@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="91">
+<translationitems count="69">
   <item id="com.phloc.masterdata.address.EAddressText.MSG_ADDRESS">
     <cs>Adresa</cs>
   </item>

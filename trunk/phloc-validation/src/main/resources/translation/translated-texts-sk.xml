@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (C) 2006-2013 phloc systems
@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="91">
+<translationitems count="22">
   <item id="com.phloc.validation.EStandardValidationErrorTexts.INVALID_COUNTRY_CODE">
     <sk>Krajina je neplatná.</sk>
   </item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (C) 2006-2013 phloc systems
@@ -18,7 +18,7 @@
     limitations under the License.
 
 -->
-<translationitems count="100">
+<translationitems count="79">
   <item id="com.phloc.masterdata.currency.ECurrencyName.ALL">
     <mk>Албански Лек</mk>
   </item>
