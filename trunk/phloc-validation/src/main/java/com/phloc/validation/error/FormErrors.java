@@ -308,15 +308,14 @@ public class FormErrors implements Serializable
    * Get the most severe error level that was recorded. This considers
    * form-global and form-field-specific messages.
    * 
-   * @return <code>null</code> if no message was recorded at all, the non-
-   *         <code>null</code> {@link EErrorLevel} otherwise.
+   * @return Never <code>null</code>.
    */
-  @Nullable
+  @Nonnull
   public EErrorLevel getMostSevereErrorLevel ()
   {
     final EErrorLevel ret = m_aFormGlobalErrs.getMostSevereErrorLevel ();
     final EErrorLevel ret2 = m_aFormFieldErrs.getMostSevereErrorLevel ();
-    return ret == null ? ret2 : ret2 == null ? ret : ret.isMoreSevereThan (ret2) ? ret : ret2;
+    return ret.isMoreSevereThan (ret2) ? ret : ret2;
   }
 
   /**
