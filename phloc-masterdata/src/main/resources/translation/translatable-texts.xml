@@ -384,7 +384,7 @@
     <en>Coffee tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAG">
-    <de>Harmonisierte Umsatzsteuer</de>
+    <de>Harmonisierte Umsatzsteuer, Kanada</de>
     <en>Harmonised sales tax, Canadian</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.AAH">
@@ -412,7 +412,7 @@
     <en>Anti-dumping duty</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.BOL">
-    <de>Stempelgebühr/Irland: Grunderwerbssteuer</de>
+    <de>Stempelgebühr (Italien)</de>
     <en>Stamp duty (Imposta di Bollo)</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CAP">
@@ -424,7 +424,7 @@
     <en>Car tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.COC">
-    <de>Paper consortium tax (Italy)</de>
+    <de>Paper consortium tax (Italien)</de>
     <en>Paper consortium tax (Italy)</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.CST">
@@ -488,31 +488,31 @@
     <en>Local construction tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LDP">
-    <de>Light dues payable</de>
+    <de>Leuchtturmabgaben</de>
     <en>Light dues payable</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LOC">
-    <de>Local sales tax</de>
+    <de>Lokale Umsatzsteuer</de>
     <en>Local sales tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.LST">
-    <de>Luststeuer</de>
+    <de>LUST Steuer</de>
     <en>Lust tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.MCA">
-    <de>Monetary compensatory amount</de>
+    <de>Monetäre Ausgleichssumme</de>
     <en>Monetary compensatory amount</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.MCD">
-    <de>Miscellaneous cash deposit</de>
+    <de>Diverse Bareinlage</de>
     <en>Miscellaneous cash deposit</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.OTH">
-    <de>Andere Steuern</de>
+    <de>Sonstige Steuern</de>
     <en>Other taxes</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.PDB">
-    <de>Provisorische Abgabenschuld</de>
+    <de>Provisorische Anleihenschuld</de>
     <en>Provisional duty bond</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.PDC">
@@ -544,11 +544,11 @@
     <en>Surtax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.SWT">
-    <de>Shifted wage tax</de>
+    <de>Verschobene Lohnsteuer</de>
     <en>Shifted wage tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TAC">
-    <de>Alkohol mark tax</de>
+    <de>Alkoholsteuer</de>
     <en>Alcohol mark tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TOT">
@@ -556,19 +556,19 @@
     <en>Total</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TOX">
-    <de>Turnover tax</de>
+    <de>Umsatzsteuer</de>
     <en>Turnover tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.TTA">
-    <de>Tonnage taxes</de>
+    <de>Tonnagensteuer</de>
     <en>Tonnage taxes</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.VAD">
-    <de>Valuation deposit</de>
+    <de>Wertansatz Abgabe</de>
     <en>Valuation deposit</en>
   </item>
   <item id="com.phloc.masterdata.tax.ETaxTypeUN5153Name.VAT">
-    <de>Umsatzsteuer</de>
+    <de>Mehrwertsteuer</de>
     <en>Value added tax</en>
   </item>
   <item id="com.phloc.masterdata.tax.validation.ETaxErrorTexts.INVALID_TAX_CATEGORY_UN5305">
@@ -792,7 +792,7 @@
     <en>absorbed dose rate</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.ACCELERATION_ACCELERATION_OF_FREE_FALL_PLUS">
-    <de>acceleration, acceleration of free fall, acceleration due to gravity</de>
+    <de>Beschleuniggung, Erdbeschleunigung</de>
     <en>acceleration, acceleration of free fall, acceleration due to gravity</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.ACIDITY_AND_ALKALINITY">
@@ -828,8 +828,8 @@
     <en>affinity (of a chemical reaction)</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.ALFVEN_NUMBER">
-    <de>Alfven number</de>
-    <en>Alfven number</en>
+    <de>Alfvén-Zahl</de>
+    <en>Alfvén number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.AMOUNT_OF_SUBSTANCE">
     <de>amount of substance</de>
@@ -852,7 +852,7 @@
     <en>angular cross-section</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.ANGULAR_FREQUENCY_PULSATANCE">
-    <de>angular frequency, pulsatance</de>
+    <de>Kreisfrequenz, Winkelfrequenz</de>
     <en>angular frequency, pulsatance</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.ANGULAR_IMPULSE">
@@ -916,7 +916,7 @@
     <en>Boltzmann constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.BRAGG_ANGLE">
-    <de>Bragg angle</de>
+    <de>Braggwinkel</de>
     <en>Bragg angle</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.BURST_INDEX">
@@ -960,7 +960,7 @@
     <en>coefficient, performance characteristic</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.COMPRESSIBILITY_BULK_COMPRESSIBILITY">
-    <de>compressibility, bulk compressibility</de>
+    <de>Kompressibilität</de>
     <en>compressibility, bulk compressibility</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.CONDUCTANCE_FOR_DIRECT_CURRENT_ADMITTANCE_PLUS">
@@ -980,7 +980,7 @@
     <en>coupling coefficient, leakage coefficient</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.COWLING_NUMBER">
-    <de>Cowling number</de>
+    <de>Cowling-Zahl</de>
     <en>Cowling number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.CROSS_SECTION">
@@ -996,7 +996,7 @@
     <en>curvature</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.DAMPING_COEFFICIENT">
-    <de>damping coefficient</de>
+    <de>Dämpfungskoeffizient</de>
     <en>damping coefficient</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.DEBYE_ANGULAR_FREQUENCY">
@@ -1024,7 +1024,7 @@
     <en>degree of dissociation</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.DENSITY_MASS_DENSITY_PLUS">
-    <de>density, mass density, volumic mass</de>
+    <de>Dichte, Massendichte</de>
     <en>density, mass density, volumic mass</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.DENSITY_OF_HEAT_FLOW_RATE">
@@ -1144,7 +1144,7 @@
     <en>equivalent absorption area of a surface or object</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.EULER_NUMBER">
-    <de>Euler number</de>
+    <de>Eulersche Zahl</de>
     <en>Euler number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.EXPOSURE">
@@ -1156,7 +1156,7 @@
     <en>exposure rate</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FAHRENHEIT_TEMPERATURE">
-    <de>fahrenheit temperature</de>
+    <de>Fahrenheit Temperatur</de>
     <en>fahrenheit temperature</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FARADAY_CONSTANT">
@@ -1172,7 +1172,7 @@
     <en>Fermi angular repetency, Fermi angular wave number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FERMI_ENERGY">
-    <de>Fermi energy</de>
+    <de>Fermienergie</de>
     <en>Fermi energy</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FINE_STRUCTURE_CONSTANT">
@@ -1180,15 +1180,15 @@
     <en>fine structure constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FORCE_DIVIDED_BY_LENGTH">
-    <de>force divided by length</de>
+    <de>Kraft dividiert durch Länge</de>
     <en>force divided by length</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FORCE_WEIGHT">
-    <de>force, weight</de>
+    <de>Kraft, Gewicht</de>
     <en>force, weight</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FOURIER_NUMBER">
-    <de>Fourier number</de>
+    <de>Fourier-Zahl</de>
     <en>Fourier number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FOURIER_NUMBER_FOR_MASS_TRANSFER">
@@ -1204,11 +1204,11 @@
     <en>frequency interval</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FRICTION_FACTOR_COEFFICIENT_OF_FRICTION">
-    <de>friction factor, coefficient of friction</de>
+    <de>Reibungsfaktor, Reibungszahl</de>
     <en>friction factor, coefficient of friction</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.FROUDE_NUMBER">
-    <de>Froude number</de>
+    <de>Froude-Zahl</de>
     <en>Froude number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.GAP_ENERGY">
@@ -1220,7 +1220,7 @@
     <en>Gibbs function, Gibbs free energy</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.GRASHOF_NUMBER">
-    <de>Grashof number</de>
+    <de>Grashof-Zahl</de>
     <en>Grashof number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.GRASHOF_NUMBER_FOR_MASS_TRANSFER">
@@ -1228,7 +1228,7 @@
     <en>Grashof number for mass transfer</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.GRAVITATIONAL_CONSTANT">
-    <de>gravitational constant</de>
+    <de>Gravitationskonstante</de>
     <en>gravitational constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.GR_NEISEN_PARAMETER">
@@ -1256,7 +1256,7 @@
     <en>hardness index</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.HARTMANN_NUMBER">
-    <de>Hartmann number</de>
+    <de>Hartmann-Zahl</de>
     <en>Hartmann number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.HARTREE_ENERGY">
@@ -1328,11 +1328,11 @@
     <en>kerma rate</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.KINEMATIC_VISCOSITY">
-    <de>kinematic viscosity</de>
+    <de>kinematische Viskosität</de>
     <en>kinematic viscosity</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.KNUDSEN_NUMBER">
-    <de>Knudsen number</de>
+    <de>Knudsen-Zahl</de>
     <en>Knudsen number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LANDAU_GINZBURG_NUMBER">
@@ -1352,7 +1352,7 @@
     <en>lattice vector, fundamental lattice vector</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LEAKAGE_RATE_OF_GAS">
-    <de>leakage rate of gas</de>
+    <de>Leckrate eines Gases</de>
     <en>leakage rate of gas</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LENGTH_BREADTH_PLUS">
@@ -1372,7 +1372,7 @@
     <en>level width, alpha disintegration energy</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LEWIS_NUMBER">
-    <de>Lewis number</de>
+    <de>Lewis-Zahl</de>
     <en>Lewis number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LIGHT_EXPOSURE">
@@ -1388,7 +1388,7 @@
     <en>linear attenuation coefficient, linear extinction coefficient,linear absorption coefficient</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LINEAR_DENSITY_LINEAR_MASS">
-    <de>linear density, linear mass</de>
+    <de>lineare Dichte, lineare Masse</de>
     <en>linear density, linear mass</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LINEAR_ELECTRIC_CURRENT_DENSITY_LINEIC_ELECTRIC_CURRENT_PLUS">
@@ -1408,7 +1408,7 @@
     <en>linear ionization by a particle, total ionization by a particle</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LINEAR_STRAIN_RELATIVE_ELONGATION_PLUS">
-    <de>linear strain, relative elongation, shear strain, volume or bulk strain</de>
+    <de>Dehnlänge, relative Dehnung, Scherdehnung, Volumendehnung</de>
     <en>linear strain, relative elongation, shear strain, volume or bulk strain</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LINEIC_CHARGE">
@@ -1420,7 +1420,7 @@
     <en>lineic resistance</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LOGARITHMIC_DECREMENT">
-    <de>logarithmic decrement</de>
+    <de>logarithmisches Dekrament</de>
     <en>logarithmic decrement</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.LOUDNESS">
@@ -1456,7 +1456,7 @@
     <en>luminous intensity</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MACH_NUMBER">
-    <de>Mach number</de>
+    <de>Mach-Zahl</de>
     <en>Mach number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MACROSCOPIC_CROSS_SECTION_VOLUMIC_CROSS_SECTION_PLUS">
@@ -1492,7 +1492,7 @@
     <en>magnetic quantum number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MAGNETIC_REYNOLDS_NUMBER">
-    <de>magnetic Reynolds number</de>
+    <de>magnetische Reynolds-Zahl</de>
     <en>magnetic Reynolds number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MAGNETIC_SUSCEPTIBILITY">
@@ -1552,7 +1552,7 @@
     <en>mass excess</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MASS_FLOW_RATE">
-    <de>mass flow rate</de>
+    <de>Mengendurchsatz</de>
     <en>mass flow rate</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MASS_OF_ATOM_OF_A_NUCLIDE_X_NUCLIDIC_MASS">
@@ -1568,7 +1568,7 @@
     <en>mass of molecule</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MASS_RATIO">
-    <de>mass ratio</de>
+    <de>Masseverhältnis</de>
     <en>mass ratio</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MAXIMUM_BETA_PARTICLE_ENERGY_BETA_DISINTEGRATION_ENERGY">
@@ -1656,19 +1656,19 @@
     <en>mole fraction of B, mole ratio of solute B</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MOMENTUM">
-    <de>Momentum</de>
+    <de>Impuls</de>
     <en>momentum</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MOMENT_OF_FORCE_MOMENT_OF_A_COUPLE_PLUS">
-    <de>moment of force, moment of a couple, torque</de>
+    <de>Moment einer Kraft, Moment eines Kräftepaars, Drehmoment</de>
     <en>moment of force, moment of a couple, torque</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MOMENT_OF_INERTIA_DYNAMIC_MOMENT_OF_INERTIA">
-    <de>moment of inertia (dynamic moment of inertia)</de>
+    <de>Trägheitsmoment (dynamisches Trägheitsmoment)</de>
     <en>moment of inertia (dynamic moment of inertia)</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MOMENT_OF_MOMENTUM_ANGULAR_MOMENTUM">
-    <de>moment of momentum, angular momentum</de>
+    <de>Drehmoment, Drehimpuls</de>
     <en>moment of momentum, angular momentum</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.MULTIPLICATION_FACTOR_INFINITE_MEDIUM_MULTIPLICATION_FACTOR_PLUS">
@@ -1724,7 +1724,7 @@
     <en>number of turns in a winding, number of phases, number of pairs of poles</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.NUSSELT_NUMBER">
-    <de>Nusselt number</de>
+    <de>Nusselt-Zahl</de>
     <en>Nusselt number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.NUSSELT_NUMBER_FOR_MASS_TRANSFER">
@@ -1768,8 +1768,8 @@
     <en>particle position vector, equilibrium position vector of ion or atom, displacement vector of ion or atom</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PECLET_NUMBER">
-    <de>Peclet number</de>
-    <en>Peclet number</en>
+    <de>Péclet-Zahl</de>
+    <en>Péclet number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PECLET_NUMBER_FOR_MASS_TRANSFER">
     <de>Peclet number for mass transfer</de>
@@ -1822,15 +1822,15 @@
     <en>Planck constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.POISSON_RATIO_POISSON_NUMBER">
-    <de>poisson ratio, poisson number</de>
+    <de>Poissonzahl</de>
     <en>poisson ratio, poisson number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.POROSITY">
-    <de>porosity</de>
+    <de>Porosität</de>
     <en>porosity</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.POWER">
-    <de>power</de>
+    <de>Leistung</de>
     <en>power</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.POWER_FOR_DIRECT_CURRENT_ACTIVE_POWER">
@@ -1842,7 +1842,7 @@
     <en>Poynting vector</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PRANDTL_NUMBER">
-    <de>Prandtl number</de>
+    <de>Prandtl-Zahl</de>
     <en>Prandtl number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PRESSURE_COEFFICIENT">
@@ -1850,11 +1850,11 @@
     <en>pressure coefficient</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PRESSURE_NORMAL_STRESS_PLUS">
-    <de>pressure, normal stress, shear stress, modulus of elasticity,shear modulus, modulus of rigidity, bulk modulus, modulus of compression</de>
+    <de>Druck, normale Spannung, Scherspannung, Elastizitätsmodul, Schubmodul, Kompressionsmodul</de>
     <en>pressure, normal stress, shear stress, modulus of elasticity,shear modulus, modulus of rigidity, bulk modulus, modulus of compression</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PRESSURE_RATIO">
-    <de>pressure ratio</de>
+    <de>Verdichtungsverhältnis</de>
     <en>pressure ratio</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.PRINCIPLE_QUANTUM_NUMBER">
@@ -1906,7 +1906,7 @@
     <en>ratio of the specific heat capacities, ratio of the massic heat capacity, isentropic exponent</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.RAYLEIGH_NUMBER">
-    <de>Rayleigh number</de>
+    <de>Rayleigh-Zahl</de>
     <en>Rayleigh number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.REACTION_ENERGY">
@@ -1938,7 +1938,7 @@
     <en>relative atomic mass</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.RELATIVE_DENSITY_RELATIVE_MASS_DENSITY">
-    <de>relative density, relative mass density</de>
+    <de>relative Dichte, relative Massendichte</de>
     <en>relative density, relative mass density</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.RELATIVE_MASS_EXCESS_RELATIVE_MASS_DEFECT">
@@ -2002,7 +2002,7 @@
     <en>reverberation time</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.REYNOLDS_NUMBER">
-    <de>Reynolds number</de>
+    <de>Reynolds-Zahl</de>
     <en>Reynolds number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.RICHARDSON_CONSTANT">
@@ -2010,7 +2010,7 @@
     <en>Richardson constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.ROTATIONAL_FREQUENCY">
-    <de>rotational frequency</de>
+    <de>Rotationsfrequenz</de>
     <en>rotational frequency</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.RYDBERG_CONSTANT">
@@ -2018,15 +2018,15 @@
     <en>Rydberg constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SCHMIDT_NUMBER">
-    <de>Schmidt number</de>
+    <de>Schmidt-Zahl</de>
     <en>Schmidt number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SECOND_MOMENT_OF_AREA_SECOND_AXIAL_MOMENT_OF_AREA">
-    <de>second moment of area, second axial moment of area</de>
+    <de>Flächenträgheitsmoment, axiales Flächenträgheitsmoment</de>
     <en>second moment of area, second axial moment of area</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SECOND_POLAR_MOMENT_OF_AREA">
-    <de>second polar moment of area</de>
+    <de>polares Flächenträgheitsmoment</de>
     <en>second polar moment of area</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SECOND_RADIATION_CONSTANT">
@@ -2034,7 +2034,7 @@
     <en>second radiation constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SECTION_MODULUS">
-    <de>section modulus</de>
+    <de>Widerstandsmoment</de>
     <en>section modulus</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SEEBECK_COEFFICIENT_FOR_SUBSTANCES_A_AND_B">
@@ -2114,7 +2114,7 @@
     <en>specific thermodynamic energy,</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SPECIFIC_VOLUME_MASSIC_VOLUME">
-    <de>specific volume, massic volume</de>
+    <de>spezifisches Volumen</de>
     <en>specific volume, massic volume</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SPECTRAL_ABSORPTION_FACTOR_SPECTRAL_ABSORPTANCE_PLUS">
@@ -2154,7 +2154,7 @@
     <en>standard equilibrium constant</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.STANTON_NUMBER">
-    <de>Stanton number</de>
+    <de>Stanton-Zahl</de>
     <en>Stanton number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.STANTON_NUMBER_FOR_MASS_TRANSFER">
@@ -2178,7 +2178,7 @@
     <en>stoichiometric number of B</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.STROUHAL_NUMBER">
-    <de>Strouhal number</de>
+    <de>Strouhal-Zahl</de>
     <en>Strouhal number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SURFACE_COEFFICIENT_OF_HEAT_TRANSFER">
@@ -2186,7 +2186,7 @@
     <en>surface coefficient of heat transfer</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SURFACE_DENSITY_AREIC_MASS">
-    <de>surface density, areic mass</de>
+    <de>Belegungsdichte, Massenbelegung</de>
     <en>surface density, areic mass</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SURFACE_DENSITY_OF_CHARGE_ELECTRIC_FLUX_DENSITY_PLUS">
@@ -2198,7 +2198,7 @@
     <en>surface density of mechanical impedance</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SURFACE_TENSION">
-    <de>surface tension</de>
+    <de>Oberflächenspannung</de>
     <en>surface tension</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.SUSCEPTANCE">
@@ -2206,11 +2206,11 @@
     <en>susceptance</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.TEMPERATURE">
-    <de>temperature</de>
+    <de>Temperatur</de>
     <en>temperature</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.TEMPERATURE_VARIATION_OVER_TIME">
-    <de>temperature variation over time</de>
+    <de>Temperaturänderung im Laufe der Zeit</de>
     <en>temperature variation over time</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.THERMAL_CONDUCTANCE">
@@ -2246,7 +2246,7 @@
     <en>thermal utilization factor</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.THERMODYNAMIC">
-    <de>thermodynamic</de>
+    <de>Thermodynamik</de>
     <en>thermodynamic</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.THERMODYNAMIC_CRITICAL_MAGNETIC_FLUX_DENSITY_LOWER_CRITICAL_MAGNETIC_FLUX_DENSITY_PLUS">
@@ -2270,7 +2270,7 @@
     <en>time constant, relaxation time</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.TORSIONAL_STIFFNESS_AREA_RELATED_TORSIONAL_MOMENT">
-    <de>torsional stiffness, area-related torsional moment</de>
+    <de>Torsionssteife, Flächentorsionsmoment</de>
     <en>torsional stiffness, area-related torsional moment</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.TOTAL_ANGULAR_MOMENTUM_QUANTUM_NUMBER">
@@ -2302,7 +2302,7 @@
     <en>velocity of sound (phase velocity), group velocity</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VELOCITY_PHASE_VELOCITY_PLUS">
-    <de>velocity, phase velocity, group velocity</de>
+    <de>Geschwindigkeit, Phasengeschwindigkeit, Gruppengeschwindigkeit</de>
     <en>velocity, phase velocity, group velocity</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VELOCITY_SPEED_ON_PROPAGATION_OF_ELECTROMAGNETIC_WAVES_IN_VACUO">
@@ -2314,7 +2314,7 @@
     <en>vergence, lens power</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VISCOSITY_DYNAMIC_VISCOSITY">
-    <de>viscosity (dynamic viscosity)</de>
+    <de>Viskosität (dynamische Viskosität)</de>
     <en>viscosity (dynamic viscosity)</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VOLUME">
@@ -2326,15 +2326,15 @@
     <en>volume density of charge, charge density, volumic charge</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VOLUME_FLOW_RATE">
-    <de>volume flow rate</de>
+    <de>Volumenstrom</de>
     <en>volume flow rate</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VOLUME_PER_TEMPERATURE">
-    <de>volume per temperature</de>
+    <de>Volumen pro Temperatur</de>
     <en>volume per temperature</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VOLUME_RATIO">
-    <de>volume ratio</de>
+    <de>Volumenverhältnis</de>
     <en>volume ratio</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.VOLUMIC_ACTIVITY_ACTIVITY_CONCENTRATION">
@@ -2366,15 +2366,15 @@
     <en>wavenumber, repetency</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.WAVE_NUMBER_ATTENUATION_COEFFICIENT_PLUS">
-    <de>wave number, attenuation coefficient, phase coefficient, propagation coefficient, repetency</de>
+    <de>Wellenzahl, Schwächungskoeffizient, Phasenwinkel, Fortpflanzungskonstante, Wellenzahl</de>
     <en>wave number, attenuation coefficient, phase coefficient, propagation coefficient, repetency</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.WEBER_NUMBER">
-    <de>Weber number</de>
+    <de>Weber-Zahl</de>
     <en>Weber number</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.WORK_ENERGY_PLUS">
-    <de>work, energy, potential energy, kinetic energy</de>
+    <de>Arbeit, Energie, Potentialenergie, kinetische Energie</de>
     <en>work, energy, potential energy, kinetic energy</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.WORK_FUNCTION">
@@ -2382,7 +2382,7 @@
     <en>work function</en>
   </item>
   <item id="com.phloc.masterdata.unit.EUnitQuantityName.WORK_PER_UNIT_WEIGHT">
-    <de>work per unit weight</de>
+    <de>Arbeit pro Gewichtseinheit</de>
     <en>work per unit weight</en>
   </item>
   <item id="com.phloc.masterdata.vat.EVATItemText.VAT_PERC">
