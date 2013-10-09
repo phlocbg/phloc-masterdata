@@ -77,6 +77,7 @@ public final class IBANManager
   private static final String ATTR_VALIDUNTIL = "validuntil";
   private static final String ATTR_LEN = "len";
   private static final String ATTR_CHECKDIGITS = "checkdigits";
+  private static final String ATTR_LAYOUT = "layout";
   private static final String DATETIME_PATTERN = "yyyy-MM-dd";
   private static final int ILLEGAL_CHECKSUM = CGlobal.ILLEGAL_UINT;
 
@@ -124,6 +125,8 @@ public final class IBANManager
         aValidTo = PDTFromString.getLocalDateFromString (eCountry.getAttribute (ATTR_VALIDUNTIL), aDTPattern);
       }
 
+      final String sLayout = eCountry.getAttribute (ATTR_LAYOUT);
+
       final String sCheckDigits = eCountry.getAttribute (ATTR_CHECKDIGITS);
 
       // get expected length
@@ -134,8 +137,12 @@ public final class IBANManager
 
       if (s_aIBANData.containsKey (sCountryCode))
         throw new IllegalArgumentException ("Country " + sCountryCode + " is already contained!");
-      s_aIBANData.put (sCountryCode,
-                       IBANCountryData.createFromString (nExpectedLength, sDesc, sCheckDigits, aValidFrom, aValidTo));
+      s_aIBANData.put (sCountryCode, IBANCountryData.createFromString (nExpectedLength,
+                                                                       sLayout,
+                                                                       sCheckDigits,
+                                                                       aValidFrom,
+                                                                       aValidTo,
+                                                                       sDesc));
     }
   }
 
@@ -210,7 +217,7 @@ public final class IBANManager
     if (sIBAN == null)
       return null;
 
-    // to uppercase and kick all non-IBAN chars
+    // kick all non-IBAN chars and to uppercase
     final String sRealIBAN = RegExHelper.stringReplacePattern ("[^0-9A-Z]", sIBAN.toUpperCase (Locale.US), "");
     if (sRealIBAN.length () < 4)
       return null;
