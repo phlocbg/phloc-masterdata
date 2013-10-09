@@ -48,20 +48,20 @@ public final class IBANCountryData extends LocalDatePeriod
    * @param nExpectedLength
    *        The total expected length. Serves mainly as a checksum field to
    *        check whether the length of the passed fields matches.
-   * @param aElements
-   *        The IBAN elements for this country. May not be <code>null</code>.
    * @param sFixedCheckDigits
    *        <code>null</code> or fixed check digits (of length 2)
    * @param aValidFrom
    *        Validity start date. May be <code>null</code>.
    * @param aValidTo
    *        Validity end date. May be <code>null</code>.
+   * @param aElements
+   *        The IBAN elements for this country. May not be <code>null</code>.
    */
   public IBANCountryData (@Nonnegative final int nExpectedLength,
-                          @Nonnull final List <IBANElement> aElements,
                           @Nullable final String sFixedCheckDigits,
                           @Nullable final LocalDate aValidFrom,
-                          @Nullable final LocalDate aValidTo)
+                          @Nullable final LocalDate aValidTo,
+                          @Nonnull final List <IBANElement> aElements)
   {
     super (aValidFrom, aValidTo);
     if (aElements == null)
@@ -154,36 +154,12 @@ public final class IBANCountryData extends LocalDatePeriod
                                        .toString ();
   }
 
-  /**
-   * This method is used to create an instance of this class from a string
-   * representation.
-   * 
-   * @param nExpectedLength
-   *        The expected length having only validation purpose.
-   * @param sDesc
-   *        The string description of this country data. May not be
-   *        <code>null</code>.
-   * @param sFixedCheckDigits
-   *        <code>null</code> or fixed check digits (of length 2)
-   * @param aValidFrom
-   *        Validity start date. May be <code>null</code>.
-   * @param aValidTo
-   *        Validity end date. May be <code>null</code>.
-   * @return The parsed county data.
-   */
   @Nonnull
-  public static IBANCountryData createFromString (@Nonnegative final int nExpectedLength,
-                                                  @Nonnull final String sDesc,
-                                                  @Nullable final String sFixedCheckDigits,
-                                                  @Nullable final LocalDate aValidFrom,
-                                                  @Nullable final LocalDate aValidTo)
+  @ReturnsMutableCopy
+  private static List <IBANElement> _parseElements (@Nonnull final String sDesc)
   {
-    if (sDesc == null)
-      throw new NullPointerException ("desc");
-    if (sDesc.length () < 4)
-      throw new IllegalArgumentException ("Cannot converted passed string!");
-
     final List <IBANElement> aList = new ArrayList <IBANElement> ();
+    // Always starts with the country code
     aList.add (new IBANElement (EIBANElementType.COUNTRY_CODE, 2));
 
     EIBANElementType eLastCharType = null;
@@ -220,11 +196,47 @@ public final class IBANCountryData extends LocalDatePeriod
     // add rest
     if (nLastLength > 0)
       aList.add (new IBANElement (eLastCharType, nLastLength));
+    return aList;
+  }
+
+  /**
+   * This method is used to create an instance of this class from a string
+   * representation.
+   * 
+   * @param nExpectedLength
+   *        The expected length having only validation purpose.
+   * @param sLayout
+   *        <code>null</code> or the layout descriptor
+   * @param sFixedCheckDigits
+   *        <code>null</code> or fixed check digits (of length 2)
+   * @param aValidFrom
+   *        Validity start date. May be <code>null</code>.
+   * @param aValidTo
+   *        Validity end date. May be <code>null</code>.
+   * @param sDesc
+   *        The string description of this country data. May not be
+   *        <code>null</code>.
+   * @return The parsed county data.
+   */
+  @Nonnull
+  public static IBANCountryData createFromString (@Nonnegative final int nExpectedLength,
+                                                  @Nullable final String sLayout,
+                                                  @Nullable final String sFixedCheckDigits,
+                                                  @Nullable final LocalDate aValidFrom,
+                                                  @Nullable final LocalDate aValidTo,
+                                                  @Nonnull final String sDesc)
+  {
+    if (sDesc == null)
+      throw new NullPointerException ("desc");
+    if (sDesc.length () < 4)
+      throw new IllegalArgumentException ("Cannot converted passed string!");
+
+    final List <IBANElement> aList = _parseElements (sDesc);
 
     // And we're done
     try
     {
-      return new IBANCountryData (nExpectedLength, aList, sFixedCheckDigits, aValidFrom, aValidTo);
+      return new IBANCountryData (nExpectedLength, sFixedCheckDigits, aValidFrom, aValidTo, aList);
     }
     catch (final IllegalArgumentException ex)
     {
