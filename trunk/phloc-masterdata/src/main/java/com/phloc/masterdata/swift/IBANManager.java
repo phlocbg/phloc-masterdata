@@ -27,12 +27,15 @@ import javax.annotation.Nullable;
 
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.CGlobal;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.exceptions.InitializationException;
 import com.phloc.commons.io.resource.ClassPathResource;
+import com.phloc.commons.locale.country.CountryCache;
 import com.phloc.commons.microdom.IMicroDocument;
 import com.phloc.commons.microdom.IMicroElement;
 import com.phloc.commons.microdom.serialize.MicroReader;
@@ -81,6 +84,8 @@ public final class IBANManager
   private static final String DATETIME_PATTERN = "yyyy-MM-dd";
   private static final int ILLEGAL_CHECKSUM = CGlobal.ILLEGAL_UINT;
 
+  private static final Logger s_aLogger = LoggerFactory.getLogger (IBANManager.class);
+
   /** Maps country code to IBAn country data */
   private static final Map <String, IBANCountryData> s_aIBANData = new HashMap <String, IBANCountryData> ();
 
@@ -110,6 +115,8 @@ public final class IBANManager
       // get descriptive string
       final String sDesc = eCountry.getTextContent ();
       final String sCountryCode = sDesc.substring (0, 2);
+      if (CountryCache.getCountry (sCountryCode) == null)
+        s_aLogger.warn ("IBAN country data: no such country code '" + sCountryCode + "' - be careful");
 
       LocalDate aValidFrom = null;
       if (eCountry.hasAttribute (ATTR_VALIDFROM))
@@ -137,7 +144,8 @@ public final class IBANManager
 
       if (s_aIBANData.containsKey (sCountryCode))
         throw new IllegalArgumentException ("Country " + sCountryCode + " is already contained!");
-      s_aIBANData.put (sCountryCode, IBANCountryData.createFromString (nExpectedLength,
+      s_aIBANData.put (sCountryCode, IBANCountryData.createFromString (sCountryCode,
+                                                                       nExpectedLength,
                                                                        sLayout,
                                                                        sCheckDigits,
                                                                        aValidFrom,
@@ -217,8 +225,11 @@ public final class IBANManager
     if (sIBAN == null)
       return null;
 
-    // kick all non-IBAN chars and to uppercase
-    final String sRealIBAN = RegExHelper.stringReplacePattern ("[^0-9A-Z]", sIBAN.toUpperCase (Locale.US), "");
+    // to uppercase
+    String sRealIBAN = sIBAN.toUpperCase (Locale.US);
+
+    // kick all non-IBAN chars
+    sRealIBAN = RegExHelper.stringReplacePattern ("[^0-9A-Z]", sRealIBAN, "");
     if (sRealIBAN.length () < 4)
       return null;
 
@@ -253,7 +264,14 @@ public final class IBANManager
       return false;
 
     // Is existing checksum valid?
-    return _calculateChecksum (sRealIBAN) == 1;
+    if (_calculateChecksum (sRealIBAN) != 1)
+      return false;
+
+    // Perform pattern check
+    if (!aData.matchesPattern (sRealIBAN))
+      return false;
+
+    return true;
   }
 
   public static int createChecksumOfNewIBAN (@Nonnull final String sCountryCode, @Nonnull final String sBBAN)

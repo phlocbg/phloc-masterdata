@@ -37,7 +37,7 @@ Layout: upper case alpha characters (A–Z) denoted by "a",
   <country name="Burkina Faso" len="24">BFkkk sssss cccccccccccc dd</country>
   <country name="Bulgaria" len="22" layout="4a,6n,8c">BGkk bbbb ssss ddcc cccc cc</country>
   <country name="Bahrain" len="22" layout="4a,14c">BHkk bbbb cccc cccc cccc cc</country>
-  <country name="Brazil" len="29" layout="23n,1a,1c" checkdigits="39" validfrom="2013-07-01">BRkk bbbb bbbb ssss sccc cccc ccct n</country>
+  <country name="Brazil" len="29" layout="23n,1a,1c" validfrom="2013-07-01">BRkk bbbb bbbb ssss sccc cccc ccct n</country>
   <country name="Switzerland" len="21" layout="5n,12c">CHkk bbbb bccc cccc cccc c</country>
   <country name="Costa Rica" len="21" layout="17n">CRkk bbbc cccc cccc cccc c</country>
   <country name="Cyprus" len="28" layout="8n,16c">CYkk bbbs ssss cccc cccc cccc cccc</country>

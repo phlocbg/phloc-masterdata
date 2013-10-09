@@ -19,6 +19,7 @@ package com.phloc.masterdata.swift;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -26,8 +27,13 @@ import javax.annotation.Nullable;
 
 import org.joda.time.LocalDate;
 
+import com.phloc.commons.CGlobal;
+import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
+import com.phloc.commons.regex.RegExHelper;
+import com.phloc.commons.regex.RegExPool;
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.StringParser;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.period.LocalDatePeriod;
@@ -41,6 +47,7 @@ import com.phloc.datetime.period.LocalDatePeriod;
 public final class IBANCountryData extends LocalDatePeriod
 {
   private final int m_nExpectedLength;
+  private final Pattern m_aPattern;
   private final List <IBANElement> m_aElements;
   private final String m_sFixedCheckDigits;
 
@@ -48,6 +55,9 @@ public final class IBANCountryData extends LocalDatePeriod
    * @param nExpectedLength
    *        The total expected length. Serves mainly as a checksum field to
    *        check whether the length of the passed fields matches.
+   * @param aPattern
+   *        <code>null</code> or the RegEx pattern to valid values of this
+   *        country.
    * @param sFixedCheckDigits
    *        <code>null</code> or fixed check digits (of length 2)
    * @param aValidFrom
@@ -58,6 +68,7 @@ public final class IBANCountryData extends LocalDatePeriod
    *        The IBAN elements for this country. May not be <code>null</code>.
    */
   public IBANCountryData (@Nonnegative final int nExpectedLength,
+                          @Nullable final Pattern aPattern,
                           @Nullable final String sFixedCheckDigits,
                           @Nullable final LocalDate aValidFrom,
                           @Nullable final LocalDate aValidTo,
@@ -72,6 +83,7 @@ public final class IBANCountryData extends LocalDatePeriod
       throw new IllegalArgumentException ("Check digits must be all numeric!");
 
     m_nExpectedLength = nExpectedLength;
+    m_aPattern = aPattern;
     m_aElements = new ArrayList <IBANElement> (aElements);
     m_sFixedCheckDigits = sFixedCheckDigits;
 
@@ -90,6 +102,24 @@ public final class IBANCountryData extends LocalDatePeriod
   public int getExpectedLength ()
   {
     return m_nExpectedLength;
+  }
+
+  public boolean hasPattern ()
+  {
+    return m_aPattern != null;
+  }
+
+  @Nullable
+  public Pattern getPattern ()
+  {
+    return m_aPattern;
+  }
+
+  public boolean matchesPattern (@Nonnull final String sIBAN)
+  {
+    if (m_aPattern == null)
+      return true;
+    return m_aPattern.matcher (sIBAN).matches ();
   }
 
   /**
@@ -199,10 +229,66 @@ public final class IBANCountryData extends LocalDatePeriod
     return aList;
   }
 
+  @Nullable
+  private static Pattern _parseLayout (@Nonnull @Nonempty final String sCountryCode,
+                                       @Nonnegative final int nExpectedLength,
+                                       @Nullable final String sFixedCheckDigits,
+                                       @Nullable final String sLayout)
+  {
+    // E.g. Burkina Faso has no layout
+    if (sLayout == null)
+      return null;
+
+    final StringBuilder aRegEx = new StringBuilder ();
+    // Always start with country code
+    // Depending on fixed check digits or not different check
+    if (sFixedCheckDigits != null)
+      aRegEx.append (Pattern.quote (sCountryCode + sFixedCheckDigits));
+    else
+    {
+      aRegEx.append (Pattern.quote (sCountryCode));
+      aRegEx.append ("[0-9]{2}");
+    }
+
+    int nLen = 4;
+    for (final String sPart : StringHelper.getExploded (',', sLayout))
+    {
+      final String [] aParts = RegExHelper.getAllMatchingGroupValues ("([0-9]+)([anc])", sPart);
+      if (aParts.length != 2)
+        throw new IllegalArgumentException ("Failed to parse layout part '" + sPart + "'");
+      final int nPartLen = StringParser.parseInt (aParts[0], CGlobal.ILLEGAL_UINT);
+      if (nPartLen <= 0)
+        throw new IllegalArgumentException ("Failed to parse layout part '" + sPart + "' - illegal numeric value");
+      nLen += nPartLen;
+      if (aParts[1].length () != 1)
+        throw new IllegalArgumentException ("Failed to parse layout part '" + sPart + "' - type length is invalid");
+      final char cType = aParts[1].charAt (0);
+      if (cType == 'a')
+        aRegEx.append ("[A-Z]{" + nPartLen + "}");
+      else
+        if (cType == 'n')
+          aRegEx.append ("[0-9]{" + nPartLen + "}");
+        else
+          if (cType == 'c')
+            aRegEx.append ("[a-zA-Z0-9]{" + nPartLen + "}");
+          else
+            throw new IllegalArgumentException ("Failed to parse layout part '" + sPart + "' - type is invalid");
+    }
+    if (nLen != nExpectedLength)
+      throw new IllegalArgumentException ("Failed to parse layout - length mismatch. Having " +
+                                          nLen +
+                                          " but expected " +
+                                          nExpectedLength);
+
+    return RegExPool.getPattern (aRegEx.toString ());
+  }
+
   /**
    * This method is used to create an instance of this class from a string
    * representation.
    * 
+   * @param sCountryCode
+   *        Country code to use. Neither <code>null</code> nor empty.
    * @param nExpectedLength
    *        The expected length having only validation purpose.
    * @param sLayout
@@ -219,7 +305,8 @@ public final class IBANCountryData extends LocalDatePeriod
    * @return The parsed county data.
    */
   @Nonnull
-  public static IBANCountryData createFromString (@Nonnegative final int nExpectedLength,
+  public static IBANCountryData createFromString (@Nonnull @Nonempty final String sCountryCode,
+                                                  @Nonnegative final int nExpectedLength,
                                                   @Nullable final String sLayout,
                                                   @Nullable final String sFixedCheckDigits,
                                                   @Nullable final LocalDate aValidFrom,
@@ -233,10 +320,12 @@ public final class IBANCountryData extends LocalDatePeriod
 
     final List <IBANElement> aList = _parseElements (sDesc);
 
+    final Pattern aPattern = _parseLayout (sCountryCode, nExpectedLength, sFixedCheckDigits, sLayout);
+
     // And we're done
     try
     {
-      return new IBANCountryData (nExpectedLength, sFixedCheckDigits, aValidFrom, aValidTo, aList);
+      return new IBANCountryData (nExpectedLength, aPattern, sFixedCheckDigits, aValidFrom, aValidTo, aList);
     }
     catch (final IllegalArgumentException ex)
     {
