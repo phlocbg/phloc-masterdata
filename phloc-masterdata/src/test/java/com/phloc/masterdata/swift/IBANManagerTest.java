@@ -18,6 +18,7 @@
 package com.phloc.masterdata.swift;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -64,6 +65,20 @@ public final class IBANManagerTest
     assertNotNull (aData);
     assertEquals (PDTFactory.createLocalDate (2012, DateTimeConstants.JANUARY, 1), aData.getStart ());
     assertNull (aData.getEnd ());
+  }
+
+  @Test
+  public void testCheckDigits ()
+  {
+    IBANCountryData aData = IBANManager.getCountryData ("TN");
+    assertNotNull (aData);
+    assertTrue (aData.hasFixedCheckDigits ());
+    assertEquals ("59", aData.getFixedCheckDigits ());
+
+    aData = IBANManager.getCountryData ("AT");
+    assertNotNull (aData);
+    assertFalse (aData.hasFixedCheckDigits ());
+    assertNull (aData.getFixedCheckDigits ());
   }
 
   @Test
