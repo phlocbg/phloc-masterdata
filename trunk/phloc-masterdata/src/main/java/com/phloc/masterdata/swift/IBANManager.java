@@ -102,15 +102,15 @@ public final class IBANManager
    */
   private static void _readIBANDataFromXML ()
   {
-    final IMicroDocument doc = MicroReader.readMicroXML (new ClassPathResource ("codelists/iban-country-data.xml"));
-    if (doc == null)
+    final IMicroDocument aDoc = MicroReader.readMicroXML (new ClassPathResource ("codelists/iban-country-data.xml"));
+    if (aDoc == null)
       throw new InitializationException ("Failed to read IBAN country data [1]");
-    if (doc.getDocumentElement () == null)
+    if (aDoc.getDocumentElement () == null)
       throw new InitializationException ("Failed to read IBAN country data [2]");
 
     final DateTimeFormatter aDTPattern = PDTFormatter.getForPattern (DATETIME_PATTERN, null);
 
-    for (final IMicroElement eCountry : doc.getDocumentElement ().getAllChildElements (ELEMENT_COUNTRY))
+    for (final IMicroElement eCountry : aDoc.getDocumentElement ().getAllChildElements (ELEMENT_COUNTRY))
     {
       // get descriptive string
       final String sDesc = eCountry.getTextContent ();
@@ -167,6 +167,7 @@ public final class IBANManager
   {
     if (sCountryCode == null)
       throw new NullPointerException ("countryCode");
+
     return s_aIBANData.get (sCountryCode.toUpperCase (Locale.US));
   }
 
@@ -245,6 +246,21 @@ public final class IBANManager
    */
   public static boolean isValidIBAN (@Nullable final String sIBAN)
   {
+    return isValidIBAN (sIBAN, false);
+  }
+
+  /**
+   * Check if the passed IBAN is valid and the country is supported!
+   * 
+   * @param sIBAN
+   *        The IBAN number string to check.
+   * @param bReturnCodeIfNoCountryData
+   *        The return value if no country data is present for the specified
+   *        IBAN.
+   * @return <code>true</code> if the IBAN is valid and supported.
+   */
+  public static boolean isValidIBAN (@Nullable final String sIBAN, final boolean bReturnCodeIfNoCountryData)
+  {
     // kick all non-IBAN chars
     final String sRealIBAN = unifyIBAN (sIBAN);
     if (sRealIBAN == null)
@@ -253,7 +269,7 @@ public final class IBANManager
     // is the country supported?
     final IBANCountryData aData = s_aIBANData.get (sRealIBAN.substring (0, 2));
     if (aData == null)
-      return false;
+      return bReturnCodeIfNoCountryData;
 
     // Does the length match the expected length?
     if (aData.getExpectedLength () != sRealIBAN.length ())
