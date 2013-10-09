@@ -67,7 +67,7 @@ import com.phloc.datetime.format.PDTFromString;
  * Banks in Australia and New Zealand have not adopted IBAN, and tend to use
  * Bank State Branch codes for domestic transfers and SWIFT for international.<br>
  * Source: http://en.wikipedia.org/wiki/International_Bank_Account_Number
- *
+ * 
  * @author Philip Helger
  */
 public final class IBANManager
@@ -124,9 +124,10 @@ public final class IBANManager
       }
 
       // get expected length
-      final int nExpectedLength = StringParser.parseInt (eCountry.getAttribute (ATTR_LEN), CGlobal.ILLEGAL_UINT);
+      final String sLen = eCountry.getAttribute (ATTR_LEN);
+      final int nExpectedLength = StringParser.parseInt (sLen, CGlobal.ILLEGAL_UINT);
       if (nExpectedLength == CGlobal.ILLEGAL_UINT)
-        throw new InitializationException ("Failed to convert length to int!");
+        throw new InitializationException ("Failed to convert length '" + sLen + "' to int!");
 
       if (s_aIBANData.containsKey (sCountryCode))
         throw new IllegalArgumentException ("Country " + sCountryCode + " is already contained!");
@@ -136,7 +137,7 @@ public final class IBANManager
 
   /**
    * Get the country data for the given country code.
-   *
+   * 
    * @param sCountryCode
    *        The country code to use. May not be <code>null</code> and needs to
    *        have exactly 2 characters to work.
@@ -194,7 +195,7 @@ public final class IBANManager
   /**
    * Make an IBAN that can be parsed. It is converted to upper case and all
    * non-alphanumeric characters are removed.
-   *
+   * 
    * @param sIBAN
    *        The IBAN to be unified.
    * @return The unified string or <code>null</code> if this is no IBAN at all.
@@ -215,7 +216,7 @@ public final class IBANManager
 
   /**
    * Check if the passed IBAN is valid and the country is supported!
-   *
+   * 
    * @param sIBAN
    *        The IBAN number string to check.
    * @return <code>true</code> if the IBAN is valid and supported.

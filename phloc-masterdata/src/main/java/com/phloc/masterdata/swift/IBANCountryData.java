@@ -197,6 +197,13 @@ public final class IBANCountryData extends LocalDatePeriod
       aList.add (new IBANElement (eLastCharType, nLastLength));
 
     // And we're done
-    return new IBANCountryData (nExpectedLength, aList, aValidFrom, aValidTo);
+    try
+    {
+      return new IBANCountryData (nExpectedLength, aList, aValidFrom, aValidTo);
+    }
+    catch (final IllegalArgumentException ex)
+    {
+      throw new IllegalArgumentException ("Failed to parse '" + sDesc + "': " + ex.getMessage ());
+    }
   }
 }
