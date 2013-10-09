@@ -18,72 +18,81 @@
     limitations under the License.
 
 -->
+<!--
+Source: http://en.wikipedia.org/wiki/International_Bank_Account_Number
+Version: 2013-10-09
+Layout: upper case alpha characters (A–Z) denoted by "a", 
+        numeric characters (0–9) denoted by "n" 
+        mixed case alphanumeric characters (a–z, A–Z, 0–9) denoted by "c" 
+ -->
 <iban>
-  <country name="Andorra" len="24">ADkk BBBB bbbb CCCC CCCC CCCC</country>
-  <!-- AE -->
-  <country name="Albania" len="28">ALkk BBBb bbbK CCCC CCCC CCCC CCCC</country>
-  <country name="Austria" len="20">ATkk BBBB BCCC CCCC CCCC</country>
-  <!-- AZ -->
-  <country name="Bosnia and Herzegovina" len="20">BAkk BBBb bbCC CCCC CCKK</country>
-  <country name="Belgium" len="16">BEkk BBBC CCCC CCKK</country>
-  <country name="Bulgaria" len="22">BGkk SSSS bbbb CCCC CCCC CC</country>
-  <!-- BH -->
-  <!-- BR -->
-  <country name="Switzerland" len="21">CHkk BBBB BCCC CCCC CCCC C</country>
-  <!-- CR -->
-  <country name="Cyprus" len="28">CYkk BBBb bbbb CCCC CCCC CCCC CCCC</country>
-  <country name="Czech Republic" len="24">CZkk BBBB CCCC CCCC CCCC CCCC</country>
-  <country name="Germany" len="22">DEkk BBBB BBBB CCCC CCCC CC</country>
-  <country name="Denmark" len="18">DKkk BBBB CCCC CCCC CK</country>
-  <!-- DO -->
-  <country name="Estonia" len="20">EEkk BBBB CCCC CCCC CCCK</country>
-  <country name="Spain" len="24">ESkk BBBB bbbb KKCC CCCC CCCC</country>
-  <country name="Finland" len="18">FIkk BBBB BBCC CCCC CK</country>
-  <country name="Faroe Islands" len="18">FOkk BBBB CCCC CCCC CK</country>
-  <country name="France" len="27">FRkk BBBB Bbbb bbCC CCCC CCCC CKK</country>
-  <country name="United Kingdom" len="22">GBkk SSSS bbbb bbCC CCCC CC</country>
-  <country name="Georgia" len="22">GEkk BBCC CCCC CCCC CCCC CC</country>
-  <country name="Gibraltar" len="23">GIkk BBBB CCCC CCCC CCCC CCC</country>
-  <country name="Greenland" len="18">GLkk BBBB CCCC CCCC CK</country>
-  <country name="Greece" len="27">GRkk BBBb bbbC CCCC CCCC CCCC CCC</country>
-  <!-- GT -->
-  <country name="Croatia" len="21">HRkk BBBB BBBC CCCC CCCC C</country>
-  <country name="Hungary" len="28">HUkk BBBb bbbK CCCC CCCC CCCC CCCK</country>
-  <country name="Ireland" len="22">IEkk SSSS BBBB BBCC CCCC CC</country>
-  <country name="Israel" len="23">ILkk BBBb bbCC CCCC CCCC CCC</country>
-  <country name="Iceland" len="26">ISkk BBBB CCCC CCCC XXXX XXXX XX</country>
-  <country name="Italy" len="27">ITkk KBBB BBbb bbbC CCCC CCCC CCC</country>
-  <!-- KW -->
-  <country name="Kazakhstan" len="20" validfrom="2010-06-11">KZkk BBBC CCCC CCCC CCCC</country>
-  <country name="Lebanon" len="28">LBkk BBBB CCCC CCCC CCCC CCCC CCCC</country>
-  <country name="Liechtenstein" len="21">LIkk BBBB BCCC CCCC CCCC C</country>
-  <country name="Lithuania" len="20">LTkk BBBB BCCC CCCC CCCC</country>
-  <country name="Luxembourg" len="20">LUkk BBBC CCCC CCCC CCCC</country>
-  <country name="Latvia" len="21">LVkk BBBB CCCC CCCC CCCC C</country>
-  <country name="Monaco" len="27">MCkk BBBB Bbbb bbCC CCCC CCCC CKK</country>
-  <!-- MD -->
-  <country name="Montenegro" len="22">MEkk BBBC CCCC CCCC CCCC KK</country>
-  <country name="Macedonia" len="19">MKkk BBBC CCCC CCCC CKK</country>
-  <country name="Mauritania" len="26" validfrom="2012-01-01">MRkk BBBB BSSS SSCC CCCC CCC CKK</country>
-  <country name="Malta" len="31">MTkk BBBB bbbb bCCC CCCC CCCC CCCC CCC</country>
-  <country name="Mauritius" len="30">MUkk BBBB BBSS CCCC CCCC CCCC CCCC CC</country>
-  <country name="Netherlands" len="18">NLkk BBBB CCCC CCCC CC</country>
-  <country name="Norway" len="15">NOkk BBBB CCCC CCK</country>
-  <!-- PK -->
-  <country name="Poland" len="28">PLkk BBBB BBBB CCCC CCCC CCCC CCCC</country>
-  <!-- PS -->
-  <country name="Portugal" len="25">PTkk BBBB bbbb CCCC CCCC CCCK K</country>
-  <country name="Romania" len="24">ROkk SSSS CCCC CCCC CCCC CCCC</country>
-  <country name="Serbia" len="22">RSkk BBBC CCCC CCCC CCCC KK</country>
-  <country name="Saudi Arabia" len="24">SAkk BBCC CCCC CCCC CCCC CCCC</country>
-  <country name="Sweden" len="24">SEkk BBBC CCCC CCCC CCCC CCCK</country>
-  <country name="Slovenia" len="19">SIkk BBSS SCCC CCCC CKK</country>
-  <country name="Slovakia" len="24">SKkk BBBB CCCC CCCC CCCC CCCC</country>
-  <country name="San Marino" len="27">SMkk KBBB BBbb bbbC CCCC CCCC CCC</country>
-  <country name="Tunisia" len="24">TNkk BBbb bCCC CCCC CCCC CCKK</country>
-  <country name="Turkey" len="26">TRkk BBBB BRCC CCCC CCCC CCCC CC</country>
-  <!-- VG -->
+  <country name="Andorra" len="24" layout="8n,12c">ADkk bbbb ssss cccc cccc cccc</country>
+  <country name="United Arab Emirates" len="23" layout="3n,16n">AEkk bbbc cccc cccc cccc ccc</country>
+  <country name="Albania" len="28" layout="8n,16c">ALkk bbbs sssx cccc cccc cccc cccc</country>
+  <country name="Austria" len="20" layout="16n">ATkk bbbb bccc cccc cccc</country>
+  <country name="Azerbaijan" len="28" layout="4c,20n">AZkk bbbb cccc cccc cccc cccc cccc</country>
+  <country name="Bosnia and Herzegovina" len="20" layout="16n">BAkk bbbs sscc cccc ccxx</country>
+  <country name="Belgium" len="16" layout="12n">BEkk bbbc cccc ccxx</country>
+  <!-- No layout available for BF -->
+  <country name="Burkina Faso" len="24">BFkkk sssss cccccccccccc dd</country>
+  <country name="Bulgaria" len="22" layout="4a,6n,8c">BGkk bbbb ssss ddcc cccc cc</country>
+  <country name="Bahrain" len="22" layout="4a,14c">BHkk bbbb cccc cccc cccc cc</country>
+  <country name="Brazil" len="29" layout="23n,1a,1c" validfrom="2013-07-01">BRkk bbbb bbbb ssss sccc cccc ccct n</country>
+  <country name="Switzerland" len="21" layout="5n,12c">CHkk bbbb bccc cccc cccc c</country>
+  <country name="Costa Rica" len="21" layout="17n">CRkk bbbc cccc cccc cccc c</country>
+  <country name="Cyprus" len="28" layout="8n,16c">CYkk bbbs ssss cccc cccc cccc cccc</country>
+  <country name="Czech Republic" len="24" layout="20n">CZkk bbbb ssss sscc cccc cccc</country>
+  <country name="Germany" len="22" layout="18n">DEkk bbbb bbbb cccc cccc cc</country>
+  <country name="Denmark" len="18" layout="14n">DKkk bbbb cccc cccc cc</country>
+  <country name="Dominican Republic" len="28" layout="4a,20n">DOkk bbbb cccc cccc cccc cccc cccc</country>
+  <country name="Estonia" len="20" layout="16n">EEkk bbss cccc cccc cccx</country>
+  <country name="Spain" len="24" layout="20n">ESkk bbbb gggg xxcc cccc cccc</country>
+  <country name="Finland" len="18" layout="14n">FIkk bbbb bbcc cccc cx</country>
+  <country name="Faroe Islands" len="18" layout="14n">FOkk bbbb cccc cccc cx</country>
+  <country name="France" len="27" layout="10n,11c,2n">FRkk bbbb bggg ggcc cccc cccc cxx</country>
+  <country name="United Kingdom" len="22" layout="4a,14n">GBkk bbbb ssss sscc cccc cc</country>
+  <country name="Georgia" len="22" layout="2c,16n">GEkk bbcc cccc cccc cccc cc</country>
+  <country name="Gibraltar" len="23" layout="4a,15c">GIkk bbbb cccc cccc cccc ccc</country>
+  <country name="Greenland" len="18" layout="14n">GLkk bbbb cccc cccc cc</country>
+  <country name="Greece" len="27" layout="7n,16c">GRkk bbbs sssc cccc cccc cccc ccc</country>
+  <country name="Guatemala" len="28" layout="4c,20c" validfrom="2014-07-01">GTkk bbbb cccc cccc cccc cccc cccc</country>
+  <country name="Croatia" len="21" layout="17n">HRkk bbbb bbbc cccc cccc c</country>
+  <country name="Hungary" len="28" layout="24n">HUkk bbbs sssk cccc cccc cccc cccx</country>
+  <country name="Ireland" len="22" layout="4c,14n">IEkk aaaa bbbb bbcc cccc cc</country>
+  <country name="Israel" len="23" layout="19n">ILkk bbbn nncc cccc cccc ccc</country>
+  <country name="Iceland" len="26" layout="22n">ISkk bbbb sscc cccc iiii iiii ii</country>
+  <country name="Italy" len="27" layout="1a,10n,12c">ITkk xaaa aabb bbbc cccc cccc ccc</country>
+  <country name="Kuwait" len="30" layout="4a,22c">KWkk bbbb cccc cccc cccc cccc cccc cc</country>
+  <country name="Kazakhstan" len="20" layout="3n,13c" validfrom="2010-06-11">KZkk bbbc cccc cccc cccc</country>
+  <country name="Lebanon" len="28" layout="4n,20c">LBkk bbbb cccc cccc cccc cccc cccc</country>
+  <country name="Liechtenstein" len="21" layout="5n,12c">LIkk bbbb bccc cccc cccc c</country>
+  <country name="Lithuania" len="20" layout="16n">LTkk bbbb bccc cccc cccc</country>
+  <country name="Luxembourg" len="20" layout="3n,13c">LUkk bbbc cccc cccc cccc</country>
+  <country name="Latvia" len="21" layout="4a,13c">LVkk bbbb cccc cccc cccc c</country>
+  <country name="Monaco" len="27" layout="10n,11c,2n">MCkk bbbb bsss sscc cccc cccc cxx</country>
+  <country name="Moldova" len="24" layout="2c,18n">MDkk bbcc cccc cccc cccc cccc</country>
+  <country name="Montenegro" len="22" layout="18n">MEkk bbbc cccc cccc cccc xx</country>
+  <country name="Macedonia" len="19" layout="3n,10c,2n">MKkk bbbc cccc cccc cxx</country>
+  <country name="Mauritania" len="27" layout="23n" validfrom="2012-01-01">MRkk bbbb bsss sscc cccc cccc cxx</country>
+  <country name="Malta" len="31" layout="4a,5n,18c">MTkk bbbb ssss sccc cccc cccc cccc ccc</country>
+  <country name="Mauritius" len="30" layout="4a,19n,3a">MUkk bbbb bbss cccc cccc cccc cccc cc</country>
+  <country name="Netherlands" len="18" layout="4a,10n">NLkk bbbb cccc cccc cc</country>
+  <country name="Norway" len="15" layout="11n">NOkk bbbb cccc ccx</country>
+  <country name="Pakistan" len="24" layout="4c,16n">PKkk bbbb cccc cccc cccc cccc</country>
+  <country name="Poland" len="28" layout="24n">PLkk bbbs sssx cccc cccc cccc cccc</country>
+  <country name="Palestinian" len="29" layout="4c,21n">PSkk bbbb xxxx xxxx xccc cccc cccc c</country>
+  <country name="Portugal" len="25" layout="21n">PTkk bbbb ssss cccc cccc cccx x</country>
+  <country name="Romania" len="24" layout="4a,16c">ROkk bbbb cccc cccc cccc cccc</country>
+  <country name="Serbia" len="22" layout="18n">RSkk bbbc cccc cccc cccc xx</country>
+  <country name="Saudi Arabia" len="24" layout="2n,18c">SAkk bbcc cccc cccc cccc cccc</country>
+  <country name="Sweden" len="24" layout="20n">SEkk bbbc cccc cccc cccc cccc</country>
+  <country name="Slovenia" len="19" layout="15n">SIkk bbss sccc cccc cxx</country>
+  <country name="Slovakia" len="24" layout="20n">SKkk bbbb ssss sscc cccc cccc</country>
+  <country name="San Marino" len="27" layout="1a,10n,12c">SMkk xaaa aabb bbbc cccc cccc ccc</country>
+  <country name="Tunisia" len="24" layout="20n">TNkk bbss sccc cccc cccc cccc</country>
+  <country name="Turkey" len="26" layout="5n,17c">TRkk bbbb bxcc cccc cccc cccc cc</country>
+  <country name="Virgin Islands, British" len="24" layout="4c,16n">VGkk bbbb cccc cccc cccc cccc</country>
   
   <!-- According to Wikipedia, Montenegro declared independence on 2006/06/03 -->
-  <country name="Serbia and Montenegro" len="22" validuntil="2006-06-02">CSkk BBBC CCCC CCCC CCCC KK</country>
+  <country name="Serbia and Montenegro" len="22" validuntil="2006-06-02">CSkk bbbc cccc cccc cccc xx</country>
 </iban>

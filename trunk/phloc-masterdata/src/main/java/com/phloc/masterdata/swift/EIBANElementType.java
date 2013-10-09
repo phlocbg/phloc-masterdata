@@ -28,14 +28,17 @@ import javax.annotation.Nullable;
 public enum EIBANElementType
 {
   COUNTRY_CODE (""),
-  CHECKSUM ("kK"),
-  BANK_CODE ("B"),
-  BANK_BRANCH ("b"),
-  ACCOUNT_NUMBER ("C"),
-  SWIFT_BIC_CODE ("S"),
-  RESERVED ("R"),
-  ID ("X"),
-  CURRENCY_CODE ("d");
+  BIC_BANK_CODE ("a"),
+  NATIONAL_BANK_CODE ("b"),
+  ACCOUNT_NUMBER ("c"),
+  CHECK_DIGIT ("d"),
+  BRANCH_CODE_FRANCE ("g"),
+  HOLDERS_KENNITALA_ICELAND ("i"),
+  IBAN_CHECK_DIGITS ("k"),
+  OWNER_ACCOUNT_NUMBER ("n"),
+  BRANCH_CODE ("s"),
+  ACCOUNT_TYPE ("t"),
+  NATION_CHECK_DIGIT ("x");
 
   private final String m_sField;
 
