@@ -26,9 +26,9 @@ import javax.annotation.Nullable;
 
 import org.joda.time.LocalDate;
 
-import com.phloc.commons.annotations.ReturnsImmutableObject;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
+import com.phloc.commons.string.StringParser;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.period.LocalDatePeriod;
 
@@ -40,8 +40,9 @@ import com.phloc.datetime.period.LocalDatePeriod;
  */
 public final class IBANCountryData extends LocalDatePeriod
 {
-  private final List <IBANElement> m_aElements;
   private final int m_nExpectedLength;
+  private final List <IBANElement> m_aElements;
+  private final String m_sFixedCheckDigits;
 
   /**
    * @param nExpectedLength
@@ -49,6 +50,8 @@ public final class IBANCountryData extends LocalDatePeriod
    *        check whether the length of the passed fields matches.
    * @param aElements
    *        The IBAN elements for this country. May not be <code>null</code>.
+   * @param sFixedCheckDigits
+   *        <code>null</code> or fixed check digits (of length 2)
    * @param aValidFrom
    *        Validity start date. May be <code>null</code>.
    * @param aValidTo
@@ -56,19 +59,27 @@ public final class IBANCountryData extends LocalDatePeriod
    */
   public IBANCountryData (@Nonnegative final int nExpectedLength,
                           @Nonnull final List <IBANElement> aElements,
+                          @Nullable final String sFixedCheckDigits,
                           @Nullable final LocalDate aValidFrom,
                           @Nullable final LocalDate aValidTo)
   {
     super (aValidFrom, aValidTo);
     if (aElements == null)
       throw new NullPointerException ("elements");
+    if (sFixedCheckDigits != null && sFixedCheckDigits.length () != 2)
+      throw new IllegalArgumentException ("Check digits must be length 2!");
+    if (sFixedCheckDigits != null && !StringParser.isUnsignedInt (sFixedCheckDigits))
+      throw new IllegalArgumentException ("Check digits must be all numeric!");
+
+    m_nExpectedLength = nExpectedLength;
     m_aElements = new ArrayList <IBANElement> (aElements);
+    m_sFixedCheckDigits = sFixedCheckDigits;
+
     int nCalcedLength = 0;
     for (final IBANElement aChar : aElements)
       nCalcedLength += aChar.getLength ();
     if (nCalcedLength != nExpectedLength)
       throw new IllegalArgumentException ("Expected length=" + nExpectedLength + "; calced length=" + nCalcedLength);
-    m_nExpectedLength = nCalcedLength;
   }
 
   /**
@@ -82,13 +93,24 @@ public final class IBANCountryData extends LocalDatePeriod
   }
 
   /**
-   * @return An unmodifiable list of all IBAN elements for this country.
+   * @return An list of all IBAN elements for this country.
    */
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public List <IBANElement> getElements ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aElements);
+    return ContainerHelper.newList (m_aElements);
+  }
+
+  public boolean hasFixedCheckDigits ()
+  {
+    return m_sFixedCheckDigits != null;
+  }
+
+  @Nullable
+  public String getFixedCheckDigits ()
+  {
+    return m_sFixedCheckDigits;
   }
 
   /**
@@ -141,6 +163,8 @@ public final class IBANCountryData extends LocalDatePeriod
    * @param sDesc
    *        The string description of this country data. May not be
    *        <code>null</code>.
+   * @param sFixedCheckDigits
+   *        <code>null</code> or fixed check digits (of length 2)
    * @param aValidFrom
    *        Validity start date. May be <code>null</code>.
    * @param aValidTo
@@ -150,6 +174,7 @@ public final class IBANCountryData extends LocalDatePeriod
   @Nonnull
   public static IBANCountryData createFromString (@Nonnegative final int nExpectedLength,
                                                   @Nonnull final String sDesc,
+                                                  @Nullable final String sFixedCheckDigits,
                                                   @Nullable final LocalDate aValidFrom,
                                                   @Nullable final LocalDate aValidTo)
   {
@@ -199,7 +224,7 @@ public final class IBANCountryData extends LocalDatePeriod
     // And we're done
     try
     {
-      return new IBANCountryData (nExpectedLength, aList, aValidFrom, aValidTo);
+      return new IBANCountryData (nExpectedLength, aList, sFixedCheckDigits, aValidFrom, aValidTo);
     }
     catch (final IllegalArgumentException ex)
     {
