@@ -32,6 +32,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
+import com.phloc.commons.annotations.CodingStyleguideUnaware;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
@@ -162,6 +163,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   private final String m_sCurrencyPattern;
   private final String m_sValuePattern;
   private final DecimalFormat m_aValueFormat;
+  @CodingStyleguideUnaware
   private RoundingMode m_eRoundingMode;
 
   private ECurrency (@Nonnull final Currency aCurrency,
