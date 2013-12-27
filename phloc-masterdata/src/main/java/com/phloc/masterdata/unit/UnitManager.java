@@ -17,10 +17,9 @@
  */
 package com.phloc.masterdata.unit;
 
-import gnu.trove.map.TIntObjectMap;
-import gnu.trove.map.hash.TIntObjectHashMap;
-
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nonnull;
 
@@ -52,7 +51,7 @@ public final class UnitManager
     static final UnitManager s_aInstance = new UnitManager (DEFAULT_UNIT_RES);
   }
 
-  private final TIntObjectMap <UnitSector> m_aSectors = new TIntObjectHashMap <UnitSector> ();
+  private final Map <Integer, UnitSector> m_aSectors = new HashMap <Integer, UnitSector> ();
 
   private void _readFromFile (@Nonnull final IReadableResource aRes)
   {
@@ -68,11 +67,12 @@ public final class UnitManager
       final IReadonlyMultiLingualText aName = MicroTypeConverter.convertToNative (eSector.getFirstChildElement ("name"),
                                                                                   IReadonlyMultiLingualText.class);
       final UnitSector aSector = new UnitSector (nGroupNum, aName);
-      if (m_aSectors.containsKey (aSector.getID ()))
+      final Integer aKey = aSector.getIDObj ();
+      if (m_aSectors.containsKey (aKey))
         throw new IllegalStateException ("A unit sector with group number " +
                                          aSector.getID () +
                                          " is already contained!");
-      m_aSectors.put (aSector.getID (), aSector);
+      m_aSectors.put (aKey, aSector);
     }
 
     // Read all item
@@ -98,6 +98,6 @@ public final class UnitManager
   @ReturnsMutableCopy
   public Collection <UnitSector> getAllSectors ()
   {
-    return ContainerHelper.newList (m_aSectors.valueCollection ());
+    return ContainerHelper.newList (m_aSectors.values ());
   }
 }
