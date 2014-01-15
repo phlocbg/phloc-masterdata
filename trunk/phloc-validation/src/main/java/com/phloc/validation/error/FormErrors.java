@@ -338,7 +338,21 @@ public class FormErrors implements Serializable
     return m_aFormGlobalErrs.getAllItemTexts ();
   }
 
+  public boolean hasNoEntryForField (@Nullable final String sSearchFieldName)
+  {
+    return m_aFormFieldErrs.hasNoEntryForField (sSearchFieldName);
+  }
+
+  /**
+   * @deprecated Use {@link #hasEntryForField(String)} instead
+   */
+  @Deprecated
   public boolean hasErrorsOrWarningsForField (@Nullable final String sSearchFieldName)
+  {
+    return hasEntryForField (sSearchFieldName);
+  }
+
+  public boolean hasEntryForField (@Nullable final String sSearchFieldName)
   {
     return m_aFormFieldErrs.hasEntryForField (sSearchFieldName);
   }
