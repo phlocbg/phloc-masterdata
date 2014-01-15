@@ -362,6 +362,14 @@ public class ErrorList implements IErrorList
     return ret;
   }
 
+  public boolean hasNoEntryForField (@Nullable final String sSearchFieldName)
+  {
+    for (final IError aError : m_aItems)
+      if (EqualsUtils.equals (sSearchFieldName, aError.getErrorFieldName ()))
+        return false;
+    return true;
+  }
+
   public boolean hasEntryForField (@Nullable final String sSearchFieldName)
   {
     for (final IError aError : m_aItems)
