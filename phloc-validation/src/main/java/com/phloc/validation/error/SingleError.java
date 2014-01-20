@@ -24,6 +24,8 @@ import javax.annotation.concurrent.Immutable;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.error.EErrorLevel;
+import com.phloc.commons.error.IResourceLocation;
+import com.phloc.commons.error.ResourceLocation;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
@@ -94,6 +96,14 @@ public class SingleError implements IError
   public boolean hasErrorFieldName ()
   {
     return StringHelper.hasText (m_sErrorFieldName);
+  }
+
+  @Nullable
+  public IResourceLocation getAsResourceLocation ()
+  {
+    if (StringHelper.hasText (m_sErrorFieldName))
+      return new ResourceLocation (null, m_sErrorFieldName);
+    return null;
   }
 
   @Nonnull
