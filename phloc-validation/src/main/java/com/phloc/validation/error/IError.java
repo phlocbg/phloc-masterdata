@@ -20,10 +20,12 @@ package com.phloc.validation.error;
 import java.io.Serializable;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.error.IHasErrorID;
 import com.phloc.commons.error.IHasErrorLevel;
+import com.phloc.commons.error.IResourceLocation;
 import com.phloc.commons.error.ISeverityComparable;
 import com.phloc.commons.state.IErrorIndicator;
 import com.phloc.commons.state.ISuccessIndicator;
@@ -34,8 +36,29 @@ import com.phloc.commons.state.ISuccessIndicator;
  * 
  * @author Philip Helger
  */
-public interface IError extends IHasErrorID, IHasErrorLevel, IHasErrorField, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>, Serializable
+public interface IError extends IHasErrorID, IHasErrorLevel, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>, Serializable
 {
+  /**
+   * @return The field for which the error occurred. May be <code>null</code>.
+   */
+  @Nullable
+  String getErrorFieldName ();
+
+  /**
+   * @return <code>true</code> if a field name is present, <code>false</code>
+   *         otherwise
+   */
+  boolean hasErrorFieldName ();
+
+  /**
+   * @return The error field name of this object as an {@link IResourceLocation}
+   *         . If no error field name is present, <code>null</code> is returned,
+   *         else an {@link IResourceLocation} with the field name set is
+   *         returned.
+   */
+  @Nullable
+  IResourceLocation getResourceLocation ();
+
   /**
    * @return The message of this form error. The error text is always locale
    *         specific because this error is meant to be for a single form
