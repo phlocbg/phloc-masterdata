@@ -99,7 +99,7 @@ public class SingleError implements IError
   }
 
   @Nullable
-  public IResourceLocation getAsResourceLocation ()
+  public IResourceLocation getResourceLocation ()
   {
     if (StringHelper.hasText (m_sErrorFieldName))
       return new ResourceLocation (null, m_sErrorFieldName);
