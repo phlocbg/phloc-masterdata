@@ -20,7 +20,6 @@ package com.phloc.validation.error;
 import java.io.Serializable;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.error.IHasErrorID;
@@ -30,24 +29,13 @@ import com.phloc.commons.state.IErrorIndicator;
 import com.phloc.commons.state.ISuccessIndicator;
 
 /**
- * Base interface for a single error.
+ * Base interface for a single error, that has an error ID, and error level, and
+ * error field name and an error text.
  * 
  * @author Philip Helger
  */
-public interface IError extends IHasErrorID, IHasErrorLevel, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>, Serializable
+public interface IError extends IHasErrorID, IHasErrorLevel, IHasErrorField, ISuccessIndicator, IErrorIndicator, ISeverityComparable <IError>, Serializable
 {
-  /**
-   * @return The field for which the error occurred. May be <code>null</code>.
-   */
-  @Nullable
-  String getErrorFieldName ();
-
-  /**
-   * @return <code>true</code> if a field name is present, <code>false</code>
-   *         otherwise
-   */
-  boolean hasErrorFieldName ();
-
   /**
    * @return The message of this form error. The error text is always locale
    *         specific because this error is meant to be for a single form

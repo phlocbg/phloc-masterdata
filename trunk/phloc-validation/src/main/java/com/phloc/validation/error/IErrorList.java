@@ -197,14 +197,15 @@ public interface IErrorList extends Iterable <IError>, IHasErrorLevels, Serializ
   List <String> getAllItemTextsOfFieldsRegExp (@Nonnull @Nonempty @RegEx String sRegExp);
 
   /**
-   * @return A map with all items mapped from ID to its occurrences.
+   * @return A map with all items mapped from error ID to its occurrences.
    */
   @Nonnull
   @ReturnsMutableCopy
   IMultiMapListBased <String, IError> getStructuredByID ();
 
   /**
-   * @return A map with all items mapped from field name to its occurrences.
+   * @return A map with all items mapped from error field name to its
+   *         occurrences.
    */
   @Nonnull
   @ReturnsMutableCopy
