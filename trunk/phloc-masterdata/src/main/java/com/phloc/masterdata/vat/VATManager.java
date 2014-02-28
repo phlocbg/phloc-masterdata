@@ -91,7 +91,7 @@ public class VATManager implements IVATItemResolver
     // Is it "all" or "independent"?
     if (LocaleUtils.isSpecialLocale (aLocale))
       return aLocale.getLanguage ();
-    return aLocale.getCountry ().toLowerCase ();
+    return aLocale.getCountry ().toLowerCase (Locale.US);
   }
 
   public void initFromXML (@Nonnull final IMicroDocument aDoc)

@@ -18,6 +18,7 @@
 package com.phloc.masterdata.telephone;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -59,6 +60,6 @@ public final class DialCodeManager
   {
     if (StringHelper.hasNoText (sCountry))
       return null;
-    return s_aCountryToDialCode.get (sCountry.toUpperCase ());// NOPMD
+    return s_aCountryToDialCode.get (sCountry.toUpperCase (Locale.US));
   }
 }
