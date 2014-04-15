@@ -285,6 +285,6 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
     for (final ECurrency e : ECurrency.values ())
       if (!e.isDeprecated ())
         for (final Locale aLocale : e.getAllMatchingCountries ())
-          assertSame (e, ECurrency.getFromCountryOrNull (aLocale, false));
+          assertSame (e, ECurrency.getFromLocaleOrNull (aLocale, false));
   }
 }

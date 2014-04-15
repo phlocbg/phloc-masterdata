@@ -32,6 +32,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.CodingStyleguideUnaware;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
@@ -52,92 +53,64 @@ import com.phloc.commons.string.StringHelper;
 public enum ECurrency implements IHasID <String>, IHasDisplayText
 {
   // Albanian Lek
-  ALL (Currency.getInstance ("ALL"), ECurrencyName.ALL, LocaleCache.getLocale ("sq", "AL")),
+  ALL (Currency.getInstance ("ALL"), ECurrencyName.ALL, "_AL", "sq_AL"),
   // Armenian Dram
-  AMD (Currency.getInstance ("AMD"), ECurrencyName.AMD, LocaleCache.getLocale ("", "AM")),
+  AMD (Currency.getInstance ("AMD"), ECurrencyName.AMD, "_AM"),
   // Azerbaijani Manat
-  AZN (Currency.getInstance ("AZN"), ECurrencyName.AZN, LocaleCache.getLocale ("", "AZ")),
+  AZN (Currency.getInstance ("AZN"), ECurrencyName.AZN, "_AZ"),
   // Bosnia-Herzegovina Convertible Mark
-  BAM (Currency.getInstance ("BAM"), ECurrencyName.BAM, LocaleCache.getLocale ("sr", "BA")),
+  BAM (Currency.getInstance ("BAM"), ECurrencyName.BAM, "_BA", "sr_BA"),
   // Bulgarian Lev
-  BGN (Currency.getInstance ("BGN"), ECurrencyName.BGN, LocaleCache.getLocale ("bg", "BG")),
+  BGN (Currency.getInstance ("BGN"), ECurrencyName.BGN, "_BG", "bg_BG"),
   // Belarusian Ruble
-  BYR (Currency.getInstance ("BYR"), ECurrencyName.BYR, LocaleCache.getLocale ("be", "BY")),
+  BYR (Currency.getInstance ("BYR"), ECurrencyName.BYR, "_BY", "be_BY"),
   // Swiss Franc
-  CHF (Currency.getInstance ("CHF"), ECurrencyName.CHF, new Locale [] { LocaleCache.getLocale ("de", "CH"),
-                                                                       LocaleCache.getLocale ("fr", "CH"),
-                                                                       LocaleCache.getLocale ("it", "CH") }),
+  CHF (Currency.getInstance ("CHF"), ECurrencyName.CHF, "_CH", "_LI", "de_CH", "fr_CH", "it_CH"),
   // Czech Koruna
-  CZK (Currency.getInstance ("CZK"), ECurrencyName.CZK, LocaleCache.getLocale ("cs", "CZ")),
+  CZK (Currency.getInstance ("CZK"), ECurrencyName.CZK, "_CZ", "cs_CZ"),
   // Danish krone
-  DKK (Currency.getInstance ("DKK"), ECurrencyName.DKK, LocaleCache.getLocale ("dk", "DK")),
+  DKK (Currency.getInstance ("DKK"), ECurrencyName.DKK, "_DK", "_FO", "_GL", "da_DK"),
   // Estonian Kroon (until 31.12.2010)
   @Deprecated
-  EEK (Currency.getInstance ("EEK"), true, ECurrencyName.EEK, LocaleCache.getLocale ("et", "EE")),
+  EEK (Currency.getInstance ("EEK"), true, ECurrencyName.EEK, "_EE", "et_EE"),
   // Euro
-  EUR (Currency.getInstance ("EUR"), ECurrencyName.EUR, new Locale [] { LocaleCache.getLocale ("de", "AT"),
-                                                                       LocaleCache.getLocale ("fr", "BE"),
-                                                                       LocaleCache.getLocale ("nl", "BE"),
-                                                                       LocaleCache.getLocale ("", "CY"),
-                                                                       LocaleCache.getLocale ("fi", "FI"),
-                                                                       LocaleCache.getLocale ("fr", "FR"),
-                                                                       LocaleCache.getLocale ("de", "DE"),
-                                                                       LocaleCache.getLocale ("el", "GR"),
-                                                                       LocaleCache.getLocale ("en", "IE"),
-                                                                       LocaleCache.getLocale ("et", "EE"),
-                                                                       LocaleCache.getLocale ("it", "IT"),
-                                                                       LocaleCache.getLocale ("de", "LU"),
-                                                                       LocaleCache.getLocale ("fr", "LU"),
-                                                                       LocaleCache.getLocale ("", "MT"),
-                                                                       LocaleCache.getLocale ("nl", "NL"),
-                                                                       LocaleCache.getLocale ("pt", "PT"),
-                                                                       LocaleCache.getLocale ("sk", "SK"),
-                                                                       LocaleCache.getLocale ("sl", "SI"),
-                                                                       LocaleCache.getLocale ("ca", "ES"),
-                                                                       LocaleCache.getLocale ("es", "ES"),
-                                                                       // Andorra:
-                                                                       // passive
-                                                                       LocaleCache.getLocale ("", "AD"),
-                                                                       LocaleCache.getLocale ("", "MC"),
-                                                                       LocaleCache.getLocale ("sr", "CS"),
-                                                                       LocaleCache.getLocale ("", "SM"),
-                                                                       LocaleCache.getLocale ("", "VA") }),
+  EUR (Currency.getInstance ("EUR"), ECurrencyName.EUR, "_AD", "_AT", "_AX", "_BE", "_BL", "_CY", "_DE", "_EE", "_ES", "_FI", "_FR", "_GF", "_GP", "_GR", "_IE", "_IT", "_LU", "_MC", "_ME", "_MF", "_MQ", "_MT", "_NL", "_PM", "_PT", "_RE", "_SI", "_SK", "_SM", "_TF", "_VA", "_YT", "ca_ES", "de_AT", "de_DE", "de_LU", "el_CY", "el_GR", "en_IE", "en_MT", "es_ES", "et_EE", "fi_FI", "fr_BE", "fr_FR", "fr_LU", "ga_IE", "it_IT", "mt_MT", "nl_BE", "nl_NL", "pt_PT", "sk_SK", "sl_SI", "sr_ME"),
   // Pound Sterling
-  GBP (Currency.getInstance ("GBP"), ECurrencyName.GBP, LocaleCache.getLocale ("en", "GB")),
+  GBP (Currency.getInstance ("GBP"), ECurrencyName.GBP, "_GB", "_GG", "_GS", "_IM", "_JE", "en_GB"),
   // Georgian Lari
-  GEL (Currency.getInstance ("GEL"), ECurrencyName.GEL, LocaleCache.getLocale ("", "GE")),
+  GEL (Currency.getInstance ("GEL"), ECurrencyName.GEL, "_GE"),
   // Croatian Kuna
-  HRK (Currency.getInstance ("HRK"), ECurrencyName.HRK, LocaleCache.getLocale ("hr", "HR")),
+  HRK (Currency.getInstance ("HRK"), ECurrencyName.HRK, "_HR", "hr_HR"),
   // Hungarian Forint
-  HUF (Currency.getInstance ("HUF"), ECurrencyName.HUF, LocaleCache.getLocale ("hu", "HU")),
+  HUF (Currency.getInstance ("HUF"), ECurrencyName.HUF, "_HU", "hu_HU"),
   // Icelandic Krona
-  ISK (Currency.getInstance ("ISK"), ECurrencyName.ISK, LocaleCache.getLocale ("is", "IS")),
+  ISK (Currency.getInstance ("ISK"), ECurrencyName.ISK, "_IS", "is_IS"),
   // Lithuanian Litas
-  LTL (Currency.getInstance ("LTL"), ECurrencyName.LTL, LocaleCache.getLocale ("lt", "LT")),
+  LTL (Currency.getInstance ("LTL"), ECurrencyName.LTL, "_LT", "lt_LT"),
   // Latvian Lats
-  LVL (Currency.getInstance ("LVL"), ECurrencyName.LVL, LocaleCache.getLocale ("lv", "LV")),
+  LVL (Currency.getInstance ("LVL"), ECurrencyName.LVL, "_LV", "lv_LV"),
   // Moldovan Leu
-  MDL (Currency.getInstance ("MDL"), ECurrencyName.MDL, LocaleCache.getLocale ("", "MD")),
+  MDL (Currency.getInstance ("MDL"), ECurrencyName.MDL, "_MD"),
   // Macedonia Denar
-  MKD (Currency.getInstance ("MKD"), ECurrencyName.MKD, LocaleCache.getLocale ("mk", "MK")),
+  MKD (Currency.getInstance ("MKD"), ECurrencyName.MKD, "_MK", "mk_MK"),
   // Norwegian Krone
-  NOK (Currency.getInstance ("NOK"), ECurrencyName.NOK, LocaleCache.getLocale ("no", "NO")),
+  NOK (Currency.getInstance ("NOK"), ECurrencyName.NOK, "_BV", "_NO", "_SJ", "no_NO", "no_NO_NY"),
   // Polish Zloty (new)
-  PLN (Currency.getInstance ("PLN"), ECurrencyName.PLN, LocaleCache.getLocale ("pl", "PL")),
+  PLN (Currency.getInstance ("PLN"), ECurrencyName.PLN, "_PL", "pl_PL"),
   // Romanian Leu
-  RON (Currency.getInstance ("RON"), ECurrencyName.RON, LocaleCache.getLocale ("ro", "RO")),
+  RON (Currency.getInstance ("RON"), ECurrencyName.RON, "_RO", "ro_RO"),
   // Serbian dinar
-  RSD (Currency.getInstance ("RSD"), ECurrencyName.RSD, LocaleCache.getLocale ("sr", "RS")),
+  RSD (Currency.getInstance ("RSD"), ECurrencyName.RSD, "_RS", "sr_RS"),
   // Russian Ruble
-  RUB (Currency.getInstance ("RUB"), ECurrencyName.RUB, LocaleCache.getLocale ("ru", "RU")),
+  RUB (Currency.getInstance ("RUB"), ECurrencyName.RUB, "_RU", "ru_RU"),
   // Swedish Krona
-  SEK (Currency.getInstance ("SEK"), ECurrencyName.SEK, LocaleCache.getLocale ("sv", "SE")),
+  SEK (Currency.getInstance ("SEK"), ECurrencyName.SEK, "_SE", "sv_SE"),
   // New Turkish Lira
-  TRY (Currency.getInstance ("TRY"), ECurrencyName.TRY, LocaleCache.getLocale ("tr", "TR")),
+  TRY (Currency.getInstance ("TRY"), ECurrencyName.TRY, "_TR", "tr_TR"),
   // Ukrainian Hryvnia
-  UAH (Currency.getInstance ("UAH"), ECurrencyName.UAH, LocaleCache.getLocale ("uk", "UA")),
+  UAH (Currency.getInstance ("UAH"), ECurrencyName.UAH, "_UA", "uk_UA"),
   // United States Dollar
-  USD (Currency.getInstance ("USD"), ECurrencyName.USD, LocaleCache.getLocale ("en", "US"));
+  USD (Currency.getInstance ("USD"), ECurrencyName.USD, "_AS", "_BQ", "_EC", "_FM", "_GU", "_IO", "_MH", "_MP", "_PR", "_PW", "_TC", "_TL", "_UM", "_US", "_VG", "_VI", "en_US", "es_EC", "es_PR", "es_US");
 
   /**
    * The default rounding mode to be used for currency values. It may be
@@ -158,7 +131,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   private final Currency m_aCurrency;
   private final boolean m_bIsDeprecated;
   private final IHasDisplayText m_aName;
-  private final List <Locale> m_aCountries = new ArrayList <Locale> ();
+  private final List <Locale> m_aLocales = new ArrayList <Locale> ();
   private final DecimalFormat m_aCurrencyFormat;
   private final String m_sCurrencyPattern;
   private final String m_sValuePattern;
@@ -166,43 +139,58 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @CodingStyleguideUnaware
   private RoundingMode m_eRoundingMode;
 
+  @Nonnull
+  @ReturnsMutableCopy
+  private static List <Locale> _getAsLocales (@Nonnull final String... aCountries)
+  {
+    final List <Locale> ret = new ArrayList <Locale> ();
+    for (final String sCountry : aCountries)
+      ret.add (LocaleCache.getLocale (sCountry));
+    return ret;
+  }
+
   private ECurrency (@Nonnull final Currency aCurrency,
                      @Nonnull final ECurrencyName aName,
-                     @Nonnull final Locale... aCountries)
+                     @Nonnull final String... aLocales)
   {
-    this (aCurrency, false, aName, aCountries);
+    this (aCurrency, false, aName, aLocales);
   }
 
   private ECurrency (@Nonnull final Currency aCurrency,
                      final boolean bIsDeprecated,
                      @Nonnull final ECurrencyName aName,
-                     @Nonnull final Locale... aCountries)
+                     @Nonnull final String... aLocales)
   {
-    if (aCurrency == null)
-      throw new NullPointerException ("currency");
-    if (aName == null)
-      throw new NullPointerException ("name");
-    if (aCountries == null)
-      throw new NullPointerException ("countries");
+    ValueEnforcer.notNull (aCurrency, "Currency");
+    ValueEnforcer.notNull (aName, "Name");
+    ValueEnforcer.notEmptyNoNullValue (aLocales, "Locales");
 
-    for (final Locale aCountry : aCountries)
+    Locale aRelevantLocale = null;
+    for (final Locale aLocale : _getAsLocales (aLocales))
     {
-      if (aCountry == null)
-        throw new IllegalArgumentException ("Passed country is unknown!");
-      if (!CurrencyUtils.localeSupportsCurrencyRetrieval (aCountry))
-        throw new IllegalArgumentException ("Passed country " + aCountry + " does not support currency retrieval!");
-      if (!m_aCountries.add (aCountry))
-        throw new IllegalArgumentException ("The country " + aCountry.getCountry () + " is contained more than once.");
+      if (aLocale == null)
+        throw new IllegalArgumentException ("Passed locale is null!");
+      if (!CurrencyUtils.localeSupportsCurrencyRetrieval (aLocale))
+        throw new IllegalArgumentException ("Passed locale " + aLocale + " does not support currency retrieval!");
+      if (!m_aLocales.add (aLocale))
+        throw new IllegalArgumentException ("The locale " + aLocale + " is contained more than once.");
+      if (aRelevantLocale == null && aLocale.getLanguage ().length () > 0)
+      {
+        // Use the first locale with a language as the most relevant one
+        aRelevantLocale = aLocale;
+      }
     }
-    if (m_aCountries.isEmpty ())
+    if (m_aLocales.isEmpty ())
       throw new IllegalArgumentException ("Passed currency is not valid in a single country!");
+    if (aRelevantLocale == null)
+    {
+      // Fallback to the first locale
+      aRelevantLocale = ContainerHelper.getFirstElement (m_aLocales);
+    }
 
     m_aCurrency = aCurrency;
     m_bIsDeprecated = bIsDeprecated;
     m_aName = aName;
-
-    // Always use the first locale as the most relevant one!
-    final Locale aRelevantLocale = ContainerHelper.getFirstElement (m_aCountries);
 
     // Note: Locale fr_FR formats locale with a trailing € whereas the locale
     // de_DE formats the € at front!
@@ -265,7 +253,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @ReturnsMutableCopy
   public List <Locale> getAllMatchingCountries ()
   {
-    return ContainerHelper.newList (m_aCountries);
+    return ContainerHelper.newList (m_aLocales);
   }
 
   /**
@@ -582,20 +570,40 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
     return EnumHelper.getFromIDOrDefault (ECurrency.class, sCurrencyCode, eDefault);
   }
 
+  /**
+   * @deprecated Use {@link #getFromLocaleOrNull(Locale)} instead
+   */
+  @Deprecated
   @Nullable
-  public static ECurrency getFromCountryOrNull (@Nullable final Locale aCountry)
+  public static ECurrency getFromCountryOrNull (@Nullable final Locale aLocale)
   {
-    return getFromCountryOrNull (aCountry, false);
+    return getFromLocaleOrNull (aLocale);
   }
 
   @Nullable
-  public static ECurrency getFromCountryOrNull (@Nullable final Locale aCountry, final boolean bIncludeDeprecated)
+  public static ECurrency getFromLocaleOrNull (@Nullable final Locale aLocale)
   {
-    if (aCountry != null)
+    return getFromLocaleOrNull (aLocale, false);
+  }
+
+  /**
+   * @deprecated Use {@link #getFromLocaleOrNull(Locale,boolean)} instead
+   */
+  @Deprecated
+  @Nullable
+  public static ECurrency getFromCountryOrNull (@Nullable final Locale aLocale, final boolean bIncludeDeprecated)
+  {
+    return getFromLocaleOrNull (aLocale, bIncludeDeprecated);
+  }
+
+  @Nullable
+  public static ECurrency getFromLocaleOrNull (@Nullable final Locale aLocale, final boolean bIncludeDeprecated)
+  {
+    if (aLocale != null)
       for (final ECurrency eCurrency : values ())
         if (!eCurrency.isDeprecated () || bIncludeDeprecated)
-          for (final Locale aCurrencyCountry : eCurrency.m_aCountries)
-            if (aCountry.equals (aCurrencyCountry))
+          for (final Locale aCurrencyLocale : eCurrency.m_aLocales)
+            if (aLocale.equals (aCurrencyLocale))
               return eCurrency;
     return null;
   }
