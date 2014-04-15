@@ -24,7 +24,6 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.phloc.commons.charset.CSpecialChars;
 import com.phloc.commons.mock.AbstractPhlocTestCase;
 import com.phloc.commons.mock.PhlocTestUtils;
 
@@ -34,9 +33,9 @@ public final class CurrencyValueTest extends AbstractPhlocTestCase
   public void testGetFormatted ()
   {
     ICurrencyValue aCV = new CurrencyValue (ECurrency.EUR, new BigDecimal (5));
-    assertEquals (CSpecialChars.EURO_STR + " 5,00", aCV.getCurrencyFormatted ());
+    assertEquals ("€ 5,00", aCV.getCurrencyFormatted ());
     aCV = new CurrencyValue (ECurrency.EUR, new BigDecimal ("5.12"));
-    assertEquals (CSpecialChars.EURO_STR + " 5,12", aCV.getCurrencyFormatted ());
+    assertEquals ("€ 5,12", aCV.getCurrencyFormatted ());
     aCV = new CurrencyValue (ECurrency.USD, new BigDecimal ("5.12"));
     assertEquals ("$5.12", aCV.getCurrencyFormatted ());
 
