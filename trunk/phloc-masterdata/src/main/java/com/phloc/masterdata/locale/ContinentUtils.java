@@ -257,11 +257,16 @@ public final class ContinentUtils
   }
 
   @Nullable
+  public static EContinent getContinentOfCountry (@Nullable final Locale aLocale)
+  {
+    final Locale aCountry = CountryCache.getCountry (aLocale);
+    return aCountry == null ? null : s_aMap.get (aCountry);
+  }
+
+  @Nullable
   public static EContinent getContinentOfCountry (@Nullable final String sCountryID)
   {
     final Locale aCountry = CountryCache.getCountry (sCountryID);
-    if (aCountry == null)
-      return null;
-    return s_aMap.get (aCountry);
+    return aCountry == null ? null : s_aMap.get (aCountry);
   }
 }

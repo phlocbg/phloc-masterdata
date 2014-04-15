@@ -26,12 +26,26 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
+import com.phloc.commons.collections.ContainerHelper;
+import com.phloc.commons.collections.multimap.IMultiMapSetBased;
+import com.phloc.commons.collections.multimap.MultiHashMapHashSetBased;
+import com.phloc.commons.equals.EqualsUtils;
+import com.phloc.commons.locale.ComparatorLocale;
+import com.phloc.commons.locale.LocaleCache;
+import com.phloc.commons.locale.country.CountryCache;
 import com.phloc.commons.mock.AbstractPhlocTestCase;
 import com.phloc.commons.string.StringHelper;
+import com.phloc.masterdata.locale.EContinent;
+import com.phloc.masterdata.locale.FilterLocaleCountryOnContinent;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
@@ -89,6 +103,10 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   {
     for (final ECurrency eCurrency : ECurrency.values ())
     {
+      final int nDefaultFractionDigits = eCurrency.getAsCurrency ().getDefaultFractionDigits ();
+      if (false)
+        System.out.println (eCurrency.getID () + " - " + nDefaultFractionDigits);
+
       // currency format
       assertNotNull (eCurrency.getCurrencyFormat ());
       assertNotNull (eCurrency.getCurrencyFormatted (BigDecimal.TEN));
@@ -106,14 +124,14 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
       assertEquals (BigDecimal.TEN, eCurrency.parseValueFormat ("    ", BigDecimal.TEN));
 
       // No decimal separator
-      final BigDecimal FIVE = new BigDecimal ("5").setScale (eCurrency.getAsCurrency ().getDefaultFractionDigits ());
+      final BigDecimal FIVE = new BigDecimal ("5").setScale (nDefaultFractionDigits);
       assertEquals (FIVE, eCurrency.parseValueFormat ("5", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat (" 5", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat ("5 ", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat (" 5 ", BigDecimal.TEN));
       if (false)
       {
-        final BigDecimal MFIVE = new BigDecimal ("-5").setScale (eCurrency.getAsCurrency ().getDefaultFractionDigits ());
+        final BigDecimal MFIVE = new BigDecimal ("-5").setScale (nDefaultFractionDigits);
         assertEquals (FIVE, eCurrency.parseValueFormat ("+5", BigDecimal.TEN));
         assertEquals (MFIVE, eCurrency.parseValueFormat ("-5", BigDecimal.TEN));
       }
@@ -124,6 +142,9 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
       assertEquals (FIVE, eCurrency.parseValueFormat ("5,0 ", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat (" 5,0 ", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat ("5,0000", BigDecimal.TEN));
+      assertEquals (FIVE, eCurrency.parseValueFormat ("5," +
+                                                      StringHelper.getRepeated ('0', nDefaultFractionDigits + 1) +
+                                                      "9", BigDecimal.TEN));
 
       // dot as decimal separator
       assertEquals (FIVE, eCurrency.parseValueFormat ("5.0", BigDecimal.TEN));
@@ -131,7 +152,9 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
       assertEquals (FIVE, eCurrency.parseValueFormat ("5.0 ", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat (" 5.0 ", BigDecimal.TEN));
       assertEquals (FIVE, eCurrency.parseValueFormat ("5.0000", BigDecimal.TEN));
-      assertEquals (FIVE, eCurrency.parseValueFormat ("5.0009", BigDecimal.TEN));
+      assertEquals (FIVE, eCurrency.parseValueFormat ("5." +
+                                                      StringHelper.getRepeated ('0', nDefaultFractionDigits + 1) +
+                                                      "9", BigDecimal.TEN));
 
       // symbol
       assertTrue (eCurrency.getValueFormat ().format (5).contains ("5"));
@@ -282,9 +305,71 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   @Test
   public void testGetFromCountry ()
   {
+    // The following countries have multiple currencies:
+    final Locale aLocCuba = CountryCache.getCountry ("CU");
+
     for (final ECurrency e : ECurrency.values ())
       if (!e.isDeprecated ())
         for (final Locale aLocale : e.getAllMatchingCountries ())
-          assertSame (e, ECurrency.getFromLocaleOrNull (aLocale, false));
+          if (!EqualsUtils.equals (aLocale, aLocCuba))
+            assertSame (e, ECurrency.getFromLocaleOrNull (aLocale, false));
+  }
+
+  @Test
+  public void testGetAllCurrenciesWithLocaleFilter ()
+  {
+    final List <ECurrency> aEuropean = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnContinent (EContinent.EUROPE));
+    assertNotNull (aEuropean);
+    assertTrue (aEuropean.contains (ECurrency.EUR));
+    assertFalse (aEuropean.contains (ECurrency.USD));
+  }
+
+  @Test
+  public void testGetMissingCurrencies ()
+  {
+    final Map <Locale, Currency> aMap = new HashMap <Locale, Currency> ();
+    for (final Locale aLocale : LocaleCache.getAllLocales ())
+    {
+      try
+      {
+        final Currency aCurrency = Currency.getInstance (aLocale);
+        if (aCurrency != null)
+          aMap.put (aLocale, aCurrency);
+      }
+      catch (final Exception exc)
+      {
+        // Locale not found
+      }
+    }
+
+    final IMultiMapSetBased <Currency, Locale> aAllOfCurrency = new MultiHashMapHashSetBased <Currency, Locale> ();
+    for (final Map.Entry <Locale, Currency> aEntry : aMap.entrySet ())
+    {
+      if (ECurrency.getFromLocaleOrNull (aEntry.getKey (), true) == null)
+      {
+        aAllOfCurrency.putSingle (aEntry.getValue (), aEntry.getKey ());
+      }
+    }
+    for (final Map.Entry <Currency, Set <Locale>> a : ContainerHelper.getSortedByKey (aAllOfCurrency,
+                                                                                      new ComparatorCurrencyCode ())
+                                                                     .entrySet ())
+    {
+      String sLocale = "";
+      for (final Locale aLoc : ContainerHelper.getSorted (a.getValue (), new ComparatorLocale ()))
+      {
+        if (sLocale.length () > 0)
+          sLocale += ',';
+        sLocale += '"' + aLoc.toString () + '"';
+      }
+      final String sID = a.getKey ().getCurrencyCode ();
+      System.out.println (sID +
+                          " (Currency.getInstance (\"" +
+                          sID +
+                          "\"), ECurrencyName." +
+                          sID +
+                          ", " +
+                          sLocale +
+                          "),");
+    }
   }
 }

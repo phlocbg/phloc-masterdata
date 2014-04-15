@@ -37,6 +37,7 @@ import com.phloc.commons.annotations.CodingStyleguideUnaware;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
+import com.phloc.commons.filter.IFilter;
 import com.phloc.commons.id.IHasID;
 import com.phloc.commons.lang.EnumHelper;
 import com.phloc.commons.locale.LocaleCache;
@@ -52,79 +53,171 @@ import com.phloc.commons.string.StringHelper;
 @NotThreadSafe
 public enum ECurrency implements IHasID <String>, IHasDisplayText
 {
-  // Afghanistan Afghani
+  AED (Currency.getInstance ("AED"), ECurrencyName.AED, "_AE", "ar_AE"),
   AFN (Currency.getInstance ("AFN"), ECurrencyName.AFN, "_AF"),
-  // Albanian Lek
   ALL (Currency.getInstance ("ALL"), ECurrencyName.ALL, "_AL", "sq_AL"),
-  // Armenian Dram
   AMD (Currency.getInstance ("AMD"), ECurrencyName.AMD, "_AM"),
-  // Angolan Kwanza
+  ANG (Currency.getInstance ("ANG"), ECurrencyName.ANG, "_AN", "_CW", "_SX"),
   AOA (Currency.getInstance ("AOA"), ECurrencyName.AOA, "_AO"),
-  // Argentine Peso
   ARS (Currency.getInstance ("ARS"), ECurrencyName.ARS, "_AR", "es_AR"),
-  // Azerbaijani Manat
+  AUD (Currency.getInstance ("AUD"), ECurrencyName.AUD, "_AU", "_CC", "_CX", "_HM", "_KI", "_NF", "_NR", "_TV", "en_AU"),
+  AWG (Currency.getInstance ("AWG"), ECurrencyName.AWG, "_AW"),
   AZN (Currency.getInstance ("AZN"), ECurrencyName.AZN, "_AZ"),
-  // Bosnia-Herzegovina Convertible Mark
   BAM (Currency.getInstance ("BAM"), ECurrencyName.BAM, "_BA", "sr_BA"),
-  // Bulgarian Lev
+  BBD (Currency.getInstance ("BBD"), ECurrencyName.BBD, "_BB"),
+  BDT (Currency.getInstance ("BDT"), ECurrencyName.BDT, "_BD"),
   BGN (Currency.getInstance ("BGN"), ECurrencyName.BGN, "_BG", "bg_BG"),
-  // Belarusian Ruble
+  BHD (Currency.getInstance ("BHD"), ECurrencyName.BHD, "_BH", "ar_BH"),
+  BIF (Currency.getInstance ("BIF"), ECurrencyName.BIF, "_BI"),
+  BMD (Currency.getInstance ("BMD"), ECurrencyName.BMD, "_BM"),
+  BND (Currency.getInstance ("BND"), ECurrencyName.BND, "_BN"),
+  BOB (Currency.getInstance ("BOB"), ECurrencyName.BOB, "_BO", "es_BO"),
+  BRL (Currency.getInstance ("BRL"), ECurrencyName.BRL, "_BR", "pt_BR"),
+  BSD (Currency.getInstance ("BSD"), ECurrencyName.BSD, "_BS"),
+  BTN (Currency.getInstance ("BTN"), ECurrencyName.BTN, "_BT"),
+  BWP (Currency.getInstance ("BWP"), ECurrencyName.BWP, "_BW"),
   BYR (Currency.getInstance ("BYR"), ECurrencyName.BYR, "_BY", "be_BY"),
-  // Swiss Franc
+  BZD (Currency.getInstance ("BZD"), ECurrencyName.BZD, "_BZ"),
+  CAD (Currency.getInstance ("CAD"), ECurrencyName.CAD, "_CA", "en_CA", "fr_CA"),
+  CDF (Currency.getInstance ("CDF"), ECurrencyName.CDF, "_CD"),
   CHF (Currency.getInstance ("CHF"), ECurrencyName.CHF, "_CH", "_LI", "de_CH", "fr_CH", "it_CH"),
-  // Czech Koruna
+  CLP (Currency.getInstance ("CLP"), ECurrencyName.CLP, "_CL", "es_CL"),
+  CNY (Currency.getInstance ("CNY"), ECurrencyName.CNY, "_CN", "zh_CN"),
+  COP (Currency.getInstance ("COP"), ECurrencyName.COP, "_CO", "es_CO"),
+  CRC (Currency.getInstance ("CRC"), ECurrencyName.CRC, "_CR", "es_CR"),
+  @Deprecated
+  CSD (Currency.getInstance ("CSD"), true, ECurrencyName.CSD, "_CS", "sr_CS"),
+  CUC (Currency.getInstance ("CUC"), ECurrencyName.CUC, "_CU"),
+  CUP (Currency.getInstance ("CUP"), ECurrencyName.CUP, "_CU"),
+  CVE (Currency.getInstance ("CVE"), ECurrencyName.CVE, "_CV"),
   CZK (Currency.getInstance ("CZK"), ECurrencyName.CZK, "_CZ", "cs_CZ"),
-  // Danish krone
+  DJF (Currency.getInstance ("DJF"), ECurrencyName.DJF, "_DJ"),
   DKK (Currency.getInstance ("DKK"), ECurrencyName.DKK, "_DK", "_FO", "_GL", "da_DK"),
-  // Algerian Dinar
+  DOP (Currency.getInstance ("DOP"), ECurrencyName.DOP, "_DO", "es_DO"),
   DZD (Currency.getInstance ("DZD"), ECurrencyName.DZD, "_DZ", "ar_DZ"),
   // Estonian Kroon (until 31.12.2010)
   @Deprecated
   EEK (Currency.getInstance ("EEK"), true, ECurrencyName.EEK, "_EE", "et_EE"),
-  // Egyptian Pound
   EGP (Currency.getInstance ("EGP"), ECurrencyName.EGP, "_EG", "ar_EG"),
-  // Ethiopian Birr
+  ERN (Currency.getInstance ("ERN"), ECurrencyName.ERN, "_ER"),
   ETB (Currency.getInstance ("ETB"), ECurrencyName.ETB, "_ET"),
-  // Euro
   EUR (Currency.getInstance ("EUR"), ECurrencyName.EUR, "_AD", "_AT", "_AX", "_BE", "_BL", "_CY", "_DE", "_EE", "_ES", "_FI", "_FR", "_GF", "_GP", "_GR", "_IE", "_IT", "_LU", "_MC", "_ME", "_MF", "_MQ", "_MT", "_NL", "_PM", "_PT", "_RE", "_SI", "_SK", "_SM", "_TF", "_VA", "_YT", "ca_ES", "de_AT", "de_DE", "de_LU", "el_CY", "el_GR", "en_IE", "en_MT", "es_ES", "et_EE", "fi_FI", "fr_BE", "fr_FR", "fr_LU", "ga_IE", "it_IT", "mt_MT", "nl_BE", "nl_NL", "pt_PT", "sk_SK", "sl_SI", "sr_ME"),
-  // Pound Sterling
+  FJD (Currency.getInstance ("FJD"), ECurrencyName.FJD, "_FJ"),
+  FKP (Currency.getInstance ("FKP"), ECurrencyName.FKP, "_FK"),
   GBP (Currency.getInstance ("GBP"), ECurrencyName.GBP, "_GB", "_GG", "_GS", "_IM", "_JE", "en_GB"),
-  // Georgian Lari
   GEL (Currency.getInstance ("GEL"), ECurrencyName.GEL, "_GE"),
-  // Croatian Kuna
+  GHS (Currency.getInstance ("GHS"), ECurrencyName.GHS, "_GH"),
+  GIP (Currency.getInstance ("GIP"), ECurrencyName.GIP, "_GI"),
+  GMD (Currency.getInstance ("GMD"), ECurrencyName.GMD, "_GM"),
+  GNF (Currency.getInstance ("GNF"), ECurrencyName.GNF, "_GN"),
+  GTQ (Currency.getInstance ("GTQ"), ECurrencyName.GTQ, "_GT", "es_GT"),
+  GYD (Currency.getInstance ("GYD"), ECurrencyName.GYD, "_GY"),
+  HKD (Currency.getInstance ("HKD"), ECurrencyName.HKD, "_HK", "zh_HK"),
+  HNL (Currency.getInstance ("HNL"), ECurrencyName.HNL, "_HN", "es_HN"),
   HRK (Currency.getInstance ("HRK"), ECurrencyName.HRK, "_HR", "hr_HR"),
-  // Hungarian Forint
+  HTG (Currency.getInstance ("HTG"), ECurrencyName.HTG, "_HT"),
   HUF (Currency.getInstance ("HUF"), ECurrencyName.HUF, "_HU", "hu_HU"),
-  // Icelandic Krona
+  IDR (Currency.getInstance ("IDR"), ECurrencyName.IDR, "_ID", "in_ID"),
+  ILS (Currency.getInstance ("ILS"), ECurrencyName.ILS, "_IL", "_PS", "iw_IL"),
+  INR (Currency.getInstance ("INR"), ECurrencyName.INR, "_IN", "en_IN", "hi_IN"),
+  IQD (Currency.getInstance ("IQD"), ECurrencyName.IQD, "_IQ", "ar_IQ"),
+  IRR (Currency.getInstance ("IRR"), ECurrencyName.IRR, "_IR"),
   ISK (Currency.getInstance ("ISK"), ECurrencyName.ISK, "_IS", "is_IS"),
-  // Lithuanian Litas
+  JMD (Currency.getInstance ("JMD"), ECurrencyName.JMD, "_JM"),
+  JOD (Currency.getInstance ("JOD"), ECurrencyName.JOD, "_JO", "ar_JO"),
+  JPY (Currency.getInstance ("JPY"), ECurrencyName.JPY, "_JP", "ja_JP", "ja_JP_JP"),
+  KES (Currency.getInstance ("KES"), ECurrencyName.KES, "_KE"),
+  KGS (Currency.getInstance ("KGS"), ECurrencyName.KGS, "_KG"),
+  KHR (Currency.getInstance ("KHR"), ECurrencyName.KHR, "_KH"),
+  KMF (Currency.getInstance ("KMF"), ECurrencyName.KMF, "_KM"),
+  KPW (Currency.getInstance ("KPW"), ECurrencyName.KPW, "_KP"),
+  KRW (Currency.getInstance ("KRW"), ECurrencyName.KRW, "_KR", "ko_KR"),
+  KWD (Currency.getInstance ("KWD"), ECurrencyName.KWD, "_KW", "ar_KW"),
+  KYD (Currency.getInstance ("KYD"), ECurrencyName.KYD, "_KY"),
+  KZT (Currency.getInstance ("KZT"), ECurrencyName.KZT, "_KZ"),
+  LAK (Currency.getInstance ("LAK"), ECurrencyName.LAK, "_LA"),
+  LBP (Currency.getInstance ("LBP"), ECurrencyName.LBP, "_LB", "ar_LB"),
+  LKR (Currency.getInstance ("LKR"), ECurrencyName.LKR, "_LK"),
+  LRD (Currency.getInstance ("LRD"), ECurrencyName.LRD, "_LR"),
+  LSL (Currency.getInstance ("LSL"), ECurrencyName.LSL, "_LS"),
   LTL (Currency.getInstance ("LTL"), ECurrencyName.LTL, "_LT", "lt_LT"),
-  // Latvian Lats
   LVL (Currency.getInstance ("LVL"), ECurrencyName.LVL, "_LV", "lv_LV"),
-  // Moldovan Leu
+  LYD (Currency.getInstance ("LYD"), ECurrencyName.LYD, "_LY", "ar_LY"),
+  MAD (Currency.getInstance ("MAD"), ECurrencyName.MAD, "_EH", "_MA", "ar_MA"),
   MDL (Currency.getInstance ("MDL"), ECurrencyName.MDL, "_MD"),
-  // Macedonia Denar
+  MGA (Currency.getInstance ("MGA"), ECurrencyName.MGA, "_MG"),
   MKD (Currency.getInstance ("MKD"), ECurrencyName.MKD, "_MK", "mk_MK"),
-  // Norwegian Krone
+  MMK (Currency.getInstance ("MMK"), ECurrencyName.MMK, "_MM"),
+  MNT (Currency.getInstance ("MNT"), ECurrencyName.MNT, "_MN"),
+  MOP (Currency.getInstance ("MOP"), ECurrencyName.MOP, "_MO"),
+  MRO (Currency.getInstance ("MRO"), ECurrencyName.MRO, "_MR"),
+  MUR (Currency.getInstance ("MUR"), ECurrencyName.MUR, "_MU"),
+  MVR (Currency.getInstance ("MVR"), ECurrencyName.MVR, "_MV"),
+  MWK (Currency.getInstance ("MWK"), ECurrencyName.MWK, "_MW"),
+  MXN (Currency.getInstance ("MXN"), ECurrencyName.MXN, "_MX", "es_MX"),
+  MYR (Currency.getInstance ("MYR"), ECurrencyName.MYR, "_MY", "ms_MY"),
+  MZN (Currency.getInstance ("MZN"), ECurrencyName.MZN, "_MZ"),
+  NAD (Currency.getInstance ("NAD"), ECurrencyName.NAD, "_NA"),
+  NGN (Currency.getInstance ("NGN"), ECurrencyName.NGN, "_NG"),
+  NIO (Currency.getInstance ("NIO"), ECurrencyName.NIO, "_NI", "es_NI"),
   NOK (Currency.getInstance ("NOK"), ECurrencyName.NOK, "_BV", "_NO", "_SJ", "no_NO", "no_NO_NY"),
-  // Polish Zloty (new)
+  NPR (Currency.getInstance ("NPR"), ECurrencyName.NPR, "_NP"),
+  NZD (Currency.getInstance ("NZD"), ECurrencyName.NZD, "_CK", "_NU", "_NZ", "_PN", "_TK", "en_NZ"),
+  OMR (Currency.getInstance ("OMR"), ECurrencyName.OMR, "_OM", "ar_OM"),
+  PAB (Currency.getInstance ("PAB"), ECurrencyName.PAB, "_PA", "es_PA"),
+  PEN (Currency.getInstance ("PEN"), ECurrencyName.PEN, "_PE", "es_PE"),
+  PGK (Currency.getInstance ("PGK"), ECurrencyName.PGK, "_PG"),
+  PHP (Currency.getInstance ("PHP"), ECurrencyName.PHP, "_PH", "en_PH"),
+  PKR (Currency.getInstance ("PKR"), ECurrencyName.PKR, "_PK"),
   PLN (Currency.getInstance ("PLN"), ECurrencyName.PLN, "_PL", "pl_PL"),
-  // Romanian Leu
+  PYG (Currency.getInstance ("PYG"), ECurrencyName.PYG, "_PY", "es_PY"),
+  QAR (Currency.getInstance ("QAR"), ECurrencyName.QAR, "_QA", "ar_QA"),
   RON (Currency.getInstance ("RON"), ECurrencyName.RON, "_RO", "ro_RO"),
-  // Serbian dinar
   RSD (Currency.getInstance ("RSD"), ECurrencyName.RSD, "_RS", "sr_RS"),
-  // Russian Ruble
   RUB (Currency.getInstance ("RUB"), ECurrencyName.RUB, "_RU", "ru_RU"),
-  // Swedish Krona
+  RWF (Currency.getInstance ("RWF"), ECurrencyName.RWF, "_RW"),
+  SAR (Currency.getInstance ("SAR"), ECurrencyName.SAR, "_SA", "ar_SA"),
+  SBD (Currency.getInstance ("SBD"), ECurrencyName.SBD, "_SB"),
+  SCR (Currency.getInstance ("SCR"), ECurrencyName.SCR, "_SC"),
+  SDG (Currency.getInstance ("SDG"), ECurrencyName.SDG, "_SD", "ar_SD"),
   SEK (Currency.getInstance ("SEK"), ECurrencyName.SEK, "_SE", "sv_SE"),
-  // New Turkish Lira
+  SGD (Currency.getInstance ("SGD"), ECurrencyName.SGD, "_SG", "en_SG", "zh_SG"),
+  SHP (Currency.getInstance ("SHP"), ECurrencyName.SHP, "_SH"),
+  SLL (Currency.getInstance ("SLL"), ECurrencyName.SLL, "_SL"),
+  SOS (Currency.getInstance ("SOS"), ECurrencyName.SOS, "_SO"),
+  SRD (Currency.getInstance ("SRD"), ECurrencyName.SRD, "_SR"),
+  STD (Currency.getInstance ("STD"), ECurrencyName.STD, "_ST"),
+  SVC (Currency.getInstance ("SVC"), ECurrencyName.SVC, "_SV", "es_SV"),
+  SYP (Currency.getInstance ("SYP"), ECurrencyName.SYP, "_SY", "ar_SY"),
+  SZL (Currency.getInstance ("SZL"), ECurrencyName.SZL, "_SZ"),
+  THB (Currency.getInstance ("THB"), ECurrencyName.THB, "_TH", "th_TH", "th_TH_TH"),
+  TJS (Currency.getInstance ("TJS"), ECurrencyName.TJS, "_TJ"),
+  TMT (Currency.getInstance ("TMT"), ECurrencyName.TMT, "_TM"),
+  TND (Currency.getInstance ("TND"), ECurrencyName.TND, "_TN", "ar_TN"),
+  TOP (Currency.getInstance ("TOP"), ECurrencyName.TOP, "_TO"),
   TRY (Currency.getInstance ("TRY"), ECurrencyName.TRY, "_TR", "tr_TR"),
-  // Ukrainian Hryvnia
+  TTD (Currency.getInstance ("TTD"), ECurrencyName.TTD, "_TT"),
+  TWD (Currency.getInstance ("TWD"), ECurrencyName.TWD, "_TW", "zh_TW"),
+  TZS (Currency.getInstance ("TZS"), ECurrencyName.TZS, "_TZ"),
   UAH (Currency.getInstance ("UAH"), ECurrencyName.UAH, "_UA", "uk_UA"),
-  // United States Dollar
+  UGX (Currency.getInstance ("UGX"), ECurrencyName.UGX, "_UG"),
   USD (Currency.getInstance ("USD"), ECurrencyName.USD, "_AS", "_BQ", "_EC", "_FM", "_GU", "_IO", "_MH", "_MP", "_PR", "_PW", "_TC", "_TL", "_UM", "_US", "_VG", "_VI", "en_US", "es_EC", "es_PR", "es_US"),
-  // CFA Franc BEAC
-  XAF (Currency.getInstance ("XAF"), ECurrencyName.XAF, "_CF", "_CG", "_CM", "_GA", "_GQ", "_TD");
+  UYU (Currency.getInstance ("UYU"), ECurrencyName.UYU, "_UY", "es_UY"),
+  UZS (Currency.getInstance ("UZS"), ECurrencyName.UZS, "_UZ"),
+  VEF (Currency.getInstance ("VEF"), ECurrencyName.VEF, "_VE", "es_VE"),
+  VND (Currency.getInstance ("VND"), ECurrencyName.VND, "_VN", "vi_VN"),
+  VUV (Currency.getInstance ("VUV"), ECurrencyName.VUV, "_VU"),
+  WST (Currency.getInstance ("WST"), ECurrencyName.WST, "_WS"),
+  XAF (Currency.getInstance ("XAF"), ECurrencyName.XAF, "_CF", "_CG", "_CM", "_GA", "_GQ", "_TD"),
+  XCD (Currency.getInstance ("XCD"), ECurrencyName.XCD, "_AG", "_AI", "_DM", "_GD", "_KN", "_LC", "_MS", "_VC"),
+  XOF (Currency.getInstance ("XOF"), ECurrencyName.XOF, "_BF", "_BJ", "_CI", "_GW", "_ML", "_NE", "_SN", "_TG"),
+  XPF (Currency.getInstance ("XPF"), ECurrencyName.XPF, "_NC", "_PF", "_WF"),
+  YER (Currency.getInstance ("YER"), ECurrencyName.YER, "_YE", "ar_YE"),
+  ZAR (Currency.getInstance ("ZAR"), ECurrencyName.ZAR, "_ZA", "en_ZA"),
+  @Deprecated
+  ZMK (Currency.getInstance ("ZMK"), true, ECurrencyName.ZMK, "_ZM"),
+  @Deprecated
+  ZWL (Currency.getInstance ("ZWL"), true, ECurrencyName.ZWL, "_ZW");
 
   /**
    * The default rounding mode to be used for currency values. It may be
@@ -621,5 +714,32 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
             if (aLocale.equals (aCurrencyLocale))
               return eCurrency;
     return null;
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
+  public static List <ECurrency> getAllCurrenciesWithLocaleFilter (@Nonnull final IFilter <Locale> aLocaleFilter)
+  {
+    return getAllCurrenciesWithLocaleFilter (aLocaleFilter, false);
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
+  public static List <ECurrency> getAllCurrenciesWithLocaleFilter (@Nonnull final IFilter <Locale> aLocaleFilter,
+                                                                   final boolean bIncludeDeprecated)
+  {
+    ValueEnforcer.notNull (aLocaleFilter, "LocaleFilter");
+
+    final List <ECurrency> ret = new ArrayList <ECurrency> ();
+    for (final ECurrency eCurrency : values ())
+      if (!eCurrency.isDeprecated () || bIncludeDeprecated)
+        for (final Locale aCurrencyLocale : eCurrency.m_aLocales)
+          if (aLocaleFilter.matchesFilter (aCurrencyLocale))
+          {
+            ret.add (eCurrency);
+            // continue with next currency
+            break;
+          }
+    return ret;
   }
 }
