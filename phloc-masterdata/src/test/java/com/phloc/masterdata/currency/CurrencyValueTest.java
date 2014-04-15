@@ -19,6 +19,7 @@ package com.phloc.masterdata.currency;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 
@@ -42,11 +43,16 @@ public final class CurrencyValueTest extends AbstractPhlocTestCase
     for (final ECurrency eCurrency : ECurrency.values ())
     {
       aCV = new CurrencyValue (eCurrency, new BigDecimal ("5.12"));
-      assertNotNull (aCV.getCurrencyFormatted ());
-      assertNotNull (aCV.getValueFormatted ());
+      final String sCurrencyFormatted = aCV.getCurrencyFormatted ();
+      assertNotNull (sCurrencyFormatted);
+      final String sValueFormatted = aCV.getValueFormatted ();
+      assertNotNull (sValueFormatted);
+      assertTrue (sValueFormatted, sValueFormatted.indexOf (eCurrency.getCurrencySymbol ()) < 0);
       PhlocTestUtils.testGetClone (aCV);
 
-      m_aLogger.info ("[" + aCV.getCurrencyFormatted () + "][" + aCV.getValueFormatted () + "]");
+      // There seems to be a bug in the optimizer of 1.6.0_45 so that the output
+      // values are sometimes reordered - dunno why :(
+      m_aLogger.info ("[" + sCurrencyFormatted + "][" + sValueFormatted + "]");
     }
   }
 }
