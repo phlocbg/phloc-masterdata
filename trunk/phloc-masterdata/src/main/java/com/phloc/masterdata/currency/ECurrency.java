@@ -52,10 +52,16 @@ import com.phloc.commons.string.StringHelper;
 @NotThreadSafe
 public enum ECurrency implements IHasID <String>, IHasDisplayText
 {
+  // Afghanistan Afghani
+  AFN (Currency.getInstance ("AFN"), ECurrencyName.AFN, "_AF"),
   // Albanian Lek
   ALL (Currency.getInstance ("ALL"), ECurrencyName.ALL, "_AL", "sq_AL"),
   // Armenian Dram
   AMD (Currency.getInstance ("AMD"), ECurrencyName.AMD, "_AM"),
+  // Angolan Kwanza
+  AOA (Currency.getInstance ("AOA"), ECurrencyName.AOA, "_AO"),
+  // Argentine Peso
+  ARS (Currency.getInstance ("ARS"), ECurrencyName.ARS, "_AR", "es_AR"),
   // Azerbaijani Manat
   AZN (Currency.getInstance ("AZN"), ECurrencyName.AZN, "_AZ"),
   // Bosnia-Herzegovina Convertible Mark
@@ -70,9 +76,15 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   CZK (Currency.getInstance ("CZK"), ECurrencyName.CZK, "_CZ", "cs_CZ"),
   // Danish krone
   DKK (Currency.getInstance ("DKK"), ECurrencyName.DKK, "_DK", "_FO", "_GL", "da_DK"),
+  // Algerian Dinar
+  DZD (Currency.getInstance ("DZD"), ECurrencyName.DZD, "_DZ", "ar_DZ"),
   // Estonian Kroon (until 31.12.2010)
   @Deprecated
   EEK (Currency.getInstance ("EEK"), true, ECurrencyName.EEK, "_EE", "et_EE"),
+  // Egyptian Pound
+  EGP (Currency.getInstance ("EGP"), ECurrencyName.EGP, "_EG", "ar_EG"),
+  // Ethiopian Birr
+  ETB (Currency.getInstance ("ETB"), ECurrencyName.ETB, "_ET"),
   // Euro
   EUR (Currency.getInstance ("EUR"), ECurrencyName.EUR, "_AD", "_AT", "_AX", "_BE", "_BL", "_CY", "_DE", "_EE", "_ES", "_FI", "_FR", "_GF", "_GP", "_GR", "_IE", "_IT", "_LU", "_MC", "_ME", "_MF", "_MQ", "_MT", "_NL", "_PM", "_PT", "_RE", "_SI", "_SK", "_SM", "_TF", "_VA", "_YT", "ca_ES", "de_AT", "de_DE", "de_LU", "el_CY", "el_GR", "en_IE", "en_MT", "es_ES", "et_EE", "fi_FI", "fr_BE", "fr_FR", "fr_LU", "ga_IE", "it_IT", "mt_MT", "nl_BE", "nl_NL", "pt_PT", "sk_SK", "sl_SI", "sr_ME"),
   // Pound Sterling
@@ -110,7 +122,9 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   // Ukrainian Hryvnia
   UAH (Currency.getInstance ("UAH"), ECurrencyName.UAH, "_UA", "uk_UA"),
   // United States Dollar
-  USD (Currency.getInstance ("USD"), ECurrencyName.USD, "_AS", "_BQ", "_EC", "_FM", "_GU", "_IO", "_MH", "_MP", "_PR", "_PW", "_TC", "_TL", "_UM", "_US", "_VG", "_VI", "en_US", "es_EC", "es_PR", "es_US");
+  USD (Currency.getInstance ("USD"), ECurrencyName.USD, "_AS", "_BQ", "_EC", "_FM", "_GU", "_IO", "_MH", "_MP", "_PR", "_PW", "_TC", "_TL", "_UM", "_US", "_VG", "_VI", "en_US", "es_EC", "es_PR", "es_US"),
+  // CFA Franc BEAC
+  XAF (Currency.getInstance ("XAF"), ECurrencyName.XAF, "_CF", "_CG", "_CM", "_GA", "_GQ", "_TD");
 
   /**
    * The default rounding mode to be used for currency values. It may be
@@ -349,8 +363,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
    */
   public void setMinimumFractionDigits (@Nonnegative final int nDecimals)
   {
-    if (nDecimals < 0)
-      throw new IllegalArgumentException ("Decimals may not be negative: " + nDecimals);
+    ValueEnforcer.isGE0 (nDecimals, "Decimals");
     m_aCurrencyFormat.setMinimumFractionDigits (nDecimals);
     m_aValueFormat.setMinimumFractionDigits (nDecimals);
   }
@@ -497,6 +510,8 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
                                 @Nonnull final BigDecimal aDivisor,
                                 @Nonnegative final int nFractionDigits)
   {
+    ValueEnforcer.notNull (aDividend, "Dividend");
+    ValueEnforcer.notNull (aDivisor, "Divisor");
     return aDividend.divide (aDivisor, nFractionDigits, getRoundingMode ());
   }
 
@@ -512,6 +527,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @Nonnull
   public BigDecimal getRounded (@Nonnull final BigDecimal aValue)
   {
+    ValueEnforcer.notNull (aValue, "Value");
     return aValue.setScale (getScale (), getRoundingMode ());
   }
 
@@ -531,6 +547,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   @Nonnull
   public BigDecimal getRounded (@Nonnull final BigDecimal aValue, @Nonnegative final int nFractionDigits)
   {
+    ValueEnforcer.notNull (aValue, "Value");
     return aValue.setScale (nFractionDigits, getRoundingMode ());
   }
 
@@ -553,9 +570,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
    */
   public void setRoundingMode (@Nonnull final RoundingMode eRoundingMode)
   {
-    if (eRoundingMode == null)
-      throw new NullPointerException ("RoundingMode");
-    m_eRoundingMode = eRoundingMode;
+    m_eRoundingMode = ValueEnforcer.notNull (eRoundingMode, "RoundingMode");
   }
 
   @Nullable
