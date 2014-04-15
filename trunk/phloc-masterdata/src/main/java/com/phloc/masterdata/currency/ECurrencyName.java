@@ -20,6 +20,7 @@ package com.phloc.masterdata.currency;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.DevelopersNote;
 import com.phloc.commons.annotations.Translatable;
@@ -82,6 +83,7 @@ public enum ECurrencyName implements IHasDisplayText
     m_aTP = TextProvider.create_DE_EN (sDE, sEN);
   }
 
+  @Nullable
   public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
     return DefaultTextResolver.getText (this, m_aTP, aContentLocale);
