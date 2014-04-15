@@ -28,11 +28,19 @@ import com.phloc.commons.text.ITextProvider;
 import com.phloc.commons.text.impl.TextProvider;
 import com.phloc.commons.text.resolve.DefaultTextResolver;
 
+/**
+ * Contains the names of all currencies. Accessed by {@link ECurrency}.
+ * 
+ * @author Philip Helger
+ */
 @Translatable
 public enum ECurrencyName implements IHasDisplayText
 {
+  AFN ("Afghanische Afghani", "Afghanistan Afghani"),
   ALL ("Albanische Lek", "Albanian Lek"),
   AMD ("Armenische Dram", "Armenian Dram"),
+  AOA ("Angolische Kwanza", "Angolan Kwanza"),
+  ARS ("Argentinischer Peso", "Argentine Peso"),
   AZN ("Aserbaidschanische Manat", "Azerbaijani Manat"),
   BAM ("Konvertible Marks", "Bosnia-Herzegovina Convertible Mark"),
   BGN ("Bulgarische Leva", "Bulgarian Lev"),
@@ -40,9 +48,12 @@ public enum ECurrencyName implements IHasDisplayText
   CHF ("Schweizer Franken", "Swiss Franc"),
   CZK ("Tschechische Kronen", "Czech Koruna"),
   DKK ("Dänische Kronen", "Danish Krone"),
+  DZD ("Algerischer Dinar", "Algerian Dinar"),
   @Deprecated
   @DevelopersNote ("Was replaced with Euro per 1.1.2011")
   EEK ("Estnische Krone", "Estonian Kroon"),
+  EGP ("Ägyptisches Pfund", "Egyptian Pound"),
+  ETB ("Äthiopische Birr", "Ethiopian Birr"),
   EUR ("Euro", "Euro"),
   GBP ("Pfund Sterling", "Pound Sterling"),
   GEL ("Georgische Lari", "Georgian Lari"),
@@ -61,7 +72,8 @@ public enum ECurrencyName implements IHasDisplayText
   SEK ("Schwedische Kronen", "Swedish Krona"),
   TRY ("Türkische Lira", "New Turkish Lira"),
   UAH ("Ukrainische Hrywnja", "Ukrainian Hryvnia"),
-  USD ("US Dollar", "United States Dollar");
+  USD ("US Dollar", "United States Dollar"),
+  XAF ("CFA-Franc", "CFA Franc BEAC");
 
   private final ITextProvider m_aTP;
 
