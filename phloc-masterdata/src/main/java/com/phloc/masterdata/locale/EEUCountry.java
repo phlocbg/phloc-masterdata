@@ -104,13 +104,13 @@ public enum EEUCountry implements IHasID <String>
   }
 
   @Nullable
-  public static EEUCountry getFromLocalOrNull (@Nullable final Locale aLocale)
+  public static EEUCountry getFromLocaleOrNull (@Nullable final Locale aLocale)
   {
     return aLocale == null ? null : getFromIDOrNull (aLocale.getCountry ());
   }
 
   public static boolean isEUCountry (@Nullable final Locale aLocale)
   {
-    return getFromLocalOrNull (aLocale) != null;
+    return getFromLocaleOrNull (aLocale) != null;
   }
 }
