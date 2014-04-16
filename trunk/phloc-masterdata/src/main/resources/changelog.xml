@@ -20,8 +20,14 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
+  <release date="2014-04-16" version="3.3.9" />
+  <entry date="2014-04-16" category="data" action="update" >
+    <change>
+      <text locale="en">Improved the assignment from country to continent to allow more than one continent</text>
+    </change>
+  </entry>
   <release date="2014-04-16" version="3.3.8" />
-  <entry date="2014-04-16" category="api" action="add" >
+  <entry date="2014-04-16" category="api" action="fix" >
     <change>
       <text locale="en">Made ECurrency handling more flexible in case the underlying JDK currency is not present</text>
     </change>
