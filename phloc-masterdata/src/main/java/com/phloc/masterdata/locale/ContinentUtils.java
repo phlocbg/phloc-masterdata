@@ -17,20 +17,23 @@
  */
 package com.phloc.masterdata.locale;
 
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
+import com.phloc.commons.collections.ContainerHelper;
+import com.phloc.commons.collections.multimap.IMultiMapSetBased;
+import com.phloc.commons.collections.multimap.MultiHashMapTreeSetBased;
 import com.phloc.commons.locale.country.CountryCache;
 
 public final class ContinentUtils
 {
   private static boolean USE_NULL_CONTINENT_IF_UNDEFINED = true;
-  private static final Map <Locale, EContinent> s_aMap = new HashMap <Locale, EContinent> ();
+  private static final IMultiMapSetBased <Locale, EContinent> s_aMap = new MultiHashMapTreeSetBased <Locale, EContinent> ();
 
   static
   {
@@ -50,7 +53,7 @@ public final class ContinentUtils
     _register ("AU", EContinent.OCEANIA);
     _register ("AW", EContinent.NORTH_AMERICA);
     _register ("AX", EContinent.EUROPE);
-    _register ("AZ", EContinent.ASIA);
+    _register ("AZ", EContinent.EUROPE, EContinent.ASIA);
     _register ("BA", EContinent.EUROPE);
     _register ("BB", EContinent.NORTH_AMERICA);
     _register ("BD", EContinent.ASIA);
@@ -91,7 +94,7 @@ public final class ContinentUtils
     _register ("CV", EContinent.AFRICA);
     _register ("CW", EContinent.NORTH_AMERICA);
     _register ("CX", EContinent.ASIA);
-    _register ("CY", EContinent.ASIA);
+    _register ("CY", EContinent.ASIA, EContinent.EUROPE);
     _register ("CZ", EContinent.EUROPE);
     _register ("DE", EContinent.EUROPE);
     _register ("DJ", EContinent.AFRICA);
@@ -161,7 +164,7 @@ public final class ContinentUtils
     _register ("KR", EContinent.ASIA);
     _register ("KW", EContinent.ASIA);
     _register ("KY", EContinent.NORTH_AMERICA);
-    _register ("KZ", EContinent.ASIA);
+    _register ("KZ", EContinent.ASIA, EContinent.EUROPE);
     _register ("LA", EContinent.ASIA);
     _register ("LB", EContinent.ASIA);
     _register ("LC", EContinent.NORTH_AMERICA);
@@ -227,7 +230,7 @@ public final class ContinentUtils
     _register ("RE", EContinent.AFRICA);
     _register ("RO", EContinent.EUROPE);
     _register ("RS", EContinent.EUROPE);
-    _register ("RU", EContinent.EUROPE);
+    _register ("RU", EContinent.EUROPE, EContinent.ASIA);
     _register ("RW", EContinent.AFRICA);
     _register ("SA", EContinent.ASIA);
     _register ("SB", EContinent.OCEANIA);
@@ -262,7 +265,7 @@ public final class ContinentUtils
     _register ("TM", EContinent.ASIA);
     _register ("TN", EContinent.AFRICA);
     _register ("TO", EContinent.OCEANIA);
-    _register ("TR", EContinent.ASIA);
+    _register ("TR", EContinent.EUROPE, EContinent.ASIA);
     _register ("TT", EContinent.NORTH_AMERICA);
     _register ("TV", EContinent.OCEANIA);
     _register ("TW", EContinent.ASIA);
@@ -274,7 +277,7 @@ public final class ContinentUtils
     _register ("UY", EContinent.SOUTH_AMERICA);
     _register ("UZ", EContinent.ASIA);
     _register ("VA", EContinent.EUROPE);
-    _register ("VC", EContinent.SOUTH_AMERICA);
+    _register ("VC", EContinent.NORTH_AMERICA);
     _register ("VE", EContinent.SOUTH_AMERICA);
     _register ("VG", EContinent.NORTH_AMERICA);
     _register ("VI", EContinent.NORTH_AMERICA);
@@ -289,25 +292,41 @@ public final class ContinentUtils
     _register ("ZW", EContinent.AFRICA);
   }
 
-  private static void _register (@Nonnull @Nonempty final String sCountryCode, @Nullable final EContinent eContinent)
+  private static void _register (@Nonnull @Nonempty final String sCountryCode,
+                                 @Nullable final EContinent... aContinents)
   {
     final Locale aCountry = CountryCache.getCountry (sCountryCode);
     if (s_aMap.containsKey (aCountry))
       throw new IllegalArgumentException ("Country code '" + sCountryCode + "' is already registered!");
-    s_aMap.put (aCountry, eContinent);
+    for (final EContinent eContinent : aContinents)
+      s_aMap.putSingle (aCountry, eContinent);
   }
 
   @Nullable
-  public static EContinent getContinentOfCountry (@Nullable final Locale aLocale)
+  @ReturnsMutableCopy
+  public static Set <EContinent> getContinentsOfCountry (@Nullable final Locale aLocale)
   {
     final Locale aCountry = CountryCache.getCountry (aLocale);
-    return aCountry == null ? null : s_aMap.get (aCountry);
+    if (aCountry != null)
+    {
+      final Set <EContinent> ret = s_aMap.get (aCountry);
+      if (ret != null)
+        return ContainerHelper.newSortedSet (ret);
+    }
+    return null;
   }
 
   @Nullable
-  public static EContinent getContinentOfCountry (@Nullable final String sCountryID)
+  @ReturnsMutableCopy
+  public static Set <EContinent> getContinentsOfCountry (@Nullable final String sCountryID)
   {
     final Locale aCountry = CountryCache.getCountry (sCountryID);
-    return aCountry == null ? null : s_aMap.get (aCountry);
+    if (aCountry != null)
+    {
+      final Set <EContinent> ret = s_aMap.get (aCountry);
+      if (ret != null)
+        return ContainerHelper.newSortedSet (ret);
+    }
+    return null;
   }
 }
