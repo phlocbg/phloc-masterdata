@@ -319,7 +319,23 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
     List <ECurrency> aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnContinent (EContinent.EUROPE));
     assertNotNull (aSelected);
     assertTrue (aSelected.contains (ECurrency.EUR));
+    assertTrue (aSelected.contains (ECurrency.CHF));
     assertFalse (aSelected.contains (ECurrency.USD));
+    assertFalse (aSelected.contains (ECurrency.CNY));
+
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE));
+    assertNotNull (aSelected);
+    assertTrue (aSelected.contains (ECurrency.EUR));
+    assertTrue (aSelected.contains (ECurrency.CHF));
+    assertFalse (aSelected.contains (ECurrency.USD));
+    assertFalse (aSelected.contains (ECurrency.CNY));
+
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.NORTH_AMERICA));
+    assertNotNull (aSelected);
+    // Used in french over sea areas :)
+    assertTrue (aSelected.contains (ECurrency.EUR));
+    assertFalse (aSelected.contains (ECurrency.CHF));
+    assertTrue (aSelected.contains (ECurrency.USD));
     assertFalse (aSelected.contains (ECurrency.CNY));
 
     aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
