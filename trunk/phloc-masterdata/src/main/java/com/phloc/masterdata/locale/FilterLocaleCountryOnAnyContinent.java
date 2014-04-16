@@ -17,32 +17,43 @@
  */
 package com.phloc.masterdata.locale;
 
+import java.util.EnumSet;
 import java.util.Locale;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
 
 import com.phloc.commons.ValueEnforcer;
+import com.phloc.commons.annotations.Nonempty;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.filter.IFilter;
 
-public class FilterLocaleCountryOnContinent implements IFilter <Locale>
+public class FilterLocaleCountryOnAnyContinent implements IFilter <Locale>
 {
-  private final EContinent m_eContinent;
+  private final EnumSet <EContinent> m_aContinents;
 
-  public FilterLocaleCountryOnContinent (@Nonnull final EContinent eContinent)
+  public FilterLocaleCountryOnAnyContinent (@Nonnull @Nonempty final EContinent... aContinents)
   {
-    m_eContinent = ValueEnforcer.notNull (eContinent, "Continent");
+    ValueEnforcer.notEmptyNoNullValue (aContinents, "Continents");
+    m_aContinents = EnumSet.noneOf (EContinent.class);
+    for (final EContinent eContinent : aContinents)
+      m_aContinents.add (eContinent);
   }
 
   @Nonnull
-  public EContinent getContinent ()
+  @ReturnsMutableCopy
+  public Set <EContinent> getAllContinents ()
   {
-    return m_eContinent;
+    return EnumSet.copyOf (m_aContinents);
   }
 
   public boolean matchesFilter (@Nonnull final Locale aValue)
   {
     final Set <EContinent> aContinents = ContinentUtils.getContinentsOfCountry (aValue);
-    return aContinents != null && aContinents.contains (m_eContinent);
+    if (aContinents == null)
+      return false;
+
+    aContinents.retainAll (m_aContinents);
+    return !aContinents.isEmpty ();
   }
 }

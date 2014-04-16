@@ -44,6 +44,7 @@ import com.phloc.commons.locale.country.CountryCache;
 import com.phloc.commons.mock.AbstractPhlocTestCase;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.masterdata.locale.EContinent;
+import com.phloc.masterdata.locale.FilterLocaleCountryOnAnyContinent;
 import com.phloc.masterdata.locale.FilterLocaleCountryOnContinent;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -315,10 +316,26 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   @Test
   public void testGetAllCurrenciesWithLocaleFilter ()
   {
-    final List <ECurrency> aEuropean = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnContinent (EContinent.EUROPE));
-    assertNotNull (aEuropean);
-    assertTrue (aEuropean.contains (ECurrency.EUR));
-    assertFalse (aEuropean.contains (ECurrency.USD));
+    List <ECurrency> aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnContinent (EContinent.EUROPE));
+    assertNotNull (aSelected);
+    assertTrue (aSelected.contains (ECurrency.EUR));
+    assertFalse (aSelected.contains (ECurrency.USD));
+    assertFalse (aSelected.contains (ECurrency.CNY));
+
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
+                                                                                                   EContinent.NORTH_AMERICA));
+    assertNotNull (aSelected);
+    assertTrue (aSelected.contains (ECurrency.EUR));
+    assertTrue (aSelected.contains (ECurrency.USD));
+    assertFalse (aSelected.contains (ECurrency.CNY));
+
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
+                                                                                                   EContinent.ASIA,
+                                                                                                   EContinent.NORTH_AMERICA));
+    assertNotNull (aSelected);
+    assertTrue (aSelected.contains (ECurrency.EUR));
+    assertTrue (aSelected.contains (ECurrency.USD));
+    assertTrue (aSelected.contains (ECurrency.CNY));
   }
 
   @Test
