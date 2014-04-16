@@ -321,7 +321,7 @@ public final class ContinentUtils
    * 
    * @param aLocale
    *        The locale to be used. May be <code>null</code>.
-   * @return <code>null</code> if no continent data is defined, a non-
+   * @return <code>null</code> if no continent data is defined. Otherwise a non-
    *         <code>null</code> Set with all continents, which may contain
    *         <code>null</code> elements if a country with no continent
    *         assignment is present.
@@ -345,7 +345,7 @@ public final class ContinentUtils
    * 
    * @param sCountryID
    *        The country ID to be used. May be <code>null</code>.
-   * @return <code>null</code> if no continent data is defined, a non-
+   * @return <code>null</code> if no continent data is defined. Otherwise a non-
    *         <code>null</code> Set with all continents, which may contain
    *         <code>null</code> elements if a country with no continent
    *         assignment is present.
