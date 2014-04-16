@@ -37,7 +37,7 @@ import com.phloc.commons.locale.country.CountryCache;
  */
 public final class ContinentUtils
 {
-  public static boolean USE_NULL_CONTINENT_IF_UNDEFINED = true;
+  public static final boolean USE_NULL_CONTINENT_IF_UNDEFINED = true;
   private static final IMultiMapSetBased <Locale, EContinent> s_aMap = new MultiHashMapTreeSetBased <Locale, EContinent> ();
 
   static

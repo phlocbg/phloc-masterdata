@@ -82,7 +82,7 @@ public final class CurrencyUtils
 
   public static boolean isSupportedCurrency (@Nullable final Currency aCurrency)
   {
-    return s_aAllCurrencies.contains (aCurrency);
+    return aCurrency != null && s_aAllCurrencies.contains (aCurrency);
   }
 
   public static boolean isSupportedCurrency (@Nullable final ECurrency eCurrency)
