@@ -27,7 +27,6 @@ import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 import java.util.Currency;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -41,7 +40,6 @@ import com.phloc.commons.collections.multimap.IMultiMapSetBased;
 import com.phloc.commons.collections.multimap.MultiHashMapHashSetBased;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.locale.ComparatorLocale;
-import com.phloc.commons.locale.LocaleCache;
 import com.phloc.commons.locale.country.CountryCache;
 import com.phloc.commons.mock.AbstractPhlocTestCase;
 import com.phloc.commons.string.StringHelper;
@@ -74,10 +72,8 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   public void testAsCurrency ()
   {
     for (final ECurrency eCurrency : ECurrency.values ())
-    {
-      assertNotNull (eCurrency.getAsCurrency ());
-      assertEquals (eCurrency.getID (), eCurrency.getAsCurrency ().getCurrencyCode ());
-    }
+      if (eCurrency.getAsCurrency () != null)
+        assertEquals (eCurrency.getID (), eCurrency.getAsCurrency ().getCurrencyCode ());
   }
 
   @Test
@@ -104,7 +100,7 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   {
     for (final ECurrency eCurrency : ECurrency.values ())
     {
-      final int nDefaultFractionDigits = eCurrency.getAsCurrency ().getDefaultFractionDigits ();
+      final int nDefaultFractionDigits = eCurrency.getScale ();
       if (false)
         System.out.println (eCurrency.getID () + " - " + nDefaultFractionDigits);
 
@@ -282,7 +278,7 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   public void testGetScale ()
   {
     for (final ECurrency e : ECurrency.values ())
-      assertTrue (e.getScale () >= 0);
+      assertTrue (e.name () + " has invalid scale: " + e.getScale (), e.getScale () >= 0);
   }
 
   @Test
@@ -329,20 +325,7 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   @Ignore
   public void testGetMissingCurrencies ()
   {
-    final Map <Locale, Currency> aMap = new HashMap <Locale, Currency> ();
-    for (final Locale aLocale : LocaleCache.getAllLocales ())
-    {
-      try
-      {
-        final Currency aCurrency = Currency.getInstance (aLocale);
-        if (aCurrency != null)
-          aMap.put (aLocale, aCurrency);
-      }
-      catch (final Exception exc)
-      {
-        // Locale not found
-      }
-    }
+    final Map <Locale, Currency> aMap = CurrencyUtils.getLocaleToCurrencyMap ();
 
     final IMultiMapSetBased <Currency, Locale> aAllOfCurrency = new MultiHashMapHashSetBased <Currency, Locale> ();
     for (final Map.Entry <Locale, Currency> aEntry : aMap.entrySet ())

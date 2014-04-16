@@ -21,16 +21,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Currency;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
@@ -45,30 +45,29 @@ import com.phloc.commons.locale.LocaleFormatter;
 @Immutable
 public final class CurrencyUtils
 {
-  private static final Logger s_aLogger = LoggerFactory.getLogger (CurrencyUtils.class);
-
   // Sorted set of all available currencies
-  private static Set <Currency> s_aAllCurrencies = new TreeSet <Currency> (new ComparatorCurrencyCode ());
+  private static SortedSet <Currency> s_aAllCurrencies = new TreeSet <Currency> (new ComparatorCurrencyCode ());
+  private static Map <Locale, Currency> s_aLocaleToCurrency = new HashMap <Locale, Currency> ();
 
   static
   {
     // For all locales
     for (final Locale aLocale : LocaleCache.getAllLocales ())
-      if (aLocale.getCountry ().length () == 2)
+    {
+      try
       {
-        try
+        final Currency aCurrency = Currency.getInstance (aLocale);
+        if (aCurrency != null)
         {
-          final Currency aCurrency = Currency.getInstance (aLocale);
-          if (aCurrency != null)
-            s_aAllCurrencies.add (aCurrency);
-        }
-        catch (final IllegalArgumentException ex)
-        {
-          // Happens e.g. if unit tests fill the locale cache with obscure
-          // values
-          s_aLogger.warn ("Failed to retrieve currency of locale " + aLocale.toString ());
+          s_aAllCurrencies.add (aCurrency);
+          s_aLocaleToCurrency.put (aLocale, aCurrency);
         }
       }
+      catch (final IllegalArgumentException ex)
+      {
+        // No currency present for locale
+      }
+    }
   }
 
   private CurrencyUtils ()
@@ -78,7 +77,7 @@ public final class CurrencyUtils
   @ReturnsMutableCopy
   public static Set <Currency> getAllSupportedCurrencies ()
   {
-    return ContainerHelper.newSet (s_aAllCurrencies);
+    return new TreeSet <Currency> (s_aAllCurrencies);
   }
 
   public static boolean isSupportedCurrency (@Nullable final Currency aCurrency)
@@ -86,9 +85,9 @@ public final class CurrencyUtils
     return s_aAllCurrencies.contains (aCurrency);
   }
 
-  public static boolean isSupportedCurrency (@Nonnull final ECurrency eCurrency)
+  public static boolean isSupportedCurrency (@Nullable final ECurrency eCurrency)
   {
-    return isSupportedCurrency (eCurrency.getAsCurrency ());
+    return eCurrency != null && isSupportedCurrency (eCurrency.getAsCurrency ());
   }
 
   public static boolean isSupportedCurrencyCode (@Nonnull final String sCurrencyCode)
@@ -123,7 +122,18 @@ public final class CurrencyUtils
     if (!localeSupportsCurrencyRetrieval (aContentLocale))
       throw new IllegalArgumentException ("Cannot get currency of locale " + aContentLocale);
 
-    return Currency.getInstance (aContentLocale);
+    return s_aLocaleToCurrency.get (aContentLocale);
+  }
+
+  /**
+   * @return A map from {@link Locale} to {@link Currency} as offered by the
+   *         JDK.
+   */
+  @Nonnull
+  @ReturnsMutableCopy
+  public static Map <Locale, Currency> getLocaleToCurrencyMap ()
+  {
+    return ContainerHelper.newMap (s_aLocaleToCurrency);
   }
 
   /**
