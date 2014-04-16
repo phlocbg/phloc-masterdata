@@ -1,6 +1,7 @@
 package com.phloc.masterdata.locale;
 
 import java.util.Locale;
+import java.util.Set;
 
 import javax.annotation.Nonnull;
 
@@ -24,7 +25,7 @@ public class FilterLocaleCountryOnContinent implements IFilter <Locale>
 
   public boolean matchesFilter (@Nonnull final Locale aValue)
   {
-    final EContinent eContinent = ContinentUtils.getContinentOfCountry (aValue);
-    return m_eContinent.equals (eContinent);
+    final Set <EContinent> eContinents = ContinentUtils.getContinentsOfCountry (aValue);
+    return eContinents != null && eContinents.contains (m_eContinent);
   }
 }
