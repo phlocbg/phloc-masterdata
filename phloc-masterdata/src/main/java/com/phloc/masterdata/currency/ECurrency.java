@@ -219,8 +219,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   ZAR ("ZAR", ECurrencyName.ZAR, "_ZA", "en_ZA"),
   @Deprecated
   ZMK ("ZMK", true, ECurrencyName.ZMK, "_ZM"),
-  // For testing purposes, to have a non-existing currency
-  // TEST ("TEST", ECurrencyName.ZMK, "_XX"),
+  ZMW ("ZMW", true, ECurrencyName.ZMW, "_ZM"),
   @Deprecated
   ZWL ("ZWL", true, ECurrencyName.ZWL, "_ZW");
 

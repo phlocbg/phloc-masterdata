@@ -199,7 +199,8 @@ public enum ECurrencyName implements IHasDisplayText
   YER ("Jemen-Rial", "Yemeni Rial"),
   ZAR ("Rand", "South African Rand"),
   @Deprecated
-  ZMK ("Sambischer Kwacha", "Zambian Kwacha"),
+  ZMK ("Kwacha", "Zambian Kwacha"),
+  ZMW ("Neuer Kwacha", "New Zambian Kwacha"),
   ZWD ("Simbabwe-Dollar", "Zimbabwean Dollar"),
   @Deprecated
   ZWL ("Simbabwe-Dollar", "Zimbabwean Dollar");
