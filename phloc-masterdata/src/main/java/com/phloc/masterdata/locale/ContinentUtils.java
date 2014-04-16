@@ -43,6 +43,7 @@ public final class ContinentUtils
     _register ("AM", EContinent.ASIA);
     _register ("AN", EContinent.NORTH_AMERICA);
     _register ("AO", EContinent.AFRICA);
+    _register ("AQ", EContinent.ANTARCTICA);
     _register ("AR", EContinent.SOUTH_AMERICA);
     _register ("AS", EContinent.OCEANIA);
     _register ("AT", EContinent.EUROPE);
@@ -288,7 +289,7 @@ public final class ContinentUtils
     _register ("ZW", EContinent.AFRICA);
   }
 
-  private static void _register (@Nonnull @Nonempty final String sCountryCode, @Nonnull final EContinent eContinent)
+  private static void _register (@Nonnull @Nonempty final String sCountryCode, @Nullable final EContinent eContinent)
   {
     final Locale aCountry = CountryCache.getCountry (sCountryCode);
     if (s_aMap.containsKey (aCountry))
