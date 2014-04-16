@@ -30,9 +30,14 @@ import com.phloc.commons.collections.multimap.IMultiMapSetBased;
 import com.phloc.commons.collections.multimap.MultiHashMapTreeSetBased;
 import com.phloc.commons.locale.country.CountryCache;
 
+/**
+ * Contains the country to continent assignment
+ * 
+ * @author Philip Helger
+ */
 public final class ContinentUtils
 {
-  private static boolean USE_NULL_CONTINENT_IF_UNDEFINED = true;
+  public static boolean USE_NULL_CONTINENT_IF_UNDEFINED = true;
   private static final IMultiMapSetBased <Locale, EContinent> s_aMap = new MultiHashMapTreeSetBased <Locale, EContinent> ();
 
   static
@@ -292,6 +297,15 @@ public final class ContinentUtils
     _register ("ZW", EContinent.AFRICA);
   }
 
+  /**
+   * Register assignment
+   * 
+   * @param sCountryCode
+   *        Country code to be used. May not be <code>null</code> nor empty
+   * @param aContinents
+   *        The enum to be used. May not be <code>null</code> but may contain a
+   *        single <code>null</code> element.
+   */
   private static void _register (@Nonnull @Nonempty final String sCountryCode,
                                  @Nullable final EContinent... aContinents)
   {
@@ -302,6 +316,16 @@ public final class ContinentUtils
       s_aMap.putSingle (aCountry, eContinent);
   }
 
+  /**
+   * Get all continents for the specified country ID
+   * 
+   * @param aLocale
+   *        The locale to be used. May be <code>null</code>.
+   * @return <code>null</code> if no continent data is defined, a non-
+   *         <code>null</code> Set with all continents, which may contain
+   *         <code>null</code> elements if a country with no continent
+   *         assignment is present.
+   */
   @Nullable
   @ReturnsMutableCopy
   public static Set <EContinent> getContinentsOfCountry (@Nullable final Locale aLocale)
@@ -316,6 +340,16 @@ public final class ContinentUtils
     return null;
   }
 
+  /**
+   * Get all continents for the specified country ID
+   * 
+   * @param sCountryID
+   *        The country ID to be used. May be <code>null</code>.
+   * @return <code>null</code> if no continent data is defined, a non-
+   *         <code>null</code> Set with all continents, which may contain
+   *         <code>null</code> elements if a country with no continent
+   *         assignment is present.
+   */
   @Nullable
   @ReturnsMutableCopy
   public static Set <EContinent> getContinentsOfCountry (@Nullable final String sCountryID)
