@@ -749,6 +749,24 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
 
   @Nonnull
   @ReturnsMutableCopy
+  public static List <ECurrency> getAllCurrencies ()
+  {
+    return getAllCurrencies (false);
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
+  public static List <ECurrency> getAllCurrencies (final boolean bIncludeDeprecated)
+  {
+    final List <ECurrency> ret = new ArrayList <ECurrency> ();
+    for (final ECurrency eCurrency : values ())
+      if (!eCurrency.isDeprecated () || bIncludeDeprecated)
+        ret.add (eCurrency);
+    return ret;
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
   public static List <ECurrency> getAllCurrenciesWithLocaleFilter (@Nonnull final IFilter <Locale> aLocaleFilter)
   {
     return getAllCurrenciesWithLocaleFilter (aLocaleFilter, false);
