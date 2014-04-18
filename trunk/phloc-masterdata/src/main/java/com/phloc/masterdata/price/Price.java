@@ -20,6 +20,7 @@ package com.phloc.masterdata.price;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.persistence.Access;
@@ -34,7 +35,6 @@ import javax.persistence.Transient;
 import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
 
-import com.phloc.commons.CGlobal;
 import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
@@ -87,7 +87,7 @@ public class Price implements IPrice
                 @Nonnull final BigDecimal aNetAmount,
                 @Nonnull final IVATItem aVATItem)
   {
-    this (new CurrencyValue (eCurrency, aNetAmount), aVATItem);
+    this (new ReadonlyCurrencyValue (eCurrency, aNetAmount), aVATItem);
   }
 
   /**
@@ -114,6 +114,8 @@ public class Price implements IPrice
   @Nonnull
   public EChange setNetAmount (@Nonnull final IReadonlyCurrencyValue aNetAmount)
   {
+    ValueEnforcer.notNull (aNetAmount, "NetAmount");
+
     final CurrencyValue aRealNetAmount = new CurrencyValue (aNetAmount);
     if (EqualsUtils.equals (m_aNetAmount, aRealNetAmount))
       return EChange.UNCHANGED;
@@ -145,7 +147,7 @@ public class Price implements IPrice
   @Nonnull
   public IReadonlyCurrencyValue getTaxAmount ()
   {
-    return m_aNetAmount.getMultiplied (getCurrency ().getDivided (m_aVATItem.getPercentage (), CGlobal.BIGDEC_100));
+    return m_aNetAmount.getMultiplied (m_aVATItem.getPercentageFactor ());
   }
 
   /*
@@ -171,18 +173,44 @@ public class Price implements IPrice
   public IReadonlyCurrencyValue getGrossAmount ()
   {
     final BigDecimal aMultiplicationFactor = m_aVATItem.getMultiplicationFactorNetToGross ();
-    if (MathHelper.isEqualToOne (aMultiplicationFactor))
-    {
-      // Shortcut for no VAT
-      // Remember: BigDecimal is immutable
-      return new ReadonlyCurrencyValue (m_aNetAmount.getCurrency (), m_aNetAmount.getValue ());
-    }
-    return new ReadonlyCurrencyValue (m_aNetAmount.getCurrency (), m_aNetAmount.getValue ()
-                                                                               .multiply (aMultiplicationFactor));
+    return m_aNetAmount.getMultiplied (aMultiplicationFactor);
   }
 
   @Transient
   @Nonnull
+  @CheckReturnValue
+  public Price getAdded (@Nonnull final BigDecimal aValue)
+  {
+    return new Price (m_aNetAmount.getAdded (aValue), m_aVATItem);
+  }
+
+  @Transient
+  @Nonnull
+  @CheckReturnValue
+  public Price getAdded (final long nValue)
+  {
+    return new Price (m_aNetAmount.getAdded (nValue), m_aVATItem);
+  }
+
+  @Transient
+  @Nonnull
+  @CheckReturnValue
+  public Price getSubtracted (@Nonnull final BigDecimal aValue)
+  {
+    return new Price (m_aNetAmount.getSubtracted (aValue), m_aVATItem);
+  }
+
+  @Transient
+  @Nonnull
+  @CheckReturnValue
+  public Price getSubtracted (final long nValue)
+  {
+    return new Price (m_aNetAmount.getSubtracted (nValue), m_aVATItem);
+  }
+
+  @Transient
+  @Nonnull
+  @CheckReturnValue
   public Price getMultiplied (@Nonnull final BigDecimal aValue)
   {
     return new Price (m_aNetAmount.getMultiplied (aValue), m_aVATItem);
@@ -190,6 +218,7 @@ public class Price implements IPrice
 
   @Transient
   @Nonnull
+  @CheckReturnValue
   public Price getMultiplied (final long nValue)
   {
     return new Price (m_aNetAmount.getMultiplied (nValue), m_aVATItem);
@@ -197,6 +226,7 @@ public class Price implements IPrice
 
   @Transient
   @Nonnull
+  @CheckReturnValue
   public Price getDivided (@Nonnull final BigDecimal aValue)
   {
     return new Price (m_aNetAmount.getDivided (aValue), m_aVATItem);
@@ -204,6 +234,7 @@ public class Price implements IPrice
 
   @Transient
   @Nonnull
+  @CheckReturnValue
   public Price getDivided (final long nValue)
   {
     return new Price (m_aNetAmount.getDivided (nValue), m_aVATItem);

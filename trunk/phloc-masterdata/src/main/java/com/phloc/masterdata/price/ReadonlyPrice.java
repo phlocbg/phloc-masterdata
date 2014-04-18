@@ -19,9 +19,9 @@ package com.phloc.masterdata.price;
 
 import java.math.BigDecimal;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 
-import com.phloc.commons.CGlobal;
 import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
@@ -42,19 +42,22 @@ public class ReadonlyPrice implements IReadonlyPrice
 
   public ReadonlyPrice (@Nonnull final IReadonlyPrice aOtherPrice)
   {
-    this (new ReadonlyCurrencyValue (aOtherPrice.getNetAmount ()), aOtherPrice.getVATItem ());
+    this (aOtherPrice.getNetAmount (), aOtherPrice.getVATItem ());
   }
 
   public ReadonlyPrice (@Nonnull final ECurrency eCurrency,
                         @Nonnull final BigDecimal aNetAmount,
                         @Nonnull final IVATItem aVATItem)
   {
-    this (new ReadonlyCurrencyValue (eCurrency, aNetAmount), aVATItem);
+    m_aNetAmount = new ReadonlyCurrencyValue (eCurrency, aNetAmount);
+    m_aVATItem = ValueEnforcer.notNull (aVATItem, "VATItem");
   }
 
   public ReadonlyPrice (@Nonnull final IReadonlyCurrencyValue aNetAmount, @Nonnull final IVATItem aVATItem)
   {
-    m_aNetAmount = ValueEnforcer.notNull (aNetAmount, "NetAmount");
+    ValueEnforcer.notNull (aNetAmount, "NetAmount");
+    // Make a copy of the net amount!
+    m_aNetAmount = new ReadonlyCurrencyValue (aNetAmount);
     m_aVATItem = ValueEnforcer.notNull (aVATItem, "VATItem");
   }
 
@@ -86,28 +89,60 @@ public class ReadonlyPrice implements IReadonlyPrice
   @Nonnull
   public IReadonlyCurrencyValue getTaxAmount ()
   {
-    return m_aNetAmount.getMultiplied (getCurrency ().getDivided (m_aVATItem.getPercentage (), CGlobal.BIGDEC_100));
+    return m_aNetAmount.getMultiplied (m_aVATItem.getPercentageFactor ());
   }
 
   @Nonnull
+  @CheckReturnValue
+  public ReadonlyPrice getAdded (@Nonnull final BigDecimal aValue)
+  {
+    return new ReadonlyPrice (m_aNetAmount.getAdded (aValue), m_aVATItem);
+  }
+
+  @Nonnull
+  @CheckReturnValue
+  public ReadonlyPrice getAdded (final long nValue)
+  {
+    return new ReadonlyPrice (m_aNetAmount.getAdded (nValue), m_aVATItem);
+  }
+
+  @Nonnull
+  @CheckReturnValue
+  public ReadonlyPrice getSubtracted (@Nonnull final BigDecimal aValue)
+  {
+    return new ReadonlyPrice (m_aNetAmount.getSubtracted (aValue), m_aVATItem);
+  }
+
+  @Nonnull
+  @CheckReturnValue
+  public ReadonlyPrice getSubtracted (final long nValue)
+  {
+    return new ReadonlyPrice (m_aNetAmount.getSubtracted (nValue), m_aVATItem);
+  }
+
+  @Nonnull
+  @CheckReturnValue
   public ReadonlyPrice getMultiplied (@Nonnull final BigDecimal aValue)
   {
     return new ReadonlyPrice (m_aNetAmount.getMultiplied (aValue), m_aVATItem);
   }
 
   @Nonnull
+  @CheckReturnValue
   public ReadonlyPrice getMultiplied (final long nValue)
   {
     return new ReadonlyPrice (m_aNetAmount.getMultiplied (nValue), m_aVATItem);
   }
 
   @Nonnull
+  @CheckReturnValue
   public ReadonlyPrice getDivided (@Nonnull final BigDecimal aValue)
   {
     return new ReadonlyPrice (m_aNetAmount.getDivided (aValue), m_aVATItem);
   }
 
   @Nonnull
+  @CheckReturnValue
   public ReadonlyPrice getDivided (final long nValue)
   {
     return new ReadonlyPrice (m_aNetAmount.getDivided (nValue), m_aVATItem);

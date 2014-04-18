@@ -19,6 +19,7 @@ package com.phloc.masterdata.currency;
 
 import java.math.BigDecimal;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -74,14 +75,17 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getAdded (@Nonnull final BigDecimal aValue)
   {
+    ValueEnforcer.notNull (aValue, "Value");
     if (MathHelper.isEqualToZero (aValue))
       return this;
     return new ReadonlyCurrencyValue (getCurrency (), getValue ().add (aValue));
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getAdded (final long nValue)
   {
     if (nValue == 0)
@@ -90,14 +94,17 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getSubtracted (@Nonnull final BigDecimal aValue)
   {
+    ValueEnforcer.notNull (aValue, "Value");
     if (MathHelper.isEqualToZero (aValue))
       return this;
     return new ReadonlyCurrencyValue (getCurrency (), getValue ().subtract (aValue));
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getSubtracted (final long nValue)
   {
     if (nValue == 0)
@@ -106,14 +113,17 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getMultiplied (@Nonnull final BigDecimal aValue)
   {
+    ValueEnforcer.notNull (aValue, "Value");
     if (MathHelper.isEqualToOne (aValue))
       return this;
     return new ReadonlyCurrencyValue (getCurrency (), getValue ().multiply (aValue));
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getMultiplied (final long nValue)
   {
     if (nValue == 1)
@@ -122,8 +132,10 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getDivided (@Nonnull final BigDecimal aValue)
   {
+    ValueEnforcer.notNull (aValue, "Value");
     if (MathHelper.isEqualToOne (aValue))
       return this;
     final ECurrency eCurrency = getCurrency ();
@@ -131,6 +143,7 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
   }
 
   @Nonnull
+  @CheckReturnValue
   public IReadonlyCurrencyValue getDivided (final long nValue)
   {
     if (nValue == 1)
