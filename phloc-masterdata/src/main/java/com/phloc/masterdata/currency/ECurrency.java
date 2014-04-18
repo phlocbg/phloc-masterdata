@@ -189,6 +189,7 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   SLL ("SLL", ECurrencyName.SLL, "_SL"),
   SOS ("SOS", ECurrencyName.SOS, "_SO"),
   SRD ("SRD", ECurrencyName.SRD, "_SR"),
+  SSP ("SSP", ECurrencyName.SSP, "_SS"),
   STD ("STD", ECurrencyName.STD, "_ST"),
   SVC ("SVC", ECurrencyName.SVC, "_SV", "es_SV"),
   SYP ("SYP", ECurrencyName.SYP, "_SY", "ar_SY"),
@@ -310,7 +311,8 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
       // Happens when an unsupported currency code is provided
       LoggerFactory.getLogger (ECurrency.class).error ("Failed to resolve currency with currency code '" +
                                                        sCurrencyCode +
-                                                       "'");
+                                                       "' - " +
+                                                       aName.getDisplayText (Locale.US));
     }
     m_aCurrency = aCurrency;
     m_nScale = aCurrency == null ? DEFAULT_SCALE : aCurrency.getDefaultFractionDigits ();
