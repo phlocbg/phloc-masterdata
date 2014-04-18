@@ -19,6 +19,7 @@ package com.phloc.masterdata.price;
 
 import java.math.BigDecimal;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 
 import com.phloc.commons.state.EChange;
@@ -62,9 +63,91 @@ public interface IPrice extends IReadonlyPrice
   @Nonnull
   EChange setCurrency (@Nonnull ECurrency eCurrency);
 
+  /**
+   * Add this price and the given value, keeping currency and VAT type.
+   * 
+   * @param aValue
+   *        The value to add.
+   * @return The result value as a new object.
+   */
   @Nonnull
+  @CheckReturnValue
+  IPrice getAdded (@Nonnull BigDecimal aValue);
+
+  /**
+   * Add this price and the given value, keeping currency and VAT type.
+   * 
+   * @param nValue
+   *        The value to add.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IPrice getAdded (long nValue);
+
+  /**
+   * Subtract the given value from this price, keeping currency and VAT type.
+   * 
+   * @param aValue
+   *        The value to subtract.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IPrice getSubtracted (@Nonnull BigDecimal aValue);
+
+  /**
+   * Subtract the given value from this price, keeping currency and VAT type.
+   * 
+   * @param nValue
+   *        The value to subtract.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IPrice getSubtracted (long nValue);
+
+  /**
+   * Multiply this price with given value, keeping currency and VAT type.
+   * 
+   * @param aValue
+   *        The value to multiply with.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
   IPrice getMultiplied (@Nonnull BigDecimal aValue);
 
+  /**
+   * Multiply this price with given value, keeping currency and VAT type.
+   * 
+   * @param nValue
+   *        The value to multiply with.
+   * @return The result value as a new object.
+   */
   @Nonnull
+  @CheckReturnValue
   IPrice getMultiplied (long nValue);
+
+  /**
+   * Divide this price with given value, keeping currency and VAT type.
+   * 
+   * @param aValue
+   *        The value to divide through.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IPrice getDivided (@Nonnull BigDecimal aValue);
+
+  /**
+   * Divide this price with given value, keeping currency and VAT type.
+   * 
+   * @param nValue
+   *        The value to divide through.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IPrice getDivided (long nValue);
 }

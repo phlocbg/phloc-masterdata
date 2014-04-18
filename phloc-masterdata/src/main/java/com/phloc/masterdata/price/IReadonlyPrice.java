@@ -19,6 +19,7 @@ package com.phloc.masterdata.price;
 
 import java.math.BigDecimal;
 
+import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 
 import com.phloc.masterdata.currency.IHasCurrency;
@@ -51,13 +52,58 @@ public interface IReadonlyPrice extends IHasCurrency, IHasVATItem
   IReadonlyCurrencyValue getTaxAmount ();
 
   /**
+   * Add this price and the given value, keeping currency and VAT type.
+   * 
+   * @param aValue
+   *        The value to add.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IReadonlyPrice getAdded (@Nonnull BigDecimal aValue);
+
+  /**
+   * Add this price and the given value, keeping currency and VAT type.
+   * 
+   * @param nValue
+   *        The value to add.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IReadonlyPrice getAdded (long nValue);
+
+  /**
+   * Subtract the given value from this price, keeping currency and VAT type.
+   * 
+   * @param aValue
+   *        The value to subtract.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IReadonlyPrice getSubtracted (@Nonnull BigDecimal aValue);
+
+  /**
+   * Subtract the given value from this price, keeping currency and VAT type.
+   * 
+   * @param nValue
+   *        The value to subtract.
+   * @return The result value as a new object.
+   */
+  @Nonnull
+  @CheckReturnValue
+  IReadonlyPrice getSubtracted (long nValue);
+
+  /**
    * Multiply this price with given value, keeping currency and VAT type.
    * 
    * @param aValue
    *        The value to multiply with.
-   * @return The multiplied value as a new object.
+   * @return The result value as a new object.
    */
   @Nonnull
+  @CheckReturnValue
   IReadonlyPrice getMultiplied (@Nonnull BigDecimal aValue);
 
   /**
@@ -65,9 +111,10 @@ public interface IReadonlyPrice extends IHasCurrency, IHasVATItem
    * 
    * @param nValue
    *        The value to multiply with.
-   * @return The multiplied value as a new object.
+   * @return The result value as a new object.
    */
   @Nonnull
+  @CheckReturnValue
   IReadonlyPrice getMultiplied (long nValue);
 
   /**
@@ -75,18 +122,20 @@ public interface IReadonlyPrice extends IHasCurrency, IHasVATItem
    * 
    * @param aValue
    *        The value to divide through.
-   * @return The multiplied value as a new object.
+   * @return The result value as a new object.
    */
   @Nonnull
+  @CheckReturnValue
   IReadonlyPrice getDivided (@Nonnull BigDecimal aValue);
 
   /**
    * Divide this price with given value, keeping currency and VAT type.
    * 
    * @param nValue
-   *        The value to divide with.
-   * @return The divided value as a new object.
+   *        The value to divide through.
+   * @return The result value as a new object.
    */
   @Nonnull
+  @CheckReturnValue
   IReadonlyPrice getDivided (long nValue);
 }

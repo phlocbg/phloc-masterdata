@@ -35,15 +35,15 @@ import com.phloc.commons.string.StringHelper;
 @ThreadSafe
 public final class AddressUtils
 {
-  private static final String [] SEARCH = new String [] { "str.", "g." };
-  private static final String [] REPLACE = new String [] { "straße", "gasse" };
+  private static final String [] STREET_SEARCH = new String [] { "str.", "g." };
+  private static final String [] STREET_REPLACE = new String [] { "straße", "gasse" };
 
   private static final AtomicBoolean s_aComplexAddressHandlingEnabled = new AtomicBoolean (false);
 
   static
   {
-    if (SEARCH.length != REPLACE.length)
-      throw new InitializationException ("Search and replace arrays have different length!");
+    if (STREET_SEARCH.length != STREET_REPLACE.length)
+      throw new InitializationException ("Search and replace arrays for street have different length!");
   }
 
   private AddressUtils ()
@@ -87,9 +87,7 @@ public final class AddressUtils
     if (sStreet == null)
       return null;
 
-    String s = sStreet;
-    for (int i = 0; i < SEARCH.length; ++i)
-      s = StringHelper.replaceAll (s, SEARCH[i], REPLACE[i]);
+    final String s = StringHelper.replaceMultiple (sStreet, STREET_SEARCH, STREET_REPLACE);
     return _unifyPart (s, aSortLocale);
   }
 
