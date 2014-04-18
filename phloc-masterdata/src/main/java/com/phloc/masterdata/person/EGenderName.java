@@ -31,7 +31,8 @@ import com.phloc.commons.text.resolve.DefaultTextResolver;
 public enum EGenderName implements IHasDisplayText
 {
   MALE ("Herr", "Mr."),
-  FEMALE ("Frau", "Mrs.");
+  FEMALE ("Frau", "Mrs."),
+  OTHER ("Anders", "Different");
 
   private final ITextProvider m_aTP;
 
