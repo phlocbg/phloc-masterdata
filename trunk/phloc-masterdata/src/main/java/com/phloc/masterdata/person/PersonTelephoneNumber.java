@@ -27,6 +27,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Transient;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
@@ -88,8 +89,7 @@ public class PersonTelephoneNumber extends TelephoneNumberWithID
 
   public void setOwner (@Nonnull final Person aOwner)
   {
-    if (aOwner == null)
-      throw new NullPointerException ("owner");
+    ValueEnforcer.notNull (aOwner, "Owner");
     m_aOwner = aOwner;
   }
 

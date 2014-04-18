@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
 import org.joda.time.LocalDate;
 
 import com.phloc.commons.CGlobal;
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
@@ -75,8 +76,7 @@ public final class IBANCountryData extends LocalDatePeriod
                           @Nonnull final List <IBANElement> aElements)
   {
     super (aValidFrom, aValidTo);
-    if (aElements == null)
-      throw new NullPointerException ("elements");
+    ValueEnforcer.notNull (aElements, "Elements");
     if (sFixedCheckDigits != null && sFixedCheckDigits.length () != 2)
       throw new IllegalArgumentException ("Check digits must be length 2!");
     if (sFixedCheckDigits != null && !StringParser.isUnsignedInt (sFixedCheckDigits))
@@ -84,7 +84,7 @@ public final class IBANCountryData extends LocalDatePeriod
 
     m_nExpectedLength = nExpectedLength;
     m_aPattern = aPattern;
-    m_aElements = new ArrayList <IBANElement> (aElements);
+    m_aElements = ContainerHelper.newList (aElements);
     m_sFixedCheckDigits = sFixedCheckDigits;
 
     int nCalcedLength = 0;
@@ -155,8 +155,7 @@ public final class IBANCountryData extends LocalDatePeriod
   @ReturnsMutableCopy
   public List <IBANElementValue> parseToElementValues (@Nonnull final String sIBAN)
   {
-    if (sIBAN == null)
-      throw new NullPointerException ("ibanString");
+    ValueEnforcer.notNull (sIBAN, "IBANString");
 
     final String sRealIBAN = IBANManager.unifyIBAN (sIBAN);
     if (sRealIBAN.length () != m_nExpectedLength)
@@ -313,10 +312,9 @@ public final class IBANCountryData extends LocalDatePeriod
                                                   @Nullable final LocalDate aValidTo,
                                                   @Nonnull final String sDesc)
   {
-    if (sDesc == null)
-      throw new NullPointerException ("desc");
+    ValueEnforcer.notEmpty (sDesc, "Desc");
     if (sDesc.length () < 4)
-      throw new IllegalArgumentException ("Cannot converted passed string!");
+      throw new IllegalArgumentException ("Cannot converted passed string because it is too short!");
 
     final List <IBANElement> aList = _parseElements (sDesc);
 

@@ -25,6 +25,7 @@ import javax.annotation.Nonnull;
 import org.joda.time.LocalDate;
 import org.joda.time.format.ISODateTimeFormat;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.io.IReadableResource;
 import com.phloc.commons.microdom.IMicroDocument;
@@ -61,9 +62,7 @@ public final class PostalCodeListReader
 
   public PostalCodeListReader (@Nonnull final PostalCodeManager aMgr)
   {
-    if (aMgr == null)
-      throw new NullPointerException ("mgr");
-    m_aMgr = aMgr;
+    m_aMgr = ValueEnforcer.notNull (aMgr, "Mgr");
   }
 
   @Nonnull
@@ -89,8 +88,7 @@ public final class PostalCodeListReader
 
   public void readFromFile (@Nonnull final IReadableResource aRes)
   {
-    if (aRes == null)
-      throw new NullPointerException ("res");
+    ValueEnforcer.notNull (aRes, "Resource");
     final IMicroDocument aDoc = MicroReader.readMicroXML (aRes);
     if (aDoc == null)
       throw new IllegalArgumentException ("Passed resource is not an XML file: " + aRes);

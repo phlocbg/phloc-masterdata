@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.math.MathHelper;
@@ -46,12 +47,8 @@ public final class ReadonlyCurrencyValue extends AbstractCurrencyValue
 
   public ReadonlyCurrencyValue (@Nonnull final ECurrency eCurrency, @Nonnull final BigDecimal aValue)
   {
-    if (eCurrency == null)
-      throw new NullPointerException ("currency");
-    if (aValue == null)
-      throw new NullPointerException ("value");
-    m_eCurrency = eCurrency;
-    m_aValue = aValue;
+    m_eCurrency = ValueEnforcer.notNull (eCurrency, "Currency");
+    m_aValue = ValueEnforcer.notNull (aValue, "Value");
   }
 
   @Nonnull

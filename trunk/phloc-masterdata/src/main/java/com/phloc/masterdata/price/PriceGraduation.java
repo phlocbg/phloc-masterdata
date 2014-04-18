@@ -25,6 +25,7 @@ import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.ReturnsImmutableObject;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.equals.EqualsUtils;
@@ -40,7 +41,7 @@ import com.phloc.masterdata.vat.IVATItem;
  * 
  * @author Philip Helger
  */
-public final class PriceGraduation implements IPriceGraduation
+public class PriceGraduation implements IPriceGraduation
 {
   private final ECurrency m_eCurrency;
 
@@ -56,9 +57,7 @@ public final class PriceGraduation implements IPriceGraduation
    */
   public PriceGraduation (@Nonnull final ECurrency eCurrency)
   {
-    if (eCurrency == null)
-      throw new NullPointerException ("currency");
-    m_eCurrency = eCurrency;
+    m_eCurrency = ValueEnforcer.notNull (eCurrency, "Currency");
   }
 
   @Nonnull
@@ -95,8 +94,8 @@ public final class PriceGraduation implements IPriceGraduation
   @Nonnull
   private IPriceGraduationItem _getItemOfQuantity (@Nonnegative final int nQuantity)
   {
-    if (nQuantity < 1)
-      throw new IllegalArgumentException ("The quantity must be >= 1: " + nQuantity);
+    ValueEnforcer.isGT0 (nQuantity, "Quantity");
+
     IPriceGraduationItem ret = null;
     for (final IPriceGraduationItem aItem : m_aItems)
     {
@@ -116,23 +115,21 @@ public final class PriceGraduation implements IPriceGraduation
   }
 
   @Nonnull
-  public IPrice getPrice (@Nonnull final IReadonlyPriceGraduationItem aItem, @Nonnull final IVATItem aVAT)
+  public IPrice getPrice (@Nonnull final IReadonlyPriceGraduationItem aItem, @Nonnull final IVATItem aVATItem)
   {
-    if (aItem == null)
-      throw new NullPointerException ("item");
-    if (aVAT == null)
-      throw new NullPointerException ("vat");
+    ValueEnforcer.notNull (aItem, "Item");
+    ValueEnforcer.notNull (aVATItem, "VATItem");
+
     if (!m_aItems.contains (aItem))
-      throw new IllegalArgumentException ("passed item is not contained in this price graduation!");
-    return _createPrice (aItem.getUnitNetAmount (), aVAT);
+      throw new IllegalArgumentException ("passed item is not contained in this price graduation: " + aItem);
+    return _createPrice (aItem.getUnitNetAmount (), aVATItem);
   }
 
   @Nonnull
-  public IPrice getSinglePriceOfQuantity (@Nonnegative final int nQuantity, @Nonnull final IVATItem aVAT)
+  public IPrice getSinglePriceOfQuantity (@Nonnegative final int nQuantity, @Nonnull final IVATItem aVATItem)
   {
-    if (aVAT == null)
-      throw new NullPointerException ("vat");
-    return _createPrice (_getItemOfQuantity (nQuantity).getUnitNetAmount (), aVAT);
+    ValueEnforcer.notNull (aVATItem, "VATItem");
+    return _createPrice (_getItemOfQuantity (nQuantity).getUnitNetAmount (), aVATItem);
   }
 
   @Nonnull
@@ -150,8 +147,7 @@ public final class PriceGraduation implements IPriceGraduation
   @Nonnull
   public EChange addItem (@Nonnull final IPriceGraduationItem aItem)
   {
-    if (aItem == null)
-      throw new NullPointerException ("item");
+    ValueEnforcer.notNull (aItem, "Item");
 
     // Check if an item with the exact same minimum quantity is already
     // contained.
@@ -198,7 +194,7 @@ public final class PriceGraduation implements IPriceGraduation
   {
     if (o == this)
       return true;
-    if (!(o instanceof PriceGraduation))
+    if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final PriceGraduation rhs = (PriceGraduation) o;
     return EqualsUtils.equals (m_eCurrency, rhs.m_eCurrency) && m_aItems.equals (rhs.m_aItems);

@@ -25,6 +25,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
@@ -33,7 +34,7 @@ import com.phloc.commons.string.ToStringGenerator;
 
 /**
  * Contains postal code information for a single country.
- *
+ * 
  * @author Philip Helger
  */
 @NotThreadSafe
@@ -46,9 +47,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
 
   public PostalCodeCountry (@Nonnull @Nonempty final String sISO)
   {
-    if (StringHelper.hasNoText (sISO))
-      throw new IllegalArgumentException ("ISO may not be empty!");
-    m_sISO = sISO;
+    m_sISO = ValueEnforcer.notEmpty (sISO, "ISO");
   }
 
   @Nonnull
@@ -60,8 +59,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
 
   void addFormat (@Nonnull final PostalCodeFormat aFormat)
   {
-    if (aFormat == null)
-      throw new NullPointerException ("format");
+    ValueEnforcer.notNull (aFormat, "Format");
     m_aFormats.add (aFormat);
   }
 
@@ -86,8 +84,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
 
   void addSpecificPostalCode (@Nonnull @Nonempty final String sSpecificPostalCode)
   {
-    if (StringHelper.hasNoText (sSpecificPostalCode))
-      throw new IllegalArgumentException ("specificPostalCode may not be empty");
+    ValueEnforcer.notEmpty (sSpecificPostalCode, "SpecificPostalCode");
     if (!isValidPostalCode (sSpecificPostalCode))
       throw new IllegalArgumentException ("The passed code '" +
                                           sSpecificPostalCode +
@@ -110,8 +107,7 @@ public final class PostalCodeCountry implements IPostalCodeCountry
 
   void setNote (@Nonnull @Nonempty final String sNote)
   {
-    if (StringHelper.hasNoText (sNote))
-      throw new IllegalArgumentException ("note may not be empty");
+    ValueEnforcer.notEmpty (sNote, "Note");
     m_sNote = sNote;
   }
 

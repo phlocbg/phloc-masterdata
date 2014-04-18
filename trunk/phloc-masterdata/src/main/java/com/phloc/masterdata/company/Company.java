@@ -27,6 +27,7 @@ import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
@@ -146,8 +147,7 @@ public final class Company implements ICompany
   @Nonnull
   public EChange addSite (@Nonnull final ICompanySite aSite)
   {
-    if (aSite == null)
-      throw new NullPointerException ("site");
+    ValueEnforcer.notNull (aSite, "Site");
 
     final String sSiteID = aSite.getID ();
     if (m_aAllSites.containsKey (sSiteID))
@@ -159,8 +159,7 @@ public final class Company implements ICompany
   @Nonnull
   public EChange removeSite (@Nonnull final ICompanySite aSite)
   {
-    if (aSite == null)
-      throw new NullPointerException ("site");
+    ValueEnforcer.notNull (aSite, "Site");
 
     if (m_aHeadQuarterSite != null && aSite.equals (m_aHeadQuarterSite))
       m_aHeadQuarterSite = null;
@@ -186,8 +185,7 @@ public final class Company implements ICompany
   @Nonnull
   public EChange setHeadQuarterSite (@Nonnull final ICompanySite aHeadQuarterSite)
   {
-    if (aHeadQuarterSite == null)
-      throw new NullPointerException ("site");
+    ValueEnforcer.notNull (aHeadQuarterSite, "HeadQuarterSite");
 
     if (!m_aAllSites.containsKey (aHeadQuarterSite.getID ()))
       throw new IllegalArgumentException ("Passed headquarter site does not yet belong to this company: " +

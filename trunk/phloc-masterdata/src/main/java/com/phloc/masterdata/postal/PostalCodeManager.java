@@ -29,6 +29,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.ThreadSafe;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.io.IReadableResource;
@@ -56,8 +57,7 @@ public final class PostalCodeManager
 
   public PostalCodeManager (@Nonnull final IReadableResource aRes)
   {
-    if (aRes == null)
-      throw new NullPointerException ("resource");
+    ValueEnforcer.notNull (aRes, "Resource");
 
     final PostalCodeListReader aReader = new PostalCodeListReader (this);
     aReader.readFromFile (aRes);
@@ -65,8 +65,7 @@ public final class PostalCodeManager
 
   public void addCountry (@Nonnull final IPostalCodeCountry aPostalCountry)
   {
-    if (aPostalCountry == null)
-      throw new NullPointerException ("postalCountry");
+    ValueEnforcer.notNull (aPostalCountry, "PostalCountry");
 
     // Unify ISO code
     final Locale aCountry = CountryCache.getCountry (aPostalCountry.getISO ());

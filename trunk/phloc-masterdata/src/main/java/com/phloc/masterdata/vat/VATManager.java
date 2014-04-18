@@ -35,6 +35,7 @@ import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.equals.EqualsUtils;
@@ -96,10 +97,8 @@ public class VATManager implements IVATItemResolver
 
   public void initFromXML (@Nonnull final IMicroDocument aDoc)
   {
-    if (aDoc == null)
-      throw new NullPointerException ("doc");
-    if (aDoc.getDocumentElement () == null)
-      throw new IllegalArgumentException ("documentElement is null");
+    ValueEnforcer.notNull (aDoc, "Doc");
+    ValueEnforcer.notNull (aDoc.getDocumentElement (), "Doc.DocumentElement");
 
     m_aSources.clear ();
     m_aVATItemsPerCountry.clear ();
@@ -226,8 +225,7 @@ public class VATManager implements IVATItemResolver
    */
   public boolean isZeroVATAllowed (@Nonnull final Locale aCountry, final boolean bUndefinedValue)
   {
-    if (aCountry == null)
-      throw new NullPointerException ("country");
+    ValueEnforcer.notNull (aCountry, "Country");
 
     // first get locale specific VAT types
     final VATCountryData aVATCountryData = m_aVATItemsPerCountry.get (CountryCache.getCountry (aCountry));
@@ -248,8 +246,7 @@ public class VATManager implements IVATItemResolver
   @Nonnull
   public Map <String, IVATItem> getAllVATItemsForCountry (@Nonnull final Locale aCountry)
   {
-    if (aCountry == null)
-      throw new NullPointerException ("country");
+    ValueEnforcer.notNull (aCountry, "Country");
 
     final Map <String, IVATItem> ret = new HashMap <String, IVATItem> ();
 
@@ -320,16 +317,15 @@ public class VATManager implements IVATItemResolver
   @Nonnull
   public static VATManager readFromXML (@Nonnull final IInputStreamProvider aISP)
   {
-    if (aISP == null)
-      throw new NullPointerException ("inputStreamProvider");
+    ValueEnforcer.notNull (aISP, "InputStreamProvider");
+
     return readFromXML (aISP.getInputStream ());
   }
 
   @Nonnull
   public static VATManager readFromXML (@Nonnull @WillClose final InputStream aIS)
   {
-    if (aIS == null)
-      throw new NullPointerException ("inputStream");
+    ValueEnforcer.notNull (aIS, "InputStream");
 
     final IMicroDocument aDoc = MicroReader.readMicroXML (aIS);
     final VATManager ret = new VATManager ();

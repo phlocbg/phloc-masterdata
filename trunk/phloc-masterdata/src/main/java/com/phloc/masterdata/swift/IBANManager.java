@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -31,6 +32,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.CGlobal;
+import com.phloc.commons.ValueEnforcer;
+import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.exceptions.InitializationException;
@@ -165,8 +168,7 @@ public final class IBANManager
   @Nullable
   public static IBANCountryData getCountryData (@Nonnull final String sCountryCode)
   {
-    if (sCountryCode == null)
-      throw new NullPointerException ("countryCode");
+    ValueEnforcer.notNull (sCountryCode, "CountryCode");
 
     return s_aIBANData.get (sCountryCode.toUpperCase (Locale.US));
   }
@@ -292,12 +294,10 @@ public final class IBANManager
 
   public static int createChecksumOfNewIBAN (@Nonnull final String sCountryCode, @Nonnull final String sBBAN)
   {
-    if (sCountryCode == null)
-      throw new NullPointerException ("countryCode");
+    ValueEnforcer.notNull (sCountryCode, "CountryCode");
     if (sCountryCode.length () != 2)
       throw new IllegalArgumentException ("Country code does not have exactly 2 characters!");
-    if (sBBAN == null)
-      throw new NullPointerException ("bban");
+    ValueEnforcer.notNull (sBBAN, "BBAN");
 
     // unify aggregated IBAN
     final String sIBAN = unifyIBAN (sCountryCode + "00" + sBBAN);
@@ -320,5 +320,36 @@ public final class IBANManager
 
     // convert to unified IBAN
     return unifyIBAN (sCountry + StringHelper.getLeadingZero (nChecksum, 2) + sBBAN);
+  }
+
+  @Nullable
+  public static String getFormattedIBAN (@Nullable final String sIBAN)
+  {
+    // Group into pieces of 4 digits and separate with a space
+    return getFormattedIBAN (sIBAN, 4, " ");
+  }
+
+  @Nullable
+  public static String getFormattedIBAN (@Nullable final String sIBAN,
+                                         @Nonnegative final int nGroupSize,
+                                         @Nonnull @Nonempty final String sDelimiter)
+  {
+    ValueEnforcer.isGT0 (nGroupSize, "GroupSize");
+    ValueEnforcer.notEmpty (sDelimiter, "Delimiter");
+
+    if (StringHelper.hasNoText (sIBAN))
+      return sIBAN;
+
+    final StringBuilder aSB = new StringBuilder ();
+    String sRest = unifyIBAN (sIBAN);
+    while (sRest.length () >= nGroupSize)
+    {
+      aSB.append (sRest, 0, nGroupSize);
+      sRest = sRest.substring (nGroupSize);
+      if (sRest.length () > 0)
+        aSB.append (sDelimiter);
+    }
+    aSB.append (sRest);
+    return aSB.toString ();
   }
 }

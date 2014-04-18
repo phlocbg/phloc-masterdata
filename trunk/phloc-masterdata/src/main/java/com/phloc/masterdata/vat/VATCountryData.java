@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
 import com.phloc.commons.IHasCountry;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.ValueEnforcer;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
@@ -50,9 +51,7 @@ public final class VATCountryData implements IHasCountry
                          @Nullable final String sCountryName,
                          @Nullable final String sInternalComment)
   {
-    if (aCountry == null)
-      throw new NullPointerException ("country");
-    m_aCountry = aCountry;
+    m_aCountry = ValueEnforcer.notNull (aCountry, "Country");
     m_bZeroVATAllowed = bZeroVATAllowed;
     m_sCountryName = sCountryName;
     m_sInternalComment = sInternalComment;
@@ -84,8 +83,7 @@ public final class VATCountryData implements IHasCountry
   @Nonnull
   public EChange addItem (@Nonnull final VATItem aVATItem)
   {
-    if (aVATItem == null)
-      throw new NullPointerException ("VAT item");
+    ValueEnforcer.notNull (aVATItem, "VATItem");
 
     final String sID = aVATItem.getID ();
     if (m_aItems.containsKey (sID))
@@ -100,10 +98,10 @@ public final class VATCountryData implements IHasCountry
   }
 
   @Nonnull
-  @ReturnsImmutableObject
-  public Map <? extends String, ? extends IVATItem> getAllItems ()
+  @ReturnsMutableCopy
+  public Map <String, IVATItem> getAllItems ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aItems);
+    return ContainerHelper.newMap (m_aItems);
   }
 
   @Override

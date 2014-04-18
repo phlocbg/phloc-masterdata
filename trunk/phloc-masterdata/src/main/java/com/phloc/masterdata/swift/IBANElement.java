@@ -23,6 +23,7 @@ import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 
@@ -39,12 +40,8 @@ final class IBANElement implements Serializable
 
   public IBANElement (@Nonnull final EIBANElementType eElementType, @Nonnegative final int nLength)
   {
-    if (eElementType == null)
-      throw new NullPointerException ("elementType");
-    if (nLength < 1)
-      throw new IllegalArgumentException ("length is too short");
-    m_eElementType = eElementType;
-    m_nLength = nLength;
+    m_eElementType = ValueEnforcer.notNull (eElementType, "ElementType");
+    m_nLength = ValueEnforcer.isGT0 (nLength, "Length");
   }
 
   @Nonnull

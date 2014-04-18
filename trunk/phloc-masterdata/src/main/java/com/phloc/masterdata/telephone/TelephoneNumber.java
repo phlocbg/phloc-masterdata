@@ -26,6 +26,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
@@ -66,8 +67,7 @@ public class TelephoneNumber implements ITelephoneNumber
 
   public TelephoneNumber (@Nonnull final IReadonlyTelephoneNumber aBase)
   {
-    if (aBase == null)
-      throw new NullPointerException ("base");
+    ValueEnforcer.notNull (aBase, "Base");
     setType (aBase.getType ());
     setCountryCode (aBase.getCountryCode ());
     setAreaCode (aBase.getAreaCode ());

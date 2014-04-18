@@ -24,6 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.id.IHasIntID;
 import com.phloc.commons.name.IHasDisplayText;
 import com.phloc.commons.string.ToStringGenerator;
@@ -38,10 +39,8 @@ public final class UnitSector implements IHasIntID, IHasDisplayText
 
   public UnitSector (@Nonnegative final int nGroupNumber, @Nonnull final IReadonlyMultiLingualText aName)
   {
-    if (nGroupNumber < 0)
-      throw new IllegalArgumentException ("Invalid group number");
-    if (aName == null)
-      throw new NullPointerException ("name");
+    ValueEnforcer.isGE0 (nGroupNumber, "GroupNumber");
+    ValueEnforcer.notNull (aName, "Name");
     m_nGroupNumber = nGroupNumber;
     m_aName = aName;
     m_eISO31 = EISO31.getFromIDOrNull (nGroupNumber);

@@ -35,6 +35,7 @@ import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
 
 import com.phloc.commons.CGlobal;
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.math.MathHelper;
@@ -57,7 +58,7 @@ import com.phloc.masterdata.vat.JPAVATItemIDConverter;
 @Embeddable
 @Access (value = AccessType.PROPERTY)
 @Converter (name = "vatitemid", converterClass = JPAVATItemIDConverter.class)
-public final class Price implements IPrice
+public class Price implements IPrice
 {
   public static final String FIELD_VATITEM = "vatitem";
 
@@ -132,8 +133,7 @@ public final class Price implements IPrice
   @Nonnull
   public EChange setVATItem (@Nonnull final IVATItem aVATItem)
   {
-    if (aVATItem == null)
-      throw new NullPointerException ("VATtype");
+    ValueEnforcer.notNull (aVATItem, "VATItem");
 
     if (aVATItem.equals (m_aVATItem))
       return EChange.UNCHANGED;
@@ -214,7 +214,7 @@ public final class Price implements IPrice
   {
     if (o == this)
       return true;
-    if (!(o instanceof Price))
+    if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final Price rhs = (Price) o;
     return m_aNetAmount.equals (rhs.m_aNetAmount) && m_aVATItem.equals (rhs.m_aVATItem);
@@ -311,8 +311,7 @@ public final class Price implements IPrice
                                              @Nonnegative final int nScale,
                                              @Nonnull final RoundingMode eRoundingMode)
   {
-    if (aVATItem == null)
-      throw new NullPointerException ("VATItem");
+    ValueEnforcer.notNull (aVATItem, "VATItem");
 
     final BigDecimal aFactor = aVATItem.getMultiplicationFactorNetToGross ();
     if (MathHelper.isEqualToOne (aFactor))
@@ -336,8 +335,7 @@ public final class Price implements IPrice
   public static Price createFromGrossAmount (@Nonnull final IReadonlyCurrencyValue aGrossAmount,
                                              @Nonnull final IVATItem aVATItem)
   {
-    if (aGrossAmount == null)
-      throw new NullPointerException ("GrossAmount");
+    ValueEnforcer.notNull (aGrossAmount, "GrossAmount");
 
     final ECurrency eCurrency = aGrossAmount.getCurrency ();
     return createFromGrossAmount (aGrossAmount, aVATItem, eCurrency.getScale (), eCurrency.getRoundingMode ());
@@ -363,8 +361,7 @@ public final class Price implements IPrice
                                              @Nonnegative final int nScale,
                                              @Nonnull final RoundingMode eRoundingMode)
   {
-    if (aVATItem == null)
-      throw new NullPointerException ("VATItem");
+    ValueEnforcer.notNull (aVATItem, "VATItem");
 
     final BigDecimal aFactor = aVATItem.getMultiplicationFactorNetToGross ();
     if (MathHelper.isEqualToOne (aFactor))

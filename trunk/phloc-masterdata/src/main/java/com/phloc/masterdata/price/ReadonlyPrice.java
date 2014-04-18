@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import javax.annotation.Nonnull;
 
 import com.phloc.commons.CGlobal;
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.masterdata.currency.ECurrency;
@@ -34,7 +35,7 @@ import com.phloc.masterdata.vat.IVATItem;
  * 
  * @author Philip Helger
  */
-public final class ReadonlyPrice implements IReadonlyPrice
+public class ReadonlyPrice implements IReadonlyPrice
 {
   private final IReadonlyCurrencyValue m_aNetAmount;
   private final IVATItem m_aVATItem;
@@ -46,19 +47,15 @@ public final class ReadonlyPrice implements IReadonlyPrice
 
   public ReadonlyPrice (@Nonnull final ECurrency eCurrency,
                         @Nonnull final BigDecimal aNetAmount,
-                        @Nonnull final IVATItem aVATType)
+                        @Nonnull final IVATItem aVATItem)
   {
-    this (new ReadonlyCurrencyValue (eCurrency, aNetAmount), aVATType);
+    this (new ReadonlyCurrencyValue (eCurrency, aNetAmount), aVATItem);
   }
 
-  public ReadonlyPrice (@Nonnull final IReadonlyCurrencyValue aNetAmount, @Nonnull final IVATItem aVATType)
+  public ReadonlyPrice (@Nonnull final IReadonlyCurrencyValue aNetAmount, @Nonnull final IVATItem aVATItem)
   {
-    if (aNetAmount == null)
-      throw new NullPointerException ("netAmount");
-    if (aVATType == null)
-      throw new NullPointerException ("VATtype");
-    m_aNetAmount = aNetAmount;
-    m_aVATItem = aVATType;
+    m_aNetAmount = ValueEnforcer.notNull (aNetAmount, "NetAmount");
+    m_aVATItem = ValueEnforcer.notNull (aVATItem, "VATItem");
   }
 
   @Nonnull
@@ -121,7 +118,7 @@ public final class ReadonlyPrice implements IReadonlyPrice
   {
     if (o == this)
       return true;
-    if (!(o instanceof ReadonlyPrice))
+    if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final ReadonlyPrice rhs = (ReadonlyPrice) o;
     return m_aNetAmount.equals (rhs.m_aNetAmount) && m_aVATItem.equals (rhs.m_aVATItem);
@@ -136,6 +133,6 @@ public final class ReadonlyPrice implements IReadonlyPrice
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("netAmount", m_aNetAmount).append ("VATtype", m_aVATItem).toString ();
+    return new ToStringGenerator (this).append ("netAmount", m_aNetAmount).append ("VATItem", m_aVATItem).toString ();
   }
 }
