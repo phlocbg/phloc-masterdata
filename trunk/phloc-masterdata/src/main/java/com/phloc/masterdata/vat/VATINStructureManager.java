@@ -38,11 +38,13 @@ import com.phloc.commons.string.StringHelper;
  */
 public final class VATINStructureManager
 {
+  public static final String DEFAULT_RESOURCE = "codelists/vatin-data.xml";
+
   private static final List <VATINStructure> s_aList = new ArrayList <VATINStructure> ();
   static
   {
     // Read all information from a file
-    final IMicroDocument aDoc = MicroReader.readMicroXML (new ClassPathResource ("codelists/vatin-data.xml"));
+    final IMicroDocument aDoc = MicroReader.readMicroXML (new ClassPathResource (DEFAULT_RESOURCE));
     final IMicroElement eRoot = aDoc.getDocumentElement ();
     for (final IMicroElement eVatin : eRoot.getAllChildElements ("vatin"))
     {
