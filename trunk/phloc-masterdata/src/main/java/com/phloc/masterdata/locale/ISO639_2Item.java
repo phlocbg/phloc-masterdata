@@ -22,6 +22,7 @@ import java.io.Serializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
@@ -51,10 +52,8 @@ public class ISO639_2Item implements Serializable
       throw new IllegalArgumentException ("Alpha3-terminologic code must have length 3!");
     if (sAlpha2 != null && sAlpha2.length () != 2)
       throw new IllegalArgumentException ("Alpha2 code must have length 2!");
-    if (StringHelper.hasNoText (sEN))
-      throw new IllegalArgumentException ("English name is missing");
-    if (StringHelper.hasNoText (sFR))
-      throw new IllegalArgumentException ("French name is missing");
+    ValueEnforcer.notEmpty (sEN, "English name");
+    ValueEnforcer.notEmpty (sFR, "French name");
     m_sAlpha3B = sAlpha3B;
     m_sAlpha3T = sAlpha3T;
     m_sAlpha2 = sAlpha2;

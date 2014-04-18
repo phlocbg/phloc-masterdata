@@ -54,8 +54,7 @@ public class PriceGraduationItem implements IPriceGraduationItem
   @Nonnull
   public EChange setMinimumQuantity (@Nonnegative final int nMinimumQuantity)
   {
-    if (nMinimumQuantity < 1)
-      throw new IllegalArgumentException ("The minimum quantity must be >= 1: " + nMinimumQuantity);
+    ValueEnforcer.isGT0 (nMinimumQuantity, "MinimumQuantity");
 
     if (nMinimumQuantity == m_nMinimumQuantity)
       return EChange.UNCHANGED;
