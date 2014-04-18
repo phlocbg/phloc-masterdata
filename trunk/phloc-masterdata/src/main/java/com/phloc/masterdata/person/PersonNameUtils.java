@@ -17,6 +17,7 @@
  */
 package com.phloc.masterdata.person;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -24,6 +25,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.annotations.ReturnsMutableCopy;
+import com.phloc.commons.collections.ArrayHelper;
+import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.string.StringHelper;
 
 @Immutable
@@ -33,6 +37,28 @@ public final class PersonNameUtils
   public static final boolean DEFAULT_COMPLEX_NAME_HANDLING = false;
   /** By default a persons first name comes before the last name */
   public static final boolean DEFAULT_FIRST_NAME_FIRST = true;
+
+  private static final String [] NOBILIARY_PARTICLES = new String [] { "aw",
+                                                                      "da",
+                                                                      "dalla",
+                                                                      "de",
+                                                                      "degli",
+                                                                      "del",
+                                                                      "dem",
+                                                                      "der",
+                                                                      "di",
+                                                                      "du",
+                                                                      "of",
+                                                                      "ter",
+                                                                      "thoe",
+                                                                      "tot",
+                                                                      "und",
+                                                                      "v.",
+                                                                      "van",
+                                                                      "vom",
+                                                                      "von",
+                                                                      "zu",
+                                                                      "zum" };
 
   private static final AtomicBoolean s_aComplexNameHandlingEnabled = new AtomicBoolean (DEFAULT_COMPLEX_NAME_HANDLING);
   private static final AtomicBoolean s_aFirstNameFirst = new AtomicBoolean (DEFAULT_FIRST_NAME_FIRST);
@@ -97,8 +123,8 @@ public final class PersonNameUtils
     // uppercase first only
     s = s.substring (0, 1).toUpperCase (aSortLocale) + s.substring (1).toLowerCase (aSortLocale);
 
-    // special cases:
-    if (s.equals ("Von") || s.equals ("Van") || s.equals ("De") || s.equals ("Du") || s.equals ("Of"))
+    // special cases: nobiliary particles ;-)
+    if (ArrayHelper.contains (NOBILIARY_PARTICLES, s))
       s = s.toLowerCase (aSortLocale);
 
     return s;
@@ -154,14 +180,14 @@ public final class PersonNameUtils
   public static String getAsDisplayNameFirstNameFirst (@Nonnull final IReadonlyPersonName aName)
   {
     // Concatenate all non-empty parts
-    return StringHelper.getImplodedNonEmpty (" ", aName.getFirstName (), aName.getMiddleName (), aName.getLastName ());
+    return StringHelper.getImplodedNonEmpty (' ', aName.getFirstName (), aName.getMiddleName (), aName.getLastName ());
   }
 
   @Nonnull
   public static String getAsDisplayNameLastNameFirst (@Nonnull final IReadonlyPersonName aName)
   {
     // Concatenate all non-empty parts
-    return StringHelper.getImplodedNonEmpty (" ", aName.getLastName (), aName.getFirstName (), aName.getMiddleName ());
+    return StringHelper.getImplodedNonEmpty (' ', aName.getLastName (), aName.getFirstName (), aName.getMiddleName ());
   }
 
   /**
@@ -185,7 +211,7 @@ public final class PersonNameUtils
   public static String getAsCompleteDisplayNameFirstNameFirst (@Nonnull final IReadonlyPersonName aName)
   {
     // Concatenate all non-empty parts
-    return StringHelper.getImplodedNonEmpty (" ",
+    return StringHelper.getImplodedNonEmpty (' ',
                                              aName.getPrefixTitle (),
                                              aName.getFirstName (),
                                              aName.getMiddleName (),
@@ -197,7 +223,7 @@ public final class PersonNameUtils
   public static String getAsCompleteDisplayNameLastNameFirst (@Nonnull final IReadonlyPersonName aName)
   {
     // Concatenate all non-empty parts
-    return StringHelper.getImplodedNonEmpty (" ",
+    return StringHelper.getImplodedNonEmpty (' ',
                                              aName.getPrefixTitle (),
                                              aName.getLastName (),
                                              aName.getFirstName (),
@@ -219,5 +245,12 @@ public final class PersonNameUtils
     if (isFirstNameFirst ())
       return getAsCompleteDisplayNameFirstNameFirst (aName);
     return getAsCompleteDisplayNameLastNameFirst (aName);
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
+  public static List <String> getAllNobiliaryParticles ()
+  {
+    return ContainerHelper.newList (NOBILIARY_PARTICLES);
   }
 }
