@@ -51,14 +51,6 @@ public interface IPersonName extends IReadonlyPersonName
   /**
    * @param sFirstName
    *        The first name.
-   * @return {@link EChange}
-   */
-  @Nonnull
-  EChange setFirstName (@Nullable String sFirstName);
-
-  /**
-   * @param sFirstName
-   *        The first name.
    * @param aSortLocale
    *        locale to use.
    * @return {@link EChange}
@@ -69,30 +61,12 @@ public interface IPersonName extends IReadonlyPersonName
   /**
    * @param sMiddleName
    *        The optional middle name.
-   * @return {@link EChange}
-   */
-  @Nonnull
-  @Deprecated
-  EChange setMiddleName (@Nullable String sMiddleName);
-
-  /**
-   * @param sMiddleName
-   *        The optional middle name.
    * @param aSortLocale
    *        locale to use.
    * @return {@link EChange}
    */
   @Nonnull
   EChange setMiddleName (@Nullable String sMiddleName, @Nonnull Locale aSortLocale);
-
-  /**
-   * @param sLastName
-   *        The last name. May not be <code>null</code>.
-   * @return {@link EChange}
-   */
-  @Nonnull
-  @Deprecated
-  EChange setLastName (@Nullable String sLastName);
 
   /**
    * @param sLastName

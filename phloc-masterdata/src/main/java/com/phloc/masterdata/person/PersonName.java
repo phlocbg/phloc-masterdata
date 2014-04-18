@@ -28,6 +28,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
@@ -65,17 +66,20 @@ public class PersonName implements IPersonName
   public PersonName ()
   {}
 
-  @Deprecated
-  public PersonName (@Nonnull final IReadonlyPersonName aBase)
+  public PersonName (@Nonnull final PersonName aBase)
   {
-    this (aBase, SystemHelper.getSystemLocale ());
+    ValueEnforcer.notNull (aBase, "Base");
+    m_eSalutation = aBase.m_eSalutation;
+    m_sPrefixTitle = aBase.m_sPrefixTitle;
+    m_sFirstName = aBase.m_sFirstName;
+    m_sMiddleName = aBase.m_sMiddleName;
+    m_sLastName = aBase.m_sLastName;
+    m_sSuffixTitle = aBase.m_sSuffixTitle;
   }
 
   public PersonName (@Nonnull final IReadonlyPersonName aBase, @Nonnull final Locale aSortLocale)
   {
-    if (aBase == null)
-      throw new NullPointerException ("base");
-
+    ValueEnforcer.notNull (aBase, "Base");
     setSalutation (aBase.getSalutation ());
     setPrefixTitle (aBase.getPrefixTitle ());
     setFirstName (aBase.getFirstName (), aSortLocale);
@@ -263,7 +267,7 @@ public class PersonName implements IPersonName
   @Nonnull
   public PersonName getClone ()
   {
-    return new PersonName (this, SystemHelper.getSystemLocale ());
+    return new PersonName (this);
   }
 
   @Override

@@ -229,13 +229,6 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
    */
   public static final RoundingMode DEFAULT_ROUNDING_MODE = RoundingMode.HALF_EVEN;
 
-  /**
-   * Deprecated - use the {@link #getRoundingMode()} method per currency
-   * instead!
-   */
-  @Deprecated
-  public static final RoundingMode ROUNDING_MODE = DEFAULT_ROUNDING_MODE;
-
   /** The default currency */
   public static final ECurrency DEFAULT_CURRENCY = EUR;
 
@@ -381,14 +374,49 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
   }
 
   /**
-   * @return An unmodifiable list of all countries (as {@link Locale} objects)
-   *         to which this currency applies.
+   * @return A list of all locales (as {@link Locale} objects) to which this
+   *         currency applies.
    */
   @Nonnull
+  @Nonempty
   @ReturnsMutableCopy
-  public List <Locale> getAllMatchingCountries ()
+  public List <Locale> getAllMatchingLocales ()
   {
     return ContainerHelper.newList (m_aLocales);
+  }
+
+  /**
+   * Check if the passed locale filter matches any locale of this currency.
+   * 
+   * @param aLocaleFilter
+   *        The locale filter to be used. May not be <code>null</code>.
+   * @return <code>true</code> if the filter matched at least one locale,
+   *         <code>false</code> if it matched none
+   */
+  public boolean isLocaleFilterMatchingAnyLocale (@Nonnull final IFilter <Locale> aLocaleFilter)
+  {
+    ValueEnforcer.notNull (aLocaleFilter, "LocaleFilter");
+    for (final Locale aCurrencyLocale : m_aLocales)
+      if (aLocaleFilter.matchesFilter (aCurrencyLocale))
+        return true;
+    return false;
+  }
+
+  /**
+   * Check if the passed locale filter matches all locales of this currency.
+   * 
+   * @param aLocaleFilter
+   *        The locale filter to be used. May not be <code>null</code>.
+   * @return <code>true</code> if the filter matched all locales,
+   *         <code>false</code> if it didn't match at least one locale
+   */
+  public boolean isLocaleFilterMatchingAllLocales (@Nonnull final IFilter <Locale> aLocaleFilter)
+  {
+    ValueEnforcer.notNull (aLocaleFilter, "LocaleFilter");
+    for (final Locale aCurrencyLocale : m_aLocales)
+      if (!aLocaleFilter.matchesFilter (aCurrencyLocale))
+        return false;
+    return true;
   }
 
   /**
@@ -709,30 +737,10 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
     return EnumHelper.getFromIDOrDefault (ECurrency.class, sCurrencyCode, eDefault);
   }
 
-  /**
-   * @deprecated Use {@link #getFromLocaleOrNull(Locale)} instead
-   */
-  @Deprecated
-  @Nullable
-  public static ECurrency getFromCountryOrNull (@Nullable final Locale aLocale)
-  {
-    return getFromLocaleOrNull (aLocale);
-  }
-
   @Nullable
   public static ECurrency getFromLocaleOrNull (@Nullable final Locale aLocale)
   {
     return getFromLocaleOrNull (aLocale, false);
-  }
-
-  /**
-   * @deprecated Use {@link #getFromLocaleOrNull(Locale,boolean)} instead
-   */
-  @Deprecated
-  @Nullable
-  public static ECurrency getFromCountryOrNull (@Nullable final Locale aLocale, final boolean bIncludeDeprecated)
-  {
-    return getFromLocaleOrNull (aLocale, bIncludeDeprecated);
   }
 
   @Nullable
@@ -767,28 +775,45 @@ public enum ECurrency implements IHasID <String>, IHasDisplayText
 
   @Nonnull
   @ReturnsMutableCopy
-  public static List <ECurrency> getAllCurrenciesWithLocaleFilter (@Nonnull final IFilter <Locale> aLocaleFilter)
+  public static List <ECurrency> getAllCurrenciesWithLocaleFilterMatchingAnyLocale (@Nonnull final IFilter <Locale> aLocaleFilter)
   {
-    return getAllCurrenciesWithLocaleFilter (aLocaleFilter, false);
+    return getAllCurrenciesWithLocaleFilterMatchingAnyLocale (aLocaleFilter, false);
   }
 
   @Nonnull
   @ReturnsMutableCopy
-  public static List <ECurrency> getAllCurrenciesWithLocaleFilter (@Nonnull final IFilter <Locale> aLocaleFilter,
-                                                                   final boolean bIncludeDeprecated)
+  public static List <ECurrency> getAllCurrenciesWithLocaleFilterMatchingAnyLocale (@Nonnull final IFilter <Locale> aLocaleFilter,
+                                                                                    final boolean bIncludeDeprecated)
   {
     ValueEnforcer.notNull (aLocaleFilter, "LocaleFilter");
 
     final List <ECurrency> ret = new ArrayList <ECurrency> ();
     for (final ECurrency eCurrency : values ())
       if (!eCurrency.isDeprecated () || bIncludeDeprecated)
-        for (final Locale aCurrencyLocale : eCurrency.m_aLocales)
-          if (aLocaleFilter.matchesFilter (aCurrencyLocale))
-          {
-            ret.add (eCurrency);
-            // continue with next currency
-            break;
-          }
+        if (eCurrency.isLocaleFilterMatchingAnyLocale (aLocaleFilter))
+          ret.add (eCurrency);
+    return ret;
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
+  public static List <ECurrency> getAllCurrenciesWithLocaleFilterMatchingAllLocales (@Nonnull final IFilter <Locale> aLocaleFilter)
+  {
+    return getAllCurrenciesWithLocaleFilterMatchingAllLocales (aLocaleFilter, false);
+  }
+
+  @Nonnull
+  @ReturnsMutableCopy
+  public static List <ECurrency> getAllCurrenciesWithLocaleFilterMatchingAllLocales (@Nonnull final IFilter <Locale> aLocaleFilter,
+                                                                                     final boolean bIncludeDeprecated)
+  {
+    ValueEnforcer.notNull (aLocaleFilter, "LocaleFilter");
+
+    final List <ECurrency> ret = new ArrayList <ECurrency> ();
+    for (final ECurrency eCurrency : values ())
+      if (!eCurrency.isDeprecated () || bIncludeDeprecated)
+        if (eCurrency.isLocaleFilterMatchingAllLocales (aLocaleFilter))
+          ret.add (eCurrency);
     return ret;
   }
 }

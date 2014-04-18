@@ -58,19 +58,6 @@ public final class ReadonlyAddress implements IReadonlyAddress
           aSortLocale);
   }
 
-  @Deprecated
-  public ReadonlyAddress (@Nullable final EAddressType eType,
-                          @Nullable final String sCountry,
-                          @Nullable final String sState,
-                          @Nullable final String sPostalCode,
-                          @Nullable final String sCity,
-                          @Nullable final String sStreet,
-                          @Nullable final String sPostOfficeBox,
-                          @Nonnull final Locale aSortLocale)
-  {
-    this (eType, sCountry, sState, sPostalCode, sCity, sStreet, null, sPostOfficeBox, aSortLocale);
-  }
-
   public ReadonlyAddress (@Nullable final EAddressType eType,
                           @Nullable final String sCountry,
                           @Nullable final String sState,
@@ -190,7 +177,7 @@ public final class ReadonlyAddress implements IReadonlyAddress
     return new ToStringGenerator (null).appendIfNotNull ("type", m_eType)
                                        .appendIfNotNull ("country", m_sCountry)
                                        .appendIfNotNull ("state", m_sState)
-                                       .appendIfNotNull ("zipCode", m_sPostalCode)
+                                       .appendIfNotNull ("postalCodeCode", m_sPostalCode)
                                        .appendIfNotNull ("city", m_sCity)
                                        .appendIfNotNull ("street", m_sStreet)
                                        .appendIfNotNull ("buildingNumber", m_sBuildingNumber)

@@ -25,6 +25,11 @@ import javax.annotation.Nonnull;
 import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.filter.IFilter;
 
+/**
+ * A locale filter that checks if a locale is on the specified continent or not.
+ * 
+ * @author Philip Helger
+ */
 public class FilterLocaleCountryOnContinent implements IFilter <Locale>
 {
   private final EContinent m_eContinent;
@@ -42,6 +47,7 @@ public class FilterLocaleCountryOnContinent implements IFilter <Locale>
 
   public boolean matchesFilter (@Nonnull final Locale aValue)
   {
+    // Get all continents
     final Set <EContinent> aContinents = ContinentUtils.getContinentsOfCountry (aValue);
     return aContinents != null && aContinents.contains (m_eContinent);
   }

@@ -28,6 +28,12 @@ import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.filter.IFilter;
 
+/**
+ * A locale filter that checks if a locale is on at least one of the specified
+ * continents.
+ * 
+ * @author Philip Helger
+ */
 public class FilterLocaleCountryOnAnyContinent implements IFilter <Locale>
 {
   private final EnumSet <EContinent> m_aContinents;
@@ -41,6 +47,7 @@ public class FilterLocaleCountryOnAnyContinent implements IFilter <Locale>
   }
 
   @Nonnull
+  @Nonempty
   @ReturnsMutableCopy
   public Set <EContinent> getAllContinents ()
   {
@@ -49,11 +56,15 @@ public class FilterLocaleCountryOnAnyContinent implements IFilter <Locale>
 
   public boolean matchesFilter (@Nonnull final Locale aValue)
   {
+    // Get all continents of the passed locale
     final Set <EContinent> aContinents = ContinentUtils.getContinentsOfCountry (aValue);
     if (aContinents == null)
       return false;
 
+    // Retain only the specified ones
     aContinents.retainAll (m_aContinents);
+
+    // If at least one locale is left, we have a match
     return !aContinents.isEmpty ();
   }
 }

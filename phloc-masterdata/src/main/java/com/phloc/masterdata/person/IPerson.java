@@ -17,6 +17,8 @@
  */
 package com.phloc.masterdata.person;
 
+import java.util.Locale;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -77,10 +79,12 @@ public interface IPerson extends IReadonlyPerson
    * 
    * @param aName
    *        The new name to be set. May not be <code>null</code>.
+   * @param aSortLocale
+   *        locale to use.
    * @return {@link EChange}
    */
   @Nonnull
-  EChange setName (@Nonnull IReadonlyPersonName aName);
+  EChange setName (@Nonnull IReadonlyPersonName aName, @Nonnull Locale aSortLocale);
 
   /**
    * @param aBirthday
@@ -133,8 +137,10 @@ public interface IPerson extends IReadonlyPerson
   /**
    * @param aAddress
    *        An optional real address for this person.
+   * @param aSortLocale
+   *        locale to use.
    * @return {@link EChange}
    */
   @Nonnull
-  EChange setAddress (@Nullable IReadonlyAddress aAddress);
+  EChange setAddress (@Nullable IReadonlyAddress aAddress, @Nonnull Locale aSortLocale);
 }
