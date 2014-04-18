@@ -34,7 +34,6 @@ import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
-import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.type.ObjectType;
 
@@ -61,9 +60,7 @@ public final class Company implements ICompany
 
   public Company (@Nonnull @Nonempty final String sID)
   {
-    if (StringHelper.hasNoText (sID))
-      throw new IllegalArgumentException ("Passed ID is empty");
-    m_sID = sID;
+    m_sID = ValueEnforcer.notEmpty (sID, "ID");
   }
 
   @Nonnull

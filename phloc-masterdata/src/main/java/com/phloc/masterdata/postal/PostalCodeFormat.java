@@ -23,10 +23,9 @@ import java.util.regex.Pattern;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
-import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.regex.RegExPool;
-import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 
 /**
@@ -54,10 +53,8 @@ public final class PostalCodeFormat
   public PostalCodeFormat (@Nonnull @Nonempty final String sISO,
                            @Nonnull @Nonempty final List <EPostalCodeFormatElement> aElements)
   {
-    if (StringHelper.hasNoText (sISO))
-      throw new IllegalArgumentException ("ISO may not be empty");
-    if (ContainerHelper.isEmpty (aElements))
-      throw new IllegalArgumentException ("The element list may neither be null nor empty");
+    ValueEnforcer.notEmpty (sISO, "ISO");
+    ValueEnforcer.notEmpty (aElements, "Elements");
 
     m_sISO = sISO;
 

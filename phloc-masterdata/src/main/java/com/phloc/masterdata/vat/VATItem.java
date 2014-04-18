@@ -33,7 +33,6 @@ import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.idfactory.GlobalIDFactory;
-import com.phloc.commons.math.MathHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.period.LocalDatePeriod;
 
@@ -70,8 +69,7 @@ public class VATItem extends LocalDatePeriod implements IVATItem
     ValueEnforcer.notEmpty (sID, "ID");
     ValueEnforcer.notNull (eType, "Type");
     ValueEnforcer.notNull (aPercentage, "Percentage");
-    if (MathHelper.isLowerThanZero (aPercentage) || MathHelper.isGreaterThan100 (aPercentage))
-      throw new IllegalArgumentException ("percentage must be between 0 and 100: " + aPercentage);
+    ValueEnforcer.isBetweenInclusive (aPercentage, "Percentage", BigDecimal.ZERO, CGlobal.BIGDEC_100);
     if (aValidFrom != null && aValidTo != null && aValidTo.isBefore (aValidFrom))
       throw new IllegalArgumentException ("ValidFrom date must be <= validTo date");
 
