@@ -30,6 +30,7 @@ import com.phloc.commons.io.resource.ClassPathResource;
 import com.phloc.commons.microdom.IMicroDocument;
 import com.phloc.commons.microdom.IMicroElement;
 import com.phloc.commons.microdom.serialize.MicroReader;
+import com.phloc.commons.string.ToStringGenerator;
 
 public class ISO639_2Handler
 {
@@ -53,6 +54,12 @@ public class ISO639_2Handler
     return SingletonHolder.s_aInstance;
   }
 
+  @Nullable
+  private static String _unifyKey (@Nullable final String sKey)
+  {
+    return sKey == null ? null : sKey.toLowerCase (Locale.US);
+  }
+
   @Nonnull
   public ISO639_2Handler readFromResource (@Nonnull final IReadableResource aRes)
   {
@@ -74,13 +81,13 @@ public class ISO639_2Handler
   {
     ValueEnforcer.notNull (aItem, "Item");
 
-    m_aAlpha3B.put (aItem.getAlpha3Bibliographic (), aItem);
+    m_aAlpha3B.put (_unifyKey (aItem.getAlpha3Bibliographic ()), aItem);
 
-    final String sAlpha3T = aItem.getAlpha3Terminologic ();
+    final String sAlpha3T = _unifyKey (aItem.getAlpha3Terminologic ());
     if (sAlpha3T != null)
       m_aAlpha3T.put (sAlpha3T, aItem);
 
-    final String sAlpha2 = aItem.getAlpha2 ();
+    final String sAlpha2 = _unifyKey (aItem.getAlpha2 ());
     if (sAlpha2 != null)
       m_aAlpha2.put (sAlpha2, aItem);
   }
@@ -90,7 +97,7 @@ public class ISO639_2Handler
   {
     if (sAlpha3B == null)
       return null;
-    return m_aAlpha3B.get (sAlpha3B.toLowerCase (Locale.US));
+    return m_aAlpha3B.get (_unifyKey (sAlpha3B));
   }
 
   @Nullable
@@ -98,7 +105,7 @@ public class ISO639_2Handler
   {
     if (sAlpha3T == null)
       return null;
-    return m_aAlpha3T.get (sAlpha3T.toLowerCase (Locale.US));
+    return m_aAlpha3T.get (_unifyKey (sAlpha3T));
   }
 
   @Nullable
@@ -106,6 +113,15 @@ public class ISO639_2Handler
   {
     if (sAlpha2 == null)
       return null;
-    return m_aAlpha2.get (sAlpha2.toLowerCase (Locale.US));
+    return m_aAlpha2.get (_unifyKey (sAlpha2));
+  }
+
+  @Override
+  public String toString ()
+  {
+    return new ToStringGenerator (this).append ("alpha3Bibliographic", m_aAlpha3B)
+                                       .append ("alpha3Terminologic", m_aAlpha3T)
+                                       .append ("alpha2", m_aAlpha2)
+                                       .toString ();
   }
 }
