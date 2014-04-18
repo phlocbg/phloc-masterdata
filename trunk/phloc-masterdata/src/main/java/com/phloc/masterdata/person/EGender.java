@@ -34,10 +34,11 @@ import com.phloc.commons.name.IHasDisplayText;
 public enum EGender implements IHasDisplayText, IHasID <String>
 {
   MALE ("m", EGenderName.MALE),
-  FEMALE ("f", EGenderName.FEMALE);
+  FEMALE ("f", EGenderName.FEMALE),
+  OTHER ("o", EGenderName.OTHER);
 
   private final String m_sID;
-  private final IHasDisplayText m_aText;
+  private final EGenderName m_aText;
 
   private EGender (@Nonnull final String sID, @Nonnull final EGenderName eText)
   {
@@ -52,7 +53,7 @@ public enum EGender implements IHasDisplayText, IHasID <String>
   }
 
   @Nonnull
-  public IHasDisplayText getName ()
+  public EGenderName getName ()
   {
     return m_aText;
   }
