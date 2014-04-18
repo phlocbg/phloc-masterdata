@@ -170,6 +170,7 @@ public enum ECurrencyName implements IHasDisplayText
   SLL ("Leone", "Sierra Leonean Leone"),
   SOS ("Somalia-Schilling", "Somali Shilling"),
   SRD ("Suriname-Dollar", "Surinamese Dollar"),
+  SSP ("Südsudanesisches Pfund", "South Sudan Pound"),
   STD ("Dobra", "Sao Tomean Dobra"),
   SVC ("Colon", "Salvadoran Colon"),
   SYP ("Syrisches Pfund", "Syrian Pound"),
