@@ -53,12 +53,6 @@ public class AddressWithID extends Address implements IHasSimpleIntID
   public AddressWithID ()
   {}
 
-  @Deprecated
-  public AddressWithID (@Nonnull final IReadonlyAddress aBase)
-  {
-    super (aBase);
-  }
-
   public AddressWithID (@Nonnull final IReadonlyAddress aBase, @Nonnull final Locale aSortLocale)
   {
     super (aBase, aSortLocale);
@@ -67,19 +61,6 @@ public class AddressWithID extends Address implements IHasSimpleIntID
   public AddressWithID (@Nullable final EAddressType eType)
   {
     super (eType);
-  }
-
-  @Deprecated
-  public AddressWithID (@Nullable final EAddressType eType,
-                        @Nullable final String sCountry,
-                        @Nullable final String sState,
-                        @Nullable final String sPostalCode,
-                        @Nullable final String sCity,
-                        @Nullable final String sStreet,
-                        @Nullable final String sPostOfficeBox,
-                        @Nonnull final Locale aSortLocale)
-  {
-    super (eType, sCountry, sState, sPostalCode, sCity, sStreet, sPostOfficeBox, aSortLocale);
   }
 
   public AddressWithID (@Nullable final EAddressType eType,

@@ -37,11 +37,11 @@ import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
 import org.joda.time.LocalDate;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
-import com.phloc.commons.system.SystemHelper;
 import com.phloc.db.jpa.eclipselink.converter.JPAJodaLocalDateConverter;
 import com.phloc.masterdata.address.IReadonlyAddress;
 import com.phloc.masterdata.email.IReadonlyExtendedEmailAddress;
@@ -72,17 +72,9 @@ public class Person implements IPerson
     m_aName = new PersonName ();
   }
 
-  @Deprecated
-  public Person (@Nonnull final IReadonlyPerson aBase)
-  {
-    this (aBase, SystemHelper.getSystemLocale ());
-  }
-
   public Person (@Nonnull final IReadonlyPerson aBase, @Nonnull final Locale aSortLocale)
   {
-    if (aBase == null)
-      throw new NullPointerException ("base");
-
+    ValueEnforcer.notNull (aBase, "Base");
     // do not copy the ID!
     setGender (aBase.getGender ());
     setName (aBase.getName (), aSortLocale);
@@ -154,14 +146,8 @@ public class Person implements IPerson
     return EChange.CHANGED;
   }
 
-  @Deprecated
   @Nonnull
-  public EChange setName (@Nullable final IReadonlyPersonName aName)
-  {
-    return setName (aName, SystemHelper.getSystemLocale ());
-  }
-
-  @Nonnull
+  @Transient
   public EChange setName (@Nullable final IReadonlyPersonName aName, @Nonnull final Locale aSortLocale)
   {
     PersonName aRealName = null;
@@ -253,14 +239,6 @@ public class Person implements IPerson
       return EChange.UNCHANGED;
     m_aAddress = aAddress;
     return EChange.CHANGED;
-  }
-
-  @Deprecated
-  @Transient
-  @Nonnull
-  public EChange setAddress (@Nullable final IReadonlyAddress aAddress)
-  {
-    return setAddress (aAddress, SystemHelper.getSystemLocale ());
   }
 
   @Transient

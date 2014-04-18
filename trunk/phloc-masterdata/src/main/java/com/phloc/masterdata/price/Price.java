@@ -40,7 +40,6 @@ import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.math.MathHelper;
 import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
-import com.phloc.db.jpa.annotations.UsedOnlyByJPA;
 import com.phloc.masterdata.currency.CurrencyValue;
 import com.phloc.masterdata.currency.ECurrency;
 import com.phloc.masterdata.currency.IReadonlyCurrencyValue;
@@ -111,24 +110,14 @@ public final class Price implements IPrice
     return m_aNetAmount;
   }
 
-  @UsedOnlyByJPA
-  @Nonnull
-  @Deprecated
-  public EChange setNetAmount (@Nonnull final CurrencyValue aNetAmount)
-  {
-    if (aNetAmount == null)
-      throw new NullPointerException ("netAmount");
-
-    if (EqualsUtils.equals (m_aNetAmount, aNetAmount))
-      return EChange.UNCHANGED;
-    m_aNetAmount = aNetAmount;
-    return EChange.CHANGED;
-  }
-
   @Nonnull
   public EChange setNetAmount (@Nonnull final IReadonlyCurrencyValue aNetAmount)
   {
-    return setNetAmount (new CurrencyValue (aNetAmount));
+    final CurrencyValue aRealNetAmount = new CurrencyValue (aNetAmount);
+    if (EqualsUtils.equals (m_aNetAmount, aRealNetAmount))
+      return EChange.UNCHANGED;
+    m_aNetAmount = aRealNetAmount;
+    return EChange.CHANGED;
   }
 
   @Nonnull

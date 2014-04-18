@@ -54,13 +54,6 @@ public class PersonAddress extends AddressWithID
     setOwner (aOwner);
   }
 
-  @Deprecated
-  public PersonAddress (@Nonnull final Person aOwner, @Nonnull final IReadonlyAddress aBase)
-  {
-    super (aBase);
-    setOwner (aOwner);
-  }
-
   public PersonAddress (@Nonnull final Person aOwner,
                         @Nonnull final IReadonlyAddress aBase,
                         @Nonnull final Locale aSortLocale)
@@ -112,6 +105,6 @@ public class PersonAddress extends AddressWithID
   @Override
   public String toString ()
   {
-    return ToStringGenerator.getDerived (super.toString ()).append ("owenrID", getOwnerID ()).toString ();
+    return ToStringGenerator.getDerived (super.toString ()).append ("ownerID", getOwnerID ()).toString ();
   }
 }

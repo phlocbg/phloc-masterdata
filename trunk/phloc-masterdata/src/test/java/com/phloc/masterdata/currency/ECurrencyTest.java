@@ -230,8 +230,8 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   {
     for (final ECurrency eCurrency : ECurrency.values ())
     {
-      assertFalse (eCurrency.getAllMatchingCountries ().isEmpty ());
-      for (final Locale aCountry : eCurrency.getAllMatchingCountries ())
+      assertFalse (eCurrency.getAllMatchingLocales ().isEmpty ());
+      for (final Locale aCountry : eCurrency.getAllMatchingLocales ())
         assertNotNull (aCountry);
     }
   }
@@ -308,7 +308,7 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
 
     for (final ECurrency e : ECurrency.values ())
       if (!e.isDeprecated ())
-        for (final Locale aLocale : e.getAllMatchingCountries ())
+        for (final Locale aLocale : e.getAllMatchingLocales ())
           if (!EqualsUtils.equals (aLocale, aLocCuba))
             assertSame (e, ECurrency.getFromLocaleOrNull (aLocale, false));
   }
@@ -316,21 +316,21 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
   @Test
   public void testGetAllCurrenciesWithLocaleFilter ()
   {
-    List <ECurrency> aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnContinent (EContinent.EUROPE));
+    List <ECurrency> aSelected = ECurrency.getAllCurrenciesWithLocaleFilterMatchingAnyLocale (new FilterLocaleCountryOnContinent (EContinent.EUROPE));
     assertNotNull (aSelected);
     assertTrue (aSelected.contains (ECurrency.EUR));
     assertTrue (aSelected.contains (ECurrency.CHF));
     assertFalse (aSelected.contains (ECurrency.USD));
     assertFalse (aSelected.contains (ECurrency.CNY));
 
-    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE));
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilterMatchingAnyLocale (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE));
     assertNotNull (aSelected);
     assertTrue (aSelected.contains (ECurrency.EUR));
     assertTrue (aSelected.contains (ECurrency.CHF));
     assertFalse (aSelected.contains (ECurrency.USD));
     assertFalse (aSelected.contains (ECurrency.CNY));
 
-    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.NORTH_AMERICA));
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilterMatchingAnyLocale (new FilterLocaleCountryOnAnyContinent (EContinent.NORTH_AMERICA));
     assertNotNull (aSelected);
     // Used in french over sea areas :)
     assertTrue (aSelected.contains (ECurrency.EUR));
@@ -338,14 +338,14 @@ public final class ECurrencyTest extends AbstractPhlocTestCase
     assertTrue (aSelected.contains (ECurrency.USD));
     assertFalse (aSelected.contains (ECurrency.CNY));
 
-    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilterMatchingAnyLocale (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
                                                                                                    EContinent.NORTH_AMERICA));
     assertNotNull (aSelected);
     assertTrue (aSelected.contains (ECurrency.EUR));
     assertTrue (aSelected.contains (ECurrency.USD));
     assertFalse (aSelected.contains (ECurrency.CNY));
 
-    aSelected = ECurrency.getAllCurrenciesWithLocaleFilter (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
+    aSelected = ECurrency.getAllCurrenciesWithLocaleFilterMatchingAnyLocale (new FilterLocaleCountryOnAnyContinent (EContinent.EUROPE,
                                                                                                    EContinent.ASIA,
                                                                                                    EContinent.NORTH_AMERICA));
     assertNotNull (aSelected);

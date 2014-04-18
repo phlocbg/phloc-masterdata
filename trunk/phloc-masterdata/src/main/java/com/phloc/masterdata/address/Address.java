@@ -29,6 +29,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.locale.country.CountryCache;
@@ -41,7 +42,7 @@ import com.phloc.masterdata.MasterdataUtils;
 // ESCA-JAVA0116:
 /**
  * Writable implementation of the {@link IAddress} interface.
- *
+ * 
  * @author Philip Helger
  */
 @MappedSuperclass
@@ -78,16 +79,22 @@ public class Address implements IAddress
   public Address ()
   {}
 
-  @Deprecated
-  public Address (@Nonnull final IReadonlyAddress aBase)
+  public Address (@Nonnull final Address aBase)
   {
-    this (aBase, SystemHelper.getSystemLocale ());
+    ValueEnforcer.notNull (aBase, "Base");
+    m_eType = aBase.m_eType;
+    m_sCountry = aBase.m_sCountry;
+    m_sState = aBase.m_sState;
+    m_sPostalCode = aBase.m_sPostalCode;
+    m_sCity = aBase.m_sCity;
+    m_sStreet = aBase.m_sStreet;
+    m_sBuildingNumber = aBase.m_sBuildingNumber;
+    m_sPostalCode = aBase.m_sPostOfficeBox;
   }
 
   public Address (@Nonnull final IReadonlyAddress aBase, @Nonnull final Locale aSortLocale)
   {
-    if (aBase == null)
-      throw new NullPointerException ("address");
+    ValueEnforcer.notNull (aBase, "Base");
     setType (aBase.getType ());
     setCountry (aBase.getCountry (), aSortLocale);
     setState (aBase.getState (), aSortLocale);
@@ -101,19 +108,6 @@ public class Address implements IAddress
   public Address (@Nullable final EAddressType eType)
   {
     setType (eType);
-  }
-
-  @Deprecated
-  public Address (@Nullable final EAddressType eType,
-                  @Nullable final String sCountry,
-                  @Nullable final String sState,
-                  @Nullable final String sPostalCode,
-                  @Nullable final String sCity,
-                  @Nullable final String sStreet,
-                  @Nullable final String sPostOfficeBox,
-                  @Nonnull final Locale aSortLocale)
-  {
-    this (eType, sCountry, sState, sPostalCode, sCity, sStreet, null, sPostOfficeBox, aSortLocale);
   }
 
   public Address (@Nullable final EAddressType eType,
@@ -340,7 +334,7 @@ public class Address implements IAddress
   @Nonnull
   public Address getClone ()
   {
-    return new Address (this, SystemHelper.getSystemLocale ());
+    return new Address (this);
   }
 
   @Override
@@ -357,6 +351,7 @@ public class Address implements IAddress
            EqualsUtils.equals (m_sPostalCode, rhs.m_sPostalCode) &&
            EqualsUtils.equals (m_sCity, rhs.m_sCity) &&
            EqualsUtils.equals (m_sStreet, rhs.m_sStreet) &&
+           EqualsUtils.equals (m_sBuildingNumber, rhs.m_sBuildingNumber) &&
            EqualsUtils.equals (m_sPostOfficeBox, rhs.m_sPostOfficeBox);
   }
 
@@ -369,6 +364,7 @@ public class Address implements IAddress
                                        .append (m_sPostalCode)
                                        .append (m_sCity)
                                        .append (m_sStreet)
+                                       .append (m_sBuildingNumber)
                                        .append (m_sPostOfficeBox)
                                        .getHashCode ();
   }
@@ -379,9 +375,10 @@ public class Address implements IAddress
     return new ToStringGenerator (null).appendIfNotNull ("type", m_eType)
                                        .appendIfNotNull ("country", m_sCountry)
                                        .appendIfNotNull ("state", m_sState)
-                                       .appendIfNotNull ("zipCode", m_sPostalCode)
+                                       .appendIfNotNull ("postalCode", m_sPostalCode)
                                        .appendIfNotNull ("city", m_sCity)
                                        .appendIfNotNull ("street", m_sStreet)
+                                       .appendIfNotNull ("buildingNumber", m_sBuildingNumber)
                                        .appendIfNotNull ("pobox", m_sPostOfficeBox)
                                        .toString ();
   }
