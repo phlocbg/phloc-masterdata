@@ -23,7 +23,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.ValueEnforcer;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.string.StringHelper;
 
@@ -40,21 +41,19 @@ public final class IBAN
 
   public IBAN (@Nonnull final List <IBANElementValue> aValues)
   {
-    if (aValues == null)
-      throw new NullPointerException ("values");
-    m_aValues = ContainerHelper.makeUnmodifiable (aValues);
+    ValueEnforcer.notNull (aValues, "Values");
+    m_aValues = ContainerHelper.newList (aValues);
   }
 
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public List <IBANElementValue> getValues ()
   {
-    // ESCA-JAVA0259:
-    return m_aValues;
+    return ContainerHelper.newList (m_aValues);
   }
 
   @Nonnull
-  private static String _extractCountryCode (@Nonnull final String sIBAN)
+  public static String extractCountryCode (@Nonnull final String sIBAN)
   {
     return sIBAN.substring (0, 2);
   }
@@ -67,7 +66,7 @@ public final class IBAN
       return null;
 
     // get country specific data
-    final String sCountryCode = _extractCountryCode (sRealIBAN);
+    final String sCountryCode = extractCountryCode (sRealIBAN);
     final IBANCountryData aCountryData = IBANManager.getCountryData (sCountryCode);
     if (aCountryData == null)
       throw new IllegalArgumentException ("Passed IBAN country '" + sCountryCode + "' is not supported!");

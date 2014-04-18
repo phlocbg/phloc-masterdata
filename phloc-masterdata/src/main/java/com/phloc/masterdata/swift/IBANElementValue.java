@@ -20,6 +20,7 @@ package com.phloc.masterdata.swift;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.string.ToStringGenerator;
 
@@ -36,10 +37,8 @@ final class IBANElementValue
 
   public IBANElementValue (@Nonnull final IBANElement aElement, @Nonnull final String sValue)
   {
-    if (aElement == null)
-      throw new NullPointerException ("element");
-    if (sValue == null)
-      throw new NullPointerException ("value");
+    ValueEnforcer.notNull (aElement, "Element");
+    ValueEnforcer.notNull (sValue, "Value");
     if (sValue.length () != aElement.getLength ())
       throw new IllegalArgumentException ("Value length mismatch. Having " +
                                           sValue.length () +

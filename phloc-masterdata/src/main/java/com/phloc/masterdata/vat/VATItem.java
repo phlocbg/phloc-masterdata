@@ -28,12 +28,12 @@ import javax.annotation.concurrent.Immutable;
 import org.joda.time.LocalDate;
 
 import com.phloc.commons.CGlobal;
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.idfactory.GlobalIDFactory;
 import com.phloc.commons.math.MathHelper;
-import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.period.LocalDatePeriod;
 
@@ -67,12 +67,9 @@ public class VATItem extends LocalDatePeriod implements IVATItem
                   @Nullable final LocalDate aValidFrom,
                   @Nullable final LocalDate aValidTo)
   {
-    if (StringHelper.hasNoText (sID))
-      throw new IllegalArgumentException ("Passed ID may not be empty");
-    if (eType == null)
-      throw new NullPointerException ("type");
-    if (aPercentage == null)
-      throw new NullPointerException ("percentage");
+    ValueEnforcer.notEmpty (sID, "ID");
+    ValueEnforcer.notNull (eType, "Type");
+    ValueEnforcer.notNull (aPercentage, "Percentage");
     if (MathHelper.isLowerThanZero (aPercentage) || MathHelper.isGreaterThan100 (aPercentage))
       throw new IllegalArgumentException ("percentage must be between 0 and 100: " + aPercentage);
     if (aValidFrom != null && aValidTo != null && aValidTo.isBefore (aValidFrom))

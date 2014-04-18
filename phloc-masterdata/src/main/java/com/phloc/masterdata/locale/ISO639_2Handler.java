@@ -24,6 +24,7 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.io.IReadableResource;
 import com.phloc.commons.io.resource.ClassPathResource;
 import com.phloc.commons.microdom.IMicroDocument;
@@ -32,9 +33,11 @@ import com.phloc.commons.microdom.serialize.MicroReader;
 
 public class ISO639_2Handler
 {
+  public static final String DEFAULT_RESOURCE = "codelists/iso639-2-data-20130111.xml";
+
   private static final class SingletonHolder
   {
-    static final ISO639_2Handler s_aInstance = new ISO639_2Handler ().readFromResource (new ClassPathResource ("codelists/iso639-2-data-20130111.xml"));
+    static final ISO639_2Handler s_aInstance = new ISO639_2Handler ().readFromResource (new ClassPathResource (DEFAULT_RESOURCE));
   }
 
   private final Map <String, ISO639_2Item> m_aAlpha3B = new HashMap <String, ISO639_2Item> ();
@@ -69,8 +72,7 @@ public class ISO639_2Handler
 
   public void registerItem (@Nonnull final ISO639_2Item aItem)
   {
-    if (aItem == null)
-      throw new NullPointerException ("item");
+    ValueEnforcer.notNull (aItem, "Item");
 
     m_aAlpha3B.put (aItem.getAlpha3Bibliographic (), aItem);
 

@@ -20,6 +20,7 @@ package com.phloc.masterdata.ean;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.state.EValidity;
 
 public abstract class AbstractUPCEAN
@@ -31,7 +32,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Main constructor
-   *
+   * 
    * @param sMsg
    *        The code string.
    * @param eMode
@@ -39,12 +40,8 @@ public abstract class AbstractUPCEAN
    */
   public AbstractUPCEAN (@Nonnull final String sMsg, @Nonnull final EEANChecksumMode eMode)
   {
-    if (sMsg == null)
-      throw new NullPointerException ("msg");
-    if (eMode == null)
-      throw new NullPointerException ("checksumMode");
-    m_sMsg = sMsg;
-    m_eChecksumMode = eMode;
+    m_sMsg = ValueEnforcer.notNull (sMsg, "Msg");
+    m_eChecksumMode = ValueEnforcer.notNull (eMode, "ChecksumMode");
   }
 
   @Nonnull
@@ -55,7 +52,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Returns the current checksum mode.
-   *
+   * 
    * @return the checksum mode
    */
   @Nonnull
@@ -66,7 +63,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Validate this code.
-   *
+   * 
    * @return {@link EValidity#VALID} if the msg is valid,
    *         {@link EValidity#INVALID} otherwise.
    */
@@ -75,7 +72,7 @@ public abstract class AbstractUPCEAN
 
   /**
    * Validates a UPC/EAN message.
-   *
+   * 
    * @param sMsg
    *        the message to validate
    * @return {@link EValidity#VALID} if the msg is valid,
@@ -84,15 +81,14 @@ public abstract class AbstractUPCEAN
   @Nonnull
   protected static EValidity validateMessage (@Nonnull final String sMsg)
   {
-    if (sMsg == null)
-      throw new NullPointerException ("msg");
+    ValueEnforcer.notNull (sMsg, "Msg");
 
     return validateMessage (sMsg.toCharArray ());
   }
 
   /**
    * Validates a UPC/EAN/GTIN/GLN message.
-   *
+   * 
    * @param aChars
    *        the chars to validate
    * @return {@link EValidity#VALID} if the msg is valid,
@@ -101,8 +97,7 @@ public abstract class AbstractUPCEAN
   @Nonnull
   protected static EValidity validateMessage (@Nonnull final char [] aChars)
   {
-    if (aChars == null)
-      throw new NullPointerException ("chars");
+    ValueEnforcer.notNull (aChars, "Chars");
 
     for (final char c : aChars)
       if (c < '0' || c > '9')
@@ -137,17 +132,15 @@ public abstract class AbstractUPCEAN
 
   /**
    * Calculates the check character for a given message
-   *
+   * 
    * @param sMsg
    *        the message
    * @return char the check character
    */
   protected static char calcChecksumChar (@Nonnull final String sMsg, @Nonnegative final int nLength)
   {
-    if (sMsg == null)
-      throw new NullPointerException ("msg");
-    if (nLength < 0 || nLength > sMsg.length ())
-      throw new IllegalArgumentException ("Length error: " + nLength);
+    ValueEnforcer.notNull (sMsg, "Msg");
+    ValueEnforcer.isBetweenInclusive (nLength, "Length", 0, sMsg.length ());
 
     return asChar (calcChecksum (sMsg.toCharArray (), nLength));
   }

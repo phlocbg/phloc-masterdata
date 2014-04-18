@@ -27,6 +27,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.math.MathHelper;
@@ -83,8 +84,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   @Nonnull
   public EChange setCurrency (@Nonnull final ECurrency eCurrency)
   {
-    if (eCurrency == null)
-      throw new NullPointerException ("currency");
+    ValueEnforcer.notNull (eCurrency, "Currency");
 
     if (eCurrency.equals (m_eCurrency))
       return EChange.UNCHANGED;
@@ -112,8 +112,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
   @Nonnull
   public EChange setValue (@Nonnull final BigDecimal aValue)
   {
-    if (aValue == null)
-      throw new NullPointerException ("value");
+    ValueEnforcer.notNull (aValue, "Value");
 
     if (EqualsUtils.equals (aValue, m_aValue))
       return EChange.UNCHANGED;
@@ -123,8 +122,7 @@ public final class CurrencyValue extends AbstractCurrencyValue implements ICurre
 
   public void addValue (@Nonnull final BigDecimal aValue)
   {
-    if (aValue == null)
-      throw new NullPointerException ("value");
+    ValueEnforcer.notNull (aValue, "Value");
     m_aValue = m_aValue.add (aValue);
   }
 

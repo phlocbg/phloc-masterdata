@@ -29,6 +29,7 @@ import javax.persistence.Transient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.email.EmailAddressUtils;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
@@ -62,10 +63,17 @@ public class ExtendedEmailAddress implements IExtendedEmailAddress
   public ExtendedEmailAddress ()
   {}
 
+  public ExtendedEmailAddress (@Nonnull final ExtendedEmailAddress aBase)
+  {
+    ValueEnforcer.notNull (aBase, "Base");
+    m_eType = aBase.m_eType;
+    m_sAddress = aBase.m_sAddress;
+    m_sPersonal = aBase.m_sPersonal;
+  }
+
   public ExtendedEmailAddress (@Nonnull final IReadonlyExtendedEmailAddress aBase)
   {
-    if (aBase == null)
-      throw new NullPointerException ("base");
+    ValueEnforcer.notNull (aBase, "Base");
     setType (aBase.getType ());
     setAddress (aBase.getAddress ());
     setPersonal (aBase.getPersonal ());
@@ -171,11 +179,7 @@ public class ExtendedEmailAddress implements IExtendedEmailAddress
   @Nonnull
   public ExtendedEmailAddress getClone ()
   {
-    final ExtendedEmailAddress ret = new ExtendedEmailAddress ();
-    ret.m_eType = m_eType;
-    ret.m_sAddress = m_sAddress;
-    ret.m_sPersonal = m_sPersonal;
-    return ret;
+    return new ExtendedEmailAddress (this);
   }
 
   @Override

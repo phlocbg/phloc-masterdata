@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.state.EChange;
@@ -33,7 +34,7 @@ import com.phloc.commons.string.ToStringGenerator;
  * 
  * @author Philip Helger
  */
-public final class PriceGraduationItem implements IPriceGraduationItem
+public class PriceGraduationItem implements IPriceGraduationItem
 {
   private int m_nMinimumQuantity;
   private BigDecimal m_aNetAmount;
@@ -71,8 +72,7 @@ public final class PriceGraduationItem implements IPriceGraduationItem
   @Nonnull
   public EChange setUnitNetAmount (@Nonnull final BigDecimal aNetAmount)
   {
-    if (aNetAmount == null)
-      throw new NullPointerException ("price amount");
+    ValueEnforcer.notNull (aNetAmount, "NetAmount");
 
     if (EqualsUtils.equals (aNetAmount, m_aNetAmount))
       return EChange.UNCHANGED;
@@ -85,7 +85,7 @@ public final class PriceGraduationItem implements IPriceGraduationItem
   {
     if (o == this)
       return true;
-    if (!(o instanceof PriceGraduationItem))
+    if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final PriceGraduationItem rhs = (PriceGraduationItem) o;
     return m_nMinimumQuantity == rhs.m_nMinimumQuantity && EqualsUtils.equals (m_aNetAmount, rhs.m_aNetAmount);

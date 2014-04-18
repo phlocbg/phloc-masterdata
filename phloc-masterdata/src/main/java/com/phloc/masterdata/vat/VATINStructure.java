@@ -29,6 +29,7 @@ import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.GlobalDebug;
 import com.phloc.commons.IHasCountry;
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
@@ -55,12 +56,9 @@ public final class VATINStructure implements IHasCountry
                          @Nonnull @RegEx final String sRegEx,
                          @Nonnull final Collection <String> aExamples)
   {
-    if (sCountry == null)
-      throw new NullPointerException ("country");
-    if (sRegEx == null)
-      throw new NullPointerException ("regEx");
-    if (ContainerHelper.isEmpty (aExamples))
-      throw new IllegalArgumentException ("No examples provided!");
+    ValueEnforcer.notNull (sCountry, "Country");
+    ValueEnforcer.notNull (sRegEx, "RegEx");
+    ValueEnforcer.notEmpty (aExamples, "Example");
 
     m_aCountry = CountryCache.getCountry (sCountry);
     if (m_aCountry == null)

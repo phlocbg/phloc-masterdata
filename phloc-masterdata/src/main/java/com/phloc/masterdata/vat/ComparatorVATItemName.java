@@ -22,6 +22,7 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.compare.AbstractCollationComparator;
 
 /**
@@ -36,9 +37,13 @@ public class ComparatorVATItemName extends AbstractCollationComparator <IVATItem
   public ComparatorVATItemName (@Nullable final Locale aSortLocale, @Nonnull final Locale aContentLocale)
   {
     super (aSortLocale);
-    if (aContentLocale == null)
-      throw new NullPointerException ("contentLocale");
-    m_aContentLocale = aContentLocale;
+    m_aContentLocale = ValueEnforcer.notNull (aContentLocale, "ContentLocale");
+  }
+
+  @Nonnull
+  public Locale getContentLocale ()
+  {
+    return m_aContentLocale;
   }
 
   @Override

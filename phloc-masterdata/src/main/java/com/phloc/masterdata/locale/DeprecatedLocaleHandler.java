@@ -29,6 +29,7 @@ import javax.annotation.WillClose;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.ReturnsImmutableObject;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.io.IInputStreamProvider;
@@ -82,10 +83,8 @@ public final class DeprecatedLocaleHandler
 
   public void initFromXML (@Nonnull final IMicroDocument aDoc)
   {
-    if (aDoc == null)
-      throw new NullPointerException ("doc");
-    if (aDoc.getDocumentElement () == null)
-      throw new IllegalArgumentException ("documentElement is null");
+    ValueEnforcer.notNull (aDoc, "Doc");
+    ValueEnforcer.notNull (aDoc.getDocumentElement (), "Doc.DocumentElement");
 
     m_aLocales.clear ();
 
@@ -159,16 +158,14 @@ public final class DeprecatedLocaleHandler
   @Nonnull
   public static DeprecatedLocaleHandler readFromXML (@Nonnull final IInputStreamProvider aISP)
   {
-    if (aISP == null)
-      throw new NullPointerException ("inputStreamProvider");
+    ValueEnforcer.notNull (aISP, "InputStreamProvider");
     return readFromXML (aISP.getInputStream ());
   }
 
   @Nonnull
   public static DeprecatedLocaleHandler readFromXML (@Nonnull @WillClose final InputStream aIS)
   {
-    if (aIS == null)
-      throw new NullPointerException ("inputStream");
+    ValueEnforcer.notNull (aIS, "InputStream");
 
     final IMicroDocument aDoc = MicroReader.readMicroXML (aIS);
     final DeprecatedLocaleHandler ret = new DeprecatedLocaleHandler ();

@@ -20,12 +20,12 @@ package com.phloc.masterdata.company;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.idfactory.GlobalIDFactory;
 import com.phloc.commons.state.EChange;
-import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.type.ObjectType;
 import com.phloc.masterdata.address.Address;
@@ -68,12 +68,8 @@ public final class CompanySite implements ICompanySite
 
   public CompanySite (@Nonnull @Nonempty final String sID, @Nonnull final ICompany aCompany)
   {
-    if (StringHelper.hasNoText (sID))
-      throw new IllegalArgumentException ("Passed ID is empty");
-    if (aCompany == null)
-      throw new NullPointerException ("company");
-    m_sID = sID;
-    m_aCompany = aCompany;
+    m_sID = ValueEnforcer.notEmpty (sID, "ID");
+    m_aCompany = ValueEnforcer.notNull (aCompany, "Company");
   }
 
   @Nonnull
@@ -162,8 +158,7 @@ public final class CompanySite implements ICompanySite
   @Nonnull
   public EChange setAddress (@Nonnull final IAddress aAddress)
   {
-    if (aAddress == null)
-      throw new NullPointerException ("address");
+    ValueEnforcer.notNull (aAddress, "Address");
 
     if (aAddress.getType () == null)
       aAddress.setType (EAddressType.OFFICE);
@@ -183,8 +178,7 @@ public final class CompanySite implements ICompanySite
   @Nonnull
   public EChange setDefaultTelNo (@Nonnull final ITelephoneNumber aTelNo)
   {
-    if (aTelNo == null)
-      throw new NullPointerException ("telNo");
+    ValueEnforcer.notNull (aTelNo, "TelNo");
 
     if (aTelNo.getType () == null)
       aTelNo.setType (ETelephoneType.OFFICE);
@@ -204,8 +198,7 @@ public final class CompanySite implements ICompanySite
   @Nonnull
   public EChange setDefaultFaxNo (@Nonnull final ITelephoneNumber aFaxNo)
   {
-    if (aFaxNo == null)
-      throw new NullPointerException ("faxNo");
+    ValueEnforcer.notNull (aFaxNo, "FaxNo");
 
     if (aFaxNo.getType () == null)
       aFaxNo.setType (ETelephoneType.OFFICE_FAX);
@@ -225,8 +218,7 @@ public final class CompanySite implements ICompanySite
   @Nonnull
   public EChange setDefaultEmailAddress (@Nonnull final IExtendedEmailAddress aEmailAddress)
   {
-    if (aEmailAddress == null)
-      throw new NullPointerException ("emailAddress");
+    ValueEnforcer.notNull (aEmailAddress, "EmailAddress");
 
     if (aEmailAddress.getType () == null)
       aEmailAddress.setType (EEmailAddressType.OFFICE);

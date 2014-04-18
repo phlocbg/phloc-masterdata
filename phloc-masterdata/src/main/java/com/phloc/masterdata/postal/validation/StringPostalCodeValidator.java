@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.string.StringHelper;
 import com.phloc.masterdata.postal.IPostalCodeCountry;
 import com.phloc.masterdata.postal.PostalCodeManager;
@@ -46,10 +47,8 @@ public final class StringPostalCodeValidator extends AbstractStringValidator
 
   public StringPostalCodeValidator (@Nonnull final PostalCodeManager aMgr, @Nonnull final Locale aCountry)
   {
-    if (aMgr == null)
-      throw new NullPointerException ("mgr");
-    if (aCountry == null)
-      throw new NullPointerException ("country");
+    ValueEnforcer.notNull (aMgr, "Mgr");
+    ValueEnforcer.notNull (aCountry, "Country");
     m_aPostalCountry = aMgr.getPostalCountryOfCountry (aCountry);
     if (m_aPostalCountry == null)
       s_aLogger.error ("No postal country information available for the passed country " + aCountry);

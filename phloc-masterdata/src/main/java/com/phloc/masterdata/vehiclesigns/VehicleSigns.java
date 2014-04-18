@@ -26,6 +26,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.collections.multimap.IMultiMapSetBased;
 import com.phloc.commons.collections.multimap.MultiHashMapHashSetBased;
@@ -203,8 +204,7 @@ public final class VehicleSigns
   @Nullable
   public static String getVehicleSign (@Nonnull final Locale aCountry)
   {
-    if (aCountry == null)
-      throw new NullPointerException ("locale");
+    ValueEnforcer.notNull (aCountry, "Country");
     return getVehicleSign (aCountry.getCountry ());
   }
 

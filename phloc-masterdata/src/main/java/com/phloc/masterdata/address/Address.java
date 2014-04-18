@@ -89,7 +89,7 @@ public class Address implements IAddress
     m_sCity = aBase.m_sCity;
     m_sStreet = aBase.m_sStreet;
     m_sBuildingNumber = aBase.m_sBuildingNumber;
-    m_sPostalCode = aBase.m_sPostOfficeBox;
+    m_sPostOfficeBox = aBase.m_sPostOfficeBox;
   }
 
   public Address (@Nonnull final IReadonlyAddress aBase, @Nonnull final Locale aSortLocale)
