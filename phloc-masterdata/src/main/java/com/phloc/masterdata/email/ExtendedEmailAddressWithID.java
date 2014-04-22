@@ -66,6 +66,15 @@ public class ExtendedEmailAddressWithID extends ExtendedEmailAddress implements 
     super (eType, sAddress, sPersonal);
   }
 
+  ExtendedEmailAddressWithID (final int nID,
+                              @Nullable final EEmailAddressType eType,
+                              @Nullable final String sAddress,
+                              @Nullable final String sPersonal)
+  {
+    super (eType, sAddress, sPersonal);
+    setID (nID);
+  }
+
   @Column (name = FIELD_ID)
   @Id
   @GeneratedValue (generator = "email_gen")

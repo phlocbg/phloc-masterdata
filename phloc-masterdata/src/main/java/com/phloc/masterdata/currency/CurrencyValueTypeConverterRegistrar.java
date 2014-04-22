@@ -17,68 +17,20 @@
  */
 package com.phloc.masterdata.currency;
 
-import java.math.BigDecimal;
-
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.annotations.IsSPIImplementation;
-import com.phloc.commons.microdom.IMicroElement;
-import com.phloc.commons.microdom.convert.IMicroTypeConverter;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistrarSPI;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistry;
-import com.phloc.commons.microdom.impl.MicroElement;
 
 @Immutable
 @IsSPIImplementation
 public final class CurrencyValueTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
-  private static final String ATTR_CURRENCY = "currency";
-  private static final String ATTR_VALUE = "value";
-
-  /**
-   * Common base class for {@link CurrencyValue} and
-   * {@link ReadonlyCurrencyValue}
-   * 
-   * @author Philip Helger
-   */
-  private abstract static class AbstractCurrencyValueConverter implements IMicroTypeConverter
-  {
-    @Nonnull
-    public final IMicroElement convertToMicroElement (@Nonnull final Object aObject,
-                                                      @Nullable final String sNamespaceURI,
-                                                      @Nonnull final String sTagName)
-    {
-      final IReadonlyCurrencyValue aPrice = (IReadonlyCurrencyValue) aObject;
-      final IMicroElement ePrice = new MicroElement (sNamespaceURI, sTagName);
-      ePrice.setAttribute (ATTR_CURRENCY, aPrice.getCurrency ().getID ());
-      ePrice.setAttributeWithConversion (ATTR_VALUE, aPrice.getValue ());
-      return ePrice;
-    }
-  }
-
   public void registerMicroTypeConverter (@Nonnull final IMicroTypeConverterRegistry aRegistry)
   {
-    aRegistry.registerMicroElementTypeConverter (ReadonlyCurrencyValue.class, new AbstractCurrencyValueConverter ()
-    {
-      @Nonnull
-      public final ReadonlyCurrencyValue convertToNative (@Nonnull final IMicroElement ePrice)
-      {
-        final ECurrency eCurrency = ECurrency.getFromIDOrNull (ePrice.getAttribute (ATTR_CURRENCY));
-        final BigDecimal aValue = ePrice.getAttributeWithConversion (ATTR_VALUE, BigDecimal.class);
-        return new ReadonlyCurrencyValue (eCurrency, aValue);
-      }
-    });
-    aRegistry.registerMicroElementTypeConverter (CurrencyValue.class, new AbstractCurrencyValueConverter ()
-    {
-      @Nonnull
-      public final CurrencyValue convertToNative (@Nonnull final IMicroElement ePrice)
-      {
-        final ECurrency eCurrency = ECurrency.getFromIDOrNull (ePrice.getAttribute (ATTR_CURRENCY));
-        final BigDecimal aValue = ePrice.getAttributeWithConversion (ATTR_VALUE, BigDecimal.class);
-        return new CurrencyValue (eCurrency, aValue);
-      }
-    });
+    aRegistry.registerMicroElementTypeConverter (ReadonlyCurrencyValue.class, new ReadonlyCurrencyMicroTypeConverter ());
+    aRegistry.registerMicroElementTypeConverter (CurrencyValue.class, new CurrencyMicroTypeConverter ());
   }
 }
