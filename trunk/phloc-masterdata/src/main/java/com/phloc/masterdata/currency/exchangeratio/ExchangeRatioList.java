@@ -16,6 +16,7 @@ import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.compare.ESortOrder;
+import com.phloc.commons.state.EChange;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.datetime.PDTUtils;
 import com.phloc.masterdata.currency.ECurrency;
@@ -58,19 +59,17 @@ public final class ExchangeRatioList implements ICloneable <ExchangeRatioList>
   }
 
   @Nonnull
-  public ExchangeRatioList addExchangeRatio (@Nonnull final ExchangeRatio aExchangeRatio)
+  public EChange addExchangeRatio (@Nonnull final ExchangeRatio aExchangeRatio)
   {
     ValueEnforcer.notNull (aExchangeRatio, "ExchangeRatio");
-    m_aList.add (aExchangeRatio);
-    return this;
+    return EChange.valueOf (m_aList.add (aExchangeRatio));
   }
 
   @Nonnull
-  public ExchangeRatioList mergeWith (@Nonnull final ExchangeRatioList aList)
+  public EChange mergeWith (@Nonnull final ExchangeRatioList aList)
   {
     ValueEnforcer.notNull (aList, "List");
-    m_aList.addAll (aList.m_aList);
-    return this;
+    return EChange.valueOf (m_aList.addAll (aList.m_aList));
   }
 
   @Nullable
