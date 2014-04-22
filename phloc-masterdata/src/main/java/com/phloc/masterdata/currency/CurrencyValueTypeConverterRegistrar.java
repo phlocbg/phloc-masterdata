@@ -29,7 +29,6 @@ import com.phloc.commons.microdom.convert.IMicroTypeConverter;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistrarSPI;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistry;
 import com.phloc.commons.microdom.impl.MicroElement;
-import com.phloc.commons.string.StringParser;
 
 @Immutable
 @IsSPIImplementation
@@ -53,10 +52,8 @@ public final class CurrencyValueTypeConverterRegistrar implements IMicroTypeConv
     {
       final IReadonlyCurrencyValue aPrice = (IReadonlyCurrencyValue) aObject;
       final IMicroElement ePrice = new MicroElement (sNamespaceURI, sTagName);
-      if (aPrice.getCurrency () != null)
-        ePrice.setAttribute (ATTR_CURRENCY, aPrice.getCurrency ().getID ());
-      if (aPrice.getValue () != null)
-        ePrice.setAttribute (ATTR_VALUE, aPrice.getValue ().toString ());
+      ePrice.setAttribute (ATTR_CURRENCY, aPrice.getCurrency ().getID ());
+      ePrice.setAttributeWithConversion (ATTR_VALUE, aPrice.getValue ());
       return ePrice;
     }
   }
@@ -69,7 +66,7 @@ public final class CurrencyValueTypeConverterRegistrar implements IMicroTypeConv
       public final ReadonlyCurrencyValue convertToNative (@Nonnull final IMicroElement ePrice)
       {
         final ECurrency eCurrency = ECurrency.getFromIDOrNull (ePrice.getAttribute (ATTR_CURRENCY));
-        final BigDecimal aValue = StringParser.parseBigDecimal (ePrice.getAttribute (ATTR_VALUE));
+        final BigDecimal aValue = ePrice.getAttributeWithConversion (ATTR_VALUE, BigDecimal.class);
         return new ReadonlyCurrencyValue (eCurrency, aValue);
       }
     });
@@ -79,7 +76,7 @@ public final class CurrencyValueTypeConverterRegistrar implements IMicroTypeConv
       public final CurrencyValue convertToNative (@Nonnull final IMicroElement ePrice)
       {
         final ECurrency eCurrency = ECurrency.getFromIDOrNull (ePrice.getAttribute (ATTR_CURRENCY));
-        final BigDecimal aValue = StringParser.parseBigDecimal (ePrice.getAttribute (ATTR_VALUE));
+        final BigDecimal aValue = ePrice.getAttributeWithConversion (ATTR_VALUE, BigDecimal.class);
         return new CurrencyValue (eCurrency, aValue);
       }
     });
