@@ -44,12 +44,6 @@ public final class ExchangeRatio
     return m_aRatio;
   }
 
-  @Nonnull
-  public BigDecimal applyExchangeRatio (@Nonnull final BigDecimal aSourceValue)
-  {
-    return aSourceValue.multiply (m_aRatio);
-  }
-
   @Override
   public boolean equals (final Object o)
   {
