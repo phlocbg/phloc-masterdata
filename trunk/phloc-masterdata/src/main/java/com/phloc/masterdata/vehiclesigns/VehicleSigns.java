@@ -189,9 +189,9 @@ public final class VehicleSigns
     _add ("ZW", "ZW");
   }
 
-  private static void _add (@Nonnull final String sCountry, @Nonnull final String sSign)
+  private static void _add (@Nonnull final String sCountryCode, @Nonnull final String sSign)
   {
-    final Locale aCountry = CountryCache.getCountry (sCountry);
+    final Locale aCountry = CountryCache.getCountry (sCountryCode);
     if (s_aCountryToSign.containsKey (aCountry))
       throw new InitializationException ("Locale " + aCountry + " is already contained!");
     s_aCountryToSign.put (aCountry, sSign);
