@@ -13,12 +13,12 @@ import com.phloc.commons.system.SystemHelper;
 
 public final class PersonNameMicroTypeConverter implements IMicroTypeConverter
 {
-  static final String ATTR_SALUTATION = "salutation";
-  static final String ATTR_PREFIXTITLE = "prefixtitle";
-  static final String ATTR_FIRSTNAME = "firstname";
-  static final String ATTR_MIDDLENAME = "middlename";
-  static final String ATTR_LASTNAME = "lastname";
-  static final String ATTR_SUFFIXTITLE = "suffixtitle";
+  protected static final String ATTR_SALUTATION = "salutation";
+  protected static final String ATTR_PREFIXTITLE = "prefixtitle";
+  protected static final String ATTR_FIRSTNAME = "firstname";
+  protected static final String ATTR_MIDDLENAME = "middlename";
+  protected static final String ATTR_LASTNAME = "lastname";
+  protected static final String ATTR_SUFFIXTITLE = "suffixtitle";
 
   @Nonnull
   public IMicroElement convertToMicroElement (@Nonnull final Object aObject,
