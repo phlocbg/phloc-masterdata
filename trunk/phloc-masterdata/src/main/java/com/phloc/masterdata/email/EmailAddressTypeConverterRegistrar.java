@@ -18,64 +18,23 @@
 package com.phloc.masterdata.email;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
 import com.phloc.commons.annotations.IsSPIImplementation;
-import com.phloc.commons.microdom.IMicroElement;
-import com.phloc.commons.microdom.convert.IMicroTypeConverter;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistrarSPI;
 import com.phloc.commons.microdom.convert.IMicroTypeConverterRegistry;
-import com.phloc.commons.microdom.impl.MicroElement;
 
 @Immutable
 @IsSPIImplementation
 public final class EmailAddressTypeConverterRegistrar implements IMicroTypeConverterRegistrarSPI
 {
-  private abstract static class AbstractBaseConverter implements IMicroTypeConverter
-  {
-    @Nonnull
-    public IMicroElement convertToMicroElement (@Nonnull final Object aObject,
-                                                @Nullable final String sNamespaceURI,
-                                                @Nonnull final String sTagName)
-    {
-      final IReadonlyExtendedEmailAddress aEmail = (IReadonlyExtendedEmailAddress) aObject;
-      final IMicroElement eEmail = new MicroElement (sNamespaceURI, sTagName);
-      if (aEmail.getType () != null)
-        eEmail.setAttribute (ATTR_TYPE, aEmail.getType ().getID ());
-      eEmail.setAttribute (ATTR_ADDRESS, aEmail.getAddress ());
-      eEmail.setAttribute (ATTR_PERSONAL, aEmail.getPersonal ());
-      return eEmail;
-    }
-  }
-
-  private static final String ATTR_TYPE = "type";
-  private static final String ATTR_ADDRESS = "address";
-  private static final String ATTR_PERSONAL = "personal";
-
   public void registerMicroTypeConverter (@Nonnull final IMicroTypeConverterRegistry aRegistry)
   {
-    aRegistry.registerMicroElementTypeConverter (ExtendedEmailAddress.class, new AbstractBaseConverter ()
-    {
-      @Nonnull
-      public ExtendedEmailAddress convertToNative (@Nonnull final IMicroElement eEmail)
-      {
-        final EEmailAddressType eType = EEmailAddressType.getFromIDOrNull (eEmail.getAttribute (ATTR_TYPE));
-        final String sAddress = eEmail.getAttribute (ATTR_ADDRESS);
-        final String sPersonal = eEmail.getAttribute (ATTR_PERSONAL);
-        return new ExtendedEmailAddress (eType, sAddress, sPersonal);
-      }
-    });
-    aRegistry.registerMicroElementTypeConverter (ReadonlyExtendedEmailAddress.class, new AbstractBaseConverter ()
-    {
-      @Nonnull
-      public ReadonlyExtendedEmailAddress convertToNative (@Nonnull final IMicroElement eEmail)
-      {
-        final EEmailAddressType eType = EEmailAddressType.getFromIDOrNull (eEmail.getAttribute (ATTR_TYPE));
-        final String sAddress = eEmail.getAttribute (ATTR_ADDRESS);
-        final String sPersonal = eEmail.getAttribute (ATTR_PERSONAL);
-        return new ReadonlyExtendedEmailAddress (eType, sAddress, sPersonal);
-      }
-    });
+    aRegistry.registerMicroElementTypeConverter (ReadonlyExtendedEmailAddress.class,
+                                                 new ReadonlyExtendedEmailAddressMicroTypeConverter ());
+    aRegistry.registerMicroElementTypeConverter (ExtendedEmailAddress.class,
+                                                 new ExtendedEmailAddressMicroTypeConverter ());
+    aRegistry.registerMicroElementTypeConverter (ExtendedEmailAddressWithID.class,
+                                                 new ExtendedEmailAddressWithIDMicroTypeConverter ());
   }
 }
