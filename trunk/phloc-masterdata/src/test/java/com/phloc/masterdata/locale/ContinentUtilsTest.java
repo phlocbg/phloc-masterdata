@@ -36,7 +36,6 @@ public class ContinentUtilsTest
     assertTrue (ContinentUtils.getContinentsOfCountry ("AO").contains (EContinent.AFRICA));
     assertTrue (ContinentUtils.getContinentsOfCountry ("CN").contains (EContinent.ASIA));
     // No continent specified
-    if (ContinentUtils.USE_UNDEFINED_CONTINENT)
-      assertTrue (ContinentUtils.getContinentsOfCountry ("BV").contains (EContinent.UNDEFINED));
+    assertTrue (ContinentUtils.getContinentsOfCountry ("BV").contains (EContinent.UNDEFINED));
   }
 }

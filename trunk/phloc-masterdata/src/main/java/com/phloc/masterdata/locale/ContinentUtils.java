@@ -37,7 +37,6 @@ import com.phloc.commons.locale.country.CountryCache;
  */
 public final class ContinentUtils
 {
-  public static final boolean USE_UNDEFINED_CONTINENT = false;
   private static final IMultiMapSetBased <Locale, EContinent> s_aMap = new MultiHashMapTreeSetBased <Locale, EContinent> ();
 
   static
@@ -77,7 +76,7 @@ public final class ContinentUtils
     _register ("BS", EContinent.NORTH_AMERICA);
     _register ("BT", EContinent.ASIA);
     // Bouvet-Insel
-    _register ("BV", USE_UNDEFINED_CONTINENT ? EContinent.UNDEFINED : EContinent.AFRICA);
+    _register ("BV", EContinent.UNDEFINED);
     _register ("BW", EContinent.AFRICA);
     _register ("BY", EContinent.EUROPE);
     _register ("BZ", EContinent.NORTH_AMERICA);
@@ -244,10 +243,10 @@ public final class ContinentUtils
     _register ("SE", EContinent.EUROPE);
     _register ("SG", EContinent.ASIA);
     // St. Helena
-    _register ("SH", USE_UNDEFINED_CONTINENT ? EContinent.UNDEFINED : EContinent.AFRICA);
+    _register ("SH", EContinent.UNDEFINED);
     _register ("SI", EContinent.EUROPE);
     // Svalbard und Jan Mayen
-    _register ("SJ", USE_UNDEFINED_CONTINENT ? EContinent.UNDEFINED : EContinent.EUROPE);
+    _register ("SJ", EContinent.UNDEFINED);
     _register ("SK", EContinent.EUROPE);
     _register ("SL", EContinent.AFRICA);
     _register ("SM", EContinent.EUROPE);
@@ -306,8 +305,7 @@ public final class ContinentUtils
    *        The enum to be used. May not be <code>null</code> but may contain a
    *        single <code>null</code> element.
    */
-  private static void _register (@Nonnull @Nonempty final String sCountryCode,
-                                 @Nullable final EContinent... aContinents)
+  private static void _register (@Nonnull @Nonempty final String sCountryCode, @Nonnull final EContinent... aContinents)
   {
     final Locale aCountry = CountryCache.getCountry (sCountryCode);
     if (s_aMap.containsKey (aCountry))
@@ -322,9 +320,8 @@ public final class ContinentUtils
    * @param aLocale
    *        The locale to be used. May be <code>null</code>.
    * @return <code>null</code> if no continent data is defined. Otherwise a non-
-   *         <code>null</code> Set with all continents, which may contain
-   *         <code>null</code> elements if a country with no continent
-   *         assignment is present.
+   *         <code>null</code> Set with all continents, without
+   *         <code>null</code> elements.
    */
   @Nullable
   @ReturnsMutableCopy
@@ -346,9 +343,8 @@ public final class ContinentUtils
    * @param sCountryID
    *        The country ID to be used. May be <code>null</code>.
    * @return <code>null</code> if no continent data is defined. Otherwise a non-
-   *         <code>null</code> Set with all continents, which may contain
-   *         <code>null</code> elements if a country with no continent
-   *         assignment is present.
+   *         <code>null</code> Set with all continents, without
+   *         <code>null</code> elements.
    */
   @Nullable
   @ReturnsMutableCopy
