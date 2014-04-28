@@ -1,0 +1,7 @@
+com.phloc.masterdata.address.AddressTypeConverterRegistrar
+com.phloc.masterdata.currency.CurrencyValueTypeConverterRegistrar
+com.phloc.masterdata.currency.exchangeratio.ExchangeRatioTypeConverterRegistrar
+com.phloc.masterdata.email.EmailAddressTypeConverterRegistrar
+com.phloc.masterdata.person.PersonTypeConverterRegistrar
+com.phloc.masterdata.price.PriceTypeConverterRegistrar
+com.phloc.masterdata.telephone.TelephoneTypeConverterRegistrar
