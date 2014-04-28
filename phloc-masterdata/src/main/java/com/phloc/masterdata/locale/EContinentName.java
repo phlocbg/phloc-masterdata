@@ -42,7 +42,8 @@ public enum EContinentName implements IHasDisplayText
   EUROPE ("Europa", "Europe"),
   NORTH_AMERICA ("Nordamerika", "North America"),
   OCEANIA ("Ozeanien", "Oceania"),
-  SOUTH_AMERICA ("Südamerika", "South America");
+  SOUTH_AMERICA ("Südamerika", "South America"),
+  UNDEFINED ("Undefiniert", "Undefined");
 
   private final ITextProvider m_aTP;
 

@@ -37,7 +37,7 @@ import com.phloc.commons.locale.country.CountryCache;
  */
 public final class ContinentUtils
 {
-  public static final boolean USE_NULL_CONTINENT_IF_UNDEFINED = true;
+  public static final boolean USE_UNDEFINED_CONTINENT = false;
   private static final IMultiMapSetBased <Locale, EContinent> s_aMap = new MultiHashMapTreeSetBased <Locale, EContinent> ();
 
   static
@@ -77,7 +77,7 @@ public final class ContinentUtils
     _register ("BS", EContinent.NORTH_AMERICA);
     _register ("BT", EContinent.ASIA);
     // Bouvet-Insel
-    _register ("BV", USE_NULL_CONTINENT_IF_UNDEFINED ? null : EContinent.AFRICA);
+    _register ("BV", USE_UNDEFINED_CONTINENT ? EContinent.UNDEFINED : EContinent.AFRICA);
     _register ("BW", EContinent.AFRICA);
     _register ("BY", EContinent.EUROPE);
     _register ("BZ", EContinent.NORTH_AMERICA);
@@ -244,10 +244,10 @@ public final class ContinentUtils
     _register ("SE", EContinent.EUROPE);
     _register ("SG", EContinent.ASIA);
     // St. Helena
-    _register ("SH", USE_NULL_CONTINENT_IF_UNDEFINED ? null : EContinent.AFRICA);
+    _register ("SH", USE_UNDEFINED_CONTINENT ? EContinent.UNDEFINED : EContinent.AFRICA);
     _register ("SI", EContinent.EUROPE);
     // Svalbard und Jan Mayen
-    _register ("SJ", USE_NULL_CONTINENT_IF_UNDEFINED ? null : EContinent.EUROPE);
+    _register ("SJ", USE_UNDEFINED_CONTINENT ? EContinent.UNDEFINED : EContinent.EUROPE);
     _register ("SK", EContinent.EUROPE);
     _register ("SL", EContinent.AFRICA);
     _register ("SM", EContinent.EUROPE);

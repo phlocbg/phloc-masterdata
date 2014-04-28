@@ -35,7 +35,8 @@ public enum EContinent implements IHasID <String>, IHasDisplayText
   EUROPE ("eu", EContinentName.EUROPE),
   NORTH_AMERICA ("na", EContinentName.NORTH_AMERICA),
   OCEANIA ("oc", EContinentName.OCEANIA),
-  SOUTH_AMERICA ("sa", EContinentName.SOUTH_AMERICA);
+  SOUTH_AMERICA ("sa", EContinentName.SOUTH_AMERICA),
+  UNDEFINED ("ud", EContinentName.UNDEFINED);
 
   private final String m_sID;
   private final EContinentName m_aName;

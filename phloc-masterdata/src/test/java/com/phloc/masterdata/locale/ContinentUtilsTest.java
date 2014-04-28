@@ -17,7 +17,6 @@
  */
 package com.phloc.masterdata.locale;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -37,7 +36,7 @@ public class ContinentUtilsTest
     assertTrue (ContinentUtils.getContinentsOfCountry ("AO").contains (EContinent.AFRICA));
     assertTrue (ContinentUtils.getContinentsOfCountry ("CN").contains (EContinent.ASIA));
     // No continent specified
-    for (final EContinent e : EContinent.values ())
-      assertFalse (ContinentUtils.getContinentsOfCountry ("BV").contains (e));
+    if (ContinentUtils.USE_UNDEFINED_CONTINENT)
+      assertTrue (ContinentUtils.getContinentsOfCountry ("BV").contains (EContinent.UNDEFINED));
   }
 }
