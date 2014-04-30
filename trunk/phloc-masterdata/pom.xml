@@ -27,7 +27,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>phloc-masterdata</artifactId>
-  <version>3.4.3</version>
+  <version>3.4.4-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>phloc-masterdata</name>
   <url>http://repo.phloc.com/apidocs/phloc-masterdata/${project.version}</url>
@@ -41,9 +41,9 @@
   </licenses>
   
   <scm>
-    <url>http://code.google.com/p/phloc-masterdata/source/browse/tags/phloc-masterdata-3.4.3</url>
-    <connection>scm:svn:http://phloc-masterdata.googlecode.com/svn/tags/phloc-masterdata-3.4.3</connection>
-    <developerConnection>scm:svn:https://phloc-masterdata.googlecode.com/svn/tags/phloc-masterdata-3.4.3</developerConnection>
+    <url>http://code.google.com/p/phloc-masterdata/source/browse/</url>
+    <connection>scm:svn:http://phloc-masterdata.googlecode.com/svn/trunk/phloc-masterdata</connection>
+    <developerConnection>scm:svn:https://phloc-masterdata.googlecode.com/svn/trunk/phloc-masterdata</developerConnection>
   </scm>
 
   <organization>
