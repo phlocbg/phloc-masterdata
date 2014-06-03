@@ -25,12 +25,13 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.WillClose;
+import javax.annotation.concurrent.Immutable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.phloc.commons.ValueEnforcer;
-import com.phloc.commons.annotations.ReturnsImmutableObject;
+import com.phloc.commons.annotations.ReturnsMutableCopy;
 import com.phloc.commons.collections.ContainerHelper;
 import com.phloc.commons.io.IInputStreamProvider;
 import com.phloc.commons.io.resource.ClassPathResource;
@@ -52,6 +53,7 @@ public final class DeprecatedLocaleHandler
     static final DeprecatedLocaleHandler s_aInstance = readFromXML (new ClassPathResource ("codelists/locale-deprecated.xml"));
   }
 
+  @Immutable
   private static final class LocaleParts
   {
     private final String m_sLanguage;
@@ -109,10 +111,10 @@ public final class DeprecatedLocaleHandler
    * @return A set of all locales as specified in the file.
    */
   @Nonnull
-  @ReturnsImmutableObject
+  @ReturnsMutableCopy
   public Set <Locale> getAllDeprecatedLocales ()
   {
-    return ContainerHelper.makeUnmodifiable (m_aLocales);
+    return ContainerHelper.newSet (m_aLocales);
   }
 
   /**
@@ -159,6 +161,7 @@ public final class DeprecatedLocaleHandler
   public static DeprecatedLocaleHandler readFromXML (@Nonnull final IInputStreamProvider aISP)
   {
     ValueEnforcer.notNull (aISP, "InputStreamProvider");
+
     return readFromXML (aISP.getInputStream ());
   }
 
@@ -174,7 +177,7 @@ public final class DeprecatedLocaleHandler
   }
 
   /**
-   * @return The default singleton instance
+   * @return The default singleton instance. Never <code>null</code>.
    */
   @Nonnull
   public static DeprecatedLocaleHandler getDefaultInstance ()
