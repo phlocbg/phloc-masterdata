@@ -35,5 +35,12 @@ public class EDINBTest
     assertEquals (8350, Math.round (EDINB.B0.getHeightPixel (150)));
     assertEquals (2835, Math.round (EDINB.B0.getWidthPixel (72)));
     assertEquals (4008, Math.round (EDINB.B0.getHeightPixel (72)));
+
+    assertEquals (11811, EDINB.B0.getWidthPixelLong (300));
+    assertEquals (16701, EDINB.B0.getHeightPixelLong (300));
+    assertEquals (5906, EDINB.B0.getWidthPixelLong (150));
+    assertEquals (8350, EDINB.B0.getHeightPixelLong (150));
+    assertEquals (2835, EDINB.B0.getWidthPixelLong (72));
+    assertEquals (4008, EDINB.B0.getHeightPixelLong (72));
   }
 }
