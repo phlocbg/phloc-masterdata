@@ -8,25 +8,26 @@ import com.phloc.commons.annotations.Nonempty;
 import com.phloc.commons.lang.EnumHelper;
 
 /**
- * DIN A. Width and height are in portrait mode.<br>
- * <a href="http://www.din-formate.de/reihe-a-din-groessen-mm-pixel-dpi.html">
- * Source</a>
+ * DIN B. Width and height are in portrait mode.<br>
+ * <a href=
+ * "http://www.din-formate.de/reihe-b-din-groessen-uebersicht-auflistung-blattgroesse-masse-in-pixel-mm-dpi.html"
+ * >Source</a>
  * 
  * @author Philip Helger
  */
-public enum EDINA implements IDINSize
+public enum EDINB implements IDINSize
 {
-  A0 ("a0", 841, 1189),
-  A1 ("a1", 594, 841),
-  A2 ("a2", 420, 594),
-  A3 ("a3", 297, 420),
-  A4 ("a4", 210, 297),
-  A5 ("a5", 148, 210),
-  A6 ("a6", 105, 148),
-  A7 ("a7", 74, 105),
-  A8 ("a8", 52, 74),
-  A9 ("a9", 37, 52),
-  A10 ("a10", 26, 37);
+  B0 ("b0", 1000, 1414),
+  B1 ("b1", 707, 1000),
+  B2 ("b2", 500, 707),
+  B3 ("b3", 353, 500),
+  B4 ("b4", 250, 353),
+  B5 ("b5", 176, 250),
+  B6 ("b6", 125, 176),
+  B7 ("b7", 88, 125),
+  B8 ("b8", 62, 88),
+  B9 ("b9", 44, 62),
+  B10 ("b10", 31, 44);
 
   // TODO replace with CGlobal constant in phloc-commons > 4.3.3
   private static final double MM_PER_INCH = 25.4;
@@ -35,7 +36,7 @@ public enum EDINA implements IDINSize
   private final int m_nWidthMM;
   private final int m_nHeightMM;
 
-  private EDINA (@Nonnull @Nonempty final String sID, @Nonnegative final int nWidthMM, @Nonnegative final int nHeightMM)
+  private EDINB (@Nonnull @Nonempty final String sID, @Nonnegative final int nWidthMM, @Nonnegative final int nHeightMM)
   {
     m_sID = sID;
     m_nWidthMM = nWidthMM;
@@ -122,14 +123,14 @@ public enum EDINA implements IDINSize
   }
 
   @Nullable
-  public static IDINSize getFromIDOrNull (@Nullable final String sID)
+  public static EDINB getFromIDOrNull (@Nullable final String sID)
   {
-    return EnumHelper.getFromIDOrNull (EDINA.class, sID);
+    return EnumHelper.getFromIDOrNull (EDINB.class, sID);
   }
 
   @Nullable
-  public static IDINSize getFromIDOrDefault (@Nullable final String sID, @Nullable final EDINA eDefault)
+  public static EDINB getFromIDOrDefault (@Nullable final String sID, @Nullable final EDINB eDefault)
   {
-    return EnumHelper.getFromIDOrDefault (EDINA.class, sID, eDefault);
+    return EnumHelper.getFromIDOrDefault (EDINB.class, sID, eDefault);
   }
 }
