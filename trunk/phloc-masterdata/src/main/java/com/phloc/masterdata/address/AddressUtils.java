@@ -24,6 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.ThreadSafe;
 
+import com.phloc.commons.ValueEnforcer;
 import com.phloc.commons.exceptions.InitializationException;
 import com.phloc.commons.string.StringHelper;
 
@@ -142,6 +143,16 @@ public final class AddressUtils
   @Nullable
   public static String getAddressString (@Nullable final IReadonlyAddress aAddress, @Nonnull final Locale aDisplayLocale)
   {
+    return getAddressString (aAddress, aDisplayLocale, "\n");
+  }
+
+  @Nullable
+  public static String getAddressString (@Nullable final IReadonlyAddress aAddress,
+                                         @Nonnull final Locale aDisplayLocale,
+                                         @Nonnull final String sLineSeparator)
+  {
+    ValueEnforcer.notNull (aDisplayLocale, "DisplayLocale");
+    ValueEnforcer.notNull (sLineSeparator, "LineSeparator");
     if (aAddress == null)
       return null;
 
@@ -157,21 +168,21 @@ public final class AddressUtils
     if (StringHelper.hasText (sNextLine))
     {
       if (aSB.length () > 0)
-        aSB.append ('\n');
+        aSB.append (sLineSeparator);
       aSB.append (sNextLine);
     }
 
     if (StringHelper.hasText (aAddress.getPostOfficeBox ()))
     {
       if (aSB.length () > 0)
-        aSB.append ('\n');
+        aSB.append (sLineSeparator);
       aSB.append (aAddress.getPostOfficeBox ());
     }
 
     if (StringHelper.hasText (aAddress.getCountry ()))
     {
       if (aSB.length () > 0)
-        aSB.append ('\n');
+        aSB.append (sLineSeparator);
 
       aSB.append (aAddress.getCountryDisplayName (aDisplayLocale));
     }
