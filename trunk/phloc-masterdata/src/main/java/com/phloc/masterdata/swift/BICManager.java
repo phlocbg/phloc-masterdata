@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 import javax.annotation.RegEx;
 
+import com.phloc.commons.annotations.PresentForCodeCoverage;
 import com.phloc.commons.regex.RegExPool;
 import com.phloc.commons.string.StringHelper;
 
@@ -41,9 +42,16 @@ public final class BICManager
   /** The suffix to be appended to a "short" BIC to make it a "long" BIC */
   public static final String BIC_SUFFIX_MIN_TO_MAX = "XXX";
 
+  /** The regular expression a BIC must conform */
   @RegEx
   public static final String BIC_PATTERN = "(?i)^[a-z]{6}[a-z0-9]{2}([a-z0-9]{3})?$";
+
+  /** Precompiled pattern */
   private static final Pattern s_aBICPattern = RegExPool.getPattern (BIC_PATTERN);
+
+  @PresentForCodeCoverage
+  @SuppressWarnings ("unused")
+  private static final BICManager s_aInstance = new BICManager ();
 
   private BICManager ()
   {}
@@ -58,7 +66,7 @@ public final class BICManager
    *        Zeichen eine 1 ist, so handelt es sich um einen passiven SWIFT-Teilnehmer;
    *        wenn das zweite Zeichen eine 0 ist, so handelt es sich um einen Test-BIC)
    *  bbb   3-stellige Kennzeichnung (Branch-Code) der Filiale oder Abteilung (optional,
-   *        Standard: <code>XX X</code> (ohne Leerzeichen!), kann weggelassen werden,
+   *        Standard: <code>XXX</code> (ohne Leerzeichen!), kann weggelassen werden,
    *        andere Kennzeichen nicht) (alphanumerische Zeichen)
    * </pre>
    * 
