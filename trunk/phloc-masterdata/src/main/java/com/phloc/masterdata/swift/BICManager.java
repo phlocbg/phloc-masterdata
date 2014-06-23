@@ -20,6 +20,7 @@ package com.phloc.masterdata.swift;
 import java.util.regex.Pattern;
 
 import javax.annotation.Nullable;
+import javax.annotation.RegEx;
 
 import com.phloc.commons.regex.RegExPool;
 import com.phloc.commons.string.StringHelper;
@@ -31,7 +32,18 @@ import com.phloc.commons.string.StringHelper;
  */
 public final class BICManager
 {
-  private static final Pattern s_aBICPattern = RegExPool.getPattern ("(?i)^[a-z]{6}[a-z0-9]{2}([a-z0-9]{3})?$");
+  /** Minimum BIC length */
+  public static final int BIC_LENGTH_MIN = 8;
+
+  /** Maximum BIC length */
+  public static final int BIC_LENGTH_MAX = 11;
+
+  /** The suffix to be appended to a "short" BIC to make it a "long" BIC */
+  public static final String BIC_SUFFIX_MIN_TO_MAX = "XXX";
+
+  @RegEx
+  public static final String BIC_PATTERN = "(?i)^[a-z]{6}[a-z0-9]{2}([a-z0-9]{3})?$";
+  private static final Pattern s_aBICPattern = RegExPool.getPattern (BIC_PATTERN);
 
   private BICManager ()
   {}
