@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2006-2014 phloc systems
+    Copyright (C) 2006-2015 phloc systems
     http://www.phloc.com
     office[at]phloc[dot]com
 
@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.phloc</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>23.2</version>
+    <version>24.0</version>
     <relativePath>../phloc-parent-pom/pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
   <packaging>bundle</packaging>
   <name>phloc-masterdata</name>
   <description>Library with support for certain re-ocurring standard business objects</description>
-  <url>http://repo.phloc.com/apidocs/phloc-masterdata/${project.version}</url>
+  <url>https://github.com/phlocbg/phloc-masterdata/tree/master/phloc-masterdata</url>
      
   <licenses>
     <license>
@@ -42,12 +42,14 @@
   </licenses>
   
   <scm>
-    <url>http://code.google.com/p/phloc-masterdata/source/browse/</url>
-    <connection>scm:svn:http://phloc-masterdata.googlecode.com/svn/trunk/phloc-masterdata</connection>
-    <developerConnection>scm:svn:https://phloc-masterdata.googlecode.com/svn/trunk/phloc-masterdata</developerConnection>
-  </scm>
+    <connection>scm:git:https://github.com/phlocbg/phloc-masterdata</connection>
+    <developerConnection>scm:git:https://github.com/phlocbg/phloc-masterdata</developerConnection>
+  <url>http://github.com/phlocbg/phloc-masterdata</url>
+    <tag>HEAD</tag>
 
-  <organization>
+</scm>
+
+<organization>
     <name>phloc systems</name>
     <url>http://www.phloc.com</url>
   </organization>
@@ -71,24 +73,24 @@
     <dependency>
       <groupId>com.phloc</groupId>
       <artifactId>phloc-datetime</artifactId>
-      <version>3.1.4</version>
+      <version>3.2.0</version>
     </dependency>
     
     <dependency>
       <groupId>com.phloc</groupId>
       <artifactId>phloc-validation</artifactId>
-      <version>3.2.0</version>
+      <version>3.3.0</version>
     </dependency>
     <dependency>
       <groupId>com.phloc</groupId>
       <artifactId>phloc-web</artifactId>
-      <version>5.5.0</version>
+      <version>5.8.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.phloc</groupId>
       <artifactId>phloc-scopes</artifactId>
-      <version>6.3.0</version>
+      <version>6.4.0</version>
       <optional>true</optional>
     </dependency>
     <dependency>
