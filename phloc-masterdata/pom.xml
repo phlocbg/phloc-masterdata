@@ -27,7 +27,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>phloc-masterdata</artifactId>
-  <version>3.6.1-SNAPSHOT</version>
+  <version>3.6.1</version>
   <packaging>bundle</packaging>
   <name>phloc-masterdata</name>
   <description>Library with support for certain re-ocurring standard business objects</description>
@@ -45,7 +45,7 @@
     <connection>scm:git:https://github.com/phlocbg/phloc-masterdata</connection>
     <developerConnection>scm:git:https://github.com/phlocbg/phloc-masterdata</developerConnection>
   <url>http://github.com/phlocbg/phloc-masterdata</url>
-    <tag>HEAD</tag>
+    <tag>phloc-masterdata-3.6.1c</tag>
 
 </scm>
 
