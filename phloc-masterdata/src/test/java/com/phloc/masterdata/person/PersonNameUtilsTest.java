@@ -73,6 +73,7 @@ public final class PersonNameUtilsTest extends AbstractPhlocTestCase
     assertEquals ("Hans-Peter", PersonNameUtils.unifyName (" hans-peter ", L_DE));
     assertEquals ("Hans-Peter", PersonNameUtils.unifyName ("  hans---peter   ", L_DE));
     assertEquals ("Hans-Peter", PersonNameUtils.unifyName ("  HANS---PETER   ", L_DE));
+    assertEquals ("Anita und Boris", PersonNameUtils.unifyName ("  AniTa  uNd    BORIS   ", L_DE));
     PersonNameUtils.setComplexNameHandlingEnabled (PersonNameUtils.DEFAULT_COMPLEX_NAME_HANDLING);
   }
 }

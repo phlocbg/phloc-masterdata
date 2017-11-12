@@ -39,29 +39,30 @@ public final class PersonNameUtils
   public static final boolean DEFAULT_FIRST_NAME_FIRST = true;
 
   private static final String [] NOBILIARY_PARTICLES = new String [] { "aw",
-                                                                      "da",
-                                                                      "dalla",
-                                                                      "de",
-                                                                      "degli",
-                                                                      "del",
-                                                                      "dem",
-                                                                      "der",
-                                                                      "di",
-                                                                      "du",
-                                                                      "of",
-                                                                      "ter",
-                                                                      "thoe",
-                                                                      "tot",
-                                                                      "und",
-                                                                      "v.",
-                                                                      "van",
-                                                                      "vom",
-                                                                      "von",
-                                                                      "zu",
-                                                                      "zum" };
+                                                                       "da",
+                                                                       "dalla",
+                                                                       "de",
+                                                                       "degli",
+                                                                       "del",
+                                                                       "dem",
+                                                                       "der",
+                                                                       "di",
+                                                                       "du",
+                                                                       "of",
+                                                                       "ter",
+                                                                       "thoe",
+                                                                       "tot",
+                                                                       "und",
+                                                                       "v.",
+                                                                       "van",
+                                                                       "vom",
+                                                                       "von",
+                                                                       "zu",
+                                                                       "zum" };
 
   private static final AtomicBoolean s_aComplexNameHandlingEnabled = new AtomicBoolean (DEFAULT_COMPLEX_NAME_HANDLING);
   private static final AtomicBoolean s_aFirstNameFirst = new AtomicBoolean (DEFAULT_FIRST_NAME_FIRST);
+  private static INameHandlerDeterminator s_aDeterminator = null;
 
   private PersonNameUtils ()
   {}
@@ -74,6 +75,16 @@ public final class PersonNameUtils
   public static boolean isComplexNameHandlingEnabled ()
   {
     return s_aComplexNameHandlingEnabled.get ();
+  }
+
+  public static void setNameHandlerDeterminator (@Nullable final INameHandlerDeterminator aDeterminator)
+  {
+    s_aDeterminator = aDeterminator;
+  }
+
+  private static boolean isApplyNameHandling ()
+  {
+    return s_aDeterminator == null || s_aDeterminator.isApplyNameHandling ();
   }
 
   public static void setFirstNameFirst (final boolean bFirstNameFirst)
@@ -98,7 +109,8 @@ public final class PersonNameUtils
    * Unify a single name part. Performs the following transformations:
    * <ul>
    * <li>Remove leading and trailing whitespaces</li>
-   * <li>If the name is all uppercase, downcase all except the first character</li>
+   * <li>If the name is all uppercase, downcase all except the first character
+   * </li>
    * </ul>
    * 
    * @param sPart
@@ -124,7 +136,7 @@ public final class PersonNameUtils
     s = s.substring (0, 1).toUpperCase (aSortLocale) + s.substring (1).toLowerCase (aSortLocale);
 
     // special cases: nobiliary particles ;-)
-    if (ArrayHelper.contains (NOBILIARY_PARTICLES, s))
+    if (ArrayHelper.contains (NOBILIARY_PARTICLES, s.toLowerCase (aSortLocale)))
       s = s.toLowerCase (aSortLocale);
 
     return s;
@@ -135,6 +147,11 @@ public final class PersonNameUtils
   {
     if (sName == null)
       return null;
+
+    if (!isApplyNameHandling ())
+    {
+      return sName;
+    }
 
     if (!isComplexNameHandlingEnabled ())
     {
@@ -161,7 +178,7 @@ public final class PersonNameUtils
           final String sRealPart = _unifySinglePart (sPart, aSortLocale);
           if (sRealPart == null)
           {
-            // Ignore all empty parts (e.g. "Kai  Uwe" with 2 spaces between
+            // Ignore all empty parts (e.g. "Kai Uwe" with 2 spaces between
             continue;
           }
 
