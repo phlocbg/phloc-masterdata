@@ -26,6 +26,11 @@
       <text locale="en">Added possibility to enable/disable person address handling via a custom determinator (IAddressHandlerDeterminator)</text>
     </change>
   </entry>
+  <entry date="2018-11-22" category="tech" action="fix">
+    <change>
+      <text locale="en">Fixed applying the correct scale when parsing currency values</text>
+    </change>
+  </entry>
   <entry date="2018-11-22" category="tech" action="update">
     <change>
       <text locale="en">Updated dependencies</text>

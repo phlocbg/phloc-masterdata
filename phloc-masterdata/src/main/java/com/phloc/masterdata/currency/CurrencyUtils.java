@@ -160,6 +160,32 @@ public final class CurrencyUtils
   }
 
   /**
+   * Parse a currency value from string using the currency default rounding
+   * mode.<br>
+   * Source:
+   * <code>http://wheelworkshop.blogspot.com/2006/02/parsing-currency-into-bigdecimal.html</code>
+   * 
+   * @param sStr
+   *        The string to be parsed.
+   * @param aFormat
+   *        The formatting object to be used. May not be <code>null</code>.
+   * @param aDefault
+   *        The default value to be returned, if parsing failed.
+   * @param aScale
+   *        The scale to be used. May be <code>null</code>
+   * @return Either default value or the {@link BigDecimal} value with the
+   *         correct scaling.
+   */
+  @Nullable
+  public static BigDecimal parseCurrency (@Nullable final String sStr,
+                                          @Nonnull final DecimalFormat aFormat,
+                                          @Nullable final BigDecimal aDefault,
+                                          @Nullable final Integer aScale)
+  {
+    return parseCurrency (sStr, aFormat, aDefault, ECurrency.DEFAULT_ROUNDING_MODE, aScale);
+  }
+
+  /**
    * Parse a currency value from string using a custom rounding mode.
    * 
    * @param sStr
@@ -179,9 +205,40 @@ public final class CurrencyUtils
                                           @Nullable final BigDecimal aDefault,
                                           @Nonnull final RoundingMode eRoundingMode)
   {
+    return parseCurrency (sStr, aFormat, aDefault, eRoundingMode, null);
+  }
+
+  /**
+   * Parse a currency value from string using a custom rounding mode.
+   * 
+   * @param sStr
+   *        The string to be parsed.
+   * @param aFormat
+   *        The formatting object to be used. May not be <code>null</code>.
+   * @param aDefault
+   *        The default value to be returned, if parsing failed.
+   * @param eRoundingMode
+   *        The rounding mode to be used. May not be <code>null</code>.
+   * @param aScale
+   *        The scale to be used. May be <code>null</code>
+   * @return Either default value or the {@link BigDecimal} value with the
+   *         correct scaling.
+   */
+  @Nullable
+  public static BigDecimal parseCurrency (@Nullable final String sStr,
+                                          @Nonnull final DecimalFormat aFormat,
+                                          @Nullable final BigDecimal aDefault,
+                                          @Nonnull final RoundingMode eRoundingMode,
+                                          @Nullable final Integer aScale)
+  {
     // So that the call to "parse" returns a BigDecimal
     aFormat.setParseBigDecimal (true);
     aFormat.setRoundingMode (eRoundingMode);
+
+    if (aScale != null)
+    {
+      aFormat.setMaximumFractionDigits (aScale.intValue ());
+    }
 
     // Parse as double
     final BigDecimal aNum = LocaleFormatter.parseBigDecimal (sStr, aFormat);
