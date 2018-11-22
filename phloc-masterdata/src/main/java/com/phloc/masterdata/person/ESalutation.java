@@ -33,11 +33,11 @@ import com.phloc.commons.name.IHasDisplayText;
  */
 public enum ESalutation implements IHasDisplayText, IHasID <String>
 {
-  MISTER ("mr", EGender.MALE, ESalutationName.MISTER, ESalutationGreeting.MISTER, ESalutationGreetingComplete.MISTER),
-  MISSES ("mrs", EGender.FEMALE, ESalutationName.MISSES, ESalutationGreeting.MISSES, ESalutationGreetingComplete.MISSES),
-  FAMILY ("fam", null, ESalutationName.FAMILY, ESalutationGreeting.FAMILY, ESalutationGreetingComplete.FAMILY),
-  COMPANY ("com", null, ESalutationName.COMPANY, ESalutationGreeting.COMPANY, ESalutationGreetingComplete.COMPANY),
-  CLUB ("cl", null, ESalutationName.CLUB, ESalutationGreeting.CLUB, ESalutationGreetingComplete.CLUB);
+ MISTER ("mr", EGender.MALE, ESalutationName.MISTER, ESalutationGreeting.MISTER, ESalutationGreetingComplete.MISTER),
+ MISSES ("mrs", EGender.FEMALE, ESalutationName.MISSES, ESalutationGreeting.MISSES, ESalutationGreetingComplete.MISSES),
+ FAMILY ("fam", null, ESalutationName.FAMILY, ESalutationGreeting.FAMILY, ESalutationGreetingComplete.FAMILY),
+ COMPANY ("com", null, ESalutationName.COMPANY, ESalutationGreeting.COMPANY, ESalutationGreetingComplete.COMPANY),
+ CLUB ("cl", null, ESalutationName.CLUB, ESalutationGreeting.CLUB, ESalutationGreetingComplete.CLUB);
 
   private final String m_sID;
   private final EGender m_eGender;
@@ -51,17 +51,18 @@ public enum ESalutation implements IHasDisplayText, IHasID <String>
                        @Nonnull final ESalutationGreeting eGreeting,
                        @Nonnull final ESalutationGreetingComplete eGreetingComplete)
   {
-    m_sID = sID;
-    m_eGender = eGender;
-    m_aName = eName;
-    m_aGreeting = eGreeting;
-    m_aGreetingComplete = eGreetingComplete;
+    this.m_sID = sID;
+    this.m_eGender = eGender;
+    this.m_aName = eName;
+    this.m_aGreeting = eGreeting;
+    this.m_aGreetingComplete = eGreetingComplete;
   }
 
+  @Override
   @Nonnull
   public String getID ()
   {
-    return m_sID;
+    return this.m_sID;
   }
 
   /**
@@ -71,37 +72,38 @@ public enum ESalutation implements IHasDisplayText, IHasID <String>
   @Nullable
   public EGender getGender ()
   {
-    return m_eGender;
+    return this.m_eGender;
   }
 
   @Nonnull
   public IHasDisplayText getName ()
   {
-    return m_aName;
+    return this.m_aName;
   }
 
+  @Override
   @Nullable
   public String getDisplayText (@Nonnull final Locale aContentLocale)
   {
-    return m_aName.getDisplayText (aContentLocale);
+    return this.m_aName.getDisplayText (aContentLocale);
   }
 
   @Nonnull
   public IHasDisplayText getGreeting ()
   {
-    return m_aGreeting;
+    return this.m_aGreeting;
   }
 
   @Nullable
   public String getGreeting (final Locale aContentLocale)
   {
-    return m_aGreeting.getDisplayText (aContentLocale);
+    return this.m_aGreeting.getDisplayText (aContentLocale);
   }
 
   @Nullable
   public String getGreetingComplete (final Locale aContentLocale)
   {
-    return m_aGreetingComplete.getDisplayText (aContentLocale);
+    return this.m_aGreetingComplete.getDisplayText (aContentLocale);
   }
 
   @Nullable

@@ -31,7 +31,7 @@ import com.phloc.commons.string.StringHelper;
 /**
  * Contains utility methods for addresses.
  * 
- * @author Philip Helger
+ * @author Boris Gregorcic
  */
 @ThreadSafe
 public final class AddressUtils
@@ -40,6 +40,7 @@ public final class AddressUtils
   private static final String [] STREET_REPLACE = new String [] { "straße", "gasse" };
 
   private static final AtomicBoolean s_aComplexAddressHandlingEnabled = new AtomicBoolean (false);
+  private static IAddressHandlerDeterminator s_aDeterminator = null;
 
   static
   {
@@ -57,7 +58,17 @@ public final class AddressUtils
 
   public static boolean isComplexAddressHandlingEnabled ()
   {
-    return s_aComplexAddressHandlingEnabled.get ();
+    return s_aComplexAddressHandlingEnabled.get () && isApplyUnification ();
+  }
+
+  public static void setAddressHandlerDeterminator (@Nullable final IAddressHandlerDeterminator aDeterminator)
+  {
+    s_aDeterminator = aDeterminator;
+  }
+
+  private static boolean isApplyUnification ()
+  {
+    return s_aDeterminator == null || s_aDeterminator.isApplyAddressHandling ();
   }
 
   @Nullable
@@ -141,7 +152,8 @@ public final class AddressUtils
   }
 
   @Nullable
-  public static String getAddressString (@Nullable final IReadonlyAddress aAddress, @Nonnull final Locale aDisplayLocale)
+  public static String getAddressString (@Nullable final IReadonlyAddress aAddress,
+                                         @Nonnull final Locale aDisplayLocale)
   {
     return getAddressString (aAddress, aDisplayLocale, "\n");
   }

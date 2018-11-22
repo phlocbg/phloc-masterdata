@@ -74,7 +74,7 @@ public final class PersonNameUtils
 
   public static boolean isComplexNameHandlingEnabled ()
   {
-    return s_aComplexNameHandlingEnabled.get ();
+    return s_aComplexNameHandlingEnabled.get () && isApplyNameHandling ();
   }
 
   public static void setNameHandlerDeterminator (@Nullable final INameHandlerDeterminator aDeterminator)
@@ -96,9 +96,9 @@ public final class PersonNameUtils
    * Determine the order how the customer display name is assembled. This was
    * introduced for starkl.hu as they want the lastname before the firstname
    * 
-   * @return <code>true</code> if the customer display name is
-   *         "firstname lastname". <code>false</code> if the customer display
-   *         name is "lastname firstname"
+   * @return <code>true</code> if the customer display name is "firstname
+   *         lastname". <code>false</code> if the customer display name is
+   *         "lastname firstname"
    */
   public static boolean isFirstNameFirst ()
   {
@@ -147,11 +147,6 @@ public final class PersonNameUtils
   {
     if (sName == null)
       return null;
-
-    if (!isApplyNameHandling ())
-    {
-      return sName;
-    }
 
     if (!isComplexNameHandlingEnabled ())
     {

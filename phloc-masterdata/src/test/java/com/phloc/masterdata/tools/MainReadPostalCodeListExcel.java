@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -82,55 +83,55 @@ public class MainReadPostalCodeListExcel
         throw new IllegalArgumentException ("ISO");
       if (ContainerHelper.isEmpty (aFormats))
         throw new IllegalArgumentException ("formats");
-      m_sCountry = sCountry;
-      m_aValidFrom = aValidFrom == null ? null : PDTFactory.createLocalDateFromMillis (aValidFrom.getTime ());
-      m_sISO = sISO;
-      m_aFormats = aFormats;
-      m_sNote = sNote;
+      this.m_sCountry = sCountry;
+      this.m_aValidFrom = aValidFrom == null ? null : PDTFactory.createLocalDateFromMillis (aValidFrom.getTime ());
+      this.m_sISO = sISO;
+      this.m_aFormats = aFormats;
+      this.m_sNote = sNote;
     }
 
     @Nonnull
     @Nonempty
     public String getCountry ()
     {
-      return m_sCountry;
+      return this.m_sCountry;
     }
 
     @Nullable
     public LocalDate getValidFrom ()
     {
-      return m_aValidFrom;
+      return this.m_aValidFrom;
     }
 
     @Nullable
     public LocalDate getValidTo ()
     {
-      return m_aValidTo;
+      return this.m_aValidTo;
     }
 
     public void setValidTo (final LocalDate aValidTo)
     {
-      m_aValidTo = aValidTo;
+      this.m_aValidTo = aValidTo;
     }
 
     @Nonnull
     @Nonempty
     public String getISO ()
     {
-      return m_sISO;
+      return this.m_sISO;
     }
 
     @Nonnull
     @ReturnsImmutableObject
     public List <String> getFormats ()
     {
-      return ContainerHelper.makeUnmodifiable (m_aFormats);
+      return ContainerHelper.makeUnmodifiable (this.m_aFormats);
     }
 
     @Nullable
     public String getNote ()
     {
-      return m_sNote;
+      return this.m_sNote;
     }
   }
 
@@ -177,7 +178,7 @@ public class MainReadPostalCodeListExcel
       }
       final Cell aDateCell = aRow.getCell (1);
       Date aIntroducedDate = null;
-      if (aDateCell != null && aDateCell.getCellType () != Cell.CELL_TYPE_BLANK)
+      if (aDateCell != null && aDateCell.getCellType () != CellType.BLANK)
       {
         final Number aNum = ExcelReadUtils.getCellValueNumber (aDateCell);
         final int nYear = aNum.intValue ();
