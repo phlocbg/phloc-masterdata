@@ -33,6 +33,8 @@ import com.phloc.commons.string.StringHelper;
 @Immutable
 public final class PersonNameUtils
 {
+  /** By default simple name handling is enabled */
+  public static final boolean DEFAULT_NAME_HANDLING = true;
   /** By default complex name handling is disabled */
   public static final boolean DEFAULT_COMPLEX_NAME_HANDLING = false;
   /** By default a persons first name comes before the last name */
@@ -60,12 +62,23 @@ public final class PersonNameUtils
                                                                        "zu",
                                                                        "zum" };
 
+  private static final AtomicBoolean s_aNameHandlingEnabled = new AtomicBoolean (DEFAULT_NAME_HANDLING);
   private static final AtomicBoolean s_aComplexNameHandlingEnabled = new AtomicBoolean (DEFAULT_COMPLEX_NAME_HANDLING);
   private static final AtomicBoolean s_aFirstNameFirst = new AtomicBoolean (DEFAULT_FIRST_NAME_FIRST);
   private static INameHandlerDeterminator s_aDeterminator = null;
 
   private PersonNameUtils ()
   {}
+
+  public static void setNameHandlingEnabled (final boolean bEnabled)
+  {
+    s_aNameHandlingEnabled.set (bEnabled);
+  }
+
+  public static boolean isNameHandlingEnabled ()
+  {
+    return s_aNameHandlingEnabled.get () && isApplyNameHandling ();
+  }
 
   public static void setComplexNameHandlingEnabled (final boolean bEnabled)
   {
@@ -74,7 +87,7 @@ public final class PersonNameUtils
 
   public static boolean isComplexNameHandlingEnabled ()
   {
-    return s_aComplexNameHandlingEnabled.get () && isApplyNameHandling ();
+    return s_aComplexNameHandlingEnabled.get () && isApplyComplexNameHandling ();
   }
 
   public static void setNameHandlerDeterminator (@Nullable final INameHandlerDeterminator aDeterminator)
@@ -85,6 +98,11 @@ public final class PersonNameUtils
   private static boolean isApplyNameHandling ()
   {
     return s_aDeterminator == null || s_aDeterminator.isApplyNameHandling ();
+  }
+
+  private static boolean isApplyComplexNameHandling ()
+  {
+    return s_aDeterminator == null || s_aDeterminator.isApplyComplexNameHandling ();
   }
 
   public static void setFirstNameFirst (final boolean bFirstNameFirst)
@@ -150,6 +168,10 @@ public final class PersonNameUtils
 
     if (!isComplexNameHandlingEnabled ())
     {
+      if (!isNameHandlingEnabled ())
+      {
+        return sName;
+      }
       // Use old compatible name handling: to upper first character
       if (sName.length () <= 1)
         return sName.toUpperCase (aSortLocale);

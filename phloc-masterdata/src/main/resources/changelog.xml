@@ -20,6 +20,12 @@
 -->
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
+  <release date="2018-12-30" version="3.7.1" />
+  <entry date="2018-12-30" category="feature" action="add">
+    <change>
+      <text locale="en">Extended determinator for enabling/disabling person name handling so the simple (first character upper case) behavior can also be omitted</text>
+    </change>
+  </entry>
   <release date="2018-11-22" version="3.7.0" />
   <entry date="2018-11-22" category="feature" action="add">
     <change>
