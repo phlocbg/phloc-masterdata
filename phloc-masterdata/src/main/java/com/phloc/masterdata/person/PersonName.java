@@ -69,12 +69,12 @@ public class PersonName implements IPersonName
   public PersonName (@Nonnull final PersonName aBase)
   {
     ValueEnforcer.notNull (aBase, "Base");
-    m_eSalutation = aBase.m_eSalutation;
-    m_sPrefixTitle = aBase.m_sPrefixTitle;
-    m_sFirstName = aBase.m_sFirstName;
-    m_sMiddleName = aBase.m_sMiddleName;
-    m_sLastName = aBase.m_sLastName;
-    m_sSuffixTitle = aBase.m_sSuffixTitle;
+    this.m_eSalutation = aBase.m_eSalutation;
+    this.m_sPrefixTitle = aBase.m_sPrefixTitle;
+    this.m_sFirstName = aBase.m_sFirstName;
+    this.m_sMiddleName = aBase.m_sMiddleName;
+    this.m_sLastName = aBase.m_sLastName;
+    this.m_sSuffixTitle = aBase.m_sSuffixTitle;
   }
 
   public PersonName (@Nonnull final IReadonlyPersonName aBase, @Nonnull final Locale aSortLocale)
@@ -104,74 +104,92 @@ public class PersonName implements IPersonName
     setSuffixTitle (sSuffixTitle);
   }
 
+  @Override
   @Column (name = FIELD_SALUTATION, length = LENGTH_SALUTATION)
   @Nullable
   public ESalutation getSalutation ()
   {
-    return m_eSalutation;
+    return this.m_eSalutation;
   }
 
+  @Override
   @Transient
   @Nullable
   public String getSalutationID ()
   {
-    return m_eSalutation == null ? null : m_eSalutation.getID ();
+    return this.m_eSalutation == null ? null : this.m_eSalutation.getID ();
   }
 
+  @Override
   @Nonnull
   public EChange setSalutation (@Nullable final ESalutation eSalutation)
   {
-    if (EqualsUtils.equals (m_eSalutation, eSalutation))
+    if (EqualsUtils.equals (this.m_eSalutation, eSalutation))
       return EChange.UNCHANGED;
-    m_eSalutation = eSalutation;
+    this.m_eSalutation = eSalutation;
     return EChange.CHANGED;
   }
 
+  @Override
   @Transient
   @Nullable
   public String getSalutationDisplayName (@Nonnull final Locale aContentLocale)
   {
-    return m_eSalutation == null ? "" : m_eSalutation.getDisplayText (aContentLocale);
+    return this.m_eSalutation == null ? "" : this.m_eSalutation.getDisplayText (aContentLocale);
   }
 
+  @Override
   @Transient
   @Nullable
   public String getGreeting (@Nonnull final Locale aContentLocale)
   {
-    return m_eSalutation == null ? "" : m_eSalutation.getGreeting (aContentLocale);
+    return this.m_eSalutation == null ? "" : this.m_eSalutation.getGreeting (aContentLocale);
   }
 
+  @Override
   @Transient
   @Nullable
   public String getGreetingComplete (@Nonnull final Locale aContentLocale)
   {
-    if (m_eSalutation == null)
+    if (this.m_eSalutation == null)
       return "";
-    return m_eSalutation.getGreetingComplete (aContentLocale);
+    return this.m_eSalutation.getGreetingComplete (aContentLocale);
   }
 
+  @Transient
+  @Nullable
+  public String getGreetingCompletePersonal (@Nonnull final Locale aContentLocale)
+  {
+    if (this.m_eSalutation == null)
+      return "";
+    return this.m_eSalutation.getGreetingCompletePersonal (aContentLocale);
+  }
+
+  @Override
   @Column (name = FIELD_PREFIXTITLE, length = LENGTH_PREFIXTITLE)
   @Nullable
   public String getPrefixTitle ()
   {
-    return m_sPrefixTitle;
+    return this.m_sPrefixTitle;
   }
 
+  @Override
   @Nonnull
   public EChange setPrefixTitle (@Nullable final String sPrefixTitle)
   {
     final String sRealPrefixTitle = MasterdataUtils.getEnsuredLength (sPrefixTitle, LENGTH_PREFIXTITLE);
-    if (EqualsUtils.equals (m_sPrefixTitle, sRealPrefixTitle))
+    if (EqualsUtils.equals (this.m_sPrefixTitle, sRealPrefixTitle))
       return EChange.UNCHANGED;
-    m_sPrefixTitle = sRealPrefixTitle;
+    this.m_sPrefixTitle = sRealPrefixTitle;
     return EChange.CHANGED;
   }
 
+  @Override
   @Column (name = FIELD_FIRSTNAME, length = LENGTH_FIRSTNAME)
   @Nullable
   public String getFirstName ()
   {
-    return m_sFirstName;
+    return this.m_sFirstName;
   }
 
   @UsedOnlyByJPA
@@ -182,22 +200,24 @@ public class PersonName implements IPersonName
     return setFirstName (sFirstName, SystemHelper.getSystemLocale ());
   }
 
+  @Override
   @Nonnull
   public EChange setFirstName (@Nullable final String sFirstName, @Nonnull final Locale aSortLocale)
   {
     final String sRealFirstName = MasterdataUtils.getEnsuredLength (PersonNameUtils.unifyName (sFirstName, aSortLocale),
                                                                     LENGTH_FIRSTNAME);
-    if (EqualsUtils.equals (m_sFirstName, sRealFirstName))
+    if (EqualsUtils.equals (this.m_sFirstName, sRealFirstName))
       return EChange.UNCHANGED;
-    m_sFirstName = sRealFirstName;
+    this.m_sFirstName = sRealFirstName;
     return EChange.CHANGED;
   }
 
+  @Override
   @Column (name = FIELD_MIDDLENAME, length = LENGTH_MIDDLENAME)
   @Nullable
   public String getMiddleName ()
   {
-    return m_sMiddleName;
+    return this.m_sMiddleName;
   }
 
   @UsedOnlyByJPA
@@ -208,23 +228,25 @@ public class PersonName implements IPersonName
     return setMiddleName (sMiddleName, SystemHelper.getSystemLocale ());
   }
 
+  @Override
   @Nonnull
   public EChange setMiddleName (@Nullable final String sMiddleName, @Nonnull final Locale aSortLocale)
   {
     final String sRealMiddleName = MasterdataUtils.getEnsuredLength (PersonNameUtils.unifyName (sMiddleName,
                                                                                                 aSortLocale),
                                                                      LENGTH_MIDDLENAME);
-    if (EqualsUtils.equals (m_sMiddleName, sRealMiddleName))
+    if (EqualsUtils.equals (this.m_sMiddleName, sRealMiddleName))
       return EChange.UNCHANGED;
-    m_sMiddleName = sRealMiddleName;
+    this.m_sMiddleName = sRealMiddleName;
     return EChange.CHANGED;
   }
 
+  @Override
   @Column (name = FIELD_LASTNAME, length = LENGTH_LASTNAME)
   @Nullable
   public String getLastName ()
   {
-    return m_sLastName;
+    return this.m_sLastName;
   }
 
   @UsedOnlyByJPA
@@ -235,34 +257,38 @@ public class PersonName implements IPersonName
     return setLastName (sLastName, SystemHelper.getSystemLocale ());
   }
 
+  @Override
   @Nonnull
   public EChange setLastName (@Nullable final String sLastName, @Nonnull final Locale aSortLocale)
   {
     final String sRealLastName = MasterdataUtils.getEnsuredLength (PersonNameUtils.unifyName (sLastName, aSortLocale),
                                                                    LENGTH_LASTNAME);
-    if (EqualsUtils.equals (m_sLastName, sRealLastName))
+    if (EqualsUtils.equals (this.m_sLastName, sRealLastName))
       return EChange.UNCHANGED;
-    m_sLastName = sRealLastName;
+    this.m_sLastName = sRealLastName;
     return EChange.CHANGED;
   }
 
+  @Override
   @Column (name = FIELD_SUFFIXTITLE, length = LENGTH_SUFFIXTITLE)
   @Nullable
   public String getSuffixTitle ()
   {
-    return m_sSuffixTitle;
+    return this.m_sSuffixTitle;
   }
 
+  @Override
   @Nonnull
   public EChange setSuffixTitle (@Nullable final String sSuffixTitle)
   {
     final String sRealSuffixTitle = MasterdataUtils.getEnsuredLength (sSuffixTitle, LENGTH_SUFFIXTITLE);
-    if (EqualsUtils.equals (m_sSuffixTitle, sRealSuffixTitle))
+    if (EqualsUtils.equals (this.m_sSuffixTitle, sRealSuffixTitle))
       return EChange.UNCHANGED;
-    m_sSuffixTitle = sRealSuffixTitle;
+    this.m_sSuffixTitle = sRealSuffixTitle;
     return EChange.CHANGED;
   }
 
+  @Override
   @Transient
   @Nonnull
   public PersonName getClone ()
@@ -278,35 +304,35 @@ public class PersonName implements IPersonName
     if (!(o instanceof PersonName))
       return false;
     final PersonName rhs = (PersonName) o;
-    return EqualsUtils.equals (m_eSalutation, rhs.m_eSalutation) &&
-           EqualsUtils.equals (m_sPrefixTitle, rhs.m_sPrefixTitle) &&
-           EqualsUtils.equals (m_sFirstName, rhs.m_sFirstName) &&
-           EqualsUtils.equals (m_sMiddleName, rhs.m_sMiddleName) &&
-           EqualsUtils.equals (m_sLastName, rhs.m_sLastName) &&
-           EqualsUtils.equals (m_sSuffixTitle, rhs.m_sSuffixTitle);
+    return EqualsUtils.equals (this.m_eSalutation, rhs.m_eSalutation) &&
+           EqualsUtils.equals (this.m_sPrefixTitle, rhs.m_sPrefixTitle) &&
+           EqualsUtils.equals (this.m_sFirstName, rhs.m_sFirstName) &&
+           EqualsUtils.equals (this.m_sMiddleName, rhs.m_sMiddleName) &&
+           EqualsUtils.equals (this.m_sLastName, rhs.m_sLastName) &&
+           EqualsUtils.equals (this.m_sSuffixTitle, rhs.m_sSuffixTitle);
   }
 
   @Override
   public int hashCode ()
   {
-    return new HashCodeGenerator (this).append (m_eSalutation)
-                                       .append (m_sPrefixTitle)
-                                       .append (m_sFirstName)
-                                       .append (m_sMiddleName)
-                                       .append (m_sLastName)
-                                       .append (m_sSuffixTitle)
+    return new HashCodeGenerator (this).append (this.m_eSalutation)
+                                       .append (this.m_sPrefixTitle)
+                                       .append (this.m_sFirstName)
+                                       .append (this.m_sMiddleName)
+                                       .append (this.m_sLastName)
+                                       .append (this.m_sSuffixTitle)
                                        .getHashCode ();
   }
 
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).appendIfNotNull ("salutation", m_eSalutation)
-                                       .appendIfNotNull ("prefixTitle", m_sPrefixTitle)
-                                       .appendIfNotNull ("firstName", m_sFirstName)
-                                       .appendIfNotNull ("middleName", m_sMiddleName)
-                                       .appendIfNotNull ("lastName", m_sLastName)
-                                       .appendIfNotNull ("suffixTitle", m_sSuffixTitle)
+    return new ToStringGenerator (this).appendIfNotNull ("salutation", this.m_eSalutation)
+                                       .appendIfNotNull ("prefixTitle", this.m_sPrefixTitle)
+                                       .appendIfNotNull ("firstName", this.m_sFirstName)
+                                       .appendIfNotNull ("middleName", this.m_sMiddleName)
+                                       .appendIfNotNull ("lastName", this.m_sLastName)
+                                       .appendIfNotNull ("suffixTitle", this.m_sSuffixTitle)
                                        .toString ();
   }
 }

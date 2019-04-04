@@ -53,6 +53,9 @@ public interface IReadonlyPersonName extends ICloneable <IReadonlyPersonName>, S
   @Nullable
   String getGreetingComplete (@Nonnull Locale aContentLocale);
 
+  @Nullable
+  String getGreetingCompletePersonal (@Nonnull Locale aContentLocale);
+
   /**
    * @return An optional title that is written before the name. E.g. "Dr." in
    *         Germany.
