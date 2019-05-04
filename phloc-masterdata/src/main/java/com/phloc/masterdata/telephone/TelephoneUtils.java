@@ -35,6 +35,65 @@ public final class TelephoneUtils
   private TelephoneUtils ()
   {}
 
+  /**
+   * Get the string representation of this phone number
+   * 
+   * @param aTelNo
+   *        The telephone number to print
+   * @return The resulting string in format <code>+43 (0) 1 345678-23</code>
+   */
+  @Nullable
+  @CheckReturnValue
+  public static String getTelephoneStringExtended (@Nullable final IReadonlyTelephoneNumber aTelNo)
+  {
+    if (aTelNo == null)
+      return null;
+
+    final StringBuilder ret = new StringBuilder ();
+    // Country and area code
+    if (StringHelper.hasText (aTelNo.getCountryCode ()) && StringHelper.hasText (aTelNo.getAreaCode ()))
+    {
+      // prepend "+" if necessary
+      if (!StringHelper.startsWith (aTelNo.getCountryCode (), '+'))
+        ret.append ('+');
+      ret.append (aTelNo.getCountryCode ()).append (' ');
+
+      // area code
+      if (StringHelper.startsWith (aTelNo.getAreaCode (), '0'))
+      {
+        ret.append ("(0) ");
+        ret.append (aTelNo.getAreaCode ().substring (1));
+      }
+      else
+      {
+        ret.append (aTelNo.getAreaCode ());
+      }
+    }
+    else
+      if (aTelNo.getAreaCode () != null)
+        ret.append (aTelNo.getAreaCode ());
+
+    if (ret.length () > 0)
+    {
+      ret.append (' ');
+    }
+    // main line
+    if (aTelNo.getLine () != null)
+      ret.append (aTelNo.getLine ());
+
+    // direct dial
+    if (StringHelper.hasText (aTelNo.getDirectDial ()))
+      ret.append ('-').append (aTelNo.getDirectDial ());
+    return ret.toString ();
+  }
+
+  /**
+   * Get the string representation of this phone number
+   * 
+   * @param aTelNo
+   *        The telephone number to print
+   * @return The resulting string in format <code>+43/1/345678-23</code>
+   */
   @Nullable
   @CheckReturnValue
   public static String getTelephoneString (@Nullable final IReadonlyTelephoneNumber aTelNo)
@@ -82,7 +141,9 @@ public final class TelephoneUtils
     if (StringHelper.hasText (ret))
     {
       // Remove the Skype highlighting :)
-      ret = RegExHelper.stringReplacePattern ("begin_of_the_skype_highlighting.+end_of_the_skype_highlighting", ret, "");
+      ret = RegExHelper.stringReplacePattern ("begin_of_the_skype_highlighting.+end_of_the_skype_highlighting",
+                                              ret,
+                                              "");
     }
     return ret;
   }
