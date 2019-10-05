@@ -21,6 +21,22 @@
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
   
+  <release date="2019-10-05" version="3.7.4" />
+  <entry date="2019-10-05" category="api" action="add">
+    <change>
+      <text locale="en">Added possibility to set the default VAT for a given country</text>
+    </change>
+  </entry>
+  <entry date="2019-10-05" category="api" action="add">
+    <change>
+      <text locale="en">Added possibility to create a VAT manager based on another ones</text>
+    </change>
+  </entry>
+  <entry date="2019-06-17" category="data" action="update">
+    <change>
+      <text locale="en">updated international VAT rates</text>
+    </change>
+  </entry>
   <release date="2019-05-04" version="3.7.3" />
   <entry date="2019-05-04" category="api" action="add">
     <change>

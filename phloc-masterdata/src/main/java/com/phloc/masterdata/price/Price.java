@@ -104,50 +104,55 @@ public class Price implements IPrice
     setVATItem (aVATItem);
   }
 
+  @Override
   @Nonnull
   @Embedded
   public CurrencyValue getNetAmount ()
   {
-    return m_aNetAmount;
+    return this.m_aNetAmount;
   }
 
+  @Override
   @Nonnull
   public EChange setNetAmount (@Nonnull final IReadonlyCurrencyValue aNetAmount)
   {
     ValueEnforcer.notNull (aNetAmount, "NetAmount");
 
     final CurrencyValue aRealNetAmount = new CurrencyValue (aNetAmount);
-    if (EqualsUtils.equals (m_aNetAmount, aRealNetAmount))
+    if (EqualsUtils.equals (this.m_aNetAmount, aRealNetAmount))
       return EChange.UNCHANGED;
-    m_aNetAmount = aRealNetAmount;
+    this.m_aNetAmount = aRealNetAmount;
     return EChange.CHANGED;
   }
 
+  @Override
   @Nonnull
   @Basic
   @Column (name = FIELD_VATITEM)
   @Convert ("vatitemid")
   public IVATItem getVATItem ()
   {
-    return m_aVATItem;
+    return this.m_aVATItem;
   }
 
+  @Override
   @Nonnull
   public EChange setVATItem (@Nonnull final IVATItem aVATItem)
   {
     ValueEnforcer.notNull (aVATItem, "VATItem");
 
-    if (aVATItem.equals (m_aVATItem))
+    if (aVATItem.equals (this.m_aVATItem))
       return EChange.UNCHANGED;
-    m_aVATItem = aVATItem;
+    this.m_aVATItem = aVATItem;
     return EChange.CHANGED;
   }
 
+  @Override
   @Transient
   @Nonnull
   public IReadonlyCurrencyValue getTaxAmount ()
   {
-    return m_aNetAmount.getMultiplied (m_aVATItem.getPercentageFactor ());
+    return this.m_aNetAmount.getMultiplied (this.m_aVATItem.getPercentageFactor ());
   }
 
   /*
@@ -155,89 +160,100 @@ public class Price implements IPrice
    * Marked as @Transient to avoid EclipseLink automatically using it a s column
    * (because the corresponding setter method is also present!)
    */
+  @Override
   @Nonnull
   @Transient
   public ECurrency getCurrency ()
   {
-    return m_aNetAmount.getCurrency ();
+    return this.m_aNetAmount.getCurrency ();
   }
 
+  @Override
   @Nonnull
   public EChange setCurrency (@Nonnull final ECurrency eCurrency)
   {
-    return m_aNetAmount.setCurrency (eCurrency);
+    return this.m_aNetAmount.setCurrency (eCurrency);
   }
 
+  @Override
   @Transient
   @Nonnull
   public IReadonlyCurrencyValue getGrossAmount ()
   {
-    final BigDecimal aMultiplicationFactor = m_aVATItem.getMultiplicationFactorNetToGross ();
-    return m_aNetAmount.getMultiplied (aMultiplicationFactor);
+    final BigDecimal aMultiplicationFactor = this.m_aVATItem.getMultiplicationFactorNetToGross ();
+    return this.m_aNetAmount.getMultiplied (aMultiplicationFactor);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getAdded (@Nonnull final BigDecimal aValue)
   {
-    return new Price (m_aNetAmount.getAdded (aValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getAdded (aValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getAdded (final long nValue)
   {
-    return new Price (m_aNetAmount.getAdded (nValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getAdded (nValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getSubtracted (@Nonnull final BigDecimal aValue)
   {
-    return new Price (m_aNetAmount.getSubtracted (aValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getSubtracted (aValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getSubtracted (final long nValue)
   {
-    return new Price (m_aNetAmount.getSubtracted (nValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getSubtracted (nValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getMultiplied (@Nonnull final BigDecimal aValue)
   {
-    return new Price (m_aNetAmount.getMultiplied (aValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getMultiplied (aValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getMultiplied (final long nValue)
   {
-    return new Price (m_aNetAmount.getMultiplied (nValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getMultiplied (nValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getDivided (@Nonnull final BigDecimal aValue)
   {
-    return new Price (m_aNetAmount.getDivided (aValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getDivided (aValue), this.m_aVATItem);
   }
 
+  @Override
   @Transient
   @Nonnull
   @CheckReturnValue
   public Price getDivided (final long nValue)
   {
-    return new Price (m_aNetAmount.getDivided (nValue), m_aVATItem);
+    return new Price (this.m_aNetAmount.getDivided (nValue), this.m_aVATItem);
   }
 
   @Override
@@ -248,19 +264,21 @@ public class Price implements IPrice
     if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final Price rhs = (Price) o;
-    return m_aNetAmount.equals (rhs.m_aNetAmount) && m_aVATItem.equals (rhs.m_aVATItem);
+    return this.m_aNetAmount.equals (rhs.m_aNetAmount) && this.m_aVATItem.equals (rhs.m_aVATItem);
   }
 
   @Override
   public int hashCode ()
   {
-    return new HashCodeGenerator (this).append (m_aNetAmount).append (m_aVATItem).getHashCode ();
+    return new HashCodeGenerator (this).append (this.m_aNetAmount).append (this.m_aVATItem).getHashCode ();
   }
 
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("netAmount", m_aNetAmount).append ("VATtype", m_aVATItem).toString ();
+    return new ToStringGenerator (this).append ("netAmount", this.m_aNetAmount)
+                                       .append ("VATtype", this.m_aVATItem)
+                                       .toString ();
   }
 
   /**

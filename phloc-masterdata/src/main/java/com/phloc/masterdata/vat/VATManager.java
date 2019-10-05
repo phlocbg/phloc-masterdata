@@ -77,11 +77,20 @@ public class VATManager implements IVATItemResolver
   // Maps from locale to the available VAT data
   private final Map <Locale, VATCountryData> m_aVATItemsPerCountry = new HashMap <Locale, VATCountryData> ();
 
+  private final Map <Locale, String> m_aVATDefaultPerCountry = ContainerHelper.newMap ();
+
   // Overall VAT map (ID to item)
   private final Map <String, IVATItem> m_aAllVATItems = new HashMap <String, IVATItem> ();
 
   public VATManager ()
   {}
+
+  public VATManager (@Nonnull final VATManager aBaseManager)
+  {
+    this.m_aSources.addAll (aBaseManager.m_aSources);
+    this.m_aVATItemsPerCountry.putAll (aBaseManager.m_aVATItemsPerCountry);
+    this.m_aAllVATItems.putAll (aBaseManager.m_aAllVATItems);
+  }
 
   @Nullable
   private static String _getCountryString (@Nullable final Locale aLocale)
@@ -100,9 +109,9 @@ public class VATManager implements IVATItemResolver
     ValueEnforcer.notNull (aDoc, "Doc");
     ValueEnforcer.notNull (aDoc.getDocumentElement (), "Doc.DocumentElement");
 
-    m_aSources.clear ();
-    m_aVATItemsPerCountry.clear ();
-    m_aAllVATItems.clear ();
+    this.m_aSources.clear ();
+    this.m_aVATItemsPerCountry.clear ();
+    this.m_aAllVATItems.clear ();
 
     final IMicroElement eSources = aDoc.getDocumentElement ().getFirstChildElement ("sources");
     if (eSources != null)
@@ -110,7 +119,7 @@ public class VATManager implements IVATItemResolver
       {
         final String sSource = eSource.getTextContent ();
         if (StringHelper.hasText (sSource))
-          m_aSources.add (sSource);
+          this.m_aSources.add (sSource);
       }
 
     for (final IMicroElement eVATTypes : aDoc.getDocumentElement ().getAllChildElements ("vattypes"))
@@ -118,7 +127,7 @@ public class VATManager implements IVATItemResolver
       // Country
       final String sCountry = eVATTypes.getAttribute ("country");
       final Locale aCountry = CountryCache.getCountry (sCountry);
-      if (m_aVATItemsPerCountry.containsKey (aCountry))
+      if (this.m_aVATItemsPerCountry.containsKey (aCountry))
       {
         s_aLogger.warn ("VAT types for country " + aCountry + " have already been defined!");
         continue;
@@ -186,13 +195,13 @@ public class VATManager implements IVATItemResolver
         final VATItem aVATItem = new VATItem (sRealID, eType, aPercentage, bDeprecated, aValidFrom, aValidTo);
         if (aVATCountryData.addItem (aVATItem).isUnchanged ())
           s_aLogger.warn ("Found duplicate VAT item " + aVATItem + " for country " + aCountry);
-        if (m_aAllVATItems.put (sRealID, aVATItem) != null)
+        if (this.m_aAllVATItems.put (sRealID, aVATItem) != null)
           s_aLogger.warn ("Found overall duplicate VAT item " + aVATItem);
       }
 
       if (aVATCountryData.isEmpty ())
         s_aLogger.warn ("No VAT types for country " + aCountry + " defined!");
-      m_aVATItemsPerCountry.put (aCountry, aVATCountryData);
+      this.m_aVATItemsPerCountry.put (aCountry, aVATCountryData);
     }
   }
 
@@ -200,7 +209,7 @@ public class VATManager implements IVATItemResolver
   @ReturnsMutableCopy
   public List <String> getSources ()
   {
-    return ContainerHelper.newList (m_aSources);
+    return ContainerHelper.newList (this.m_aSources);
   }
 
   /**
@@ -210,7 +219,7 @@ public class VATManager implements IVATItemResolver
   @ReturnsMutableCopy
   public Set <Locale> getAllAvailableCountries ()
   {
-    return ContainerHelper.newSet (m_aVATItemsPerCountry.keySet ());
+    return ContainerHelper.newSet (this.m_aVATItemsPerCountry.keySet ());
   }
 
   /**
@@ -228,7 +237,7 @@ public class VATManager implements IVATItemResolver
     ValueEnforcer.notNull (aCountry, "Country");
 
     // first get locale specific VAT types
-    final VATCountryData aVATCountryData = m_aVATItemsPerCountry.get (CountryCache.getCountry (aCountry));
+    final VATCountryData aVATCountryData = this.m_aVATItemsPerCountry.get (CountryCache.getCountry (aCountry));
     return aVATCountryData != null ? aVATCountryData.isZeroVATAllowed () : bUndefinedValue;
   }
 
@@ -251,7 +260,7 @@ public class VATManager implements IVATItemResolver
     final Map <String, IVATItem> ret = new HashMap <String, IVATItem> ();
 
     // first get locale specific VAT types
-    final VATCountryData aVATCountryData = m_aVATItemsPerCountry.get (CountryCache.getCountry (aCountry));
+    final VATCountryData aVATCountryData = this.m_aVATItemsPerCountry.get (CountryCache.getCountry (aCountry));
     if (aVATCountryData != null)
     {
       if (aVATCountryData.isZeroVATAllowed ())
@@ -261,6 +270,37 @@ public class VATManager implements IVATItemResolver
     return ret;
   }
 
+  public void setVATDefaultForCountry (@Nonnull final Locale aCountry, final String sDefaultID)
+  {
+    ValueEnforcer.notNull (aCountry, "aCountry");
+    final Locale aCtr = CountryCache.getCountry (aCountry);
+    if (StringHelper.hasText (sDefaultID))
+    {
+      this.m_aVATDefaultPerCountry.put (aCtr, sDefaultID);
+    }
+    else
+    {
+      this.m_aVATDefaultPerCountry.remove (aCtr);
+    }
+  }
+
+  @Nullable
+  public IVATItem getVATDefaultForCountry (@Nonnull final Locale aCountry)
+  {
+    ValueEnforcer.notNull (aCountry, "Country");
+    final Locale aCtr = CountryCache.getCountry (aCountry);
+    final String sDefault = this.m_aVATDefaultPerCountry.get (aCtr);
+    if (StringHelper.hasText (sDefault))
+    {
+      final VATCountryData aVATCountryData = this.m_aVATItemsPerCountry.get (CountryCache.getCountry (aCountry));
+      if (aVATCountryData != null)
+      {
+        return aVATCountryData.getAllItems ().get (sDefault);
+      }
+    }
+    return null;
+  }
+
   /**
    * Get the VAT type with the given ID.
    * 
@@ -268,15 +308,17 @@ public class VATManager implements IVATItemResolver
    *        The VAT type ID to search.
    * @return <code>null</code> if no such VAT type exists.
    */
+  @Override
   @Nullable
   public IVATItem getVATItemOfID (@Nullable final String sID)
   {
-    IVATItem ret = m_aAllVATItems.get (sID);
+    IVATItem ret = this.m_aAllVATItems.get (sID);
     if (ret == null && VATTYPE_NONE.getID ().equals (sID))
       ret = VATTYPE_NONE;
     return ret;
   }
 
+  @Override
   @Nullable
   public IVATItem getVATItemOfID (@Nonnull final Locale aCountry, @Nullable final String sID)
   {
@@ -299,7 +341,7 @@ public class VATManager implements IVATItemResolver
   public IVATItem findVATItem (@Nullable final EVATType eType, @Nullable final BigDecimal aPercentage)
   {
     if (eType != null && aPercentage != null)
-      for (final IVATItem aVATItem : m_aAllVATItems.values ())
+      for (final IVATItem aVATItem : this.m_aAllVATItems.values ())
         if (aVATItem.getType ().equals (eType) && EqualsUtils.equals (aVATItem.getPercentage (), aPercentage))
           return aVATItem;
     return null;
@@ -308,9 +350,9 @@ public class VATManager implements IVATItemResolver
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("sources", m_aSources)
-                                       .append ("VATItemsPerCountry", m_aVATItemsPerCountry)
-                                       .append ("allVATItems", m_aAllVATItems)
+    return new ToStringGenerator (this).append ("sources", this.m_aSources)
+                                       .append ("VATItemsPerCountry", this.m_aVATItemsPerCountry)
+                                       .append ("allVATItems", this.m_aAllVATItems)
                                        .toString ();
   }
 
