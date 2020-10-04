@@ -21,6 +21,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.phloc.commons.state.EChange;
+import com.phloc.json.IJSONObject;
 import com.phloc.masterdata.address.IAddress;
 import com.phloc.masterdata.email.IExtendedEmailAddress;
 import com.phloc.masterdata.telephone.ITelephoneNumber;
@@ -35,6 +36,7 @@ public interface ICompanySite extends IReadonlyCompanySite
   /**
    * {@inheritDoc}
    */
+  @Override
   @Nonnull
   ICompany getCompany ();
 
@@ -45,14 +47,21 @@ public interface ICompanySite extends IReadonlyCompanySite
   EChange setLongName (@Nullable String sLongName);
 
   @Nonnull
+  EChange setAltName (@Nullable String sAltName);
+
+  @Nonnull
   EChange setDeletable (boolean bIsDeletable);
 
   @Nonnull
   EChange setVirtualSite (boolean bIsVirtualSite);
 
+  @Nonnull
+  EChange setStatus (@Nonnull ECompanySiteStatus eStatus);
+
   /**
    * {@inheritDoc}
    */
+  @Override
   @Nonnull
   IAddress getAddress ();
 
@@ -62,6 +71,7 @@ public interface ICompanySite extends IReadonlyCompanySite
   /**
    * {@inheritDoc}
    */
+  @Override
   @Nonnull
   ITelephoneNumber getDefaultTelNo ();
 
@@ -71,6 +81,7 @@ public interface ICompanySite extends IReadonlyCompanySite
   /**
    * {@inheritDoc}
    */
+  @Override
   @Nonnull
   ITelephoneNumber getDefaultFaxNo ();
 
@@ -80,9 +91,13 @@ public interface ICompanySite extends IReadonlyCompanySite
   /**
    * {@inheritDoc}
    */
+  @Override
   @Nonnull
   IExtendedEmailAddress getDefaultEmailAddress ();
 
   @Nonnull
   EChange setDefaultEmailAddress (@Nonnull IExtendedEmailAddress aEmailAddress);
+
+  @Nonnull
+  EChange setProperties (@Nonnull IJSONObject aProperties);
 }

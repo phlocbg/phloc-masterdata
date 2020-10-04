@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
 
 import com.phloc.commons.name.IHasDisplayName;
 import com.phloc.commons.type.ITypedObject;
+import com.phloc.json.IJSONObject;
 import com.phloc.masterdata.address.IReadonlyAddress;
 import com.phloc.masterdata.email.IReadonlyExtendedEmailAddress;
 import com.phloc.masterdata.telephone.IReadonlyTelephoneNumber;
@@ -45,6 +46,16 @@ public interface IReadonlyCompanySite extends IHasDisplayName, ITypedObject <Str
    */
   @Nullable
   String getLongName ();
+
+  /**
+   * @return The alternative name of the company site, e.g. containing a prefix
+   *         regarding the type of subsidiary
+   */
+  @Nullable
+  String getAltName ();
+
+  @Nonnull
+  String getAltNameWithFallback ();
 
   /**
    * @return <code>false</code> if this site is undeletable, because it is
@@ -81,4 +92,16 @@ public interface IReadonlyCompanySite extends IHasDisplayName, ITypedObject <Str
    */
   @Nonnull
   IReadonlyExtendedEmailAddress getDefaultEmailAddress ();
+
+  /**
+   * @return The status of this location
+   */
+  @Nonnull
+  ECompanySiteStatus getStatus ();
+
+  /**
+   * @return
+   */
+  @Nonnull
+  IJSONObject getProperties ();
 }

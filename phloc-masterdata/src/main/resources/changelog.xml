@@ -21,6 +21,12 @@
 <changelog xmlns="http://www.phloc.com/ns/changelog/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.phloc.com/ns/changelog/1.0 schemas/changelog-1.0.xsd" version="1.0" component="phloc-masterdata">
   
+  <release date="2019-10-05" version="3.7.5" />
+  <entry date="2020-10-04" category="api" action="add">
+    <change>
+      <text locale="en">Extended company sites for an alternative name, a status and custom properties (JSON)</text>
+    </change>
+  </entry>
   <entry date="2020-09-03" category="api" action="add">
     <change>
       <text locale="en">Extended price graduations for adding, updating and removing items</text>

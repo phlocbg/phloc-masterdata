@@ -75,7 +75,11 @@
       <artifactId>phloc-datetime</artifactId>
       <version>3.2.1</version>
     </dependency>
-    
+    <dependency>
+      <groupId>com.phloc</groupId>
+      <artifactId>phloc-json</artifactId>
+      <version>4.1.6</version>
+    </dependency>
     <dependency>
       <groupId>com.phloc</groupId>
       <artifactId>phloc-validation</artifactId>

@@ -26,8 +26,11 @@ import com.phloc.commons.equals.EqualsUtils;
 import com.phloc.commons.hash.HashCodeGenerator;
 import com.phloc.commons.idfactory.GlobalIDFactory;
 import com.phloc.commons.state.EChange;
+import com.phloc.commons.string.StringHelper;
 import com.phloc.commons.string.ToStringGenerator;
 import com.phloc.commons.type.ObjectType;
+import com.phloc.json.IJSONObject;
+import com.phloc.json.impl.JSONObject;
 import com.phloc.masterdata.address.Address;
 import com.phloc.masterdata.address.EAddressType;
 import com.phloc.masterdata.address.IAddress;
@@ -42,7 +45,7 @@ import com.phloc.masterdata.telephone.TelephoneNumber;
 /**
  * The default implementation of the {@link ICompanySite} interface.
  * 
- * @author Philip Helger
+ * @author Boris Gregorcic
  */
 public final class CompanySite implements ICompanySite
 {
@@ -54,12 +57,15 @@ public final class CompanySite implements ICompanySite
   private final ICompany m_aCompany;
   private String m_sDisplayName;
   private String m_sLongName;
+  private String m_sAltName;
   private boolean m_bIsDeletable = DEFAULT_DELETABLE;
   private boolean m_bIsVirtualSite = DEFAULT_VIRTUALSITE;
   private IAddress m_aAddress = new Address ();
   private ITelephoneNumber m_aTelNo = new TelephoneNumber ();
   private ITelephoneNumber m_aFaxNo = new TelephoneNumber ();
   private IExtendedEmailAddress m_aEmailAddress = new ExtendedEmailAddress ();
+  private ECompanySiteStatus m_eStatus = ECompanySiteStatus.VALID;
+  private IJSONObject m_aProperties = new JSONObject ();
 
   public CompanySite (@Nonnull final ICompany aCompany)
   {
@@ -68,93 +74,130 @@ public final class CompanySite implements ICompanySite
 
   public CompanySite (@Nonnull @Nonempty final String sID, @Nonnull final ICompany aCompany)
   {
-    m_sID = ValueEnforcer.notEmpty (sID, "ID");
-    m_aCompany = ValueEnforcer.notNull (aCompany, "Company");
+    this.m_sID = ValueEnforcer.notEmpty (sID, "ID");
+    this.m_aCompany = ValueEnforcer.notNull (aCompany, "Company");
   }
 
+  @Override
   @Nonnull
   public ObjectType getTypeID ()
   {
     return TYPE_COMPANY_SITE;
   }
 
+  @Override
   @Nonnull
   @Nonempty
   public String getID ()
   {
-    return m_sID;
+    return this.m_sID;
   }
 
+  @Override
   @Nonnull
   public ICompany getCompany ()
   {
-    return m_aCompany;
+    return this.m_aCompany;
   }
 
+  @Override
   @Nullable
   public String getDisplayName ()
   {
-    return m_sDisplayName;
+    return this.m_sDisplayName;
   }
 
+  @Override
   @Nonnull
   public EChange setDisplayName (@Nullable final String sDisplayName)
   {
-    if (EqualsUtils.equals (m_sDisplayName, sDisplayName))
+    if (EqualsUtils.equals (this.m_sDisplayName, sDisplayName))
       return EChange.UNCHANGED;
-    m_sDisplayName = sDisplayName;
+    this.m_sDisplayName = sDisplayName;
     return EChange.CHANGED;
   }
 
+  @Override
   @Nullable
   public String getLongName ()
   {
-    return m_sLongName;
+    return this.m_sLongName;
   }
 
+  @Override
+  @Nullable
+  public String getAltName ()
+  {
+    return this.m_sAltName;
+  }
+
+  @Override
+  @Nonnull
+  public String getAltNameWithFallback ()
+  {
+    return StringHelper.getNonEmpty (StringHelper.getNonEmpty (this.m_sAltName, this.m_sDisplayName), "");
+  }
+
+  @Override
   @Nonnull
   public EChange setLongName (@Nullable final String sLongName)
   {
-    if (EqualsUtils.equals (m_sLongName, sLongName))
+    if (EqualsUtils.equals (this.m_sLongName, sLongName))
       return EChange.UNCHANGED;
-    m_sLongName = sLongName;
+    this.m_sLongName = sLongName;
     return EChange.CHANGED;
   }
 
-  public boolean isDeletable ()
+  @Override
+  @Nonnull
+  public EChange setAltName (@Nullable final String sAltName)
   {
-    return m_bIsDeletable;
+    if (EqualsUtils.equals (this.m_sAltName, sAltName))
+      return EChange.UNCHANGED;
+    this.m_sAltName = sAltName;
+    return EChange.CHANGED;
   }
 
+  @Override
+  public boolean isDeletable ()
+  {
+    return this.m_bIsDeletable;
+  }
+
+  @Override
   @Nonnull
   public EChange setDeletable (final boolean bIsDeletable)
   {
-    if (m_bIsDeletable == bIsDeletable)
+    if (this.m_bIsDeletable == bIsDeletable)
       return EChange.UNCHANGED;
-    m_bIsDeletable = bIsDeletable;
+    this.m_bIsDeletable = bIsDeletable;
     return EChange.CHANGED;
   }
 
+  @Override
   public boolean isVirtualSite ()
   {
-    return m_bIsVirtualSite;
+    return this.m_bIsVirtualSite;
   }
 
+  @Override
   @Nonnull
   public EChange setVirtualSite (final boolean bIsVirtualSite)
   {
-    if (m_bIsVirtualSite == bIsVirtualSite)
+    if (this.m_bIsVirtualSite == bIsVirtualSite)
       return EChange.UNCHANGED;
-    m_bIsVirtualSite = bIsVirtualSite;
+    this.m_bIsVirtualSite = bIsVirtualSite;
     return EChange.CHANGED;
   }
 
+  @Override
   @Nonnull
   public IAddress getAddress ()
   {
-    return m_aAddress;
+    return this.m_aAddress;
   }
 
+  @Override
   @Nonnull
   public EChange setAddress (@Nonnull final IAddress aAddress)
   {
@@ -163,18 +206,20 @@ public final class CompanySite implements ICompanySite
     if (aAddress.getType () == null)
       aAddress.setType (EAddressType.OFFICE);
 
-    if (m_aAddress.equals (aAddress))
+    if (this.m_aAddress.equals (aAddress))
       return EChange.UNCHANGED;
-    m_aAddress = aAddress;
+    this.m_aAddress = aAddress;
     return EChange.CHANGED;
   }
 
+  @Override
   @Nonnull
   public ITelephoneNumber getDefaultTelNo ()
   {
-    return m_aTelNo;
+    return this.m_aTelNo;
   }
 
+  @Override
   @Nonnull
   public EChange setDefaultTelNo (@Nonnull final ITelephoneNumber aTelNo)
   {
@@ -183,18 +228,20 @@ public final class CompanySite implements ICompanySite
     if (aTelNo.getType () == null)
       aTelNo.setType (ETelephoneType.OFFICE);
 
-    if (m_aTelNo.equals (aTelNo))
+    if (this.m_aTelNo.equals (aTelNo))
       return EChange.UNCHANGED;
-    m_aTelNo = aTelNo;
+    this.m_aTelNo = aTelNo;
     return EChange.CHANGED;
   }
 
+  @Override
   @Nonnull
   public ITelephoneNumber getDefaultFaxNo ()
   {
-    return m_aFaxNo;
+    return this.m_aFaxNo;
   }
 
+  @Override
   @Nonnull
   public EChange setDefaultFaxNo (@Nonnull final ITelephoneNumber aFaxNo)
   {
@@ -203,18 +250,20 @@ public final class CompanySite implements ICompanySite
     if (aFaxNo.getType () == null)
       aFaxNo.setType (ETelephoneType.OFFICE_FAX);
 
-    if (m_aFaxNo.equals (aFaxNo))
+    if (this.m_aFaxNo.equals (aFaxNo))
       return EChange.UNCHANGED;
-    m_aFaxNo = aFaxNo;
+    this.m_aFaxNo = aFaxNo;
     return EChange.CHANGED;
   }
 
+  @Override
   @Nonnull
   public IExtendedEmailAddress getDefaultEmailAddress ()
   {
-    return m_aEmailAddress;
+    return this.m_aEmailAddress;
   }
 
+  @Override
   @Nonnull
   public EChange setDefaultEmailAddress (@Nonnull final IExtendedEmailAddress aEmailAddress)
   {
@@ -223,9 +272,9 @@ public final class CompanySite implements ICompanySite
     if (aEmailAddress.getType () == null)
       aEmailAddress.setType (EEmailAddressType.OFFICE);
 
-    if (m_aEmailAddress.equals (aEmailAddress))
+    if (this.m_aEmailAddress.equals (aEmailAddress))
       return EChange.UNCHANGED;
-    m_aEmailAddress = aEmailAddress;
+    this.m_aEmailAddress = aEmailAddress;
     return EChange.CHANGED;
   }
 
@@ -237,27 +286,63 @@ public final class CompanySite implements ICompanySite
     if (!(o instanceof CompanySite))
       return false;
     final CompanySite rhs = (CompanySite) o;
-    return m_sID.equals (rhs.m_sID);
+    return this.m_sID.equals (rhs.m_sID);
   }
 
   @Override
   public int hashCode ()
   {
-    return new HashCodeGenerator (this).append (m_sID).getHashCode ();
+    return new HashCodeGenerator (this).append (this.m_sID).getHashCode ();
   }
 
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("ID", m_sID)
-                                       .append ("companyID", m_aCompany.getID ())
-                                       .appendIfNotNull ("displayName", m_sDisplayName)
-                                       .appendIfNotNull ("longName", m_sLongName)
-                                       .append ("virtual", m_bIsVirtualSite)
-                                       .appendIfNotNull ("address", m_aAddress)
-                                       .appendIfNotNull ("telNo", m_aTelNo)
-                                       .appendIfNotNull ("faxNo", m_aFaxNo)
-                                       .appendIfNotNull ("email", m_aEmailAddress)
+    return new ToStringGenerator (this).append ("ID", this.m_sID)
+                                       .append ("companyID", this.m_aCompany.getID ())
+                                       .appendIfNotNull ("displayName", this.m_sDisplayName)
+                                       .appendIfNotNull ("longName", this.m_sLongName)
+                                       .append ("virtual", this.m_bIsVirtualSite)
+                                       .appendIfNotNull ("address", this.m_aAddress)
+                                       .appendIfNotNull ("telNo", this.m_aTelNo)
+                                       .appendIfNotNull ("faxNo", this.m_aFaxNo)
+                                       .appendIfNotNull ("email", this.m_aEmailAddress)
                                        .toString ();
+  }
+
+  @Override
+  public ECompanySiteStatus getStatus ()
+  {
+    return this.m_eStatus;
+  }
+
+  @Override
+  public IJSONObject getProperties ()
+  {
+    return this.m_aProperties.getClone ();
+  }
+
+  @Override
+  public EChange setStatus (@Nonnull final ECompanySiteStatus eStatus)
+  {
+    ValueEnforcer.notNull (eStatus, "eStatus");
+    if (eStatus == this.m_eStatus)
+    {
+      return EChange.UNCHANGED;
+    }
+    this.m_eStatus = eStatus;
+    return EChange.CHANGED;
+  }
+
+  @Override
+  public EChange setProperties (@Nonnull final IJSONObject aProperties)
+  {
+    ValueEnforcer.notNull (aProperties, "aProperties");
+    if (EqualsUtils.equals (this.m_aProperties, aProperties))
+    {
+      return EChange.UNCHANGED;
+    }
+    this.m_aProperties = aProperties;
+    return EChange.CHANGED;
   }
 }
