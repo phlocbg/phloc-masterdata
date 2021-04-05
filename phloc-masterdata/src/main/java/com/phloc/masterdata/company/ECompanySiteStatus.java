@@ -7,7 +7,8 @@ import javax.annotation.Nullable;
 public enum ECompanySiteStatus
 {
  VALID ("valid", ECompanySiteStatusName.VALID), //$NON-NLS-1$
- CONSTRUCTION ("construction", ECompanySiteStatusName.CONSTRUCTION); //$NON-NLS-1$
+ CONSTRUCTION ("construction", ECompanySiteStatusName.CONSTRUCTION),
+ NEW ("new", ECompanySiteStatusName.NEW); //$NON-NLS-1$
 
   private String m_sID;
   private ECompanySiteStatusName m_eName;

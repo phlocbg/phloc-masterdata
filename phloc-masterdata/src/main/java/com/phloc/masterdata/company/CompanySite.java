@@ -65,6 +65,7 @@ public final class CompanySite implements ICompanySite
   private ITelephoneNumber m_aFaxNo = new TelephoneNumber ();
   private IExtendedEmailAddress m_aEmailAddress = new ExtendedEmailAddress ();
   private ECompanySiteStatus m_eStatus = ECompanySiteStatus.VALID;
+  private String m_sStatusText;
   private IJSONObject m_aProperties = new JSONObject ();
 
   public CompanySite (@Nonnull final ICompany aCompany)
@@ -115,6 +116,21 @@ public final class CompanySite implements ICompanySite
       return EChange.UNCHANGED;
     this.m_sDisplayName = sDisplayName;
     return EChange.CHANGED;
+  }
+
+  @Nullable
+  public String getStatusText ()
+  {
+    return this.m_sStatusText;
+  }
+
+  public EChange setStatusText (final String sStatusText)
+  {
+    if (EqualsUtils.equals (this.m_sStatusText, sStatusText))
+      return EChange.UNCHANGED;
+    this.m_sStatusText = sStatusText;
+    return EChange.CHANGED;
+
   }
 
   @Override

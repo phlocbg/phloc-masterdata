@@ -32,7 +32,8 @@ import com.phloc.commons.text.resolve.DefaultTextResolver;
 public enum ECompanySiteStatusName implements IHasDisplayText
 {
  VALID ("Geöffnet", "Opened"),
- CONSTRUCTION ("In Entstehung", "Under construction");
+ CONSTRUCTION ("In Entstehung", "Under construction"),
+ NEW ("Neueröffnung", "Opening");
 
   private final ITextProvider m_aTP;
 

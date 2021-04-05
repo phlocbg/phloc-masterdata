@@ -99,6 +99,9 @@ public interface IReadonlyCompanySite extends IHasDisplayName, ITypedObject <Str
   @Nonnull
   ECompanySiteStatus getStatus ();
 
+  @Nullable
+  String getStatusText ();
+
   /**
    * @return
    */

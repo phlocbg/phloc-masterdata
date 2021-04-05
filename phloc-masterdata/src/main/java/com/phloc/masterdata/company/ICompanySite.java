@@ -58,6 +58,9 @@ public interface ICompanySite extends IReadonlyCompanySite
   @Nonnull
   EChange setStatus (@Nonnull ECompanySiteStatus eStatus);
 
+  @Nonnull
+  EChange setStatusText (String sStatusText);
+
   /**
    * {@inheritDoc}
    */
